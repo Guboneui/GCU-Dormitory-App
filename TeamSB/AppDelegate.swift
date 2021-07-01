@@ -10,10 +10,31 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+      
+        print(UserDefaults.standard.bool(forKey: "autoLoginState"))
+        
+//        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+//            window?.rootViewController = loginVC
+//            window?.makeKeyAndVisible()
+//
+//        } else {
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let testVC = storyboard.instantiateViewController(withIdentifier: "MainVC")
+//            window?.rootViewController = testVC
+//            window?.makeKeyAndVisible()
+//        }
+
+
+        
+        
+        
         return true
     }
 
