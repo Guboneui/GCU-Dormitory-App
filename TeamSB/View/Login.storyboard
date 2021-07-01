@@ -205,6 +205,7 @@
                     <navigationItem key="navigationItem" id="NTk-UC-vCY"/>
                     <connections>
                         <outlet property="checkNicknameButton" destination="ujO-Iy-436" id="Gtw-ga-kyB"/>
+                        <outlet property="nickNameBaseView" destination="zFn-gJ-Hag" id="vKX-6C-ivg"/>
                         <outlet property="nickNameTextField" destination="W1M-CE-C6G" id="nrs-m0-gYL"/>
                     </connections>
                 </viewController>

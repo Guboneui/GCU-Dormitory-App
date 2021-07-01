@@ -11,12 +11,13 @@ class NickNameViewController: UIViewController {
     
     
 
+    @IBOutlet weak var nickNameBaseView: UIView!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var checkNicknameButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureDesign()
         
         resignForKeyboardNotification()
         //다른 공간 클릭 시 키보드 내리기
@@ -25,16 +26,18 @@ class NickNameViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func configureDesign() {
+        
+        nickNameBaseView.layer.borderWidth = 1
+        nickNameBaseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
+        
+        checkNicknameButton.layer.borderWidth = 1
+        checkNicknameButton.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
     }
-    */
+    
+    
+
     
     @IBAction func checkNicknameAction(_ sender: Any) {
         
@@ -70,7 +73,6 @@ class NickNameViewController: UIViewController {
         view.endEditing(true)
     }
     
-    
     func resignForKeyboardNotification() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -79,17 +81,12 @@ class NickNameViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         self.view.frame.origin.y = 0
-        
         let bottom = view.frame.origin.y
         
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardReactangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardReactangle.height
-            
-            self.view.frame.origin.y = bottom - (keyboardHeight / 1) + 250
-            //self.view.frame.origin.y = bottom - (keyboardHeight / 2)
-            //self.view.frame.origin.y = bottom - 80
-            //print(keyboardHeight)
+            self.view.frame.origin.y = bottom - keyboardHeight / 2 + 50
         }
     }
     

@@ -24,28 +24,21 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
+        print(self.idBaseView.frame.origin.y)
+        print(self.pwBaseView.frame.origin.y)
+        print(view.frame.origin.y)
         
-        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-            let unchecked = UIImage(systemName: "square")
-            autoLoginButton.setImage(unchecked, for: .normal)
-        
-        } else {
-            let checked = UIImage(systemName: "checkmark.square.fill")
-            autoLoginButton.setImage(checked, for: .normal)
-            
-        }
         
         
         configureDesign()
+        setAutoLoginImage()
+        
         resignForKeyboardNotification()
         //다른 공간 클릭 시 키보드 내리기
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
-    
-    
-    
     
     
     
@@ -62,10 +55,24 @@ class LoginViewController: UIViewController {
         
     }
     
+    
+    func setAutoLoginImage() {
+        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+            let unchecked = UIImage(systemName: "square")
+            autoLoginButton.setImage(unchecked, for: .normal)
+        
+        } else {
+            let checked = UIImage(systemName: "checkmark.square.fill")
+            autoLoginButton.setImage(checked, for: .normal)
+            
+        }
+        
+    }
+    
+    
     @objc func dismissKeyboard() {  //키보드 숨김처리
         view.endEditing(true)
     }
-    
     
     func resignForKeyboardNotification() {
         
@@ -75,17 +82,12 @@ class LoginViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         self.view.frame.origin.y = 0
-        
         let bottom = view.frame.origin.y
         
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardReactangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardReactangle.height
-            
-            self.view.frame.origin.y = bottom - (keyboardHeight / 1) + 250
-            //self.view.frame.origin.y = bottom - (keyboardHeight / 2)
-            //self.view.frame.origin.y = bottom - 80
-            //print(keyboardHeight)
+            self.view.frame.origin.y = bottom - keyboardHeight / 2 + 50
         }
     }
     
@@ -102,8 +104,7 @@ class LoginViewController: UIViewController {
             
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
             
         } else if idTextView.text == "" {
             let alert = UIAlertController(title: "ID를 입력 해주세요.", message: "", preferredStyle: .alert)
