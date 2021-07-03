@@ -14,6 +14,7 @@ class NickNameViewController: UIViewController {
     @IBOutlet weak var nickNameBaseView: UIView!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var checkNicknameButton: UIButton!
+    @IBOutlet weak var goHomeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,15 +60,23 @@ class NickNameViewController: UIViewController {
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeNavigationVC")
             
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
         }
         
         
     }
+    
+    
+    
+    @IBAction func goHomeAction(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "HomeNavigationVC")
+        
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
     
     @objc func dismissKeyboard() {  //키보드 숨김처리
         view.endEditing(true)

@@ -1,18 +1,17 @@
 //
-//  KKKViewController.swift
+//  CalendarViewController.swift
 //  TeamSB
 //
-//  Created by 구본의 on 2021/07/02.
+//  Created by 구본의 on 2021/07/04.
 //
 
 import UIKit
 
-class KKKViewController: UIViewController {
+class CalendarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("123123")
         // Do any additional setup after loading the view.
     }
     

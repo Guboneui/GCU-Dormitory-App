@@ -149,10 +149,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFn-gJ-Hag">
-                                <rect key="frame" x="50" y="442.5" width="314" height="60"/>
+                                <rect key="frame" x="50" y="442.5" width="234" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*2~8자 이내로 설정해주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W1M-CE-C6G">
-                                        <rect key="frame" x="15" y="10" width="299" height="40"/>
+                                        <rect key="frame" x="15" y="10" width="219" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -174,22 +174,38 @@
                                     <constraint firstAttribute="height" constant="60" id="6X8-YG-J2A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="확인">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goHomeAction:" destination="J6N-Ao-2el" eventType="touchUpInside" id="7eS-g8-Kre"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbZ-ld-Vkx">
+                                <rect key="frame" x="304" y="442.5" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.85490196078431369" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="nye-gG-cvv"/>
+                                    <constraint firstAttribute="width" constant="60" id="oWo-om-tyi"/>
+                                </constraints>
                                 <state key="normal" title="중복확인">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="checkNicknameAction:" destination="J6N-Ao-2el" eventType="touchUpInside" id="2gP-uV-PeY"/>
+                                    <action selector="checkNicknameAction:" destination="J6N-Ao-2el" eventType="touchUpInside" id="eZn-FR-h10"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aXw-AN-td5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="aXw-AN-td5" firstAttribute="trailing" secondItem="cbZ-ld-Vkx" secondAttribute="trailing" constant="50" id="3Fg-6Q-DOn"/>
                             <constraint firstItem="mGE-eW-OUl" firstAttribute="leading" secondItem="aXw-AN-td5" secondAttribute="leading" constant="20" id="5eL-fe-kpe"/>
                             <constraint firstItem="48J-cb-hCm" firstAttribute="width" secondItem="CV2-3E-t7W" secondAttribute="width" multiplier="0.8" id="AuA-kd-mea"/>
                             <constraint firstItem="48J-cb-hCm" firstAttribute="height" secondItem="CV2-3E-t7W" secondAttribute="width" multiplier="0.6" id="D87-GA-SRR"/>
                             <constraint firstItem="ujO-Iy-436" firstAttribute="leading" secondItem="aXw-AN-td5" secondAttribute="leading" constant="50" id="FGY-I9-qkg"/>
                             <constraint firstItem="mGE-eW-OUl" firstAttribute="centerX" secondItem="CV2-3E-t7W" secondAttribute="centerX" id="HZ9-KS-AiW"/>
+                            <constraint firstItem="ujO-Iy-436" firstAttribute="top" secondItem="cbZ-ld-Vkx" secondAttribute="bottom" constant="30" id="NHE-gE-3RW"/>
                             <constraint firstItem="48J-cb-hCm" firstAttribute="top" secondItem="aXw-AN-td5" secondAttribute="top" constant="50" id="Nkk-Oz-YbF"/>
                             <constraint firstItem="aXw-AN-td5" firstAttribute="trailing" secondItem="mGE-eW-OUl" secondAttribute="trailing" constant="20" id="QJt-wV-VJq"/>
                             <constraint firstItem="ujO-Iy-436" firstAttribute="top" secondItem="zFn-gJ-Hag" secondAttribute="bottom" constant="30" id="S7q-4X-MUU"/>
@@ -198,13 +214,13 @@
                             <constraint firstItem="mGE-eW-OUl" firstAttribute="top" secondItem="48J-cb-hCm" secondAttribute="bottom" constant="50" id="c36-mN-DYM"/>
                             <constraint firstItem="aXw-AN-td5" firstAttribute="trailing" secondItem="ujO-Iy-436" secondAttribute="trailing" constant="50" id="hev-ut-Frl"/>
                             <constraint firstItem="zFn-gJ-Hag" firstAttribute="top" secondItem="mGE-eW-OUl" secondAttribute="bottom" constant="30" id="kCE-po-6yw"/>
-                            <constraint firstItem="aXw-AN-td5" firstAttribute="trailing" secondItem="zFn-gJ-Hag" secondAttribute="trailing" constant="50" id="rhi-oK-ffQ"/>
-                            <constraint firstItem="zFn-gJ-Hag" firstAttribute="centerX" secondItem="CV2-3E-t7W" secondAttribute="centerX" id="yLO-vW-3dR"/>
+                            <constraint firstItem="cbZ-ld-Vkx" firstAttribute="leading" secondItem="zFn-gJ-Hag" secondAttribute="trailing" constant="20" id="rhi-oK-ffQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NTk-UC-vCY"/>
                     <connections>
-                        <outlet property="checkNicknameButton" destination="ujO-Iy-436" id="Gtw-ga-kyB"/>
+                        <outlet property="checkNicknameButton" destination="cbZ-ld-Vkx" id="SJx-87-a5Z"/>
+                        <outlet property="goHomeButton" destination="ujO-Iy-436" id="L2g-jD-hAL"/>
                         <outlet property="nickNameBaseView" destination="zFn-gJ-Hag" id="vKX-6C-ivg"/>
                         <outlet property="nickNameTextField" destination="W1M-CE-C6G" id="nrs-m0-gYL"/>
                     </connections>
