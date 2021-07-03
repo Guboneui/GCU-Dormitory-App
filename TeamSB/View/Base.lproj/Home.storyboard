@@ -67,7 +67,7 @@
             </objects>
             <point key="canvasLocation" x="2264" y="790"/>
         </scene>
-        <!--Item-->
+        <!--Calendar View Controller-->
         <scene sceneID="jp5-mU-CPY">
             <objects>
                 <viewController restorationIdentifier="aViewController" storyboardIdentifier="aViewController" id="5bU-LF-5NW" customClass="CalendarViewController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,7 +77,7 @@
                         <viewLayoutGuide key="safeArea" id="Mvw-pV-vwh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="WiA-ZR-5c5"/>
+                    <tabBarItem key="tabBarItem" title="" id="WiA-ZR-5c5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHp-m9-Bm8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
