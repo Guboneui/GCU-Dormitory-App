@@ -14,16 +14,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var packageButton: UIButton!
     @IBOutlet weak var taxiButton: UIButton!
     @IBOutlet weak var laundryButton: UIButton!
+    @IBOutlet weak var todayMenuCollectionView: UICollectionView!
     
     
     @IBOutlet weak var recentPostTableView: UITableView!
-    @IBOutlet weak var todayMenuTableView: UITableView!
+    
     
     
     @IBOutlet weak var showMoreRecentButton: UIButton!
     @IBOutlet weak var recentPostBaseView: UIView!
     
-    
+    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +37,11 @@ class HomeViewController: UIViewController {
         let recentPostTableViewNib = UINib(nibName: "RecentPostTableViewCell", bundle: nil)
         recentPostTableView.register(recentPostTableViewNib, forCellReuseIdentifier: "RecentPostTableViewCell")
         
+        todayMenuCollectionView.delegate = self
+        todayMenuCollectionView.dataSource = self
+        let todayMenuCollectionViewNib = UINib(nibName: "TodayMenuCollectionViewCell", bundle: nil)
+        todayMenuCollectionView.register(todayMenuCollectionViewNib, forCellWithReuseIdentifier: "TodayMenuCollectionViewCell")
         
-        todayMenuTableView.delegate = self
-        todayMenuTableView.dataSource = self
-        todayMenuTableView.estimatedRowHeight = 200
-        todayMenuTableView.rowHeight = UITableView.automaticDimension
-    
-        todayMenuTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        let todayMenuTableViewNib = UINib(nibName: "TodayMenuTableViewCell", bundle: nil)
-        todayMenuTableView.register(todayMenuTableViewNib, forCellReuseIdentifier: "TodayMenuTableViewCell")
         
         
         
@@ -97,12 +94,8 @@ class HomeViewController: UIViewController {
     
 }
 
-extension HomeViewController: UITableViewDelegate {
-    
-    
-}
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == recentPostTableView {
             return 6
@@ -115,21 +108,57 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if tableView == recentPostTableView {
+       
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecentPostTableViewCell", for: indexPath) as! RecentPostTableViewCell
             
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TodayMenuTableViewCell", for: indexPath) as! TodayMenuTableViewCell
-            
-            return cell
         }
+    
+}
+
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = todayMenuCollectionView.dequeueReusableCell(withReuseIdentifier: "TodayMenuCollectionViewCell", for: indexPath) as! TodayMenuCollectionViewCell
+        return cell
+    }
+    
+}
+
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        let cell = todayMenuCollectionView.dequeueReusableCell(withReuseIdentifier: "TodayMenuCollectionViewCell", for: indexPath) as! TodayMenuCollectionViewCell
+    
+        let width = collectionView.frame.width
+        let height = collectionView.frame.height
         
-        
-        
-        
+        let itemsPerRow: CGFloat = 1    //가로 개수
+        let widthPadding = sectionInsets.left * (itemsPerRow + 1)
+        let itemsPerColumn: CGFloat = 4 //세로 개수
+        let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
+        let cellWidth = (width - widthPadding) / itemsPerRow
+        let cellHeight = cell.menuTypeLabel.frame.height + cell.menuTableView.frame.height + 300
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+          return sectionInsets
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return sectionInsets.left
     }
     
     
+    
 }
+
+
+
+
