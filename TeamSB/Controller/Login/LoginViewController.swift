@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class LoginViewController: UIViewController {
     
@@ -98,30 +100,125 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginAction(_ sender: Any) {
-        if idTextView.text == "starku2249" && pwTextView.text == "ku@@2249" {
-            print("로그인 성공")
-            print(autoLoginState)
-            
-            
-            let vc = storyboard?.instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        } else if idTextView.text == "" {
-            let alert = UIAlertController(title: "ID를 입력 해주세요.", message: "", preferredStyle: .alert)
+        
+        
+        if idTextView.text == "" || idTextView.text == nil {
+            let alert = UIAlertController(title: "ID를 입력 해주세요", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
-        } else if pwTextView.text == "" {
-            let alert = UIAlertController(title: "PW를 입력 해주세요.", message: "", preferredStyle: .alert)
+            
+        } else if pwTextView.text == "" || pwTextView.text == nil {
+            let alert = UIAlertController(title: "PW를 입력 해주세요", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "ID가 존재하지 않습니다.", message: "", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true, completion: nil)
+            print("로그인 액션")
+            let inputID: String = idTextView.text ?? ""
+            let inputPW: String = pwTextView.text ?? ""
+            
+            print(inputID)
+            print(inputPW)
+            
+            let URL = "http://13.209.10.30:3000/login"
+            
+            let PARAM: Parameters = [
+                "id": inputID,
+                "password": inputPW
+            ]
+            
+            print(PARAM)
+            
+            let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
+            
+            alamo.responseJSON{ [self] (response) in
+                print(response)
+                print(response.result)
+                
+                switch response.result {
+                case .success(let value):
+                    if let jsonObj = value as? NSDictionary {
+                        print("성공시")
+                        print(">> \(URL)")
+                        
+                        let result = jsonObj.object(forKey: "check") as! Bool
+                        
+                        if result == true {
+                            if self.autoLoginState == true {
+                                print("오토로그인 o")
+                                UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
+                                
+                            } else {
+                                print("오토로그인 x")
+                                UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
+                            }
+                            
+                            UserDefaults.standard.set(jsonObj.object(forKey: "id") as! String, forKey: "userID")
+                            UserDefaults.standard.set(jsonObj.object(forKey: "nickname"), forKey: "userNickname")
+                            
+                            print("유저 정보")
+                            print(UserDefaults.standard.string(forKey: "userID")!)
+                            print(UserDefaults.standard.bool(forKey: "userNickname"))
+                            
+                            
+                            let nicknameVC = storyboard?.instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
+                            navigationController?.pushViewController(nicknameVC, animated: true)
+                            
+                        } else {
+                            let code = jsonObj.object(forKey: "code") as! Int
+                            
+                            if code == 301 {
+                                let errorMessage = jsonObj.object(forKey: "message") as! String
+                                let alert = UIAlertController(title: errorMessage, message: "", preferredStyle: .alert)
+                                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                                alert.addAction(okButton)
+                                self.present(alert, animated: true, completion: nil)
+                            } else if code == 302 {
+                                let errorMessage = jsonObj.object(forKey: "message") as! String
+                                let alert = UIAlertController(title: errorMessage, message: "", preferredStyle: .alert)
+                                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                                alert.addAction(okButton)
+                                self.present(alert, animated: true, completion: nil)
+                            } else if code == 303 {
+                                let errorMessage = jsonObj.object(forKey: "message") as! String
+                                let alert = UIAlertController(title: errorMessage, message: "", preferredStyle: .alert)
+                                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                                alert.addAction(okButton)
+                                self.present(alert, animated: true, completion: nil)
+                            } else {
+                                let alert = UIAlertController(title: "확인되지 않은 에러", message: "", preferredStyle: .alert)
+                                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                                alert.addAction(okButton)
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }
+                        
+                        
+                        
+                        
+                    }
+                case .failure(let error) :
+                    if let jsonObj = error as? NSDictionary {
+                        print("서버통신 실패")
+                        print(error)
+                    }
+                }
+                
         }
+        
+        
+        
+        
+        
+        
+        
+            
+            
+            
+        }
+        
+        
         
     }
     
@@ -133,12 +230,10 @@ class LoginViewController: UIViewController {
             let checked = UIImage(systemName: "checkmark.square.fill")
             autoLoginButton.setImage(checked, for: .normal)
             autoLoginState = true
-            UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
         } else {
             let unchecked = UIImage(systemName: "square")
             autoLoginButton.setImage(unchecked, for: .normal)
             autoLoginState = false
-            UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
         }
     }
     
