@@ -18,20 +18,33 @@
 		2C2C4140269A333E00DB54B5 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C413F269A333E00DB54B5 /* LoginResponse.swift */; };
 		2C2C4142269A345000DB54B5 /* BaseAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C4141269A345000DB54B5 /* BaseAlamofire.swift */; };
 		2C2C4144269A493B00DB54B5 /* BaseHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2C4143269A493B00DB54B5 /* BaseHTTPClient.swift */; };
-		2C3E09C7269230C900610454 /* DetailMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E09C5269230C900610454 /* DetailMenuTableViewCell.swift */; };
-		2C3E09C8269230C900610454 /* DetailMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3E09C6269230C900610454 /* DetailMenuTableViewCell.xib */; };
 		2C5D018E268DF81D00CC6DD4 /* SBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D018D268DF81D00CC6DD4 /* SBColor.swift */; };
 		2C5D0193268E20E000CC6DD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D0192268E20E000CC6DD4 /* LoginViewController.swift */; };
 		2C5D0195268E20EC00CC6DD4 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D0194268E20EC00CC6DD4 /* NickNameViewController.swift */; };
 		2C5D019F268E39ED00CC6DD4 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D019E268E39ED00CC6DD4 /* NoticeViewController.swift */; };
 		2C5D01A1268E3ECA00CC6DD4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */; };
 		2C5D01AA268E4B7F00CC6DD4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D01A9268E4B7F00CC6DD4 /* Login.storyboard */; };
-		2C5E998E2690E89C00E3504A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E998D2690E89C00E3504A /* HomeViewController.swift */; };
 		2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E998F2690E8A500E3504A /* CalendarViewController.swift */; };
-		2C5E99962690F54500E3504A /* RecentPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E99942690F54500E3504A /* RecentPostTableViewCell.swift */; };
-		2C5E99972690F54500E3504A /* RecentPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5E99952690F54500E3504A /* RecentPostTableViewCell.xib */; };
-		2C5E999F2692286100E3504A /* TodayMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E999D2692286100E3504A /* TodayMenuCollectionViewCell.swift */; };
-		2C5E99A02692286100E3504A /* TodayMenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5E999E2692286100E3504A /* TodayMenuCollectionViewCell.xib */; };
+		2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */; };
+		2CFDA9B1269DE9F800612EDB /* SearchButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */; };
+		2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */; };
+		2CFDA9B5269DEA1400612EDB /* CategoryButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDA9B3269DEA1400612EDB /* CategoryButtonTableViewCell.xib */; };
+		2CFDA9B8269DEA3100612EDB /* RecentPostViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9B6269DEA3100612EDB /* RecentPostViewTableViewCell.swift */; };
+		2CFDA9B9269DEA3100612EDB /* RecentPostViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDA9B7269DEA3100612EDB /* RecentPostViewTableViewCell.xib */; };
+		2CFDA9BC269DEA4100612EDB /* NowTimeMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9BA269DEA4100612EDB /* NowTimeMenuTableViewCell.swift */; };
+		2CFDA9BD269DEA4100612EDB /* NowTimeMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDA9BB269DEA4100612EDB /* NowTimeMenuTableViewCell.xib */; };
+		2CFDA9BF269DEFD300612EDB /* MainBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9BE269DEFD300612EDB /* MainBaseViewController.swift */; };
+		2CFDA9C2269DF42600612EDB /* RecentPostContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C0269DF42600612EDB /* RecentPostContentsTableViewCell.swift */; };
+		2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C1269DF42600612EDB /* RecentPostContentsTableViewCell.xib */; };
+		2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C4269E0DE000612EDB /* SearchViewController.swift */; };
+		2CFDA9C7269E0DEC00612EDB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C6269E0DEC00612EDB /* SettingViewController.swift */; };
+		2CFDA9C9269E0DF800612EDB /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C8269E0DF800612EDB /* WriteViewController.swift */; };
+		2CFDA9CB269E0E0800612EDB /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9CA269E0E0800612EDB /* CategoryViewController.swift */; };
+		2CFDA9CD269E0E1200612EDB /* ShowMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9CC269E0E1200612EDB /* ShowMoreViewController.swift */; };
+		2CFDA9CF269E15DA00612EDB /* DelevaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9CE269E15DA00612EDB /* DelevaryViewController.swift */; };
+		2CFDA9D1269E15E300612EDB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9D0269E15E300612EDB /* PostViewController.swift */; };
+		2CFDA9D3269E15EA00612EDB /* TaxiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */; };
+		2CFDA9D5269E15F600612EDB /* LaundaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9D4269E15F600612EDB /* LaundaryViewController.swift */; };
 		CD77454F7846BED1AC167251 /* Pods_TeamSB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96815A5CEC0BB20119CD98C4 /* Pods_TeamSB.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,20 +62,33 @@
 		2C2C413F269A333E00DB54B5 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		2C2C4141269A345000DB54B5 /* BaseAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlamofire.swift; sourceTree = "<group>"; };
 		2C2C4143269A493B00DB54B5 /* BaseHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHTTPClient.swift; sourceTree = "<group>"; };
-		2C3E09C5269230C900610454 /* DetailMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuTableViewCell.swift; sourceTree = "<group>"; };
-		2C3E09C6269230C900610454 /* DetailMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMenuTableViewCell.xib; sourceTree = "<group>"; };
 		2C5D018D268DF81D00CC6DD4 /* SBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBColor.swift; sourceTree = "<group>"; };
 		2C5D0192268E20E000CC6DD4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C5D0194268E20EC00CC6DD4 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		2C5D019E268E39ED00CC6DD4 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		2C5D01A9268E4B7F00CC6DD4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		2C5E998D2690E89C00E3504A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2C5E998F2690E8A500E3504A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		2C5E99942690F54500E3504A /* RecentPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostTableViewCell.swift; sourceTree = "<group>"; };
-		2C5E99952690F54500E3504A /* RecentPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentPostTableViewCell.xib; sourceTree = "<group>"; };
-		2C5E999D2692286100E3504A /* TodayMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMenuCollectionViewCell.swift; sourceTree = "<group>"; };
-		2C5E999E2692286100E3504A /* TodayMenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayMenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
+		2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchButtonTableViewCell.xib; sourceTree = "<group>"; };
+		2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonTableViewCell.swift; sourceTree = "<group>"; };
+		2CFDA9B3269DEA1400612EDB /* CategoryButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryButtonTableViewCell.xib; sourceTree = "<group>"; };
+		2CFDA9B6269DEA3100612EDB /* RecentPostViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostViewTableViewCell.swift; sourceTree = "<group>"; };
+		2CFDA9B7269DEA3100612EDB /* RecentPostViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentPostViewTableViewCell.xib; sourceTree = "<group>"; };
+		2CFDA9BA269DEA4100612EDB /* NowTimeMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowTimeMenuTableViewCell.swift; sourceTree = "<group>"; };
+		2CFDA9BB269DEA4100612EDB /* NowTimeMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowTimeMenuTableViewCell.xib; sourceTree = "<group>"; };
+		2CFDA9BE269DEFD300612EDB /* MainBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBaseViewController.swift; sourceTree = "<group>"; };
+		2CFDA9C0269DF42600612EDB /* RecentPostContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostContentsTableViewCell.swift; sourceTree = "<group>"; };
+		2CFDA9C1269DF42600612EDB /* RecentPostContentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentPostContentsTableViewCell.xib; sourceTree = "<group>"; };
+		2CFDA9C4269E0DE000612EDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2CFDA9C6269E0DEC00612EDB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		2CFDA9C8269E0DF800612EDB /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		2CFDA9CA269E0E0800612EDB /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		2CFDA9CC269E0E1200612EDB /* ShowMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMoreViewController.swift; sourceTree = "<group>"; };
+		2CFDA9CE269E15DA00612EDB /* DelevaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelevaryViewController.swift; sourceTree = "<group>"; };
+		2CFDA9D0269E15E300612EDB /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiViewController.swift; sourceTree = "<group>"; };
+		2CFDA9D4269E15F600612EDB /* LaundaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundaryViewController.swift; sourceTree = "<group>"; };
 		6B516DB41B53FEC91F198ADC /* Pods-TeamSB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSB.debug.xcconfig"; path = "Target Support Files/Pods-TeamSB/Pods-TeamSB.debug.xcconfig"; sourceTree = "<group>"; };
 		7ECE9431B7DFD774352D584E /* Pods-TeamSB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeamSB.release.xcconfig"; path = "Target Support Files/Pods-TeamSB/Pods-TeamSB.release.xcconfig"; sourceTree = "<group>"; };
 		96815A5CEC0BB20119CD98C4 /* Pods_TeamSB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeamSB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +221,7 @@
 		2C5D0190268E209300CC6DD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2CFDA9AD269DE9DB00612EDB /* MainHome */,
 				2C5D01A9268E4B7F00CC6DD4 /* Login.storyboard */,
 				2C29873C268B5D5D005EEA64 /* Home.storyboard */,
 			);
@@ -226,6 +253,15 @@
 				2C5E998B2690E86D00E3504A /* Calendar */,
 				2C5E998A2690E77700E3504A /* Home */,
 				2C5E998C2690E88100E3504A /* Notice */,
+				2CFDA9C4269E0DE000612EDB /* SearchViewController.swift */,
+				2CFDA9C6269E0DEC00612EDB /* SettingViewController.swift */,
+				2CFDA9C8269E0DF800612EDB /* WriteViewController.swift */,
+				2CFDA9CA269E0E0800612EDB /* CategoryViewController.swift */,
+				2CFDA9CC269E0E1200612EDB /* ShowMoreViewController.swift */,
+				2CFDA9CE269E15DA00612EDB /* DelevaryViewController.swift */,
+				2CFDA9D0269E15E300612EDB /* PostViewController.swift */,
+				2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */,
+				2CFDA9D4269E15F600612EDB /* LaundaryViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -233,9 +269,7 @@
 		2C5E998A2690E77700E3504A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2C5E99982690FBD900E3504A /* TodayMenu */,
-				2C5E99932690F52C00E3504A /* RecentPost */,
-				2C5E998D2690E89C00E3504A /* HomeViewController.swift */,
+				2CFDA9BE269DEFD300612EDB /* MainBaseViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -256,24 +290,21 @@
 			path = Notice;
 			sourceTree = "<group>";
 		};
-		2C5E99932690F52C00E3504A /* RecentPost */ = {
+		2CFDA9AD269DE9DB00612EDB /* MainHome */ = {
 			isa = PBXGroup;
 			children = (
-				2C5E99942690F54500E3504A /* RecentPostTableViewCell.swift */,
-				2C5E99952690F54500E3504A /* RecentPostTableViewCell.xib */,
+				2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */,
+				2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */,
+				2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */,
+				2CFDA9B3269DEA1400612EDB /* CategoryButtonTableViewCell.xib */,
+				2CFDA9B6269DEA3100612EDB /* RecentPostViewTableViewCell.swift */,
+				2CFDA9B7269DEA3100612EDB /* RecentPostViewTableViewCell.xib */,
+				2CFDA9BA269DEA4100612EDB /* NowTimeMenuTableViewCell.swift */,
+				2CFDA9BB269DEA4100612EDB /* NowTimeMenuTableViewCell.xib */,
+				2CFDA9C0269DF42600612EDB /* RecentPostContentsTableViewCell.swift */,
+				2CFDA9C1269DF42600612EDB /* RecentPostContentsTableViewCell.xib */,
 			);
-			path = RecentPost;
-			sourceTree = "<group>";
-		};
-		2C5E99982690FBD900E3504A /* TodayMenu */ = {
-			isa = PBXGroup;
-			children = (
-				2C5E999D2692286100E3504A /* TodayMenuCollectionViewCell.swift */,
-				2C5E999E2692286100E3504A /* TodayMenuCollectionViewCell.xib */,
-				2C3E09C5269230C900610454 /* DetailMenuTableViewCell.swift */,
-				2C3E09C6269230C900610454 /* DetailMenuTableViewCell.xib */,
-			);
-			path = TodayMenu;
+			path = MainHome;
 			sourceTree = "<group>";
 		};
 		EEA48EEF8F2BEE156A10024F /* Frameworks */ = {
@@ -344,12 +375,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5D01AA268E4B7F00CC6DD4 /* Login.storyboard in Resources */,
-				2C5E99A02692286100E3504A /* TodayMenuCollectionViewCell.xib in Resources */,
+				2CFDA9BD269DEA4100612EDB /* NowTimeMenuTableViewCell.xib in Resources */,
+				2CFDA9B9269DEA3100612EDB /* RecentPostViewTableViewCell.xib in Resources */,
 				2C298743268B5D5E005EEA64 /* LaunchScreen.storyboard in Resources */,
+				2CFDA9B1269DE9F800612EDB /* SearchButtonTableViewCell.xib in Resources */,
 				2C298740268B5D5E005EEA64 /* Assets.xcassets in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
-				2C3E09C8269230C900610454 /* DetailMenuTableViewCell.xib in Resources */,
-				2C5E99972690F54500E3504A /* RecentPostTableViewCell.xib in Resources */,
+				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
+				2CFDA9B5269DEA1400612EDB /* CategoryButtonTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,22 +435,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CFDA9C9269E0DF800612EDB /* WriteViewController.swift in Sources */,
+				2CFDA9C2269DF42600612EDB /* RecentPostContentsTableViewCell.swift in Sources */,
 				2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */,
 				2C5D01A1268E3ECA00CC6DD4 /* MainTabBarController.swift in Sources */,
+				2CFDA9C7269E0DEC00612EDB /* SettingViewController.swift in Sources */,
 				2C5D0195268E20EC00CC6DD4 /* NickNameViewController.swift in Sources */,
+				2CFDA9BF269DEFD300612EDB /* MainBaseViewController.swift in Sources */,
 				2C2C413E269A333600DB54B5 /* LoginRequest.swift in Sources */,
+				2CFDA9D3269E15EA00612EDB /* TaxiViewController.swift in Sources */,
 				2C5D0193268E20E000CC6DD4 /* LoginViewController.swift in Sources */,
+				2CFDA9B8269DEA3100612EDB /* RecentPostViewTableViewCell.swift in Sources */,
+				2CFDA9D5269E15F600612EDB /* LaundaryViewController.swift in Sources */,
+				2CFDA9CF269E15DA00612EDB /* DelevaryViewController.swift in Sources */,
 				2C2C4144269A493B00DB54B5 /* BaseHTTPClient.swift in Sources */,
-				2C5E999F2692286100E3504A /* TodayMenuCollectionViewCell.swift in Sources */,
 				2C2C4140269A333E00DB54B5 /* LoginResponse.swift in Sources */,
 				2C2C4142269A345000DB54B5 /* BaseAlamofire.swift in Sources */,
+				2CFDA9D1269E15E300612EDB /* PostViewController.swift in Sources */,
 				2C5D018E268DF81D00CC6DD4 /* SBColor.swift in Sources */,
-				2C5E998E2690E89C00E3504A /* HomeViewController.swift in Sources */,
-				2C3E09C7269230C900610454 /* DetailMenuTableViewCell.swift in Sources */,
+				2CFDA9BC269DEA4100612EDB /* NowTimeMenuTableViewCell.swift in Sources */,
+				2CFDA9CB269E0E0800612EDB /* CategoryViewController.swift in Sources */,
+				2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */,
+				2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */,
+				2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */,
 				2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */,
+				2CFDA9CD269E0E1200612EDB /* ShowMoreViewController.swift in Sources */,
 				2C2C4137269A2FE200DB54B5 /* URLConsts.swift in Sources */,
 				2C5D019F268E39ED00CC6DD4 /* NoticeViewController.swift in Sources */,
-				2C5E99962690F54500E3504A /* RecentPostTableViewCell.swift in Sources */,
 				2C298739268B5D5D005EEA64 /* SceneDelegate.swift in Sources */,
 				2C2C413B269A31B800DB54B5 /* UserService.swift in Sources */,
 			);

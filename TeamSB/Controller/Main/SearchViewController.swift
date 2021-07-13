@@ -1,13 +1,13 @@
 //
-//  NoticeViewController.swift
+//  SearchViewController.swift
 //  TeamSB
 //
-//  Created by 구본의 on 2021/07/02.
+//  Created by 구본의 on 2021/07/14.
 //
 
 import UIKit
 
-class NoticeViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,9 +16,8 @@ class NoticeViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "공지사항"
+        self.navigationItem.title = "검색"
     }
-    
     
 
     /*

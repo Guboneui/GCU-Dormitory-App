@@ -1,24 +1,24 @@
 //
-//  NoticeViewController.swift
+//  SettingViewController.swift
 //  TeamSB
 //
-//  Created by 구본의 on 2021/07/02.
+//  Created by 구본의 on 2021/07/14.
 //
 
 import UIKit
 
-class NoticeViewController: UIViewController {
+class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "공지사항"
+        self.navigationItem.title = "설정"
     }
-    
     
 
     /*

@@ -1,13 +1,13 @@
 //
-//  RecentPostTableViewCell.swift
+//  RecentPostContentsTableViewCell.swift
 //  TeamSB
 //
-//  Created by 구본의 on 2021/07/04.
+//  Created by 구본의 on 2021/07/14.
 //
 
 import UIKit
 
-class RecentPostTableViewCell: UITableViewCell {
+class RecentPostContentsTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -155,11 +155,11 @@ class LoginViewController: UIViewController {
                             }
                             
                             UserDefaults.standard.set(jsonObj.object(forKey: "id") as! String, forKey: "userID")
-                            UserDefaults.standard.set(jsonObj.object(forKey: "nickname"), forKey: "userNickname")
+                            UserDefaults.standard.set(jsonObj.object(forKey: "nickname"), forKey: "userNicknameExist")
                             
-                            print("유저 정보")
-                            print(UserDefaults.standard.string(forKey: "userID")!)
-                            print(UserDefaults.standard.bool(forKey: "userNickname"))
+//                            print("유저 정보")
+//                            print(UserDefaults.standard.string(forKey: "userID")!)
+//                            print(UserDefaults.standard.bool(forKey: "userNickname"))
                             
                             
                             let nicknameVC = storyboard?.instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController

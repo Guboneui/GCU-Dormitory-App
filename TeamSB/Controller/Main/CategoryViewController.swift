@@ -1,23 +1,22 @@
 //
-//  NoticeViewController.swift
+//  CategoryViewController.swift
 //  TeamSB
 //
-//  Created by 구본의 on 2021/07/02.
+//  Created by 구본의 on 2021/07/14.
 //
 
 import UIKit
 
-class NoticeViewController: UIViewController {
+class CategoryViewController: UIViewController {
 
+    var getNavigationTitle: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.title = "공지사항"
-    }
+    
     
     
 
