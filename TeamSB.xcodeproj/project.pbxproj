@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
+		2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C26E64326AC82860086A795 /* MenuTableViewCell.xib */; };
 		2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298736268B5D5D005EEA64 /* AppDelegate.swift */; };
 		2C298739268B5D5D005EEA64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298738268B5D5D005EEA64 /* SceneDelegate.swift */; };
 		2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C29873C268B5D5D005EEA64 /* Home.storyboard */; };
@@ -49,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C26E64226AC82860086A795 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		2C26E64326AC82860086A795 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		2C298733268B5D5D005EEA64 /* TeamSB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamSB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C298736268B5D5D005EEA64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C298738268B5D5D005EEA64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				2C5E998F2690E8A500E3504A /* CalendarViewController.swift */,
+				2C26E64226AC82860086A795 /* MenuTableViewCell.swift */,
+				2C26E64326AC82860086A795 /* MenuTableViewCell.xib */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				2C298740268B5D5E005EEA64 /* Assets.xcassets in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
 				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
+				2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */,
 				2CFDA9B5269DEA1400612EDB /* CategoryButtonTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +456,7 @@
 				2CFDA9D5269E15F600612EDB /* LaundaryViewController.swift in Sources */,
 				2CFDA9CF269E15DA00612EDB /* DelevaryViewController.swift in Sources */,
 				2C2C4144269A493B00DB54B5 /* BaseHTTPClient.swift in Sources */,
+				2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */,
 				2C2C4140269A333E00DB54B5 /* LoginResponse.swift in Sources */,
 				2C2C4142269A345000DB54B5 /* BaseAlamofire.swift in Sources */,
 				2CFDA9D1269E15E300612EDB /* PostViewController.swift in Sources */,
