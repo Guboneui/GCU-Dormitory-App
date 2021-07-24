@@ -7,10 +7,12 @@
 
 import UIKit
 import DropDown
+import Alamofire
 
 class WriteViewController: UIViewController {
     
     
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var dropdownBaseView: UIView!
     @IBOutlet weak var categoryTitle: UILabel!
@@ -26,7 +28,7 @@ class WriteViewController: UIViewController {
         super.viewDidLoad()
         
         
-      
+        
         resignForKeyboardNotification()
         //다른 공간 클릭 시 키보드 내리기
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -37,6 +39,14 @@ class WriteViewController: UIViewController {
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
         
         categoryTitle.text = "카테고리"
+        
+        
+        contentsTextView.delegate = self
+        contentsTextView.text = "내용을 입력 해주세요."
+        contentsTextView.textColor = UIColor.SBColor.SB_LightGray
+        
+        
+        
         dropDown.anchorView = dropdownBaseView
         dropDown.dataSource = categoryArray
         dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
@@ -67,18 +77,150 @@ class WriteViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        self.view.frame.origin.y = 0
-        let bottom = view.frame.origin.y
-        
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardReactangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardReactangle.height
-            self.view.frame.origin.y = bottom - keyboardHeight / 2 + 50
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+            return
         }
+        
+        let contentInset = UIEdgeInsets(
+            top: 0.0,
+            left: 0.0,
+            bottom: keyboardFrame.size.height,
+            right: 0.0)
+        mainScrollView.contentInset = contentInset
+        mainScrollView.scrollIndicatorInsets = contentInset
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+        let contentInset = UIEdgeInsets.zero
+        mainScrollView.contentInset = contentInset
+        mainScrollView.scrollIndicatorInsets = contentInset
     }
-   
+    
+    @IBAction func categoryOptions(_ sender: Any) {
+        dropDown.show()
+    }
+    
+    
+    
+    @IBAction func saveButtonAction(_ sender: Any) {
+        if titleTextField.text == "" || titleTextField.text == nil {
+            let alert = UIAlertController(title: "제목을 입력 해주세요.", message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+            
+        } else if categoryTitle.text == "카테고리" || categoryTitle.text == nil {
+            let alert = UIAlertController(title: "카테고리를 선택 해주세요.", message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+            
+        } else if contentsTextView.text == "내용을 입력 해주세요." || contentsTextView.text == nil {
+            let alert = UIAlertController(title: "내용을 입력 해주세요.", message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            postWriteArticle()
+        }
+        
+
+    }
+    
+    func postWriteArticle() {
+        let URL = "http://13.209.10.30:3000/writeArticle"
+        
+        var category = ""
+        if categoryTitle.text == "배달" {
+            category = "delivery"
+        } else if categoryTitle.text == "택배" {
+            category = "parcel"
+        } else if categoryTitle.text == "택시" {
+            category = "taxi"
+        } else if categoryTitle.text == "빨래" {
+            category = "laundry"
+        }
+        
+        
+        
+        let PARAM: Parameters = [
+            "title": titleTextField.text!,
+            "category": category,
+            "writeUser": UserDefaults.standard.string(forKey: "userID")!,
+            "text": contentsTextView.text!
+        ]
+        
+       
+        
+        let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
+        
+        alamo.responseJSON{(response) in
+            print(response)
+            print(response.result)
+            
+            switch response.result {
+            case .success(let value):
+                if let jsonObj = value as? NSDictionary {
+                    print(">> \(URL)")
+                    print(">> 게시글 작성 api 호출 성공")
+                    
+                    let result = jsonObj.object(forKey: "check") as! Bool
+                    if result == true {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        print(">> \(message)")
+                    } else {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        
+                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                        alert.addAction(okButton)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
+                }
+                
+                
+                
+            case .failure(let error) :
+                if let jsonObj = error as? NSDictionary {
+                    print("서버통신 실패")
+                    print(error)
+                }
+            }
+        }
+    }
+}
+        
+        
+        
+extension WriteViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textViewSetupView()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if contentsTextView.text == "" {
+            textViewSetupView()
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            contentsTextView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    
+    func textViewSetupView() {
+        if contentsTextView.text == "내용을 입력 해주세요." {
+            contentsTextView.text = ""
+            contentsTextView.textColor = UIColor.black
+        } else if contentsTextView.text == ""{
+            contentsTextView.text = "내용을 입력 해주세요."
+            contentsTextView.textColor = UIColor.SBColor.SB_LightGray
+        }
+    }
 }

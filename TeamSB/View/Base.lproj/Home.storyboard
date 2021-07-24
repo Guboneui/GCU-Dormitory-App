@@ -616,7 +616,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
-                                                            <action selector="categoryOptions:" destination="sGu-kh-4wG" eventType="touchUpInside" id="s6f-SH-UZV"/>
+                                                            <action selector="categoryOptions:" destination="sGu-kh-4wG" eventType="touchUpInside" id="HQD-jn-t2n"/>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fve-4B-cjX">
@@ -704,6 +704,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="저장"/>
+                                <connections>
+                                    <action selector="saveButtonAction:" destination="sGu-kh-4wG" eventType="touchUpInside" id="XTs-is-zfM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oRl-NA-x2H"/>
@@ -724,6 +727,7 @@
                         <outlet property="dropdownBaseView" destination="mel-Ne-82j" id="koq-fZ-24e"/>
                         <outlet property="guideLineView" destination="RK9-Zx-K2c" id="Oxs-8B-TBz"/>
                         <outlet property="mainScrollView" destination="l9S-Ii-pWU" id="3yt-UB-jgd"/>
+                        <outlet property="titleTextField" destination="1ym-uz-7o7" id="ZUK-2d-28x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3w-Zz-IPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
