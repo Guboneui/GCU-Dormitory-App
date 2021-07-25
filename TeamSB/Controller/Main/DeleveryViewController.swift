@@ -153,7 +153,7 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.titleLabel.text = data["title"] as? String
         cell.timeLabel.text = data["timeStamp"] as? String
-        cell .contentsLabel.text = data["text"] as? String
+        cell.contentsLabel.text = data["text"] as? String
         
         var hashString = ""
         
@@ -163,10 +163,23 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
             hashString += "#" + "\(hashData[i] as! String) "
         }
         
+        cell.tagLabel.text = hashString
+        
         
         
         
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (mainTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            getDelivary(page: currentPage)
+        }
+        
+        
+        //스크롤 위치 확인해보기
+        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
     }
     
     

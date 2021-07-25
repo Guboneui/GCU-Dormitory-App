@@ -131,8 +131,17 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.titleLabel.text = data["title"] as? String
         cell.timeLabel.text = data["timeStamp"] as? String
-        cell.tagLabel.text = data["hash_1"] as? String
-        cell .contentsLabel.text = data["text"] as? String
+        cell.contentsLabel.text = data["text"] as? String
+        
+        var hashString = ""
+        
+        let hashData = data["hash"] as! NSArray
+        
+        for i in 0..<hashData.count {
+            hashString += "#" + "\(hashData[i] as! String) "
+        }
+        
+        cell.tagLabel.text = hashString
         
         
         
@@ -140,9 +149,19 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (mainTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            getParcel(page: currentPage)
+        }
+        
+        
+        //스크롤 위치 확인해보기
+        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
+    }
+    
     
 }
-
 extension ParcelViewController: UpdateData {
     func update() {
         currentPage = 0
