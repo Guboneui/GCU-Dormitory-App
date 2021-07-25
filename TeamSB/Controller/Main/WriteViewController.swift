@@ -9,6 +9,12 @@ import UIKit
 import DropDown
 import Alamofire
 
+
+protocol UpdateData: AnyObject {
+    func update()
+}
+
+
 class WriteViewController: UIViewController {
     
     
@@ -38,6 +44,9 @@ class WriteViewController: UIViewController {
     var dropdownState = false
     var tagArray: [String] = []
     var keyHeight: CGFloat?
+    
+    weak var delegate: UpdateData?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -222,8 +231,9 @@ class WriteViewController: UIViewController {
                         print(">> \(message)")
                         
                         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
+                        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
                             
+                            delegate?.update()
                             self.navigationController?.popViewController(animated: true)
                         })
                         alert.addAction(okButton)

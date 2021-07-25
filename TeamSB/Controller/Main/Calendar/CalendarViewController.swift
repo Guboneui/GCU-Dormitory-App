@@ -122,7 +122,7 @@ class CalendarViewController: UIViewController {
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
 
         alamo.responseJSON { [self] (response) in
-            print(response.result)
+            //print(response.result)
 
             switch response.result {
             case .success(let value):

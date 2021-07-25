@@ -6,16 +6,16 @@
 //
 
 import UIKit
-
+import Alamofire
 class RecentPostViewTableViewCell: UITableViewCell {
     
     
-    
+    var recentData = [AnyObject]()
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var showMoreButton: UIButton!
     @IBOutlet weak var showMoreBottomView: UIView!
     
-    var getRecentData = [AnyObject]()
+    
     
 
     @IBOutlet weak var recentPostTableView: UITableView!
@@ -67,6 +67,70 @@ class RecentPostViewTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    
+    func getRecentPost() {
+        let URL = "http://13.209.10.30:3000/home/recentPost"
+        
+        let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
+        
+        alamo.responseJSON{ [self](response) in
+            print(response)
+            print(response.result)
+            
+            switch response.result {
+            case .success(let value):
+                if let jsonObj = value as? NSDictionary {
+                    print(">> \(URL)")
+                    print(">> 최근 게시글 API 호출 성공")
+                    
+                    let result = jsonObj.object(forKey: "check") as! Bool
+                    if result == true {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        print(">> \(message)")
+                        
+                        let content = jsonObj.object(forKey: "content") as! NSArray
+                        
+                        for i in 0..<content.count {
+                            recentData.append(content[i] as! NSDictionary)
+                        }
+                        
+                        
+                        
+//                        let vc = RecentPostViewTableViewCell()
+//                        vc.getRecentData = recentData
+                        
+                        //controller.succNetWork()
+                       
+                        
+                        print(">> 최근 게시글 API에서 받아온 값 recentData에 저장")
+                        
+                        //최근 게시글 보여주는 테이블 뷰 리로드
+                       
+                        
+                    
+                        
+                    } else {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        
+                        
+                    }
+                    
+                }
+                
+                
+                
+            case .failure(let error) :
+                if let jsonObj = error as? NSDictionary {
+                    print("서버통신 실패")
+                    print(error)
+                }
+            }
+        }
+        
+    }
+    
     
 }
 

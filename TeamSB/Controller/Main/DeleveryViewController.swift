@@ -1,5 +1,5 @@
 //
-//  TaxiViewController.swift
+//  DelevaryViewController.swift
 //  TeamSB
 //
 //  Created by 구본의 on 2021/07/14.
@@ -8,49 +8,61 @@
 import UIKit
 import Alamofire
 
-class TaxiViewController: UIViewController {
+class DeleveryViewController: UIViewController {
 
-    @IBOutlet weak var mainTableView: UITableView!
-    
     var currentPage = 0
     var isLoadedAllData = false
     var saveData = [Any]()
     
+    
+    @IBOutlet weak var mainTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getTaxi(page: currentPage)
-        
+        getDelivary(page: currentPage)
         mainTableView.delegate = self
         mainTableView.dataSource = self
-        let mainTableViewNib = UINib(nibName: "TaxiTableViewCell", bundle: nil)
-        mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "TaxiTableViewCell")
+        let mainTableViewNib = UINib(nibName: "DeleveryTableViewCell", bundle: nil)
+        mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "DeleveryTableViewCell")
+        
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+
         
-        // Do any additional setup after loading the view.
+       
     }
     
+    
+
     @objc func refreshData() {
         print(">> 상단 새로고침")
         currentPage = 0
         self.isLoadedAllData = false
         saveData.removeAll()
         mainTableView.reloadData()
-        getTaxi(page: currentPage)
+        getDelivary(page: currentPage)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "택시"
+        self.navigationItem.title = "배달"
         self.tabBarController?.tabBar.isHidden = true
         let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
         goWriteView.tintColor = .black
-        navigationItem.rightBarButtonItem = goWriteView
+        let ass = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
+        ass.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        ass.tintColor = .black
+        
+        
+        navigationItem.rightBarButtonItems = [goWriteView, ass]
+        
+        
+        
     }
     
-    func getTaxi(page: Int) {
+    func getDelivary(page: Int) {
         
         currentPage += 1
         
@@ -62,7 +74,7 @@ class TaxiViewController: UIViewController {
         
         
         
-        let URL = "http://13.209.10.30:3000/home/taxi?page=\(currentPage)"
+        let URL = "http://13.209.10.30:3000/home/delivery?page=\(currentPage)"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
         
         alamo.responseJSON { [self] (response) in
@@ -70,7 +82,7 @@ class TaxiViewController: UIViewController {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
-                    print(">> 택시 게시글 API 호출 성공")
+                    print(">> 배달 게시글 API 호출 성공")
                     
                     mainTableView.refreshControl?.endRefreshing()
                     
@@ -108,23 +120,26 @@ class TaxiViewController: UIViewController {
         }
     }
     
-
+    
     @objc func goWriteView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
         vc.delegate = self
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 
 }
 
-extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return saveData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaxiTableViewCell", for: indexPath) as! TaxiTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DeleveryTableViewCell", for: indexPath) as! DeleveryTableViewCell
         
         let data = saveData[indexPath.row] as! NSDictionary
         
@@ -142,13 +157,12 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-
-extension TaxiViewController: UpdateData {
+extension DeleveryViewController: UpdateData {
     func update() {
         currentPage = 0
         isLoadedAllData = false
         saveData = []
-        getTaxi(page: currentPage)
+        getDelivary(page: currentPage)
     }
     
     

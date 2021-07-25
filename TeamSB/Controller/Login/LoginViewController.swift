@@ -25,13 +25,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        print(self.idBaseView.frame.origin.y)
-        print(self.pwBaseView.frame.origin.y)
-        print(view.frame.origin.y)
-        
-        
-        
+     
         configureDesign()
         setAutoLoginImage()
         
@@ -114,12 +108,12 @@ class LoginViewController: UIViewController {
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
-            print("로그인 액션")
+            print(">> 로그인 액션")
             let inputID: String = idTextView.text ?? ""
             let inputPW: String = pwTextView.text ?? ""
             
-            print(inputID)
-            print(inputPW)
+            print("사용자 입력 아이디: \(inputID)")
+            print("사용자 입력 비번: \(inputPW)")
             
             let URL = "http://13.209.10.30:3000/login"
             
@@ -128,29 +122,29 @@ class LoginViewController: UIViewController {
                 "password": inputPW
             ]
             
-            print(PARAM)
+        
             
             let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
             
             alamo.responseJSON{ [self] (response) in
-                print(response)
-                print(response.result)
+                //print(response)
+                //print(response.result)
                 
                 switch response.result {
                 case .success(let value):
                     if let jsonObj = value as? NSDictionary {
-                        print("성공시")
+                        print(">>로그인 API 성공")
                         print(">> \(URL)")
                         
                         let result = jsonObj.object(forKey: "check") as! Bool
                         
                         if result == true {
                             if self.autoLoginState == true {
-                                print("오토로그인 o")
+                                print(">> 오토로그인 o")
                                 UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
                                 
                             } else {
-                                print("오토로그인 x")
+                                print(">> 오토로그인 x")
                                 UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
                             }
                             

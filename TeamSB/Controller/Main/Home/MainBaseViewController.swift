@@ -18,7 +18,7 @@ class MainBaseViewController: UIViewController {
     @IBOutlet weak var writeBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
     
-    var recentData = [AnyObject]()
+    
     
    
     
@@ -35,7 +35,7 @@ class MainBaseViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "홈"
         self.tabBarController?.tabBar.isHidden = false
         
-        getRecentPost(self)
+        //getRecentPost(self)
         
         
         
@@ -81,69 +81,6 @@ class MainBaseViewController: UIViewController {
     }
     
     
-    func getRecentPost(_ controller: MainBaseViewController) {
-        let URL = "http://13.209.10.30:3000/home/recentPost"
-        
-        let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
-        
-        alamo.responseJSON{ [self](response) in
-            print(response)
-            print(response.result)
-            
-            switch response.result {
-            case .success(let value):
-                if let jsonObj = value as? NSDictionary {
-                    print(">> \(URL)")
-                    print(">> 최근 게시글 API 호출 성공")
-                    
-                    let result = jsonObj.object(forKey: "check") as! Bool
-                    if result == true {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        print(">> \(message)")
-                        
-                        let content = jsonObj.object(forKey: "content") as! NSArray
-                        
-                        for i in 0..<content.count {
-                            recentData.append(content[i] as! NSDictionary)
-                        }
-                        
-                        
-                        
-                        let vc = RecentPostViewTableViewCell()
-                        vc.getRecentData = recentData
-                        
-                        //controller.succNetWork()
-                       
-                        
-                        print(">> 최근 게시글 API에서 받아온 값 recentData에 저장")
-                        
-                        //최근 게시글 보여주는 테이블 뷰 리로드
-                        let recentTableViewCell = baseTableView.dequeueReusableCell(withIdentifier: "RecentPostViewTableViewCell") as! RecentPostViewTableViewCell
-                        recentTableViewCell.recentPostTableView.reloadData()
-                        
-                    
-                        
-                    
-                        
-                    } else {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        
-                        
-                    }
-                    
-                }
-                
-                
-                
-            case .failure(let error) :
-                if let jsonObj = error as? NSDictionary {
-                    print("서버통신 실패")
-                    print(error)
-                }
-            }
-        }
-        
-    }
     
     
     
@@ -206,13 +143,13 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func goDelevaryView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DelevaryViewController") as! DelevaryViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DeleveryViewController") as! DeleveryViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     @objc func goPostView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "PostViewController") as! PostViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ParcelViewController") as! ParcelViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -224,7 +161,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func goLaundayView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "LaundaryViewController") as! LaundaryViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "LaundryViewController") as! LaundryViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
