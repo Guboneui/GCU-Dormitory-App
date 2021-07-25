@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
 		2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C26E64326AC82860086A795 /* MenuTableViewCell.xib */; };
+		2C26E64826ACD0AE0086A795 /* AllPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64626ACD0AE0086A795 /* AllPostTableViewCell.swift */; };
+		2C26E64926ACD0AE0086A795 /* AllPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C26E64726ACD0AE0086A795 /* AllPostTableViewCell.xib */; };
+		2C26E64C26ACDE270086A795 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64A26ACDE270086A795 /* LoadingTableViewCell.swift */; };
+		2C26E64D26ACDE270086A795 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C26E64B26ACDE270086A795 /* LoadingTableViewCell.xib */; };
 		2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298736268B5D5D005EEA64 /* AppDelegate.swift */; };
 		2C298739268B5D5D005EEA64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298738268B5D5D005EEA64 /* SceneDelegate.swift */; };
 		2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C29873C268B5D5D005EEA64 /* Home.storyboard */; };
@@ -53,6 +57,10 @@
 /* Begin PBXFileReference section */
 		2C26E64226AC82860086A795 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		2C26E64326AC82860086A795 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		2C26E64626ACD0AE0086A795 /* AllPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostTableViewCell.swift; sourceTree = "<group>"; };
+		2C26E64726ACD0AE0086A795 /* AllPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllPostTableViewCell.xib; sourceTree = "<group>"; };
+		2C26E64A26ACDE270086A795 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		2C26E64B26ACDE270086A795 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		2C298733268B5D5D005EEA64 /* TeamSB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamSB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C298736268B5D5D005EEA64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C298738268B5D5D005EEA64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +270,10 @@
 				2CFDA9C8269E0DF800612EDB /* WriteViewController.swift */,
 				2CFDA9CA269E0E0800612EDB /* CategoryViewController.swift */,
 				2CFDA9CC269E0E1200612EDB /* ShowMoreViewController.swift */,
+				2C26E64626ACD0AE0086A795 /* AllPostTableViewCell.swift */,
+				2C26E64726ACD0AE0086A795 /* AllPostTableViewCell.xib */,
+				2C26E64A26ACDE270086A795 /* LoadingTableViewCell.swift */,
+				2C26E64B26ACDE270086A795 /* LoadingTableViewCell.xib */,
 				2CFDA9CE269E15DA00612EDB /* DelevaryViewController.swift */,
 				2CFDA9D0269E15E300612EDB /* PostViewController.swift */,
 				2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */,
@@ -386,8 +398,10 @@
 				2C298743268B5D5E005EEA64 /* LaunchScreen.storyboard in Resources */,
 				2CFDA9B1269DE9F800612EDB /* SearchButtonTableViewCell.xib in Resources */,
 				2C298740268B5D5E005EEA64 /* Assets.xcassets in Resources */,
+				2C26E64D26ACDE270086A795 /* LoadingTableViewCell.xib in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
 				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
+				2C26E64926ACD0AE0086A795 /* AllPostTableViewCell.xib in Resources */,
 				2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */,
 				2CFDA9B5269DEA1400612EDB /* CategoryButtonTableViewCell.xib in Resources */,
 			);
@@ -464,12 +478,14 @@
 				2CFDA9BC269DEA4100612EDB /* NowTimeMenuTableViewCell.swift in Sources */,
 				2CFDA9CB269E0E0800612EDB /* CategoryViewController.swift in Sources */,
 				2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */,
+				2C26E64C26ACDE270086A795 /* LoadingTableViewCell.swift in Sources */,
 				2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */,
 				2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */,
 				2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */,
 				2CFDA9CD269E0E1200612EDB /* ShowMoreViewController.swift in Sources */,
 				2C2C4137269A2FE200DB54B5 /* URLConsts.swift in Sources */,
 				2C5D019F268E39ED00CC6DD4 /* NoticeViewController.swift in Sources */,
+				2C26E64826ACD0AE0086A795 /* AllPostTableViewCell.swift in Sources */,
 				2C298739268B5D5D005EEA64 /* SceneDelegate.swift in Sources */,
 				2C2C413B269A31B800DB54B5 /* UserService.swift in Sources */,
 			);

@@ -170,6 +170,18 @@ class WriteViewController: UIViewController {
                     if result == true {
                         let message = jsonObj.object(forKey: "message") as! String
                         print(">> \(message)")
+                        
+                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
+                            
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                        alert.addAction(okButton)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        
+                        
+                        
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
                         

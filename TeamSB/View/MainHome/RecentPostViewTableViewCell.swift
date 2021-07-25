@@ -12,16 +12,22 @@ class RecentPostViewTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var baseView: UIView!
-   
     @IBOutlet weak var showMoreButton: UIButton!
     @IBOutlet weak var showMoreBottomView: UIView!
     
-    
+    var getRecentData = [AnyObject]()
     
 
     @IBOutlet weak var recentPostTableView: UITableView!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+    
+        
         setTableView()
         configureDesign()
     }
@@ -66,12 +72,23 @@ class RecentPostViewTableViewCell: UITableViewCell {
 
 extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        
+        print(">> RecentPostViewTableViewCell getRecentDataCount: \(getRecentData.count)")
+        return getRecentData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecentPostContentsTableViewCell", for: indexPath) as! RecentPostContentsTableViewCell
         cell.selectionStyle = .none
+        
+        
+        let data = getRecentData[indexPath.row]
+        
+        
+        cell.category.text = data["category"] as? String
+        cell.title.text = data["title"] as? String
+        
+        
         
         return cell
     }

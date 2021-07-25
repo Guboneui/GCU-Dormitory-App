@@ -450,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXg-X5-IE1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1109" y="-491"/>
+            <point key="canvasLocation" x="-529" y="-1076"/>
         </scene>
         <!--Main Base View Controller-->
         <scene sceneID="zM8-iR-SKs">
@@ -742,21 +742,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="더보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDc-Mk-cND">
-                                <rect key="frame" x="144" y="347" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1AL-96-o4e">
+                                <rect key="frame" x="10" y="64" width="394" height="778"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8ga-Rv-OQb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8ga-Rv-OQb" firstAttribute="trailing" secondItem="1AL-96-o4e" secondAttribute="trailing" constant="10" id="GSq-MZ-0hM"/>
+                            <constraint firstItem="1AL-96-o4e" firstAttribute="top" secondItem="8ga-Rv-OQb" secondAttribute="top" constant="20" id="RwL-Cg-gQG"/>
+                            <constraint firstItem="8ga-Rv-OQb" firstAttribute="bottom" secondItem="1AL-96-o4e" secondAttribute="bottom" constant="20" id="WDf-fJ-1kT"/>
+                            <constraint firstItem="1AL-96-o4e" firstAttribute="leading" secondItem="8ga-Rv-OQb" secondAttribute="leading" constant="10" id="y7Z-mG-Vqd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="allPostTableView" destination="1AL-96-o4e" id="gmT-Ws-3Q4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suL-Im-CM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3671" y="308"/>
+            <point key="canvasLocation" x="3669.5652173913045" y="307.36607142857139"/>
         </scene>
         <!--Laundary View Controller-->
         <scene sceneID="5y5-oA-xNX">

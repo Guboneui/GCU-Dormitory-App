@@ -1,19 +1,22 @@
 //
-//  RecentPostContentsTableViewCell.swift
+//  AllPostTableViewCell.swift
 //  TeamSB
 //
-//  Created by 구본의 on 2021/07/14.
+//  Created by 구본의 on 2021/07/25.
 //
 
 import UIKit
 
-class RecentPostContentsTableViewCell: UITableViewCell {
+class AllPostTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var contentsLabel: UILabel!
+    
+    
 
-    
-    @IBOutlet weak var category: UILabel!
-    @IBOutlet weak var title: UILabel!
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

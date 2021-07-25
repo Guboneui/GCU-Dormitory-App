@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import Alamofire
+
+
+
+
 
 class MainBaseViewController: UIViewController {
 
@@ -13,11 +18,15 @@ class MainBaseViewController: UIViewController {
     @IBOutlet weak var writeBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
     
+    var recentData = [AnyObject]()
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         setTableView()
     }
     
@@ -25,7 +34,8 @@ class MainBaseViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "홈"
         self.tabBarController?.tabBar.isHidden = false
-        //self.navigationController?.navigationBar.topItem?.rightBarButtonItem =
+        
+        getRecentPost()
         
         
     }
@@ -66,6 +76,74 @@ class MainBaseViewController: UIViewController {
     }
     
     
+    func getRecentPost() {
+        let URL = "http://13.209.10.30:3000/home/recentPost"
+        
+        let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
+        
+        alamo.responseJSON{ [self](response) in
+            print(response)
+            print(response.result)
+            
+            switch response.result {
+            case .success(let value):
+                if let jsonObj = value as? NSDictionary {
+                    print(">> \(URL)")
+                    print(">> 최근 게시글 API 호출 성공")
+                    
+                    let result = jsonObj.object(forKey: "check") as! Bool
+                    if result == true {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        print(">> \(message)")
+                        
+                        let content = jsonObj.object(forKey: "content") as! NSArray
+                        
+                        for i in 0..<content.count {
+                            recentData.append(content[i] as! NSDictionary)
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        let vc = RecentPostViewTableViewCell()
+                        vc.getRecentData = recentData
+                        
+                       
+                        
+                        print(">> 최근 게시글 API에서 받아온 값 recentData에 저장")
+                        
+                        //최근 게시글 보여주는 테이블 뷰 리로드
+                        let recentTableViewCell = baseTableView.dequeueReusableCell(withIdentifier: "RecentPostViewTableViewCell") as! RecentPostViewTableViewCell
+                        recentTableViewCell.recentPostTableView.reloadData()
+                        
+                    
+                        
+                    
+                        
+                    } else {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        
+                        
+                    }
+                    
+                }
+                
+                
+                
+            case .failure(let error) :
+                if let jsonObj = error as? NSDictionary {
+                    print("서버통신 실패")
+                    print(error)
+                }
+            }
+        }
+        
+    }
+    
+    
+    
 
 
 }
@@ -95,6 +173,9 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecentPostViewTableViewCell", for: indexPath) as! RecentPostViewTableViewCell
             cell.showMoreButton.addTarget(self, action: #selector(goShowMoreView), for: .touchUpInside)
+            
+            
+            print(indexPath)
             
             return cell
             
