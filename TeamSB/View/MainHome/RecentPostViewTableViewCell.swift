@@ -72,8 +72,8 @@ class RecentPostViewTableViewCell: UITableViewCell {
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
         
         alamo.responseJSON{ [self](response) in
-            print(response)
-            print(response.result)
+            //print(response)
+            //print(response.result)
             
             switch response.result {
             case .success(let value):

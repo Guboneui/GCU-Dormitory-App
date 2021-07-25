@@ -51,12 +51,12 @@ class DeleveryViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
         goWriteView.tintColor = .black
-        let ass = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
-        ass.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
-        ass.tintColor = .black
+        let goSearchView = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
+        goSearchView.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        goSearchView.tintColor = .black
         
         
-        navigationItem.rightBarButtonItems = [goWriteView, ass]
+        navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
         
         
         
@@ -128,6 +128,14 @@ class DeleveryViewController: UIViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func goSearchView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     
 
 }

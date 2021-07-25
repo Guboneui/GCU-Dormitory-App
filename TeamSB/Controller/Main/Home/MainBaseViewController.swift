@@ -20,7 +20,7 @@ class MainBaseViewController: UIViewController {
         super.viewDidLoad()
 
         
-        
+        postUserNickname()
         setTableView()
     }
     
@@ -36,6 +36,46 @@ class MainBaseViewController: UIViewController {
     func succNetWork(test: String) {
         baseTableView.reloadData()
     }
+    
+    
+    func postUserNickname() {
+        let URL = "http://13.209.10.30:3000/getUser/nickname"
+        let id = UserDefaults.standard.string(forKey: "userID")
+        let PARAM: Parameters = [
+            "id": id!
+        ]
+        let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
+        
+        alamo.responseJSON { [self] (response) in
+            switch response.result {
+            case .success(let value):
+                if let jsonObj = value as? NSDictionary {
+                    print(">> \(URL)")
+                    print(">> 유저 닉네임 API 호출 성공")
+                    
+                    let result = jsonObj.object(forKey: "check") as! Bool
+                    if result == true {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        print(">> \(message)")
+                        let userNickname = jsonObj.object(forKey: "content") as! String
+                        UserDefaults.standard.setValue(userNickname, forKey: "userNickname")
+                        print(">> 유저 닉네임: \(UserDefaults.standard.string(forKey: "userNickname")!)")
+                        print(">> 유저 닉네임 저장 성공")
+                    }
+                }
+                    
+                
+            case .failure(let error):
+                if let jsonObj = error as? NSDictionary {
+                    print("서버통신 실패")
+                    print(error)
+                }
+                
+            }
+            
+        }
+    }
+    
     
     
     func setTableView() {
