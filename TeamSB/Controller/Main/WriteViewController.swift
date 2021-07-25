@@ -182,7 +182,7 @@ class WriteViewController: UIViewController {
         let PARAM: Parameters = [
             "title": titleTextField.text!,
             "category": category,
-            "writeUser": UserDefaults.standard.string(forKey: "userID")!,
+            "userId": UserDefaults.standard.string(forKey: "userID")!,
             "text": contentsTextView.text!,
             "hash": tagArray,
         ]

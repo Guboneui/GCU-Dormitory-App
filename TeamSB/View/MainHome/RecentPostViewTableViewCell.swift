@@ -23,7 +23,7 @@ class RecentPostViewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        getRecentPost()
+        //getRecentPost()
         setTableView()
         configureDesign()
     }

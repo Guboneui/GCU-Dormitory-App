@@ -43,6 +43,7 @@
 		2CF5793A26AD83B6007DBC9C /* LaundryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */; };
 		2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5793B26ADB26E007DBC9C /* SearchTableViewCell.swift */; };
 		2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5793C26ADB26E007DBC9C /* SearchTableViewCell.xib */; };
+		2CF5794026ADDCF4007DBC9C /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5793F26ADDCF4007DBC9C /* DetailPostViewController.swift */; };
 		2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */; };
 		2CFDA9B1269DE9F800612EDB /* SearchButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */; };
 		2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */; };
@@ -105,6 +106,7 @@
 		2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaundryTableViewCell.xib; sourceTree = "<group>"; };
 		2CF5793B26ADB26E007DBC9C /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		2CF5793C26ADB26E007DBC9C /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		2CF5793F26ADDCF4007DBC9C /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
 		2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchButtonTableViewCell.xib; sourceTree = "<group>"; };
 		2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				2CFDA9D4269E15F600612EDB /* LaundryViewController.swift */,
 				2CF5793726AD83B6007DBC9C /* LaundryTableViewCell.swift */,
 				2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */,
+				2CF5793F26ADDCF4007DBC9C /* DetailPostViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				2CFDA9D3269E15EA00612EDB /* TaxiViewController.swift in Sources */,
 				2C5D0193268E20E000CC6DD4 /* LoginViewController.swift in Sources */,
 				2CFDA9B8269DEA3100612EDB /* RecentPostViewTableViewCell.swift in Sources */,
+				2CF5794026ADDCF4007DBC9C /* DetailPostViewController.swift in Sources */,
 				2CFDA9D5269E15F600612EDB /* LaundryViewController.swift in Sources */,
 				2CFDA9CF269E15DA00612EDB /* DeleveryViewController.swift in Sources */,
 				2C2C4144269A493B00DB54B5 /* BaseHTTPClient.swift in Sources */,
