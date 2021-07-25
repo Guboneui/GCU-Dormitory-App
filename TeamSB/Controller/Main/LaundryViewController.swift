@@ -179,7 +179,7 @@ extension LaundryViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getShowCount = data["viewCount"] as! Int
         vc.getUserID = data["userId"] as! String
         
-        
+        vc.delegate = self
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

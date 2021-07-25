@@ -175,7 +175,7 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getUserID = data["userId"] as! String
         
         
-        
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

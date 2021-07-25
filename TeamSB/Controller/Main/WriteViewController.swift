@@ -192,14 +192,12 @@ class WriteViewController: UIViewController {
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
         
         alamo.responseJSON{(response) in
-            print(response)
-            print(response.result)
             
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
-                    print(">> 게시글 작성 api 호출 성공")
+                    print(">> 게시글 작성 API 호출 성공")
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     if result == true {

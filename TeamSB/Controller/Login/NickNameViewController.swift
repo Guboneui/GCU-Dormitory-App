@@ -94,7 +94,7 @@ class NickNameViewController: UIViewController {
                             let message = jsonObj.object(forKey: "message") as! String
                             
                             let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                            let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                            let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
                             let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
                                 goHomeButton.isEnabled = true
                                 
@@ -169,7 +169,7 @@ class NickNameViewController: UIViewController {
                         //let message = jsonObj.object(forKey: "message") as! String
                         
                         let alert = UIAlertController(title: "시작하시겠어요?", message: "", preferredStyle: .alert)
-                        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
                         let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
                             
                             let nickname = self.nickNameTextField.text!
