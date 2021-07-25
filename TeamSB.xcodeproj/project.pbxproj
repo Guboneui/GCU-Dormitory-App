@@ -41,6 +41,8 @@
 		2CF5793626AD83AA007DBC9C /* TaxiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5793426AD83AA007DBC9C /* TaxiTableViewCell.xib */; };
 		2CF5793926AD83B6007DBC9C /* LaundryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5793726AD83B6007DBC9C /* LaundryTableViewCell.swift */; };
 		2CF5793A26AD83B6007DBC9C /* LaundryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */; };
+		2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5793B26ADB26E007DBC9C /* SearchTableViewCell.swift */; };
+		2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5793C26ADB26E007DBC9C /* SearchTableViewCell.xib */; };
 		2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */; };
 		2CFDA9B1269DE9F800612EDB /* SearchButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */; };
 		2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */; };
@@ -101,6 +103,8 @@
 		2CF5793426AD83AA007DBC9C /* TaxiTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaxiTableViewCell.xib; sourceTree = "<group>"; };
 		2CF5793726AD83B6007DBC9C /* LaundryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryTableViewCell.swift; sourceTree = "<group>"; };
 		2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaundryTableViewCell.xib; sourceTree = "<group>"; };
+		2CF5793B26ADB26E007DBC9C /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		2CF5793C26ADB26E007DBC9C /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButtonTableViewCell.swift; sourceTree = "<group>"; };
 		2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchButtonTableViewCell.xib; sourceTree = "<group>"; };
 		2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 				2C5E998A2690E77700E3504A /* Home */,
 				2C5E998C2690E88100E3504A /* Notice */,
 				2CFDA9C4269E0DE000612EDB /* SearchViewController.swift */,
+				2CF5793B26ADB26E007DBC9C /* SearchTableViewCell.swift */,
+				2CF5793C26ADB26E007DBC9C /* SearchTableViewCell.xib */,
 				2CFDA9C6269E0DEC00612EDB /* SettingViewController.swift */,
 				2CFDA9C8269E0DF800612EDB /* WriteViewController.swift */,
 				2CF5791B26AD59C9007DBC9C /* TagCollectionViewCell.swift */,
@@ -433,6 +439,7 @@
 				2C26E64D26ACDE270086A795 /* LoadingTableViewCell.xib in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
 				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
+				2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */,
 				2CF5793226AD83A1007DBC9C /* ParcelTableViewCell.xib in Resources */,
 				2C26E64926ACD0AE0086A795 /* AllPostTableViewCell.xib in Resources */,
 				2CF5793A26AD83B6007DBC9C /* LaundryTableViewCell.xib in Resources */,
@@ -520,6 +527,7 @@
 				2C26E64C26ACDE270086A795 /* LoadingTableViewCell.swift in Sources */,
 				2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */,
 				2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */,
+				2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */,
 				2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */,
 				2CFDA9CD269E0E1200612EDB /* ShowMoreViewController.swift in Sources */,
 				2C2C4137269A2FE200DB54B5 /* URLConsts.swift in Sources */,

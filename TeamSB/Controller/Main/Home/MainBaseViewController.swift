@@ -8,10 +8,6 @@
 import UIKit
 import Alamofire
 
-
-
-
-
 class MainBaseViewController: UIViewController {
 
     @IBOutlet weak var baseTableView: UITableView!
@@ -19,9 +15,7 @@ class MainBaseViewController: UIViewController {
     @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
     
     
-    
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,9 +29,7 @@ class MainBaseViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "홈"
         self.tabBarController?.tabBar.isHidden = false
         
-        //getRecentPost(self)
-        
-        
+        baseTableView.reloadData()
         
     }
     
@@ -114,9 +106,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecentPostViewTableViewCell", for: indexPath) as! RecentPostViewTableViewCell
             
             cell.showMoreButton.addTarget(self, action: #selector(goShowMoreView), for: .touchUpInside)
-            
-            
-            
+            cell.getRecentPost()
             
             
             print(indexPath)

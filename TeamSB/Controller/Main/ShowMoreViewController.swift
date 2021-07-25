@@ -14,7 +14,6 @@ class ShowMoreViewController: UIViewController {
     @IBOutlet weak var allPostTableView: UITableView!
     
     var saveAllData = [Any]()
-    
     var requestPage = 0
     var currentPage = 0
     var isLoadedAllData = false

@@ -87,6 +87,7 @@ class WriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "글쓰기"
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -176,39 +177,14 @@ class WriteViewController: UIViewController {
         } else if categoryTitle.text == "빨래" {
             category = "laundry"
         }
-        
-        var hashTag0: String?
-        var hashTag1: String?
-        var hashTag2: String?
-        
-        
-        if tagArray.count == 0 {
-            hashTag0 = nil
-            hashTag1 = nil
-            hashTag2 = nil
-        } else if tagArray.count == 1 {
-            hashTag0 = tagArray[0]
-            hashTag1 = nil
-            hashTag2 = nil
-        } else if tagArray.count == 2 {
-            hashTag0 = tagArray[0]
-            hashTag1 = tagArray[1]
-            hashTag2 = nil
-        } else {
-            hashTag0 = tagArray[0]
-            hashTag1 = tagArray[1]
-            hashTag2 = tagArray[2]
-        }
-        
+       
         
         let PARAM: Parameters = [
             "title": titleTextField.text!,
             "category": category,
             "writeUser": UserDefaults.standard.string(forKey: "userID")!,
             "text": contentsTextView.text!,
-            "hash_1": hashTag0,
-            "hash_2": hashTag1 ?? nil,
-            "hash_3": hashTag2 ?? nil
+            "hash": tagArray,
         ]
         
        

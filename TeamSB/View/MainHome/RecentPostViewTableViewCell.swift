@@ -14,20 +14,16 @@ class RecentPostViewTableViewCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var showMoreButton: UIButton!
     @IBOutlet weak var showMoreBottomView: UIView!
-    
-    
-    
-
     @IBOutlet weak var recentPostTableView: UITableView!
+    
+    
     
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-    
-        
+        getRecentPost()
         setTableView()
         configureDesign()
     }
@@ -36,10 +32,7 @@ class RecentPostViewTableViewCell: UITableViewCell {
     func setTableView() {
         recentPostTableView.delegate = self
         recentPostTableView.dataSource = self
-        
-        recentPostTableView.rowHeight = 30
-        
-        
+        recentPostTableView.rowHeight = 35
         
         let recentPostContentsTableViewCellNib = UINib(nibName: "RecentPostContentsTableViewCell", bundle: nil)
         recentPostTableView.register(recentPostContentsTableViewCellNib, forCellReuseIdentifier: "RecentPostContentsTableViewCell")
@@ -71,6 +64,9 @@ class RecentPostViewTableViewCell: UITableViewCell {
     
     
     func getRecentPost() {
+        
+        recentData.removeAll()
+        
         let URL = "http://13.209.10.30:3000/home/recentPost"
         
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -95,20 +91,8 @@ class RecentPostViewTableViewCell: UITableViewCell {
                         for i in 0..<content.count {
                             recentData.append(content[i] as! NSDictionary)
                         }
-                        
-                        
-                        
-//                        let vc = RecentPostViewTableViewCell()
-//                        vc.getRecentData = recentData
-                        
-                        //controller.succNetWork()
-                       
-                        
-                        print(">> 최근 게시글 API에서 받아온 값 recentData에 저장")
-                        
-                        //최근 게시글 보여주는 테이블 뷰 리로드
-                       
-                        
+
+                        recentPostTableView.reloadData()
                     
                         
                     } else {
@@ -137,8 +121,8 @@ class RecentPostViewTableViewCell: UITableViewCell {
 extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print(">> RecentPostViewTableViewCell getRecentDataCount: \(getRecentData.count)")
-        return getRecentData.count
+        print(">> RecentPostViewTableViewCell getRecentDataCount: \(recentData.count)")
+        return recentData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,10 +130,25 @@ extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSourc
         cell.selectionStyle = .none
         
         
-        let data = getRecentData[indexPath.row]
+        let data = recentData[indexPath.row]
+        
+        let category = data["category"] as? String
+        var setCategory = ""
+        if category == "delivery" {
+            setCategory = "배달"
+        } else if category == "parcel" {
+            setCategory = "택배"
+        } else if category == "taxi" {
+            setCategory = "택시"
+        } else if category == "laundry" {
+            setCategory = "빨래"
+        } else {
+            setCategory = "에러"
+        }
         
         
-        cell.category.text = data["category"] as? String
+        
+        cell.category.text = setCategory
         cell.title.text = data["title"] as? String
         
         
@@ -158,4 +157,9 @@ extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSourc
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
 }
+

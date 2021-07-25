@@ -145,8 +145,15 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.titleLabel.text = data["title"] as? String
         cell.timeLabel.text = data["timeStamp"] as? String
-        cell.tagLabel.text = data["hash_1"] as? String
         cell .contentsLabel.text = data["text"] as? String
+        
+        var hashString = ""
+        
+        let hashData = data["hash"] as! NSArray
+        
+        for i in 0..<hashData.count {
+            hashString += "#" + "\(hashData[i] as! String) "
+        }
         
         
         
