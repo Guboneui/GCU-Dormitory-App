@@ -35,9 +35,14 @@ class MainBaseViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "홈"
         self.tabBarController?.tabBar.isHidden = false
         
-        getRecentPost()
+        getRecentPost(self)
         
         
+        
+    }
+    
+    func succNetWork(test: String) {
+        baseTableView.reloadData()
     }
     
     
@@ -76,7 +81,7 @@ class MainBaseViewController: UIViewController {
     }
     
     
-    func getRecentPost() {
+    func getRecentPost(_ controller: MainBaseViewController) {
         let URL = "http://13.209.10.30:3000/home/recentPost"
         
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -104,12 +109,10 @@ class MainBaseViewController: UIViewController {
                         
                         
                         
-                        
-                        
-                        
                         let vc = RecentPostViewTableViewCell()
                         vc.getRecentData = recentData
                         
+                        //controller.succNetWork()
                        
                         
                         print(">> 최근 게시글 API에서 받아온 값 recentData에 저장")
@@ -172,7 +175,11 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
         } else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecentPostViewTableViewCell", for: indexPath) as! RecentPostViewTableViewCell
+            
             cell.showMoreButton.addTarget(self, action: #selector(goShowMoreView), for: .touchUpInside)
+            
+            
+            
             
             
             print(indexPath)

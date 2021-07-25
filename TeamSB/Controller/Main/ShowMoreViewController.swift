@@ -23,18 +23,29 @@ class ShowMoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTableView()
         
+        
+        // Do any additional setup after loading the view.
+    }
+   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "게시글"
+        getAllPost(page: currentPage)
+    }
+    
+    
+    func setTableView() {
         allPostTableView.delegate = self
         allPostTableView.dataSource = self
         let allPostTableViewNib = UINib(nibName: "AllPostTableViewCell", bundle: nil)
         allPostTableView.register(allPostTableViewNib, forCellReuseIdentifier: "AllPostTableViewCell")
-       
         allPostTableView.rowHeight = 120
         
         allPostTableView.refreshControl = UIRefreshControl()
         allPostTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        
-        // Do any additional setup after loading the view.
     }
     
     @objc func refreshData() {
@@ -46,13 +57,6 @@ class ShowMoreViewController: UIViewController {
         getAllPost(page: currentPage)
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.title = "게시글"
-        getAllPost(page: currentPage)
-    }
-    
     
     func getAllPost(page: Int) {
         
@@ -86,6 +90,7 @@ class ShowMoreViewController: UIViewController {
                         
                         guard content.count > 0 else {
                             print(">> 더이상 읽어올 게시글 없음")
+                            print(">> 총 읽어온 게시글 개수 = \(saveAllData.count)")
                             self.isLoadedAllData = true
                             return
                         }
@@ -119,9 +124,6 @@ class ShowMoreViewController: UIViewController {
 extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-        
-        
         return saveAllData.count
     }
     
@@ -145,10 +147,9 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        cell.titleLabel.text = data["title"] as! String
-        cell.timeLabel.text = data["timeStamp"] as! String
-        cell.contentsLabel.text = data["text"] as! String
-
+        cell.titleLabel.text = data["title"] as? String
+        cell.timeLabel.text = data["timeStamp"] as? String
+        cell.contentsLabel.text = data["text"] as? String
         return cell
     }
     
@@ -157,6 +158,12 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
         if position > (allPostTableView.contentSize.height - 100 - scrollView.frame.size.height) {
             getAllPost(page: currentPage)
         }
+        
+        
+        //스크롤 위치 확인해보기
+        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
     }
+    
+    
     
 }

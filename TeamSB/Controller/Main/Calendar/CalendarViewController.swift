@@ -48,7 +48,31 @@ class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "식단"
+        //setTodayMenu()
+        
     
+    }
+    
+    func setTodayMenu() {
+        
+        print(">> 화면에 들어왔을 때 오늘 식단을 표시해 줍니다.")
+        let formatter        = DateFormatter()
+        formatter.locale     = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "YYYY-MM-dd"
+        
+        var today: String = formatter.string(from: Date())
+
+        let data = menuData.listData
+        
+        for i in 0..<data.count {
+            let menuData = data[i]
+            if menuData.date == today {
+                menuTableViewDataArray.append(Menu(date: menuData.date, morning: menuData.morning, launch: menuData.launch, dinner: menuData.dinner))
+            }
+        }
+        
+        menuTableView.reloadData()
+        
     }
     
     
@@ -123,7 +147,9 @@ class CalendarViewController: UIViewController {
                             
                             self.menuData.listData.append(Menu(date: date, morning: morning, launch: launch, dinner: dinner))
                         
+                            
                         }
+                        setTodayMenu()
                         
                         
                     } else {
@@ -265,21 +291,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         }
         
         menuTableView.reloadData()
-        let test = menuTableViewDataArray[0]
+        menuTableView.scrollToRow(at: [0, 0], at: .top, animated: true)
         
-        
-        
-        
-        
-        
-        
-        
-        
-       
-        print(selectDate)
-        //testLabel.text = selectDate
-        
-        //print("\(dateFormatter.string(from: date)) 선택됨")
     }
     // 날짜 선택 해제 시 콜백 메소드
     public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {

@@ -18,15 +18,30 @@ class WriteViewController: UIViewController {
     @IBOutlet weak var categoryTitle: UILabel!
     @IBOutlet weak var guideLineView: UIView!
     @IBOutlet weak var contentsTextView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var dropDownImage: UIImageView!
+    
+    @IBOutlet weak var tagTextField: UITextField!
+    @IBOutlet weak var tagCollectionView: UICollectionView!
+    @IBOutlet weak var addTagButton: UIButton!
+    
+    @IBOutlet weak var tagCollectionViewLayout: LeftAlignedCollectionViewFlowLayout! {
+        didSet {
+            //tagCollectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            //tagCollectionViewLayout.
+        }
+    }
     
     let dropDown = DropDown()
     let categoryArray = ["배달", "택배", "택시", "빨래"]
     
+    var dropdownState = false
+    var tagArray: [String] = []
     var keyHeight: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setCollectionView()
         
         
         resignForKeyboardNotification()
@@ -45,7 +60,7 @@ class WriteViewController: UIViewController {
         contentsTextView.text = "내용을 입력 해주세요."
         contentsTextView.textColor = UIColor.SBColor.SB_LightGray
         
-        
+        saveButton.backgroundColor = UIColor.SBColor.SB_BaseYellow
         
         dropDown.anchorView = dropdownBaseView
         dropDown.dataSource = categoryArray
@@ -65,6 +80,16 @@ class WriteViewController: UIViewController {
         self.navigationItem.title = "글쓰기"
         self.tabBarController?.tabBar.isHidden = true
     }
+    
+    
+    func setCollectionView() {
+        tagCollectionView.delegate = self
+        tagCollectionView.dataSource = self
+        let tagCollectionViewNib = UINib(nibName: "TagCollectionViewCell", bundle: nil)
+        tagCollectionView.register(tagCollectionViewNib, forCellWithReuseIdentifier: "TagCollectionViewCell")
+        //tagCollectionView.layoutSubviews()
+    }
+    
     
     @objc func dismissKeyboard() {  //키보드 숨김처리
         view.endEditing(true)
@@ -143,13 +168,38 @@ class WriteViewController: UIViewController {
             category = "laundry"
         }
         
+        var hashTag0: String?
+        var hashTag1: String?
+        var hashTag2: String?
+        
+        
+        if tagArray.count == 0 {
+            hashTag0 = nil
+            hashTag1 = nil
+            hashTag2 = nil
+        } else if tagArray.count == 1 {
+            hashTag0 = tagArray[0]
+            hashTag1 = nil
+            hashTag2 = nil
+        } else if tagArray.count == 2 {
+            hashTag0 = tagArray[0]
+            hashTag1 = tagArray[1]
+            hashTag2 = nil
+        } else {
+            hashTag0 = tagArray[0]
+            hashTag1 = tagArray[1]
+            hashTag2 = tagArray[2]
+        }
         
         
         let PARAM: Parameters = [
             "title": titleTextField.text!,
             "category": category,
             "writeUser": UserDefaults.standard.string(forKey: "userID")!,
-            "text": contentsTextView.text!
+            "text": contentsTextView.text!,
+            "hash_1": hashTag0,
+            "hash_2": hashTag1 ?? nil,
+            "hash_3": hashTag2 ?? nil
         ]
         
        
@@ -203,12 +253,36 @@ class WriteViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func addTagButtonAction(_ sender: Any) {
+        if tagTextField.text == "" || tagTextField.text == nil {
+            let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if tagArray.count < 3 {
+                let hashTag = tagTextField.text!
+                tagArray.append(hashTag)
+                tagTextField.text = ""
+                
+                tagCollectionView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
 }
         
         
         
 extension WriteViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
+        
         textViewSetupView()
     }
     
@@ -236,3 +310,48 @@ extension WriteViewController: UITextViewDelegate {
         }
     }
 }
+
+
+extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        print("태그 개수: \(tagArray.count)")
+        return tagArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell", for: indexPath) as! TagCollectionViewCell
+        
+        
+        
+        
+        cell.tagLabel.text = "#" + " \(tagArray[indexPath.row])"
+        
+        return cell
+    }
+    
+    
+}
+
+class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+
+            layoutAttribute.frame.origin.x = leftMargin
+    
+            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY , maxY)
+        }
+
+        return attributes
+    }
+}
+
