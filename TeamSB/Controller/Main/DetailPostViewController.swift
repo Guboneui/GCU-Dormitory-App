@@ -22,7 +22,7 @@ class DetailPostViewController: UIViewController {
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var messageTextField: UITextField!
     
-    
+    var getPostNumber: Int = 0
     var getTitle: String = ""
     var getCategory: String = ""
     var getTime: String = ""
@@ -66,13 +66,36 @@ class DetailPostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "게시글"
+        
+        
     }
     
+    @objc func editPost() {
+        print(">> 게시글을 수정합니다.")
+    }
+    
+    @objc func deletePost() {
+        print(">> 게시글을 삭제합니다.")
+    }
+    
+    
 
+    func showBarItem() {
+        let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
+        delete.tintColor = .black
+        let edit = UIBarButtonItem(image: UIImage(systemName: "wand.and.rays"), style: .plain, target: self, action: #selector(editPost))
+        edit.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        edit.tintColor = .black
+        
+        
+        navigationItem.rightBarButtonItems = [delete, edit]
+    }
+    
     func checkWriter() {
         let userid = UserDefaults.standard.string(forKey: "userID")
         if getUserID == userid {
             print("글쓴이")
+            showBarItem()
         } else {
             print("읽기만 가능")
         }

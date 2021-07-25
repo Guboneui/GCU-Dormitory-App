@@ -176,6 +176,7 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         
         let data = saveData[indexPath.row] as! NSDictionary
         
+        vc.getPostNumber = data["no"] as! Int
         vc.getTitle = data["title"] as! String
         vc.getCategory = data["category"] as! String
         vc.getTime = data["timeStamp"] as! String

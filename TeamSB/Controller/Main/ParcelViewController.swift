@@ -155,10 +155,29 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         cell.tagLabel.text = hashString
         
         
-        
+        cell.selectionStyle = .none
         
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        
+        let data = saveData[indexPath.row] as! NSDictionary
+        
+        vc.getPostNumber = data["no"] as! Int
+        vc.getTitle = data["title"] as! String
+        vc.getCategory = data["category"] as! String
+        vc.getTime = data["timeStamp"] as! String
+        vc.getNickname = data["userNickname"] as! String
+        vc.getContents = data["text"] as! String
+        vc.getShowCount = data["viewCount"] as! Int
+        vc.getUserID = data["userId"] as! String
+        
+        
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
