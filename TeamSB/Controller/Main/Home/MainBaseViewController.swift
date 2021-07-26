@@ -204,3 +204,19 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+
+extension MainBaseViewController: TBCellDelegate {
+    func selectedTBCell(setVC: UIViewController) {
+        
+        guard let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MainBaseViewController") as? MainBaseViewController else {
+            return
+        }
+        
+        vc.navigationController?.pushViewController(setVC, animated: true)
+        
+    }
+    
+   
+    
+}

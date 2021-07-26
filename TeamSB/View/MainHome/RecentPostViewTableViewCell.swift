@@ -7,6 +7,13 @@
 
 import UIKit
 import Alamofire
+
+
+protocol TBCellDelegate {
+    func selectedTBCell(setVC: UIViewController)
+}
+
+
 class RecentPostViewTableViewCell: UITableViewCell {
     
     
@@ -18,7 +25,7 @@ class RecentPostViewTableViewCell: UITableViewCell {
     
     
     
-    
+    var delegate: TBCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -158,7 +165,42 @@ extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSourc
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        //let vc = storyboard?.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        
+        
+        
+        if let delegate = delegate {
+
+//            let vc = DetailPostViewController()
+//            let data = recentData[indexPath.row] as! NSDictionary
+//
+//            vc.getPostNumber = data["no"] as! Int
+//            vc.getTitle = data["title"] as! String
+//            vc.getCategory = data["category"] as! String
+//            vc.getTime = data["timeStamp"] as! String
+//            vc.getNickname = data["userNickname"] as! String
+//            vc.getContents = data["text"] as! String
+//            vc.getShowCount = data["viewCount"] as! Int
+//            vc.getUserID = data["userId"] as! String
+
+            print(123)
+            //delegate.selectedTBCell(setVC: vc)
+        }
+        
+        
+    }
+    
+    
+    
+}
+
+
+extension RecentPostViewTableViewCell: UpdateData {
+    func update() {
+        
+        
+        recentData = []
+        getRecentPost()
     }
     
 }

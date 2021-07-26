@@ -239,12 +239,16 @@ class WriteViewController: UIViewController {
     }
     
     @IBAction func addTagButtonAction(_ sender: Any) {
+        self.view.endEditing(true)
+        
         if tagTextField.text == "" || tagTextField.text == nil {
             let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
+            
+            
             if tagArray.count < 3 {
                 let hashTag = tagTextField.text!
                 tagArray.append(hashTag)
@@ -306,13 +310,30 @@ extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell", for: indexPath) as! TagCollectionViewCell
         
-        
-        
-        
         cell.tagLabel.text = "#" + " \(tagArray[indexPath.row])"
+        
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+        cell.addGestureRecognizer(tapGesture)
+        
         
         return cell
     }
+    
+    @objc func tapGestureAction(sender: UITapGestureRecognizer) {
+        print(">> 해시 태그 삭제")
+        self.view.endEditing(true)  //키보드 내리기
+        
+        let touchPont = sender.location(in: tagCollectionView)
+        let indexPath = tagCollectionView.indexPathForItem(at: touchPont)
+        
+        let deleteIndex = indexPath?.item
+        
+        tagArray.remove(at: deleteIndex!)
+        tagCollectionView.reloadData()
+    }
+    
+    
     
     
 }

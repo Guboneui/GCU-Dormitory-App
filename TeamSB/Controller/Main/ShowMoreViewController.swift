@@ -152,6 +152,27 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        
+        let data = saveAllData[indexPath.row] as! NSDictionary
+        
+        vc.getPostNumber = data["no"] as! Int
+        vc.getTitle = data["title"] as! String
+        vc.getCategory = data["category"] as! String
+        vc.getTime = data["timeStamp"] as! String
+        vc.getNickname = data["userNickname"] as! String
+        vc.getContents = data["text"] as! String
+        vc.getShowCount = data["viewCount"] as! Int
+        vc.getUserID = data["userId"] as! String
+        
+        vc.delegate = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (allPostTableView.contentSize.height - 100 - scrollView.frame.size.height) {
@@ -166,3 +187,15 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+extension ShowMoreViewController: UpdateData {
+    func update() {
+        currentPage = 0
+        isLoadedAllData = false
+        saveAllData = []
+        getAllPost(page: currentPage)
+    }
+    
+    
+}
+
