@@ -425,13 +425,23 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.titleLabel.text = getTitle
             
+            var setCategory = ""
+            
+            if getCategory == "delivery" {
+                setCategory = "배달"
+            } else if getCategory == "parcel" {
+                setCategory = "택배"
+            } else if getCategory == "taxi" {
+                setCategory = "택시"
+            } else if getCategory == "laundry" {
+                setCategory = "빨래"
+            } else {
+                setCategory = "에러"
+            }
             
             
             
-            
-            
-            
-            cell.categoryLabel.text = getCategory
+            cell.categoryLabel.text = setCategory
             cell.timeLabel.text = getTime
             cell.adminLabel.text = getNickname
             cell.contentsTextView.text = getContents
