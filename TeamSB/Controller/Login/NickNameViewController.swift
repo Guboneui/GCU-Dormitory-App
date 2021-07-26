@@ -172,6 +172,8 @@ class NickNameViewController: UIViewController {
                         let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
                         let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
                             
+                            UserDefaults.standard.set(true, forKey: "userNicknameExist")
+                            
                             let nickname = self.nickNameTextField.text!
                             UserDefaults.standard.setValue(nickname, forKey: "userNickname")
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)

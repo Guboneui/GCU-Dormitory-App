@@ -162,6 +162,8 @@ class LoginViewController: UIViewController {
                             }
                             
                             
+                            
+                            
                             UserDefaults.standard.set(jsonObj.object(forKey: "id") as! String, forKey: "userID")
                             UserDefaults.standard.set(jsonObj.object(forKey: "nickname"), forKey: "userNicknameExist")
                             
