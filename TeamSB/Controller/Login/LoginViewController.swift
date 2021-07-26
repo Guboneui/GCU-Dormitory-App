@@ -148,16 +148,26 @@ class LoginViewController: UIViewController {
                                 UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
                             }
                             
+                            let existNickname = jsonObj.object(forKey: "nickname") as! Bool
+                            
+                            if existNickname == false {
+                                let nicknameVC = storyboard?.instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
+                                navigationController?.pushViewController(nicknameVC, animated: true)
+                            } else {
+                                let storyBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                                let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
+                        
+                                homeVC.modalPresentationStyle = .fullScreen
+                                self.present(homeVC, animated: true, completion: nil)
+                            }
+                            
+                            
                             UserDefaults.standard.set(jsonObj.object(forKey: "id") as! String, forKey: "userID")
                             UserDefaults.standard.set(jsonObj.object(forKey: "nickname"), forKey: "userNicknameExist")
                             
-//                            print("유저 정보")
-//                            print(UserDefaults.standard.string(forKey: "userID")!)
-//                            print(UserDefaults.standard.bool(forKey: "userNickname"))
+
                             
                             
-                            let nicknameVC = storyboard?.instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
-                            navigationController?.pushViewController(nicknameVC, animated: true)
                             
                         } else {
                             let code = jsonObj.object(forKey: "code") as! Int

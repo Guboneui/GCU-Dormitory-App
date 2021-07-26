@@ -17,25 +17,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-            let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-            let loginVC = storyBoard.instantiateViewController(identifier: "LoginNavigationVC")
-            window?.rootViewController = loginVC
-            window?.makeKeyAndVisible()
-
-        } else if UserDefaults.standard.bool(forKey: "autoLoginState") == true && UserDefaults.standard.bool(forKey: "userNicknameExist") == false {
-            let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-            let nicknameVC = storyBoard.instantiateViewController(identifier: "NickNameViewController")
-            window?.rootViewController = nicknameVC
-            window?.makeKeyAndVisible()
-
-        } else {
-            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-            let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
-            window?.rootViewController = homeVC
-            window?.makeKeyAndVisible()
-                            
-        }
+//        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+//            let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+//            let loginVC = storyBoard.instantiateViewController(identifier: "LoginNavigationVC")
+//            window?.rootViewController = loginVC
+//            window?.makeKeyAndVisible()
+//
+//        } else if UserDefaults.standard.bool(forKey: "autoLoginState") == true && UserDefaults.standard.bool(forKey: "userNicknameExist") == false {
+//            let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+//            let nicknameVC = storyBoard.instantiateViewController(identifier: "NickNameViewController")
+//            window?.rootViewController = nicknameVC
+//            window?.makeKeyAndVisible()
+//
+//        } else {
+//            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+//            let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
+//            window?.rootViewController = homeVC
+//            window?.makeKeyAndVisible()
+//                            
+//        }
         
         
         
