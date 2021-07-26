@@ -229,22 +229,9 @@ class NickNameViewController: UIViewController {
                 }
             }
             
-    }
+        }
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
     }
     
     

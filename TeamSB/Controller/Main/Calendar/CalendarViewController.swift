@@ -24,7 +24,7 @@ class GetMenu {
 }
 
 class CalendarViewController: UIViewController {
-
+    
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var testLabel: UILabel!
@@ -41,7 +41,7 @@ class CalendarViewController: UIViewController {
         setTableView()
         setCalendar()
         getMenuAPI()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -50,7 +50,7 @@ class CalendarViewController: UIViewController {
         self.navigationItem.title = "식단"
         //setTodayMenu()
         
-    
+        
     }
     
     func setTodayMenu() {
@@ -61,7 +61,7 @@ class CalendarViewController: UIViewController {
         formatter.dateFormat = "YYYY-MM-dd"
         
         var today: String = formatter.string(from: Date())
-
+        
         let data = menuData.listData
         
         for i in 0..<data.count {
@@ -90,7 +90,7 @@ class CalendarViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         calendar.placeholderType = .none
-
+        
         
         
         calendar.backgroundColor = UIColor.SBColor.SB_LightGray
@@ -110,26 +110,26 @@ class CalendarViewController: UIViewController {
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
         
         calendar.locale = Locale(identifier: "ko_KR")
-       
+        
         
     }
     
-
+    
     func getMenuAPI() {
         let URL = "http://13.209.10.30:3000/calmenu"
-
-
+        
+        
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
-
+        
         alamo.responseJSON { [self] (response) in
             //print(response.result)
-
+            
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 식단 불러오기 API 호출 성공")
-                
+                    
                     let result = jsonObj.object(forKey: "check") as! Bool
                     
                     if result == true {
@@ -146,7 +146,7 @@ class CalendarViewController: UIViewController {
                             let dinner = dateMenu["저녁"] as! [[String]]
                             
                             self.menuData.listData.append(Menu(date: date, morning: morning, launch: launch, dinner: dinner))
-                        
+                            
                             
                         }
                         setTodayMenu()
@@ -156,8 +156,8 @@ class CalendarViewController: UIViewController {
                         print("무엇인가 에러가 있음")
                         //Todo
                     }
-
-
+                    
+                    
                 }
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
@@ -165,10 +165,10 @@ class CalendarViewController: UIViewController {
                     print(error)
                 }
             }
-
+            
         }
-
-//
+        
+        //
     }
 }
 
@@ -186,7 +186,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             let morning = data.morning
             let launch = data.launch
             let dinner = data.dinner
-
+            
             let totalCount: Int = morning.count + launch.count + dinner.count
             
             
@@ -269,7 +269,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
-   
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         
@@ -280,7 +280,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         formatter.dateFormat = "YYYY-MM-dd"
         
         var selectDate: String = formatter.string(from: date)
-
+        
         let data = menuData.listData
         
         for i in 0..<data.count {

@@ -32,7 +32,11 @@ class ShowMoreViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "게시글"
+        self.tabBarController?.tabBar.isHidden = true
+        
         getAllPost(page: currentPage)
+        
+        
     }
     
     

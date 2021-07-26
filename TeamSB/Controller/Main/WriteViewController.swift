@@ -8,6 +8,7 @@
 import UIKit
 import DropDown
 import Alamofire
+import IQKeyboardManager
 
 
 protocol UpdateData: AnyObject {
@@ -52,6 +53,19 @@ class WriteViewController: UIViewController {
         super.viewDidLoad()
         setCollectionView()
         
+        IQKeyboardManager.shared().isEnabled = true
+        IQKeyboardManager.shared().isEnableAutoToolbar = false
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
+        
+        
+        
+        let ban = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
+        ban.tintColor = .black
+        
+        self.navigationItem.rightBarButtonItem = ban
+        
+        
+        
         
         resignForKeyboardNotification()
         //다른 공간 클릭 시 키보드 내리기
@@ -69,7 +83,7 @@ class WriteViewController: UIViewController {
         contentsTextView.text = "내용을 입력 해주세요."
         contentsTextView.textColor = UIColor.SBColor.SB_LightGray
         
-        saveButton.backgroundColor = UIColor.SBColor.SB_BaseYellow
+        //saveButton.backgroundColor = UIColor.SBColor.SB_BaseYellow
         
         dropDown.anchorView = dropdownBaseView
         dropDown.dataSource = categoryArray
@@ -138,7 +152,7 @@ class WriteViewController: UIViewController {
     
     
     
-    @IBAction func saveButtonAction(_ sender: Any) {
+    @objc func saveButtonAction() {
         if titleTextField.text == "" || titleTextField.text == nil {
             let alert = UIAlertController(title: "제목을 입력 해주세요.", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
