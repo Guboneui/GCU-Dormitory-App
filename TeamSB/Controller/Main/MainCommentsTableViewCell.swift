@@ -13,11 +13,13 @@ class MainCommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var guideLineView: UIView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        guideLineView.backgroundColor = UIColor.SBColor.SB_LightGray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

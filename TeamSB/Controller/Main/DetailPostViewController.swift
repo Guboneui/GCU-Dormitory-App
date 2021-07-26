@@ -52,7 +52,9 @@ class DetailPostViewController: UIViewController {
         let mainCommentsTableViewNib = UINib(nibName: "MainCommentsTableViewCell", bundle: nil)
         mainTableView.register(mainCommentsTableViewNib, forCellReuseIdentifier: "MainCommentsTableViewCell")
         
-        
+        mainTableView.refreshControl = UIRefreshControl()
+        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+
         
         
         
@@ -70,6 +72,17 @@ class DetailPostViewController: UIViewController {
         postComment()
         checkWriter()
     }
+    
+    @objc func refreshData() {
+        print(">> 댓글 상단 새로고침")
+       
+        
+        serverContentDataArray.removeAll()
+        mainTableView.reloadData()
+        postComment()
+        
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -223,6 +236,8 @@ class DetailPostViewController: UIViewController {
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 현재 게시글의 댓글 API 호출 성공")
+                    
+                    mainTableView.refreshControl?.endRefreshing()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     
@@ -438,7 +453,6 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 setCategory = "에러"
             }
-            
             
             
             cell.categoryLabel.text = setCategory

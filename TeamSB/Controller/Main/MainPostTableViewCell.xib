@@ -116,6 +116,7 @@
                 <outlet property="adminLabel" destination="90n-26-TcN" id="huQ-CH-7F9"/>
                 <outlet property="categoryLabel" destination="t7o-M6-BFR" id="qEY-cm-e8k"/>
                 <outlet property="contentsTextView" destination="Auc-uf-1Js" id="Pzs-OQ-fQG"/>
+                <outlet property="guideLineView" destination="96w-e2-Zqg" id="C1C-m7-aRr"/>
                 <outlet property="timeLabel" destination="IEf-jg-pPi" id="hOc-eZ-uaX"/>
                 <outlet property="titleLabel" destination="npz-ps-qZ3" id="cDG-2G-cnL"/>
             </connections>

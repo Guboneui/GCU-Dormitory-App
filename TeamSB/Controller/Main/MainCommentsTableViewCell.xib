@@ -63,6 +63,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentLabel" destination="drv-K6-sRK" id="x6r-Wh-LuI"/>
+                <outlet property="guideLineView" destination="xyp-Vz-Ee7" id="hk8-co-x3o"/>
                 <outlet property="nicknameLabel" destination="LPy-ta-8pb" id="xm7-qc-s7U"/>
                 <outlet property="profileImageView" destination="doG-Sr-pBs" id="9Tw-18-mwh"/>
             </connections>

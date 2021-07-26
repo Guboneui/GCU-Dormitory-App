@@ -17,6 +17,7 @@ class MainPostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentsTextView: UITextView!
     
+    @IBOutlet weak var guideLineView: UIView!
     
     
     
@@ -31,6 +32,8 @@ class MainPostTableViewCell: UITableViewCell {
         contentsTextView.layer.cornerRadius = 1
         //contentsTextView.layer.borderWidth = 1
         //contentsTextView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        
+        guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
         
     }
 
