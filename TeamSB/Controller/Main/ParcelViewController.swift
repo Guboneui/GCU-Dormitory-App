@@ -16,30 +16,41 @@ class ParcelViewController: UIViewController {
     var isLoadedAllData = false
     var saveData = [Any]()
     
+    var writeButton: UIBarButtonItem!
+    var searchButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getParcel(page: currentPage)
         setTableView()
+        setNavegationBarItem()
       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavegationBarItem()
+        
+        navigationItemUse()
     }
     
 //MARK: -기본 UI 함수
     func setNavegationBarItem() {
         self.navigationItem.title = "택배"
         self.tabBarController?.tabBar.isHidden = true
-        let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
-        goWriteView.tintColor = .black
-        let goSearchView = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
-        goSearchView.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
-        goSearchView.tintColor = .black
+        writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
+        writeButton.tintColor = .black
+        searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
+        searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        searchButton.tintColor = .black
         
-        navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
+        navigationItem.rightBarButtonItems = [writeButton, searchButton]
+
+    }
+    
+    func navigationItemUse() {
+        writeButton.isEnabled = true
+        searchButton.isEnabled = true
     }
     
     func setTableView() {
@@ -68,10 +79,17 @@ class ParcelViewController: UIViewController {
     @objc func goWriteView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         vc.delegate = self
+        
+        writeButton.isEnabled = false
+       searchButton.isEnabled = false
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @objc func goSearchView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        
+        writeButton.isEnabled = false
+        searchButton.isEnabled = false
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

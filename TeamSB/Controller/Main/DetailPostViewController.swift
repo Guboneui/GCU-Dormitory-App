@@ -22,8 +22,11 @@ class DetailPostViewController: UIViewController {
     var reloadCount = 0
     
     
+    @IBOutlet weak var sendViewBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
+    
+    
     
     var getPostNumber: Int = 0
     var getTitle: String = ""
@@ -46,6 +49,9 @@ class DetailPostViewController: UIViewController {
         postAccessArticle()
         postComment()
         checkWriter()
+        
+        IQKeyboardManager.shared().isEnabled = false
+        initNotification()
     }
     
     
@@ -389,6 +395,41 @@ class DetailPostViewController: UIViewController {
             }
         }
     }
+    
+    
+    func initNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti: )), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    // 키보드 올라오기
+    @objc func keyboardWillShow(noti: Notification) {
+        let notiInfo = noti.userInfo!
+        // 키보드 높이를 가져옴
+        let keyboardFrame = notiInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let height = keyboardFrame.size.height - self.view.safeAreaInsets.bottom
+        sendViewBottomMargin.constant = height
+
+        // 애니메이션 효과를 키보드 애니메이션 시간과 동일하게
+        let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        UIView.animate(withDuration: animationDuration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    // 키보드 내려가기
+    @objc func keyboardWillHide(noti: Notification) {
+        let notiInfo = noti.userInfo!
+        let animationDuration = notiInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
+        self.sendViewBottomMargin.constant = 0
+
+        // 애니메이션 효과를 키보드 애니메이션 시간과 동일하게
+        UIView.animate(withDuration: animationDuration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
 }
 
 

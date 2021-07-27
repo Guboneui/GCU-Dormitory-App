@@ -14,10 +14,15 @@ class MainBaseViewController: UIViewController {
     @IBOutlet weak var writeBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
     
+    
+    @IBOutlet weak var topBarItem_setting: UIBarButtonItem!
+    @IBOutlet weak var topBarItem_write: UIBarButtonItem!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         postUserNickname()
         setTableView()
     }
@@ -28,6 +33,7 @@ class MainBaseViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         
         baseTableView.reloadData()
+        setNavigationItem()
         
     }
     
@@ -52,6 +58,11 @@ class MainBaseViewController: UIViewController {
         
         let nowTimeMenuTableViewCellNib = UINib(nibName: "NowTimeMenuTableViewCell", bundle: nil)
         baseTableView.register(nowTimeMenuTableViewCellNib, forCellReuseIdentifier: "NowTimeMenuTableViewCell")
+    }
+    
+    func setNavigationItem() {  //중복 클릭 방지를 위한 세팅
+        topBarItem_setting.isEnabled = true
+        topBarItem_write.isEnabled = true
     }
     
 //MARK: -API 함수 정리
@@ -94,12 +105,20 @@ class MainBaseViewController: UIViewController {
 //MARK: -스토리보드 Action함수 정리
     @IBAction func writeBarButtonAction(_ sender: Any) {
         print("글쓰기 화면으로 이동합니다.")
+        
+        topBarItem_write.isEnabled = false
+        topBarItem_setting.isEnabled = false
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func settingBarButtonAction(_ sender: Any) {
         print("세팅 화면으로 이동합니다.")
+        
+        topBarItem_write.isEnabled = false
+        topBarItem_setting.isEnabled = false
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
