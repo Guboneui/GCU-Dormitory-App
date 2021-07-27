@@ -18,6 +18,10 @@ class DetailPostViewController: UIViewController {
     
     var serverContentDataArray: [Any] = []
     
+    
+    var reloadCount = 0
+    
+    
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     
@@ -70,9 +74,9 @@ class DetailPostViewController: UIViewController {
         
         let mainCommentsTableViewNib = UINib(nibName: "MainCommentsTableViewCell", bundle: nil)
         mainTableView.register(mainCommentsTableViewNib, forCellReuseIdentifier: "MainCommentsTableViewCell")
-        
-        //        mainTableView.refreshControl = UIRefreshControl()
-        //        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+
+        //mainTableView.refreshControl = UIRefreshControl()
+        //mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
     func showAdminBarItem() {
@@ -165,7 +169,9 @@ class DetailPostViewController: UIViewController {
             let message = messageTextField.text!
             postReplyWrite(comment: message)
             messageTextField.text = ""
-            mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
+            //mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
+            
+            
         }
     }
     
@@ -265,6 +271,9 @@ class DetailPostViewController: UIViewController {
     func postComment() {
         
         serverContentDataArray.removeAll()
+        mainTableView.reloadData()
+        
+        
         let userID = UserDefaults.standard.string(forKey: "userID")
         let currentNO = getPostNumber
         
@@ -299,6 +308,16 @@ class DetailPostViewController: UIViewController {
                             serverContentDataArray.append(content[i])
                         }
                         mainTableView.reloadData()
+                        reloadCount += 1
+                        
+                        if reloadCount == 1 {
+                            print(">> 게시글 화면 처음 접속")
+                        } else {
+                            print(">> 댓글 작성 액션 취함 -> 스크롤 위치 변경")
+                            mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
+                        }
+                        
+                        
                         
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
