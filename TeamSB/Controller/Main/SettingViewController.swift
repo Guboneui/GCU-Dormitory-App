@@ -12,10 +12,8 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        postUser()
 
-        // Do any additional setup after loading the view.
+        postUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,8 +22,6 @@ class SettingViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
-    
-
     
     func postUser() {
         let URL = "http://13.209.10.30:3000/getUser"
@@ -56,10 +52,6 @@ class SettingViewController: UIViewController {
                         print(">> 사용자의 정보를 호출합니다.")
                         print(content)
                         
-                        
-                        
-                        
-                        
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
                         
@@ -67,12 +59,9 @@ class SettingViewController: UIViewController {
                         let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
                         alert.addAction(okButton)
                         self.present(alert, animated: true, completion: nil)
-                        
                     }
                     
                 }
-                
-                
                 
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
@@ -82,7 +71,4 @@ class SettingViewController: UIViewController {
             }
         }
     }
-    
-    
-    
 }

@@ -64,26 +64,13 @@ class WriteViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = ban
         
-        
-        
-        
-        resignForKeyboardNotification()
-        //다른 공간 클릭 시 키보드 내리기
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
-        
-        
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
         
         categoryTitle.text = "카테고리"
         
-        
         contentsTextView.delegate = self
         contentsTextView.text = "내용을 입력 해주세요."
         contentsTextView.textColor = UIColor.SBColor.SB_LightGray
-        
-        //saveButton.backgroundColor = UIColor.SBColor.SB_BaseYellow
         
         dropDown.anchorView = dropdownBaseView
         dropDown.dataSource = categoryArray
@@ -111,46 +98,12 @@ class WriteViewController: UIViewController {
         tagCollectionView.dataSource = self
         let tagCollectionViewNib = UINib(nibName: "TagCollectionViewCell", bundle: nil)
         tagCollectionView.register(tagCollectionViewNib, forCellWithReuseIdentifier: "TagCollectionViewCell")
-        //tagCollectionView.layoutSubviews()
-    }
-    
-    
-    @objc func dismissKeyboard() {  //키보드 숨김처리
-        view.endEditing(true)
-    }
-    
-    func resignForKeyboardNotification() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo,
-              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
-            return
-        }
-        
-        let contentInset = UIEdgeInsets(
-            top: 0.0,
-            left: 0.0,
-            bottom: keyboardFrame.size.height,
-            right: 0.0)
-        mainScrollView.contentInset = contentInset
-        mainScrollView.scrollIndicatorInsets = contentInset
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        let contentInset = UIEdgeInsets.zero
-        mainScrollView.contentInset = contentInset
-        mainScrollView.scrollIndicatorInsets = contentInset
     }
     
     @IBAction func categoryOptions(_ sender: Any) {
         dropDown.show()
     }
-    
-    
     
     @objc func saveButtonAction() {
         if titleTextField.text == "" || titleTextField.text == nil {
@@ -174,8 +127,6 @@ class WriteViewController: UIViewController {
         } else {
             postWriteArticle()
         }
-        
-
     }
     
     func postWriteArticle() {
@@ -201,8 +152,6 @@ class WriteViewController: UIViewController {
             "hash": tagArray,
         ]
         
-       
-        
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
         
         alamo.responseJSON{(response) in
@@ -227,9 +176,6 @@ class WriteViewController: UIViewController {
                         alert.addAction(okButton)
                         self.present(alert, animated: true, completion: nil)
                         
-                        
-                        
-                        
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
                         
@@ -240,8 +186,6 @@ class WriteViewController: UIViewController {
                     }
                     
                 }
-                
-                
                 
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
@@ -261,8 +205,6 @@ class WriteViewController: UIViewController {
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
-            
-            
             if tagArray.count < 3 {
                 let hashTag = tagTextField.text!
                 tagArray.append(hashTag)
@@ -279,8 +221,6 @@ class WriteViewController: UIViewController {
     }
     
 }
-        
-        
         
 extension WriteViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -301,7 +241,6 @@ extension WriteViewController: UITextViewDelegate {
         return true
     }
     
-    
     func textViewSetupView() {
         if contentsTextView.text == "내용을 입력 해주세요." {
             contentsTextView.text = ""
@@ -312,7 +251,6 @@ extension WriteViewController: UITextViewDelegate {
         }
     }
 }
-
 
 extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -326,7 +264,7 @@ extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         cell.tagLabel.text = "#" + " \(tagArray[indexPath.row])"
         
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
         cell.addGestureRecognizer(tapGesture)
         
@@ -346,9 +284,6 @@ extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSou
         tagArray.remove(at: deleteIndex!)
         tagCollectionView.reloadData()
     }
-    
-    
-    
     
 }
 
@@ -373,4 +308,3 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return attributes
     }
 }
-

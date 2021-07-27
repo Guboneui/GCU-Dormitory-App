@@ -14,7 +14,6 @@ class DeleveryViewController: UIViewController {
     var isLoadedAllData = false
     var saveData = [Any]()
     
-    
     @IBOutlet weak var mainTableView: UITableView!
     
     override func viewDidLoad() {
@@ -29,11 +28,7 @@ class DeleveryViewController: UIViewController {
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
-        
-       
     }
-    
-    
 
     @objc func refreshData() {
         print(">> 상단 새로고침")
@@ -47,6 +42,7 @@ class DeleveryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationItem.title = "배달"
         self.tabBarController?.tabBar.isHidden = true
         let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
@@ -55,11 +51,7 @@ class DeleveryViewController: UIViewController {
         goSearchView.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         goSearchView.tintColor = .black
         
-        
         navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
-        
-        
-        
     }
     
     func getDelivary(page: Int) {
@@ -71,8 +63,6 @@ class DeleveryViewController: UIViewController {
         else {
             return
         }
-        
-        
         
         let URL = "http://13.209.10.30:3000/home/delivery?page=\(currentPage)"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -114,12 +104,9 @@ class DeleveryViewController: UIViewController {
                     print("서버통신 실패")
                     print(error)
                 }
-                
             }
-            
         }
     }
-    
     
     @objc func goWriteView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
@@ -134,10 +121,6 @@ class DeleveryViewController: UIViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    
-
 }
 
 
@@ -164,8 +147,6 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.tagLabel.text = hashString
-        
-        
         cell.selectionStyle = .none
         
         return cell
@@ -196,13 +177,7 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         if position > (mainTableView.contentSize.height - 100 - scrollView.frame.size.height) {
             getDelivary(page: currentPage)
         }
-        
-        
-        //스크롤 위치 확인해보기
-        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
     }
-    
-    
 }
 
 extension DeleveryViewController: UpdateData {
@@ -212,8 +187,4 @@ extension DeleveryViewController: UpdateData {
         saveData = []
         getDelivary(page: currentPage)
     }
-    
-    
 }
-
-

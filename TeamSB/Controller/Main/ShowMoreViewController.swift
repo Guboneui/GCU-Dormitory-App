@@ -18,14 +18,10 @@ class ShowMoreViewController: UIViewController {
     var currentPage = 0
     var isLoadedAllData = false
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        
-        
-        // Do any additional setup after loading the view.
+      
     }
    
     
@@ -35,7 +31,6 @@ class ShowMoreViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         
         getAllPost(page: currentPage)
-        
         
     }
     
@@ -70,8 +65,6 @@ class ShowMoreViewController: UIViewController {
         else {
             return
         }
-        
-        
         
         let URL = "http://13.209.10.30:3000/home/all?page=\(currentPage)"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -113,14 +106,9 @@ class ShowMoreViewController: UIViewController {
                     print("서버통신 실패")
                     print(error)
                 }
-                
             }
-            
         }
     }
-    
-    
-    
 }
 
 
@@ -175,21 +163,12 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (allPostTableView.contentSize.height - 100 - scrollView.frame.size.height) {
             getAllPost(page: currentPage)
         }
-        
-        
-        //스크롤 위치 확인해보기
-        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
     }
-    
-    
-    
 }
 
 extension ShowMoreViewController: UpdateData {
@@ -199,7 +178,4 @@ extension ShowMoreViewController: UpdateData {
         saveAllData = []
         getAllPost(page: currentPage)
     }
-    
-    
 }
-

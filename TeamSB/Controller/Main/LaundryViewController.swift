@@ -21,15 +21,13 @@ class LaundryViewController: UIViewController {
         super.viewDidLoad()
 
         getLaundry(page: currentPage)
-        
-        
+          
         mainTableView.delegate = self
         mainTableView.dataSource = self
         let mainTableViewNib = UINib(nibName: "LaundryTableViewCell", bundle: nil)
         mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "LaundryTableViewCell")
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        
         
     }
     
@@ -68,8 +66,6 @@ class LaundryViewController: UIViewController {
         else {
             return
         }
-        
-        
         
         let URL = "http://13.209.10.30:3000/home/laundry?page=\(currentPage)"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -116,6 +112,7 @@ class LaundryViewController: UIViewController {
             
         }
     }
+    
     @objc func goWriteView() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
@@ -128,12 +125,7 @@ class LaundryViewController: UIViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-
 }
-
-
 
 extension LaundryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,13 +182,7 @@ extension LaundryViewController: UITableViewDelegate, UITableViewDataSource {
         if position > (mainTableView.contentSize.height - 100 - scrollView.frame.size.height) {
             getLaundry(page: currentPage)
         }
-        
-        
-        //스크롤 위치 확인해보기
-        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
     }
-    
-    
 }
 
 
@@ -207,6 +193,4 @@ extension LaundryViewController: UpdateData {
         saveData = []
         getLaundry(page: currentPage)
     }
-    
-    
 }

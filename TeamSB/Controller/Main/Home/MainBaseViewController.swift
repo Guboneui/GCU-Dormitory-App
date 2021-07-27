@@ -14,8 +14,6 @@ class MainBaseViewController: UIViewController {
     @IBOutlet weak var writeBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
     
-    
-   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +34,6 @@ class MainBaseViewController: UIViewController {
     func succNetWork(test: String) {
         baseTableView.reloadData()
     }
-    
     
     func postUserNickname() {
         let URL = "http://13.209.10.30:3000/getUser/nickname"
@@ -63,21 +60,16 @@ class MainBaseViewController: UIViewController {
                         print(">> 유저 닉네임 저장 성공")
                     }
                 }
-                    
-                
+    
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
                     print(error)
                 }
-                
             }
-            
         }
     }
-    
-    
-    
+
     func setTableView() {
         baseTableView.delegate = self
         baseTableView.dataSource = self
@@ -111,13 +103,6 @@ class MainBaseViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    
-    
-    
-
-
 }
 
 extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
@@ -129,8 +114,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchButtonTableViewCell", for: indexPath) as! SearchButtonTableViewCell
             cell.searchButton.addTarget(self, action: #selector(goSearchView), for: .touchUpInside)
-            
-
+        
             return cell
             
         } else if indexPath.row == 1{
@@ -147,18 +131,14 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.showMoreButton.addTarget(self, action: #selector(goShowMoreView), for: .touchUpInside)
             cell.getRecentPost()
-            
-            
-            print(indexPath)
+            cell.delegate = self
             
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NowTimeMenuTableViewCell", for: indexPath) as! NowTimeMenuTableViewCell
-            
-           
+    
             return cell
-            
         }
     }
     
@@ -201,22 +181,28 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
-    
-    
 }
 
 
 extension MainBaseViewController: TBCellDelegate {
-    func selectedTBCell(setVC: UIViewController) {
+    func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int) {
+        print("프로토콜 연결 성공")
         
-        guard let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MainBaseViewController") as? MainBaseViewController else {
+        guard let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailPostViewController") as? DetailPostViewController else {
             return
         }
         
-        vc.navigationController?.pushViewController(setVC, animated: true)
+        vc.getPostNumber = postNumber
+        vc.getTitle = title
+        vc.getCategory = category
+        vc.getTime = time
+        vc.getUserID = userID
+        vc.getNickname = nickname
+        vc.getContents = contents
+        vc.getShowCount = showCount
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
         
     }
-    
-   
-    
 }

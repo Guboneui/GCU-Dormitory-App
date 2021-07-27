@@ -9,8 +9,6 @@ import UIKit
 
 class SearchButtonTableViewCell: UITableViewCell {
 
-    
-    
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchImage: UIImageView!
     @IBOutlet weak var searchLabel: UILabel!
@@ -22,24 +20,15 @@ class SearchButtonTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
     func configureDesign() {
         searchButton.layer.cornerRadius = 10
         searchButton.layer.borderWidth = 1
         searchButton.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
-        
         searchImage.tintColor = UIColor.SBColor.SB_LightGray
-        
         searchLabel.textColor = UIColor.SBColor.SB_LightGray
+        
     }
-    
-    
-    
-    
-    
-    
-    
 }

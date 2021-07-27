@@ -9,7 +9,6 @@ import UIKit
 
 class DeleveryTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!

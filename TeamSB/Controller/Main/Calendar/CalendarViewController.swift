@@ -9,7 +9,6 @@ import UIKit
 import FSCalendar
 import Alamofire
 
-
 struct Menu {
     var date: String = ""
     var morning: [[String]] = []
@@ -25,13 +24,11 @@ class GetMenu {
 
 class CalendarViewController: UIViewController {
     
-    
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var menuTableView: UITableView!
     
     var menuArr = [AnyObject]()
-    
     var menuData = GetMenu.menuArray
     var menuTableViewDataArray: [Menu] = []
     
@@ -41,16 +38,12 @@ class CalendarViewController: UIViewController {
         setTableView()
         setCalendar()
         getMenuAPI()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "식단"
-        //setTodayMenu()
-        
-        
+   
     }
     
     func setTodayMenu() {
@@ -60,7 +53,7 @@ class CalendarViewController: UIViewController {
         formatter.locale     = Locale(identifier: "ko_KR")
         formatter.dateFormat = "YYYY-MM-dd"
         
-        var today: String = formatter.string(from: Date())
+        let today: String = formatter.string(from: Date())
         
         let data = menuData.listData
         
@@ -90,9 +83,6 @@ class CalendarViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         calendar.placeholderType = .none
-        
-        
-        
         calendar.backgroundColor = UIColor.SBColor.SB_LightGray
         calendar.appearance.weekdayTextColor = UIColor.black
         calendar.appearance.headerTitleColor = UIColor.black
@@ -101,29 +91,19 @@ class CalendarViewController: UIViewController {
         calendar.appearance.todaySelectionColor = UIColor.SBColor.SB_LightYellow
         calendar.appearance.titleTodayColor = UIColor.black
         calendar.appearance.selectionColor = UIColor.SBColor.SB_BaseYellow
-        
-        
         calendar.headerHeight = 50
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
-        
         calendar.locale = Locale(identifier: "ko_KR")
-        
-        
     }
-    
     
     func getMenuAPI() {
         let URL = "http://13.209.10.30:3000/calmenu"
-        
-        
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
         
         alamo.responseJSON { [self] (response) in
-            //print(response.result)
-            
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
@@ -156,8 +136,6 @@ class CalendarViewController: UIViewController {
                         print("무엇인가 에러가 있음")
                         //Todo
                     }
-                    
-                    
                 }
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
@@ -165,10 +143,7 @@ class CalendarViewController: UIViewController {
                     print(error)
                 }
             }
-            
         }
-        
-        //
     }
 }
 
@@ -176,36 +151,23 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
-        
         if menuTableViewDataArray.count == 0 {
             return 0
         } else {
             let data = menuTableViewDataArray[0]
-            
             let morning = data.morning
             let launch = data.launch
             let dinner = data.dinner
-            
             let totalCount: Int = morning.count + launch.count + dinner.count
-            
-            
-            
-            
             
             return totalCount
         }
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         let data = menuTableViewDataArray[0]
-        
-        
-        
+    
         if data.morning.count == 1 {
             menuArr.append(data.morning[0] as AnyObject)
         } else {
@@ -239,7 +201,6 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             menuString += "\((k[i] as! String))\n"
         }
         
-        
         print(menuString)
         
         if indexPath.row == 0 {
@@ -254,32 +215,23 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             cell.timeLabel.text = "kkk"
         }
         
-        
         cell.menuLabel.text = menuString
-        
-        
         
         return cell
     }
-    
-    
 }
 
 
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
-    
-    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        
         menuTableViewDataArray.removeAll()
         
         let formatter        = DateFormatter()
         formatter.locale     = Locale(identifier: "ko_KR")
         formatter.dateFormat = "YYYY-MM-dd"
         
-        var selectDate: String = formatter.string(from: date)
+        let selectDate: String = formatter.string(from: date)
         
         let data = menuData.listData
         
@@ -298,5 +250,4 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         //print("\(dateFormatter.string(from: date)) 해제됨")
     }
-    
 }

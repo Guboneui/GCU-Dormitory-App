@@ -51,7 +51,6 @@ class TaxiViewController: UIViewController {
         goSearchView.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         goSearchView.tintColor = .black
         
-        
         navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
         
         

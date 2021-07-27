@@ -10,8 +10,6 @@ import Alamofire
 
 class ParcelViewController: UIViewController {
 
-   
-    
     @IBOutlet weak var mainTableView: UITableView!
     
     var currentPage = 0
@@ -30,7 +28,7 @@ class ParcelViewController: UIViewController {
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
-        // Do any additional setup after loading the view.
+      
     }
     
     @objc func refreshData() {
@@ -67,8 +65,6 @@ class ParcelViewController: UIViewController {
         else {
             return
         }
-        
-        
         
         let URL = "http://13.209.10.30:3000/home/parcel?page=\(currentPage)"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -129,7 +125,6 @@ class ParcelViewController: UIViewController {
 
 }
 
-
 extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return saveData.count
@@ -153,8 +148,6 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.tagLabel.text = hashString
-        
-        
         cell.selectionStyle = .none
         
         return cell
@@ -183,14 +176,9 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         let position = scrollView.contentOffset.y
         if position > (mainTableView.contentSize.height - 100 - scrollView.frame.size.height) {
             getParcel(page: currentPage)
+        
         }
-        
-        
-        //스크롤 위치 확인해보기
-        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
     }
-    
-    
 }
 extension ParcelViewController: UpdateData {
     func update() {
@@ -199,6 +187,4 @@ extension ParcelViewController: UpdateData {
         saveData = []
         getParcel(page: currentPage)
     }
-    
-    
 }
