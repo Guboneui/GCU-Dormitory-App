@@ -97,7 +97,7 @@ class LoginViewController: UIViewController {
         let URL = "http://13.209.10.30:3000/login"
         
         let PARAM: Parameters = [
-            "id": id,
+            "userId": id,
             "password": pw
         ]
         
@@ -136,7 +136,7 @@ class LoginViewController: UIViewController {
                             self.present(homeVC, animated: true, completion: nil)
                         }
                         
-                        UserDefaults.standard.set(jsonObj.object(forKey: "id") as! String, forKey: "userID")
+                        UserDefaults.standard.set(id, forKey: "userID")
                         UserDefaults.standard.set(jsonObj.object(forKey: "nickname"), forKey: "userNicknameExist")
                         
                     } else {
