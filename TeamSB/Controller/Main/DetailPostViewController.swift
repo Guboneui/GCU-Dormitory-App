@@ -81,8 +81,8 @@ class DetailPostViewController: UIViewController {
         let mainCommentsTableViewNib = UINib(nibName: "MainCommentsTableViewCell", bundle: nil)
         mainTableView.register(mainCommentsTableViewNib, forCellReuseIdentifier: "MainCommentsTableViewCell")
 
-        //mainTableView.refreshControl = UIRefreshControl()
-        //mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        mainTableView.refreshControl = UIRefreshControl()
+        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
     func showAdminBarItem() {
@@ -350,7 +350,7 @@ class DetailPostViewController: UIViewController {
         let userID = UserDefaults.standard.string(forKey: "userID")
         let currentNO = getPostNumber
         
-        let URL = "http://13.209.10.30:3000/reply/write"
+        let URL = "13.209.10.30:3000/reply/write"
         let PARAM: Parameters = [
             "article_no": currentNO,
             "content": comment,

@@ -73,6 +73,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C26E64226AC82860086A795 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		2C26E64326AC82860086A795 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		2C26E64626ACD0AE0086A795 /* AllPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 		2C298735268B5D5D005EEA64 /* TeamSB */ = {
 			isa = PBXGroup;
 			children = (
+				2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */,
 				2C2C4133269A2F8300DB54B5 /* BaseDelegate */,
 				2C2C412E269A2E7100DB54B5 /* API */,
 				2C5D018F268E208000CC6DD4 /* Model */,
@@ -707,9 +709,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -731,9 +734,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

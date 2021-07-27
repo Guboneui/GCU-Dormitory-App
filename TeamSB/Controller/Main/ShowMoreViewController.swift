@@ -207,7 +207,7 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > (allPostTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+        if position > (allPostTableView.contentSize.height - 50 - scrollView.frame.size.height) {
             getAllPost(page: currentPage)
         }
     }

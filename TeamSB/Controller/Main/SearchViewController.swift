@@ -316,7 +316,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > (mainTableView.contentSize.height - 100 - scrollView.frame.size.height) {
+        if position > (mainTableView.contentSize.height - 50 - scrollView.frame.size.height) {
             
             if category == "전체" {
                 postSearch(keyword: searchKeyWord, page: currentPage)
