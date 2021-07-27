@@ -42,13 +42,23 @@ class MainBaseViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "홈"
         self.tabBarController?.tabBar.isHidden = false
         
+        setDefault()
         baseTableView.reloadData()
         setNavigationItem()
         getMenuAPI()
-        
+
     }
     
 //MARK: -기본 UI 함수 설정
+    func setDefault() {
+        firstMenu.removeAll()
+        firstMenuString = ""
+        secondMenu.removeAll()
+        secondMenuString = ""
+        todayAllMenu.removeAll()
+        
+    }
+    
     func setTableView() {
         baseTableView.delegate = self
         baseTableView.dataSource = self
