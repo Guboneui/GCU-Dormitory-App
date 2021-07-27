@@ -126,7 +126,22 @@ class MainBaseViewController: UIViewController {
 
 extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        
+        let hourFormatter        = DateFormatter()
+        hourFormatter.locale     = Locale(identifier: "ko_KR")
+        hourFormatter.dateFormat = "HH"
+        
+        //현재 시간 값을 받아옴
+        let today: String = hourFormatter.string(from: Date())
+        let nowTime: Int = Int(today)!
+  
+
+        // 점심에는 메뉴 2개, 아침 저녁 메뉴 1개
+        if nowTime >= 9 && nowTime < 14 {
+            return 5
+        } else {
+            return 4
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
