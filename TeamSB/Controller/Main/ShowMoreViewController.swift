@@ -18,19 +18,21 @@ class ShowMoreViewController: UIViewController {
     var currentPage = 0
     var isLoadedAllData = false
     
+    var writeButton: UIBarButtonItem!
+    var searchButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        setNavigationBarItem()
       
     }
    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "게시글"
-        self.tabBarController?.tabBar.isHidden = true
         
         getAllPost(page: currentPage)
+        navigationItemUse()
         
     }
     
@@ -46,6 +48,24 @@ class ShowMoreViewController: UIViewController {
         allPostTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
+    func setNavigationBarItem() {
+        self.navigationItem.title = "게시글"
+        self.tabBarController?.tabBar.isHidden = true
+        writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
+        writeButton.tintColor = .black
+        searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
+        searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        searchButton.tintColor = .black
+        
+        navigationItem.rightBarButtonItems = [writeButton, searchButton]
+        
+    }
+    
+    func navigationItemUse() {
+        writeButton.isEnabled = true
+        searchButton.isEnabled = true
+    }
+    
 //MARK: -스토리보드 Action 함수
     @objc func refreshData() {
         print(">> 상단 새로고침")
@@ -56,6 +76,26 @@ class ShowMoreViewController: UIViewController {
         getAllPost(page: currentPage)
         
     }
+    
+    @objc func goWriteView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        vc.delegate = self
+        
+        writeButton.isEnabled = false
+        searchButton.isEnabled = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goSearchView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        
+        writeButton.isEnabled = false
+        searchButton.isEnabled = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
 //MARK: -API
     func getAllPost(page: Int) {
