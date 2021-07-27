@@ -25,6 +25,8 @@ class SearchViewController: UIViewController {
     var category = ""
     var searchKeyWord = ""
     
+    var writeButton: UIBarButtonItem!
+    
     let dropDown = DropDown()
     let categoryArray = ["전체", "배달", "택배", "택시", "빨래"]
     
@@ -35,13 +37,13 @@ class SearchViewController: UIViewController {
         
         setTableView()
         setDropdown()
+        setNavigationBarItem()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "검색"
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.tabBarController?.tabBar.isHidden = true
+        navigationItemUse()
+        
     
     }
     
@@ -66,6 +68,22 @@ class SearchViewController: UIViewController {
         dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
             self.dropdownLabel.text = categoryArray[index]
         }
+    }
+    
+    func setNavigationBarItem() {
+        self.navigationItem.title = "검색"
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.tabBarController?.tabBar.isHidden = true
+        writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
+        writeButton.tintColor = .black
+        
+        navigationItem.rightBarButtonItem = writeButton
+        
+    }
+    
+    func navigationItemUse() {
+        writeButton.isEnabled = true
+        searchButton.isEnabled = true
     }
     
     
@@ -221,7 +239,16 @@ class SearchViewController: UIViewController {
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
             
-        } else {
+        } else if searchKeyWord == "" {
+            let alert = UIAlertController(title: "검색어를 입력 해주세요", message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
+        
+        else {
             currentPage = 0
             isLoadedAllData = false
             saveData.removeAll()
@@ -247,6 +274,15 @@ class SearchViewController: UIViewController {
     
     @IBAction func dropdownAction(_ sender: Any) {
         dropDown.show()
+    }
+    
+    @objc func goWriteView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        vc.delegate = self
+        
+        writeButton.isEnabled = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -291,5 +327,44 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 postSearchWithCategory(category: category, title: searchKeyWord, text: searchKeyWord, page: currentPage)
             }
         }
+    }
+}
+
+
+extension SearchViewController: UpdateData {
+    func update() {
+        currentPage = 0
+        isLoadedAllData = false
+        saveData.removeAll()
+        
+        if category == "선택" && searchKeyWord != ""{
+            print(">> 카테고리를 선택해 주세요 ")
+            
+        } else if category == "선택" && searchKeyWord == "" {
+            print(">> 검색어를 입력하세요")
+            
+        } else {
+            currentPage = 0
+            isLoadedAllData = false
+            saveData.removeAll()
+            
+            if category == "전체" {
+                postSearch(title: searchKeyWord, text: searchKeyWord, page: currentPage)
+            } else {
+                
+                if category == "배달" {
+                    category = "delevery"
+                } else if category == "택배" {
+                    category = "parcel"
+                } else if category == "택시" {
+                    category = "taxi"
+                } else if category == "빨래" {
+                    category = "laundry"
+                }
+                
+                postSearchWithCategory(category: category, title: searchKeyWord, text: searchKeyWord, page: currentPage)
+            }
+        }
+        
     }
 }
