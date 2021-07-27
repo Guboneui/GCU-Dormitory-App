@@ -89,7 +89,7 @@ class SearchViewController: UIViewController {
     
 //MARK: - API연동
     
-    func postSearch(title: String, text: String, page: Int) {
+    func postSearch(keyword: String, page: Int) {
         
         print(">> 전체 데이터 검색")
         currentPage += 1
@@ -101,8 +101,7 @@ class SearchViewController: UIViewController {
         }
         
         let PARAM: Parameters = [
-            "title": title,
-            "text": text
+            "keyword": keyword
         ]
         
         let URL = "http://13.209.10.30:3000/search?page=\(currentPage)"
@@ -154,7 +153,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func postSearchWithCategory(category: String, title: String, text: String, page: Int) {
+    func postSearchWithCategory(category: String, keyword: String, page: Int) {
         
         print(">> \(category) 데이터 검색")
         
@@ -168,9 +167,7 @@ class SearchViewController: UIViewController {
         
         let PARAM: Parameters = [
             "category": category,
-            "title": title,
-            "text": text
-            
+            "keyword": keyword,
         ]
         
         let URL = "http://13.209.10.30:3000/search?page=\(currentPage)"
@@ -254,7 +251,7 @@ class SearchViewController: UIViewController {
             saveData.removeAll()
             
             if category == "전체" {
-                postSearch(title: searchKeyWord, text: searchKeyWord, page: currentPage)
+                postSearch(keyword: searchKeyWord, page: currentPage)
             } else {
                 
                 if category == "배달" {
@@ -267,7 +264,7 @@ class SearchViewController: UIViewController {
                     category = "laundry"
                 }
                 
-                postSearchWithCategory(category: category, title: searchKeyWord, text: searchKeyWord, page: currentPage)
+                postSearchWithCategory(category: category, keyword: searchKeyWord ,page: currentPage)
             }
         }
     }
@@ -322,9 +319,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if position > (mainTableView.contentSize.height - 100 - scrollView.frame.size.height) {
             
             if category == "전체" {
-                postSearch(title: searchKeyWord, text: searchKeyWord, page: currentPage)
+                postSearch(keyword: searchKeyWord, page: currentPage)
             } else {
-                postSearchWithCategory(category: category, title: searchKeyWord, text: searchKeyWord, page: currentPage)
+                postSearchWithCategory(category: category, keyword: searchKeyWord,page: currentPage)
             }
         }
     }
@@ -349,7 +346,7 @@ extension SearchViewController: UpdateData {
             saveData.removeAll()
             
             if category == "전체" {
-                postSearch(title: searchKeyWord, text: searchKeyWord, page: currentPage)
+                postSearch(keyword: searchKeyWord, page: currentPage)
             } else {
                 
                 if category == "배달" {
@@ -362,7 +359,7 @@ extension SearchViewController: UpdateData {
                     category = "laundry"
                 }
                 
-                postSearchWithCategory(category: category, title: searchKeyWord, text: searchKeyWord, page: currentPage)
+                postSearchWithCategory(category: category, keyword: searchKeyWord,page: currentPage)
             }
         }
         

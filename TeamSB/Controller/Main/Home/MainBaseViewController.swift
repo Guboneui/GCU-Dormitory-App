@@ -19,6 +19,16 @@ class MainBaseViewController: UIViewController {
     @IBOutlet weak var topBarItem_write: UIBarButtonItem!
     
     
+    var firstMenu: [String] = []
+    var firstMenuString = ""
+    var secondMenu: [String] = []
+    var secondMenuString = ""
+    
+    var firstTimeString = ""
+    var secondTimeString = ""
+    
+    var todayAllMenu = [String: Any]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +44,7 @@ class MainBaseViewController: UIViewController {
         
         baseTableView.reloadData()
         setNavigationItem()
+        getMenuAPI()
         
     }
     
@@ -101,6 +112,124 @@ class MainBaseViewController: UIViewController {
             }
         }
     }
+    
+    func getMenuAPI() {
+        let URL = "http://13.209.10.30:3000/calmenu"
+        let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
+        
+        alamo.responseJSON { [self] (response) in
+            switch response.result {
+            case .success(let value):
+                if let jsonObj = value as? NSDictionary {
+                    print(">> \(URL)")
+                    print(">> 식단 불러오기 API 호출 성공")
+                    
+                    let result = jsonObj.object(forKey: "check") as! Bool
+                    
+                    if result == true {
+                        let menu = jsonObj.object(forKey: "menu") as! NSArray
+                        
+                        let hourFormatter        = DateFormatter()
+                        hourFormatter.locale     = Locale(identifier: "ko_KR")
+                        hourFormatter.dateFormat = "HH"
+                        
+                        let dateFormatter        = DateFormatter()
+                        dateFormatter.locale     = Locale(identifier: "ko_KR")
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        
+                        
+                        let date: String = dateFormatter.string(from: Date())
+                        
+                        
+                        
+                        //오늘에 해당하는 배열 인덱스 가져옴
+                        for i in 0..<menu.count {
+                            let dateMenu = menu[i] as! NSDictionary
+                            if dateMenu["일자"] as! String == date {
+                                todayAllMenu = dateMenu as! [String : Any]
+                            }
+                        }
+                        
+                        
+                        //현재 시간 값을 받아옴
+                        let today: String = hourFormatter.string(from: Date())
+                        let nowTime: Int = Int(today)!
+                  
+                        
+                        if nowTime >= 0 && nowTime < 9 {
+                            print("아침이에요")
+                            let morningMenu = todayAllMenu["아침"] as! NSArray
+                            let firstMenu = morningMenu[0] as! NSArray
+                
+                            for i in 0..<firstMenu.count {
+                                firstMenuString += "\(firstMenu[i])\n"
+                            }
+                            firstTimeString = "아침"
+                            
+                            baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
+
+                        } else if nowTime >= 9 && nowTime < 14 {
+                            print("점심이에요")
+                            
+                            let launchMenu = todayAllMenu["점심"] as! NSArray
+                            
+                            let firstMenu = launchMenu[0] as! NSArray
+                            let secondMenu = launchMenu[1] as! NSArray
+                            
+                            for i in 0..<firstMenu.count {
+                                firstMenuString += "\((firstMenu[i] as! String))\n"
+                            }
+                            firstTimeString = "점심1"
+                            
+                            for i in 0..<secondMenu.count {
+                                secondMenuString += "\((secondMenu[i] as! String))\n"
+                            }
+                            secondTimeString = "점심2"
+                            
+                            baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
+                            baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
+                            
+                            
+                        } else if nowTime >= 14 && nowTime < 20 {
+                            print("저녁이에요")
+                            
+                            let dinnerMenu = todayAllMenu["저녁"] as! NSArray
+                            let firstMenu = dinnerMenu[0] as! NSArray
+                            
+                            for i in 0..<firstMenu.count {
+                                firstMenuString += "\((firstMenu[i] as! String))\n"
+                            }
+                            firstTimeString = "저녁"
+                            
+                            baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
+                            
+                        } else {
+                            
+                            firstTimeString = "잘 시간 이에요"
+                            firstMenuString = "오늘 메뉴는\n어떠셨나요??"
+                            
+                            baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
+                            
+                        }
+                        
+                        
+                        
+                        
+    
+                    } else {
+                        print("무엇인가 에러가 있음")
+                        //Todo
+                    }
+                }
+            case .failure(let error):
+                if let jsonObj = error as? NSDictionary {
+                    print("서버통신 실패")
+                    print(jsonObj)
+                }
+            }
+        }
+    }
+    
 
 //MARK: -스토리보드 Action함수 정리
     @IBAction func writeBarButtonAction(_ sender: Any) {
@@ -169,9 +298,25 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
-        } else {
+        } else if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NowTimeMenuTableViewCell", for: indexPath) as! NowTimeMenuTableViewCell
+            
+
+            cell.timeLabel.text = firstTimeString
+            cell.menuLabel.text = firstMenuString
+            
+            
+            return cell
+        }
+        
+        
+        else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NowTimeMenuTableViewCell", for: indexPath) as! NowTimeMenuTableViewCell
     
+            cell.timeLabel.text = secondTimeString
+            cell.menuLabel.text = secondMenuString
+            
+            
             return cell
         }
     }

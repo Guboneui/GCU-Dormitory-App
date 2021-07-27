@@ -62,6 +62,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="baseView" destination="4VF-bt-NOD" id="lah-BX-mHb"/>
+                <outlet property="menuLabel" destination="NXa-v7-8Mm" id="CTt-e0-OU2"/>
+                <outlet property="timeLabel" destination="a3d-1s-zWm" id="AiT-92-ZEw"/>
             </connections>
             <point key="canvasLocation" x="174.63768115942031" y="155.69196428571428"/>
         </tableViewCell>
