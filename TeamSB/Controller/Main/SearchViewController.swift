@@ -77,7 +77,7 @@ class SearchViewController: UIViewController {
         
     }
     
-   
+    
     
     
     
@@ -118,6 +118,17 @@ class SearchViewController: UIViewController {
                         let message = jsonObj.object(forKey: "message") as! String
                         print(">> \(message)")
                         let content = jsonObj.object(forKey: "content") as! NSArray
+                        
+                        
+                        
+                        if currentPage == 1 && content.count == 0 {
+                            let alert = UIAlertController(title: "검색 결과가 없습니다", message: "", preferredStyle: .alert)
+                            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                            alert.addAction(okButton)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
+                        
                         
                         guard content.count > 0 else {
                             print(">> 더이상 읽어올 게시글 없음")
@@ -166,7 +177,7 @@ class SearchViewController: UIViewController {
             "text": text
             
         ]
-                
+        
         let URL = "http://13.209.10.30:3000/search?page=\(currentPage)"
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
         
@@ -184,6 +195,17 @@ class SearchViewController: UIViewController {
                         let message = jsonObj.object(forKey: "message") as! String
                         print(">> \(message)")
                         let content = jsonObj.object(forKey: "content") as! NSArray
+                        
+                        
+                        
+                        if currentPage == 1 && content.count == 0 {
+                            let alert = UIAlertController(title: "검색 결과가 없습니다", message: "", preferredStyle: .alert)
+                            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                            alert.addAction(okButton)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
+                        
                         
                         guard content.count > 0 else {
                             print(">> 더이상 읽어올 게시글 없음")

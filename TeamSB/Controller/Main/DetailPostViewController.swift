@@ -15,10 +15,9 @@ protocol WhenDismissDetailView: AnyObject {
 }
 
 class DetailPostViewController: UIViewController {
-
+    
     
     var serverContentDataArray: [Any] = []
-    
     
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
@@ -37,14 +36,11 @@ class DetailPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-       
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.rowHeight = UITableView.automaticDimension
         mainTableView.estimatedRowHeight = 130
         mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
         
         let mainPostTableViewNib = UINib(nibName: "MainPostTableViewCell", bundle: nil)
         mainTableView.register(mainPostTableViewNib, forCellReuseIdentifier: "MainPostTableViewCell")
@@ -52,11 +48,8 @@ class DetailPostViewController: UIViewController {
         let mainCommentsTableViewNib = UINib(nibName: "MainCommentsTableViewCell", bundle: nil)
         mainTableView.register(mainCommentsTableViewNib, forCellReuseIdentifier: "MainCommentsTableViewCell")
         
-        mainTableView.refreshControl = UIRefreshControl()
-        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-
-        
-        
+//        mainTableView.refreshControl = UIRefreshControl()
+//        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         print(">> 게시글 작성자 ID = \(getUserID)...닉네임 = \(getNickname)")
         print(">> \(getPostNumber) 게시글의 현재 조회수는 \(getShowCount)")
@@ -66,8 +59,9 @@ class DetailPostViewController: UIViewController {
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         
         
-
-
+        
+        
+        
         postAccessArticle()
         postComment()
         checkWriter()
@@ -75,7 +69,7 @@ class DetailPostViewController: UIViewController {
     
     @objc func refreshData() {
         print(">> 댓글 상단 새로고침")
-       
+        
         
         serverContentDataArray.removeAll()
         mainTableView.reloadData()
@@ -96,7 +90,7 @@ class DetailPostViewController: UIViewController {
         delegate?.update()
     }
     
-
+    
     
     func postAccessArticle() {  //게시글 조회수 더하는 API
         let URL = "http://13.209.10.30:3000/accessArticle"
@@ -107,7 +101,7 @@ class DetailPostViewController: UIViewController {
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
         
         alamo.responseJSON{(response) in
-           
+            
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
@@ -211,7 +205,7 @@ class DetailPostViewController: UIViewController {
                 }
             }
         }
-    
+        
     }
     
     
@@ -255,7 +249,7 @@ class DetailPostViewController: UIViewController {
                         
                         mainTableView.reloadData()
                         
-
+                        
                         
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
@@ -280,7 +274,7 @@ class DetailPostViewController: UIViewController {
         }
     }
     
-
+    
     func showAdminBarItem() {
         let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
         delete.tintColor = .black
@@ -314,7 +308,7 @@ class DetailPostViewController: UIViewController {
         let alert = UIAlertController(title: "게시글 신고", message: "", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-
+            
             let vc = storyboard?.instantiateViewController(withIdentifier: "BanPopUPViewController") as! BanPopUPViewController
             vc.modalPresentationStyle = .overCurrentContext
             vc.getPostNumber = getPostNumber
@@ -411,7 +405,7 @@ class DetailPostViewController: UIViewController {
     }
     
     
-
+    
 }
 
 
@@ -462,6 +456,8 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             cell.contentsTextView.isEditable = false
             
             
+            cell.selectionStyle = .none
+            
             return cell
             
             
@@ -471,9 +467,21 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             let data = serverContentDataArray[indexPath.row] as! NSDictionary
             
             
+            
+            
+            let deviceID = UserDefaults.standard.string(forKey: "userID")!
+            
+            
             cell.nicknameLabel.text = data["userNickname"] as? String
             cell.commentLabel.text = data["content"] as? String
             
+            if data["userId"] as? String == deviceID {
+                cell.nicknameLabel.textColor = UIColor.SBColor.SB_BaseYellow
+            }
+            
+            
+           
+            cell.selectionStyle = .none
             
             return cell
             
@@ -485,9 +493,9 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        mainTableView.scrollToRow(at: [1, 0], at: .bottom, animated: true)
-//    }
+    //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    //        mainTableView.scrollToRow(at: [1, 0], at: .bottom, animated: true)
+    //    }
     
     
 }
