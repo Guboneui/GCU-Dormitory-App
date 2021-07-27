@@ -21,29 +21,27 @@ class LaundryViewController: UIViewController {
         super.viewDidLoad()
 
         getLaundry(page: currentPage)
-          
+        setTableView()
+       
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavagationBarItem()
+    }
+    
+//MARK: -기본 UI 함수
+    func setTableView() {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         let mainTableViewNib = UINib(nibName: "LaundryTableViewCell", bundle: nil)
         mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "LaundryTableViewCell")
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        
     }
     
-    @objc func refreshData() {
-        print(">> 상단 새로고침")
-        currentPage = 0
-        self.isLoadedAllData = false
-        saveData.removeAll()
-        mainTableView.reloadData()
-        getLaundry(page: currentPage)
-        
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func setNavagationBarItem() {
         self.navigationItem.title = "빨래"
         self.tabBarController?.tabBar.isHidden = true
         let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
@@ -56,7 +54,33 @@ class LaundryViewController: UIViewController {
         navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
     }
     
+//MARK: -스토리보드 Action 함수
+    @objc func refreshData() {
+        print(">> 상단 새로고침")
+        currentPage = 0
+        self.isLoadedAllData = false
+        saveData.removeAll()
+        mainTableView.reloadData()
+        getLaundry(page: currentPage)
+        
+    }
     
+    @objc func goWriteView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goSearchView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+//MARK: -API
     func getLaundry(page: Int) {
         
         currentPage += 1
@@ -105,25 +129,12 @@ class LaundryViewController: UIViewController {
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
                 
             }
             
         }
-    }
-    
-    @objc func goWriteView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
-        
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func goSearchView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -28,21 +28,14 @@ class SearchViewController: UIViewController {
     let dropDown = DropDown()
     let categoryArray = ["전체", "배달", "택배", "택시", "빨래"]
     
+//MARK: -생명주기
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setTableView()
-        dropdownLabel.text = "선택"
+        setDropdown()
         
-        dropDown.anchorView = dropdownBaseView
-        dropDown.dataSource = categoryArray
-        dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
-        dropDown.topOffset = CGPoint(x: 0, y: -(dropDown.anchorView?.plainView.bounds.height)!)
-        dropDown.direction = .bottom
-        dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
-            print("selected item: \(item) at index: \(index)")
-            self.dropdownLabel.text = categoryArray[index]
-        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,6 +45,8 @@ class SearchViewController: UIViewController {
     
     }
     
+//MARK: -기본 UI 함수 정리
+    
     func setTableView() {
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -60,6 +55,21 @@ class SearchViewController: UIViewController {
         mainTableView.rowHeight = 150
         mainTableView.tableFooterView = UIView(frame: .zero)
     }
+    
+    func setDropdown() {
+        dropdownLabel.text = "선택"
+        dropDown.anchorView = dropdownBaseView
+        dropDown.dataSource = categoryArray
+        dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.topOffset = CGPoint(x: 0, y: -(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.direction = .bottom
+        dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
+            self.dropdownLabel.text = categoryArray[index]
+        }
+    }
+    
+    
+//MARK: - API연동
     
     func postSearch(title: String, text: String, page: Int) {
         
@@ -120,7 +130,7 @@ class SearchViewController: UIViewController {
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
@@ -186,11 +196,13 @@ class SearchViewController: UIViewController {
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
     }
+    
+//MARK: -스토리보드 Action 함수 정리
     
     @IBAction func searchButtonAction(_ sender: Any) {
         category = dropdownLabel.text ?? "선택"
@@ -213,7 +225,6 @@ class SearchViewController: UIViewController {
             currentPage = 0
             isLoadedAllData = false
             saveData.removeAll()
-            
             
             if category == "전체" {
                 postSearch(title: searchKeyWord, text: searchKeyWord, page: currentPage)

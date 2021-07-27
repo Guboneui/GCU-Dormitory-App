@@ -20,6 +20,17 @@ class TaxiViewController: UIViewController {
         super.viewDidLoad()
 
         getTaxi(page: currentPage)
+        setTableView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavagationBarItem()
+    }
+    
+//MARK: -기본 UI 함수
+    func setTableView() {
         
         mainTableView.delegate = self
         mainTableView.dataSource = self
@@ -28,9 +39,21 @@ class TaxiViewController: UIViewController {
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
-        // Do any additional setup after loading the view.
     }
     
+    func setNavagationBarItem() {
+        self.navigationItem.title = "택시"
+        self.tabBarController?.tabBar.isHidden = true
+        let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
+        goWriteView.tintColor = .black
+        let goSearchView = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
+        goSearchView.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        goSearchView.tintColor = .black
+        
+        navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
+    }
+    
+//MARK: -스토리보드 Action 함수
     @objc func refreshData() {
         print(">> 상단 새로고침")
         currentPage = 0
@@ -41,20 +64,21 @@ class TaxiViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.title = "택시"
-        self.tabBarController?.tabBar.isHidden = true
-        let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
-        goWriteView.tintColor = .black
-        let goSearchView = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
-        goSearchView.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
-        goSearchView.tintColor = .black
+    
+    @objc func goWriteView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
-        navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
-        
-        
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func goSearchView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+//MARK: -API
     
     func getTaxi(page: Int) {
         
@@ -65,8 +89,6 @@ class TaxiViewController: UIViewController {
         else {
             return
         }
-        
-        
         
         let URL = "http://13.209.10.30:3000/home/taxi?page=\(currentPage)"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -106,7 +128,7 @@ class TaxiViewController: UIViewController {
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
                 
             }
@@ -115,19 +137,6 @@ class TaxiViewController: UIViewController {
     }
     
 
-    @objc func goWriteView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
-        
-        vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func goSearchView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     
 
 }

@@ -22,6 +22,4 @@ class TagCollectionViewCell: UICollectionViewCell {
         tagLabel.textColor = UIColor.SBColor.SB_LightGray
         
     }
-
-   
 }

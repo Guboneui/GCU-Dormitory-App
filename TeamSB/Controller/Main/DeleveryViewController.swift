@@ -20,29 +20,19 @@ class DeleveryViewController: UIViewController {
         super.viewDidLoad()
 
         getDelivary(page: currentPage)
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        let mainTableViewNib = UINib(nibName: "DeleveryTableViewCell", bundle: nil)
-        mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "DeleveryTableViewCell")
-        
-        mainTableView.refreshControl = UIRefreshControl()
-        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-
-    }
-
-    @objc func refreshData() {
-        print(">> 상단 새로고침")
-        currentPage = 0
-        self.isLoadedAllData = false
-        saveData.removeAll()
-        mainTableView.reloadData()
-        getDelivary(page: currentPage)
+        setTableView()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setNavigationBarItem()
+
+    }
+    
+//MARK: -기본 UI 함수
+    
+    func setNavigationBarItem() {
         self.navigationItem.title = "배달"
         self.tabBarController?.tabBar.isHidden = true
         let goWriteView = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
@@ -54,6 +44,42 @@ class DeleveryViewController: UIViewController {
         navigationItem.rightBarButtonItems = [goWriteView, goSearchView]
     }
     
+    func setTableView() {
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        let mainTableViewNib = UINib(nibName: "DeleveryTableViewCell", bundle: nil)
+        mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "DeleveryTableViewCell")
+        
+        mainTableView.refreshControl = UIRefreshControl()
+        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+//MARK: -스토리보드 Action 함수
+    @objc func refreshData() {
+        print(">> 상단 새로고침")
+        currentPage = 0
+        self.isLoadedAllData = false
+        saveData.removeAll()
+        mainTableView.reloadData()
+        getDelivary(page: currentPage)
+        
+    }
+    
+    @objc func goWriteView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        
+        vc.delegate = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goSearchView() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+ 
+//MARK: -API
     func getDelivary(page: Int) {
         
         currentPage += 1
@@ -102,27 +128,12 @@ class DeleveryViewController: UIViewController {
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
     }
-    
-    @objc func goWriteView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
-        
-        vc.delegate = self
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func goSearchView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
-
 
 extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

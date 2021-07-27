@@ -22,7 +22,9 @@ class SearchButtonTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    
+
+//MARK: -기본 UI 함수 정리
+
     func configureDesign() {
         searchButton.layer.cornerRadius = 10
         searchButton.layer.borderWidth = 1

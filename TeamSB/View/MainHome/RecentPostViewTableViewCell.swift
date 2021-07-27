@@ -30,6 +30,13 @@ class RecentPostViewTableViewCell: UITableViewCell {
         
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+    }
+    
+//MARK: -기본 UI 함수 정리
+    
     func setTableView() {
         recentPostTableView.delegate = self
         recentPostTableView.dataSource = self
@@ -48,16 +55,16 @@ class RecentPostViewTableViewCell: UITableViewCell {
         showMoreBottomView.backgroundColor = UIColor.SBColor.SB_DarkGray
         
     }
+
+//MARK: -스토리보드 연동 Action 함수 정리
     
     @IBAction func showMoreButtonAction(_ sender: Any) {
         print("최근 올라온 게시글 화면으로 넘어갑니다.")
         
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
+
+//MARK: -API 함수
     
     func getRecentPost() {
         
@@ -95,7 +102,7 @@ class RecentPostViewTableViewCell: UITableViewCell {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                     
                 }
             }

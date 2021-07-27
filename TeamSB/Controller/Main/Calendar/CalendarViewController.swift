@@ -9,6 +9,7 @@ import UIKit
 import FSCalendar
 import Alamofire
 
+//MARK: -캘린더 API 구조 정리
 struct Menu {
     var date: String = ""
     var morning: [[String]] = []
@@ -22,10 +23,11 @@ class GetMenu {
     private init() {}
 }
 
+
+//MARK: -캘린더 class
 class CalendarViewController: UIViewController {
     
     @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var menuTableView: UITableView!
     
     var menuArr = [AnyObject]()
@@ -46,29 +48,7 @@ class CalendarViewController: UIViewController {
    
     }
     
-    func setTodayMenu() {
-        
-        print(">> 화면에 들어왔을 때 오늘 식단을 표시해 줍니다.")
-        let formatter        = DateFormatter()
-        formatter.locale     = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "YYYY-MM-dd"
-        
-        let today: String = formatter.string(from: Date())
-        
-        let data = menuData.listData
-        
-        for i in 0..<data.count {
-            let menuData = data[i]
-            if menuData.date == today {
-                menuTableViewDataArray.append(Menu(date: menuData.date, morning: menuData.morning, launch: menuData.launch, dinner: menuData.dinner))
-            }
-        }
-        
-        menuTableView.reloadData()
-        
-    }
-    
-    
+//MARK: -기본 UI 설정 함수
     func setTableView() {
         menuTableView.delegate = self
         menuTableView.dataSource = self
@@ -99,6 +79,32 @@ class CalendarViewController: UIViewController {
         calendar.locale = Locale(identifier: "ko_KR")
     }
     
+    
+//MARK: -기본 함수 정리
+    func setTodayMenu() {
+        
+        print(">> 화면에 들어왔을 때 오늘 식단을 표시해 줍니다.")
+        let formatter        = DateFormatter()
+        formatter.locale     = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "YYYY-MM-dd"
+        
+        let today: String = formatter.string(from: Date())
+        
+        let data = menuData.listData
+        
+        for i in 0..<data.count {
+            let menuData = data[i]
+            if menuData.date == today {
+                menuTableViewDataArray.append(Menu(date: menuData.date, morning: menuData.morning, launch: menuData.launch, dinner: menuData.dinner))
+            }
+        }
+        
+        menuTableView.reloadData()
+        
+    }
+    
+//MARK: -API 함수 정리
+    
     func getMenuAPI() {
         let URL = "http://13.209.10.30:3000/calmenu"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
@@ -126,8 +132,7 @@ class CalendarViewController: UIViewController {
                             let dinner = dateMenu["저녁"] as! [[String]]
                             
                             self.menuData.listData.append(Menu(date: date, morning: morning, launch: launch, dinner: dinner))
-                            
-                            
+                        
                         }
                         setTodayMenu()
                         
@@ -140,7 +145,7 @@ class CalendarViewController: UIViewController {
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }

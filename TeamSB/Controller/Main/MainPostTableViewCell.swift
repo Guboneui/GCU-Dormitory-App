@@ -19,19 +19,26 @@ class MainPostTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setDesign()
+        
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+    }
+    
+//MARK: -기본 UI함수
+    func setDesign() {
         contentsTextView.isEditable = false
         contentsTextView.isScrollEnabled = false
         
         contentsTextView.layer.cornerRadius = 1
         
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
-        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
+    
 }
 
 extension UITableViewCell {

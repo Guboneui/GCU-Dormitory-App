@@ -35,37 +35,15 @@ class DetailPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        mainTableView.rowHeight = UITableView.automaticDimension
-        mainTableView.estimatedRowHeight = 130
-        mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
-        let mainPostTableViewNib = UINib(nibName: "MainPostTableViewCell", bundle: nil)
-        mainTableView.register(mainPostTableViewNib, forCellReuseIdentifier: "MainPostTableViewCell")
-        
-        let mainCommentsTableViewNib = UINib(nibName: "MainCommentsTableViewCell", bundle: nil)
-        mainTableView.register(mainCommentsTableViewNib, forCellReuseIdentifier: "MainCommentsTableViewCell")
-        
-//        mainTableView.refreshControl = UIRefreshControl()
-//        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        
         print(">> 게시글 작성자 ID = \(getUserID)...닉네임 = \(getNickname)")
         print(">> \(getPostNumber) 게시글의 현재 조회수는 \(getShowCount)")
         
+        setTableView()
         postAccessArticle()
         postComment()
         checkWriter()
     }
     
-    @objc func refreshData() {
-        print(">> 댓글 상단 새로고침")
-        
-        serverContentDataArray.removeAll()
-        mainTableView.reloadData()
-        postComment()
-        
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,6 +57,122 @@ class DetailPostViewController: UIViewController {
         delegate?.update()
     }
     
+//MARK: -기본 UI 함수
+    func setTableView() {
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        mainTableView.rowHeight = UITableView.automaticDimension
+        mainTableView.estimatedRowHeight = 130
+        mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        let mainPostTableViewNib = UINib(nibName: "MainPostTableViewCell", bundle: nil)
+        mainTableView.register(mainPostTableViewNib, forCellReuseIdentifier: "MainPostTableViewCell")
+        
+        let mainCommentsTableViewNib = UINib(nibName: "MainCommentsTableViewCell", bundle: nil)
+        mainTableView.register(mainCommentsTableViewNib, forCellReuseIdentifier: "MainCommentsTableViewCell")
+        
+        //        mainTableView.refreshControl = UIRefreshControl()
+        //        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    func showAdminBarItem() {
+        let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
+        delete.tintColor = .black
+        let edit = UIBarButtonItem(image: UIImage(systemName: "wand.and.rays"), style: .plain, target: self, action: #selector(editPost))
+        edit.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        edit.tintColor = .black
+        
+        navigationItem.rightBarButtonItems = [delete, edit]
+    }
+    
+    func showUserBarItem() {
+        let ban = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"), style: .plain, target: self, action: #selector(showBanAlert))
+        ban.tintColor = .black
+        
+        navigationItem.rightBarButtonItem = ban
+    }
+    
+    func checkWriter() {
+        let userid = UserDefaults.standard.string(forKey: "userID")
+        if getUserID == userid {
+            print(">> 작성자가 접근하여 수정과 삭제가 모두 가능합니다")
+            showAdminBarItem()
+        } else {
+            print("일반 유저가 접근하여 읽기만 가능")
+            showUserBarItem()
+        }
+    }
+    
+    
+    
+//MARK: -스토리보드 Action 함수
+    @objc func refreshData() {
+        print(">> 댓글 상단 새로고침")
+        
+        serverContentDataArray.removeAll()
+        mainTableView.reloadData()
+        postComment()
+        
+    }
+    
+    @objc func editPost() {
+        print(">> 게시글을 수정합니다.")
+    }
+    
+    
+    @objc func deletePost() {
+        print(">> 게시글을 삭제버튼 클릭")
+        let alert = UIAlertController(title: "삭제하시겠어요?", message: "", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: {_ in
+            print("게시글 삭제 취소")
+        })
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
+            //print(">> 게시글 삭제")
+            postDeleteArticle()
+        })
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    @objc func showBanAlert() {
+        let alert = UIAlertController(title: "게시글 신고", message: "", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "BanPopUPViewController") as! BanPopUPViewController
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.getPostNumber = getPostNumber
+            
+            self.present(vc, animated: false, completion: nil)
+        })
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func sendButtonAction(_ sender: Any) {
+        
+        self.view.endEditing(true)
+        
+        if messageTextField.text == "" || messageTextField.text == nil {
+    
+        } else {
+            let message = messageTextField.text!
+            postReplyWrite(comment: message)
+            messageTextField.text = ""
+            mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
+        }
+    }
+    
+    
+    
+    
+//MARK: -API
     func postAccessArticle() {  //게시글 조회수 더하는 API
         let URL = "http://13.209.10.30:3000/accessArticle"
         let PARAM: Parameters = [
@@ -114,32 +208,13 @@ class DetailPostViewController: UIViewController {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
     }
     
     
-    @objc func editPost() {
-        print(">> 게시글을 수정합니다.")
-    }
-    
-    @objc func deletePost() {
-        print(">> 게시글을 삭제버튼 클릭")
-        let alert = UIAlertController(title: "삭제하시겠어요?", message: "", preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: {_ in
-            print("게시글 삭제 취소")
-        })
-        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-            //print(">> 게시글 삭제")
-            postDeleteArticle()
-        })
-        alert.addAction(cancelButton)
-        alert.addAction(okButton)
-        self.present(alert, animated: true, completion: nil)
-        
-    }
     
     func postDeleteArticle() {  //게시글 삭제 API
         let userID = UserDefaults.standard.string(forKey: "userID")
@@ -181,7 +256,7 @@ class DetailPostViewController: UIViewController {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
@@ -238,72 +313,13 @@ class DetailPostViewController: UIViewController {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
     }
     
-    func showAdminBarItem() {
-        let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
-        delete.tintColor = .black
-        let edit = UIBarButtonItem(image: UIImage(systemName: "wand.and.rays"), style: .plain, target: self, action: #selector(editPost))
-        edit.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
-        edit.tintColor = .black
-        
-        navigationItem.rightBarButtonItems = [delete, edit]
-    }
     
-    func showUserBarItem() {
-        let ban = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"), style: .plain, target: self, action: #selector(showBanAlert))
-        ban.tintColor = .black
-        
-        navigationItem.rightBarButtonItem = ban
-    }
-    
-    func checkWriter() {
-        let userid = UserDefaults.standard.string(forKey: "userID")
-        if getUserID == userid {
-            print(">> 작성자가 접근하여 수정과 삭제가 모두 가능합니다")
-            showAdminBarItem()
-        } else {
-            print("일반 유저가 접근하여 읽기만 가능")
-            showUserBarItem()
-        }
-    }
-    
-    @objc func showBanAlert() {
-        let alert = UIAlertController(title: "게시글 신고", message: "", preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-            
-            let vc = storyboard?.instantiateViewController(withIdentifier: "BanPopUPViewController") as! BanPopUPViewController
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.getPostNumber = getPostNumber
-            
-            self.present(vc, animated: false, completion: nil)
-        })
-        
-        alert.addAction(cancelButton)
-        alert.addAction(okButton)
-
-        self.present(alert, animated: true, completion: nil)
-        
-    }
-    
-    @IBAction func sendButtonAction(_ sender: Any) {
-        
-        self.view.endEditing(true)
-        
-        if messageTextField.text == "" || messageTextField.text == nil {
-    
-        } else {
-            let message = messageTextField.text!
-            postReplyWrite(comment: message)
-            messageTextField.text = ""
-            mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
-        }
-    }
     
     func postReplyWrite(comment: String) {
         let userID = UserDefaults.standard.string(forKey: "userID")
@@ -349,7 +365,7 @@ class DetailPostViewController: UIViewController {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }

@@ -34,7 +34,7 @@ class ShowMoreViewController: UIViewController {
         
     }
     
-    
+//MARK: -기본 UI 함수
     func setTableView() {
         allPostTableView.delegate = self
         allPostTableView.dataSource = self
@@ -46,6 +46,7 @@ class ShowMoreViewController: UIViewController {
         allPostTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
+//MARK: -스토리보드 Action 함수
     @objc func refreshData() {
         print(">> 상단 새로고침")
         currentPage = 0
@@ -56,6 +57,7 @@ class ShowMoreViewController: UIViewController {
         
     }
     
+//MARK: -API
     func getAllPost(page: Int) {
         
         currentPage += 1
@@ -104,7 +106,7 @@ class ShowMoreViewController: UIViewController {
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }

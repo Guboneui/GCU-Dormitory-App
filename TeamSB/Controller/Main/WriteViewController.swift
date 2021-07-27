@@ -34,8 +34,6 @@ class WriteViewController: UIViewController {
     
     @IBOutlet weak var tagCollectionViewLayout: LeftAlignedCollectionViewFlowLayout! {
         didSet {
-            //tagCollectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            //tagCollectionViewLayout.
         }
     }
     
@@ -51,14 +49,24 @@ class WriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setDesign()
+        setDropdown()
         setCollectionView()
         
-        IQKeyboardManager.shared().isEnabled = true
-        IQKeyboardManager.shared().isEnableAutoToolbar = false
-        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
-        
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "글쓰기"
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    //MARK: -기본 UI 정리
+    
+    func setDesign() {
         let ban = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
         ban.tintColor = .black
         
@@ -72,24 +80,18 @@ class WriteViewController: UIViewController {
         contentsTextView.text = "내용을 입력 해주세요."
         contentsTextView.textColor = UIColor.SBColor.SB_LightGray
         
+    }
+    
+    
+    func setDropdown() {
         dropDown.anchorView = dropdownBaseView
         dropDown.dataSource = categoryArray
         dropDown.bottomOffset = CGPoint(x: 0, y: (dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.topOffset = CGPoint(x: 0, y: -(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
         dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
-            print("selected item: \(item) at index: \(index)")
             self.categoryTitle.text = categoryArray[index]
         }
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.title = "글쓰기"
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -100,6 +102,8 @@ class WriteViewController: UIViewController {
         tagCollectionView.register(tagCollectionViewNib, forCellWithReuseIdentifier: "TagCollectionViewCell")
         
     }
+    
+//MARK: -스토리보드 Action 함수
     
     @IBAction func categoryOptions(_ sender: Any) {
         dropDown.show()
@@ -128,6 +132,32 @@ class WriteViewController: UIViewController {
             postWriteArticle()
         }
     }
+    
+    @IBAction func addTagButtonAction(_ sender: Any) {
+        self.view.endEditing(true)
+        
+        if tagTextField.text == "" || tagTextField.text == nil {
+            let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if tagArray.count < 3 {
+                let hashTag = tagTextField.text!
+                tagArray.append(hashTag)
+                tagTextField.text = ""
+                
+                tagCollectionView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+//MARK: -API
     
     func postWriteArticle() {
         let URL = "http://13.209.10.30:3000/writeArticle"
@@ -190,36 +220,11 @@ class WriteViewController: UIViewController {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
     }
-    
-    @IBAction func addTagButtonAction(_ sender: Any) {
-        self.view.endEditing(true)
-        
-        if tagTextField.text == "" || tagTextField.text == nil {
-            let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            if tagArray.count < 3 {
-                let hashTag = tagTextField.text!
-                tagArray.append(hashTag)
-                tagTextField.text = ""
-                
-                tagCollectionView.reloadData()
-            } else {
-                let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-                alert.addAction(okButton)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    
 }
         
 extension WriteViewController: UITextViewDelegate {

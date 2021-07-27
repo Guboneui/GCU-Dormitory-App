@@ -10,25 +10,23 @@ import DropDown
 import Alamofire
 
 class BanPopUPViewController: UIViewController {
-
-    
     var getPostNumber: Int = 0
-    
-    
+
     @IBOutlet weak var dropdownBaseView: UIView!
     @IBOutlet weak var dropdownLabel: UILabel!
     @IBOutlet var mainBaseView: UIView!
     
-    
     let dropDown = DropDown()
     let banReason = ["욕설 및 비방", "불쾌한 게시글", "불쾌한 닉네임"]
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDropdown()
         
+    }
+    
+//MARK: -기본 UI함수
+    func setDropdown() {
         dropdownLabel.text = "사유를 선택 해주세요"
         mainBaseView.backgroundColor = .clear
         
@@ -41,10 +39,9 @@ class BanPopUPViewController: UIViewController {
             print("selected item: \(item) at index: \(index)")
             self.dropdownLabel.text = banReason[index]
         }
-
-        // Do any additional setup after loading the view.
     }
     
+//MARK: -스토리보드 Action 함수
     @IBAction func dismissViewButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -64,12 +61,9 @@ class BanPopUPViewController: UIViewController {
         } else {
             postBanArticle()
         }
-        
-        
-        
     }
     
-    
+//MARK: -API
     func postBanArticle() {
         let userID = UserDefaults.standard.string(forKey: "userID")
         let currentNO = getPostNumber
@@ -82,8 +76,8 @@ class BanPopUPViewController: UIViewController {
         ]
 
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
+        
         alamo.responseJSON{(response) in
-
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
@@ -102,9 +96,6 @@ class BanPopUPViewController: UIViewController {
                         alert.addAction(okButton)
                         self.present(alert, animated: true, completion: nil)
                         
-                        
-                        
-
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
 
@@ -119,14 +110,9 @@ class BanPopUPViewController: UIViewController {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
-
     }
-
-    
-    
-  
 }

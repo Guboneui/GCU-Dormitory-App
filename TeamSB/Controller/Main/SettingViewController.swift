@@ -22,6 +22,8 @@ class SettingViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
+
+//MARK: -API
     
     func postUser() {
         let URL = "http://13.209.10.30:3000/getUser"
@@ -66,7 +68,7 @@ class SettingViewController: UIViewController {
             case .failure(let error) :
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")
-                    print(error)
+                    print(jsonObj)
                 }
             }
         }
