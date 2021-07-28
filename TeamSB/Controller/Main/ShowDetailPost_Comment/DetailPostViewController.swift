@@ -18,8 +18,9 @@ class DetailPostViewController: UIViewController {
     
     @IBOutlet weak var sendViewBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var messageTextField: UITextField!
+    //@IBOutlet weak var messageTextField: UITextField!
     
+    @IBOutlet weak var messageTextView: UITextView!
     var serverContentDataArray: [Any] = []
     var reloadCount = 0
     var currentPage = 0
@@ -171,12 +172,12 @@ class DetailPostViewController: UIViewController {
         
         self.view.endEditing(true)
         
-        if messageTextField.text == "" || messageTextField.text == nil {
+        if messageTextView.text == "" || messageTextView.text == nil {
     
         } else {
-            let message = messageTextField.text!
+            let message = messageTextView.text!
             postReplyWrite(comment: message)
-            messageTextField.text = ""
+            messageTextView.text = ""
             
             //mainTableView.(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
             

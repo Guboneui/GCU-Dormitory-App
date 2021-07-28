@@ -19,11 +19,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQX-dh-dDa" userLabel="bottomBaseView">
                                 <rect key="frame" x="0.0" y="797" width="414" height="65"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wHb-hm-rOm">
-                                        <rect key="frame" x="20" y="15.5" width="324" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-iP-Xnd">
                                         <rect key="frame" x="364" y="17.5" width="30" height="30"/>
                                         <constraints>
@@ -36,15 +31,25 @@
                                             <action selector="sendButtonAction:" destination="XFY-XW-JrW" eventType="touchUpInside" id="Hg9-1F-Dz6"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ONz-uy-6UR">
+                                        <rect key="frame" x="20" y="15.5" width="324" height="34"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="MX6-dn-kiz"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <constraints>
-                                    <constraint firstItem="wHb-hm-rOm" firstAttribute="leading" secondItem="XQX-dh-dDa" secondAttribute="leading" constant="20" id="42Z-kH-UiB"/>
                                     <constraint firstAttribute="height" constant="65" id="7cb-eE-btg"/>
-                                    <constraint firstItem="A0j-iP-Xnd" firstAttribute="leading" secondItem="wHb-hm-rOm" secondAttribute="trailing" constant="20" id="H7e-mp-7O5"/>
+                                    <constraint firstItem="ONz-uy-6UR" firstAttribute="leading" secondItem="XQX-dh-dDa" secondAttribute="leading" constant="20" id="BxV-1u-iVb"/>
                                     <constraint firstItem="A0j-iP-Xnd" firstAttribute="centerY" secondItem="XQX-dh-dDa" secondAttribute="centerY" id="KZK-L1-rMf"/>
-                                    <constraint firstItem="wHb-hm-rOm" firstAttribute="centerY" secondItem="XQX-dh-dDa" secondAttribute="centerY" id="NL2-dt-JF9"/>
                                     <constraint firstAttribute="trailing" secondItem="A0j-iP-Xnd" secondAttribute="trailing" constant="20" id="UOl-7b-H9t"/>
+                                    <constraint firstItem="A0j-iP-Xnd" firstAttribute="leading" secondItem="ONz-uy-6UR" secondAttribute="trailing" constant="20" id="Ywq-9b-4UK"/>
+                                    <constraint firstItem="ONz-uy-6UR" firstAttribute="centerY" secondItem="XQX-dh-dDa" secondAttribute="centerY" id="bak-kL-Jek"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WG2-7X-0UD">
@@ -93,13 +98,13 @@
                     </view>
                     <connections>
                         <outlet property="mainTableView" destination="b5S-eK-EoB" id="WSF-58-KSB"/>
-                        <outlet property="messageTextField" destination="wHb-hm-rOm" id="bdY-Vf-QDn"/>
+                        <outlet property="messageTextView" destination="ONz-uy-6UR" id="Ct0-Gu-Mtx"/>
                         <outlet property="sendViewBottomMargin" destination="qQs-iM-uep" id="Kr6-w5-gso"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rTg-7H-5JG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3194" y="599"/>
+            <point key="canvasLocation" x="3192.753623188406" y="598.66071428571422"/>
         </scene>
         <!--Ban PopUP View Controller-->
         <scene sceneID="vkw-JO-npr">
@@ -216,6 +221,9 @@
     <resources>
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
