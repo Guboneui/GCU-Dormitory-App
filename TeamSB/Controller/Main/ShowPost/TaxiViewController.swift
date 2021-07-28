@@ -167,21 +167,29 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaxiTableViewCell", for: indexPath) as! TaxiTableViewCell
         
-        let data = saveData[indexPath.row] as! NSDictionary
-        
-        cell.titleLabel.text = data["title"] as? String
-        cell.timeLabel.text = data["timeStamp"] as? String
-        cell.contentsLabel.text = data["text"] as? String
-        
-        var hashString = ""
-        
-        let hashData = data["hash"] as! NSArray
-        
-        for i in 0..<hashData.count {
-            hashString += "#" + "\(hashData[i] as! String) "
+        if saveData.count != 0 {
+            let data = saveData[indexPath.row] as! NSDictionary
+            
+            cell.titleLabel.text = data["title"] as? String
+            cell.timeLabel.text = data["timeStamp"] as? String
+            cell.contentsLabel.text = data["text"] as? String
+            
+            var hashString = ""
+            
+            let hashData = data["hash"] as! NSArray
+            
+            for i in 0..<hashData.count {
+                hashString += "#" + "\(hashData[i] as! String) "
+            }
+            
+            cell.tagLabel.text = hashString
+            
+        } else {
+            cell.titleLabel.text = ""
+            cell.timeLabel.text = ""
+            cell.contentsLabel.text = ""
+            cell.tagLabel.text = ""
         }
-        
-        cell.tagLabel.text = hashString
         cell.selectionStyle = .none
         return cell
     }
@@ -201,8 +209,7 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getShowCount = data["viewCount"] as! Int
         vc.getUserID = data["userId"] as! String
         
-        
-        vc.delegate = self
+        //vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -223,11 +230,10 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TaxiViewController: UpdateData {
     func update() {
+        mainTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         currentPage = 0
         isLoadedAllData = false
         saveData = []
         getTaxi(page: currentPage)
     }
-    
-    
 }

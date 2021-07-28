@@ -37,7 +37,7 @@ class DetailPostViewController: UIViewController {
     var getContents: String = ""
     var getShowCount: Int = 0
     
-    weak var delegate: UpdateData?
+    //weak var delegate: UpdateData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ class DetailPostViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        delegate?.update()
+        //delegate?.update()
     }
     
 //MARK: -기본 UI 함수

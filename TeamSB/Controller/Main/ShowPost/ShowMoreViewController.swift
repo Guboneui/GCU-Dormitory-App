@@ -25,13 +25,13 @@ class ShowMoreViewController: UIViewController {
         super.viewDidLoad()
         setTableView()
         setNavigationBarItem()
+        getAllPost(page: currentPage)
       
     }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getAllPost(page: currentPage)
         navigationItemUse()
         
     }
@@ -166,26 +166,41 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllPostTableViewCell", for: indexPath) as! AllPostTableViewCell
         
-        let data = saveAllData[indexPath.row] as! NSDictionary
         
-        
-        let category = data["category"] as! String
-        if category == "delivery" {
-            cell.categoryLabel.text = "배달"
-        } else if category == "parcel" {
-            cell.categoryLabel.text = "택배"
-        } else if category == "taxi" {
-            cell.categoryLabel.text = "택시"
-        } else if category == "laundry" {
-            cell.categoryLabel.text = "빨래"
+        if saveAllData.count != 0 {
+            let data = saveAllData[indexPath.row] as! NSDictionary
+            
+            
+            let category = data["category"] as! String
+            if category == "delivery" {
+                cell.categoryLabel.text = "배달"
+            } else if category == "parcel" {
+                cell.categoryLabel.text = "택배"
+            } else if category == "taxi" {
+                cell.categoryLabel.text = "택시"
+            } else if category == "laundry" {
+                cell.categoryLabel.text = "빨래"
+            } else {
+                cell.categoryLabel.text = "error"
+            }
+            
+            cell.titleLabel.text = data["title"] as? String
+            cell.timeLabel.text = data["timeStamp"] as? String
+            cell.contentsLabel.text = data["text"] as? String
+            
         } else {
-            cell.categoryLabel.text = "error"
+            cell.titleLabel.text = ""
+            cell.timeLabel.text = ""
+            cell.contentsLabel.text = ""
         }
         
         
-        cell.titleLabel.text = data["title"] as? String
-        cell.timeLabel.text = data["timeStamp"] as? String
-        cell.contentsLabel.text = data["text"] as? String
+        
+        
+        
+       
+        
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -204,7 +219,7 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getShowCount = data["viewCount"] as! Int
         vc.getUserID = data["userId"] as! String
         
-        vc.delegate = self
+        //vc.delegate = self
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -219,6 +234,7 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ShowMoreViewController: UpdateData {
     func update() {
+        allPostTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         currentPage = 0
         isLoadedAllData = false
         saveAllData = []
