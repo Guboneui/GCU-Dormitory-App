@@ -9,6 +9,7 @@ import UIKit
 import DropDown
 import Alamofire
 import IQKeyboardManager
+import NVActivityIndicatorView
 
 
 protocol UpdateData: AnyObject {
@@ -45,6 +46,26 @@ class WriteViewController: UIViewController {
     var keyHeight: CGFloat?
     
     weak var delegate: UpdateData?
+    
+    var loading: NVActivityIndicatorView!
+    
+    
+//MARK: -생명주기
+    override func loadView() {
+        super.loadView()
+        
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
     
     
     override func viewDidLoad() {
@@ -129,7 +150,7 @@ class WriteViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         } else {
-            
+            loading.startAnimating()
             if tagArray.count == 0 {
                 postWriteArticleNoHash()
             } else {
@@ -190,13 +211,14 @@ class WriteViewController: UIViewController {
         
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
         
-        alamo.responseJSON{(response) in
+        alamo.responseJSON{ [self](response) in
             
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 게시글 작성 API 호출 성공")
+                    loading.stopAnimating()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     if result == true {
@@ -258,13 +280,14 @@ class WriteViewController: UIViewController {
         
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
         
-        alamo.responseJSON{(response) in
+        alamo.responseJSON{ [self](response) in
             
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 게시글 작성 API 호출 성공")
+                    loading.stopAnimating()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     if result == true {

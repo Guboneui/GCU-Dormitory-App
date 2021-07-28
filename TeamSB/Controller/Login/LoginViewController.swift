@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class LoginViewController: UIViewController {
     
@@ -18,6 +19,24 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var autoLoginButton: UIButton!
     @IBOutlet weak var idTextView: UITextField!
     @IBOutlet weak var pwTextView: UITextField!
+    
+    var loading: NVActivityIndicatorView!
+
+    override func loadView() {
+        super.loadView()
+        
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +71,7 @@ class LoginViewController: UIViewController {
         }
         
     }
-
+    
 //MARK: -스토리보드 Action 함수 정리
     
     @IBAction func loginAction(_ sender: Any) {
@@ -71,6 +90,8 @@ class LoginViewController: UIViewController {
             print(">> 로그인 액션")
             let inputID: String = idTextView.text ?? ""
             let inputPW: String = pwTextView.text ?? ""
+            
+            loading.startAnimating()
             
             postLogin(id: inputID, pw: inputPW)
             
@@ -110,6 +131,8 @@ class LoginViewController: UIViewController {
                 if let jsonObj = value as? NSDictionary {
                     print(">>로그인 API 성공")
                     print(">> \(URL)")
+                    
+                    loading.stopAnimating()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     

@@ -8,6 +8,7 @@
 import UIKit
 import DropDown
 import Alamofire
+import NVActivityIndicatorView
 
 class SearchViewController: UIViewController {
     
@@ -30,7 +31,25 @@ class SearchViewController: UIViewController {
     let dropDown = DropDown()
     let categoryArray = ["전체", "배달", "택배", "택시", "빨래"]
     
+    var loading: NVActivityIndicatorView!
+
 //MARK: -생명주기
+    
+    override func loadView() {
+        super.loadView()
+        
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +132,7 @@ class SearchViewController: UIViewController {
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 검색 API 호출 성공")
+                    loading.stopAnimating()
                     
                     mainTableView.refreshControl?.endRefreshing()
                     
@@ -179,6 +199,7 @@ class SearchViewController: UIViewController {
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 검색 API 호출 성공")
+                    loading.stopAnimating()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     if result == true {
@@ -246,6 +267,7 @@ class SearchViewController: UIViewController {
         
         
         else {
+            loading.startAnimating()
             currentPage = 0
             isLoadedAllData = false
             saveData.removeAll()

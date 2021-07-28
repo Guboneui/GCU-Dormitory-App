@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class NickNameViewController: UIViewController {
     
@@ -14,6 +15,25 @@ class NickNameViewController: UIViewController {
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var checkNicknameButton: UIButton!
     @IBOutlet weak var goHomeButton: UIButton!
+    
+    var loading: NVActivityIndicatorView!
+
+    override func loadView() {
+        super.loadView()
+        
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +71,8 @@ class NickNameViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         } else {
+            loading.startAnimating()
+            
             let sendNickname = nickNameTextField.text!
             postNicknameCheck(nickname: sendNickname)
             
@@ -58,6 +80,8 @@ class NickNameViewController: UIViewController {
     }
     
     @IBAction func goHomeAction(_ sender: Any) {
+        loading.startAnimating()
+        
         let id = UserDefaults.standard.string(forKey: "userID")!
         let nickname = nickNameTextField.text!
         postAddNickname(id: id, nickname: nickname)
@@ -82,6 +106,7 @@ class NickNameViewController: UIViewController {
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 닉네임 중복 체크 API 호출 성공")
+                    loading.stopAnimating()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     
@@ -134,12 +159,13 @@ class NickNameViewController: UIViewController {
         
         let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
         
-        alamo.responseJSON{(response) in
+        alamo.responseJSON{ [self](response) in
             switch response.result {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 닉네임 추가 api 호출 성공")
+                    loading.stopAnimating()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
                     if result == true {
