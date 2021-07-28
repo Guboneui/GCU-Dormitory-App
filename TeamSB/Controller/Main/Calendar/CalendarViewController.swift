@@ -9,42 +9,45 @@ import UIKit
 import FSCalendar
 import Alamofire
 
-//MARK: -캘린더 API 구조 정리
-struct Menu {
-    var date: String = ""
-    var morning: [[String]] = []
-    var launch: [[String]] = []
-    var dinner: [[String]] = []
-}
-
-class GetMenu {
-    static var menuArray = GetMenu()
-    var listData = [Menu]()
-    private init() {}
-}
-
-
 //MARK: -캘린더 class
 class CalendarViewController: UIViewController {
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var menuTableView: UITableView!
+  
+    var selectedDate: String = ""
+    var monthlyMenu: [AnyObject] = []
+    var dailyMenu = [String: Any]()
     
-    var menuArr = [AnyObject]()
-    var menuData = GetMenu.menuArray
-    var menuTableViewDataArray: [Menu] = []
+    var morningArray: [Any] = []
+    var firstLaunchArray: [Any] = []
+    var secondLaunchArray: [Any] = []
+    var dinnerArray: [Any] = []
+    
+    var morningString: String = ""
+    var firstLaunchString: String = ""
+    var secondLauchString: String = ""
+    var dinnerString: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setTableView()
         setCalendar()
-        getMenuAPI()
+        
+        
+        let formatter        = DateFormatter()
+        formatter.locale     = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "YYYY-MM-dd"
+        
+        selectedDate = formatter.string(from: Date())
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "식단"
+        getMenuAPI()
    
     }
     
@@ -62,6 +65,7 @@ class CalendarViewController: UIViewController {
         
         calendar.delegate = self
         calendar.dataSource = self
+        calendar.locale = Locale(identifier: "ko_KR")
         calendar.placeholderType = .none
         calendar.backgroundColor = UIColor.SBColor.SB_LightGray
         calendar.appearance.weekdayTextColor = UIColor.black
@@ -76,7 +80,7 @@ class CalendarViewController: UIViewController {
         calendar.appearance.headerDateFormat = "YYYY년 M월"
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
-        calendar.locale = Locale(identifier: "ko_KR")
+        
     }
     
     
@@ -84,21 +88,6 @@ class CalendarViewController: UIViewController {
     func setTodayMenu() {
         
         print(">> 화면에 들어왔을 때 오늘 식단을 표시해 줍니다.")
-        let formatter        = DateFormatter()
-        formatter.locale     = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "YYYY-MM-dd"
-        
-        let today: String = formatter.string(from: Date())
-        
-        let data = menuData.listData
-        
-        for i in 0..<data.count {
-            let menuData = data[i]
-            if menuData.date == today {
-                menuTableViewDataArray.append(Menu(date: menuData.date, morning: menuData.morning, launch: menuData.launch, dinner: menuData.dinner))
-            }
-        }
-        
         menuTableView.reloadData()
         
     }
@@ -106,6 +95,7 @@ class CalendarViewController: UIViewController {
 //MARK: -API 함수 정리
     
     func getMenuAPI() {
+        dailyMenu.removeAll()
         let URL = "http://13.209.10.30:3000/calmenu"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
         
@@ -119,21 +109,15 @@ class CalendarViewController: UIViewController {
                     let result = jsonObj.object(forKey: "check") as! Bool
                     
                     if result == true {
-                        let menu = jsonObj.object(forKey: "menu") as! NSArray
+                        monthlyMenu = (jsonObj.object(forKey: "menu") as! NSArray) as [AnyObject]
                         
-                        for i in 0..<menu.count {
-                            
-                            let dateMenu = menu[i] as! NSDictionary
-                            
-                            let date = dateMenu["일자"] as! String
-                            let morning = dateMenu["아침"] as! [[String]]
-                            
-                            let launch = dateMenu["점심"] as! [[String]]
-                            let dinner = dateMenu["저녁"] as! [[String]]
-                            
-                            self.menuData.listData.append(Menu(date: date, morning: morning, launch: launch, dinner: dinner))
-                        
+                        for i in 0..<monthlyMenu.count {
+                            let data = monthlyMenu[i] as! NSDictionary
+                            if data["일자"] as! String == selectedDate {
+                                dailyMenu = data as! [String : Any]
+                            }
                         }
+                        
                         setTodayMenu()
                         
                         
@@ -155,77 +139,81 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if menuTableViewDataArray.count == 0 {
-            return 0
-        } else {
-            let data = menuTableViewDataArray[0]
-            let morning = data.morning
-            let launch = data.launch
-            let dinner = data.dinner
-            let totalCount: Int = morning.count + launch.count + dinner.count
-            
-            return totalCount
-        }
+
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-        let data = menuTableViewDataArray[0]
-    
-        if data.morning.count == 1 {
-            menuArr.append(data.morning[0] as AnyObject)
-        } else {
-            for i in 0..<data.morning.count {
-                menuArr.append(data.morning[i] as AnyObject)
-            }
-        }
+
+        morningString = ""
+        firstLaunchString = ""
+        secondLauchString = ""
+        dinnerString = ""
         
-        if data.launch.count == 1 {
-            menuArr.append(data.launch[0] as AnyObject)
-        } else {
-            for i in 0..<data.launch.count {
-                menuArr.append(data.launch[i] as AnyObject)
-            }
+        if dailyMenu.count != 0 {
+            let morning = dailyMenu["아침"] as! [NSArray]
+            let launch = dailyMenu["점심"] as! [NSArray]
+            let dinner = dailyMenu["저녁"] as! [NSArray]
+            
+            morningArray = morning[0] as! [Any]
+            firstLaunchArray = launch[0] as! [Any]
+            secondLaunchArray = launch[1] as! [Any]
+            dinnerArray = dinner[0] as! [Any]
         }
-        
-        if data.dinner.count == 1 {
-            menuArr.append(data.dinner[0] as AnyObject)
-        } else {
-            for i in 0..<data.dinner.count {
-                menuArr.append(data.dinner[i] as AnyObject)
-            }
-        }
-        
-        var menuString = ""
-        let k = menuArr[indexPath.row] as! NSArray
        
-        for i in 0..<k.count {
-            
-            if i == k.count - 1 {
-                menuString += "\((k[i] as! String))"
+        
+        
+        for i in 0..<morningArray.count {
+            if i == morningArray.count - 1 {
+                morningString += "\((morningArray[i] as! String))"
             } else {
-                menuString += "\((k[i] as! String))\n"
+                morningString += "\((morningArray[i] as! String))\n"
             }
-            
         }
         
-        print(menuString)
+        
+        for i in 0..<firstLaunchArray.count {
+            if i == firstLaunchArray.count - 1 {
+                firstLaunchString += "\((firstLaunchArray[i] as! String))"
+            } else {
+                firstLaunchString += "\((firstLaunchArray[i] as! String))\n"
+            }
+        }
+        
+        for i in 0..<secondLaunchArray.count {
+            if i == secondLaunchArray.count - 1 {
+                secondLauchString += "\((secondLaunchArray[i] as! String))"
+            } else {
+                secondLauchString += "\((secondLaunchArray[i] as! String))\n"
+            }
+        }
+        
+        for i in 0..<dinnerArray.count {
+            if i == dinnerArray.count - 1 {
+                dinnerString += "\((dinnerArray[i] as! String))"
+            } else {
+                dinnerString += "\((dinnerArray[i] as! String))\n"
+            }
+        }
         
         if indexPath.row == 0 {
             cell.timeLabel.text = "아침"
+            cell.menuLabel.text = morningString
         } else if indexPath.row == 1 {
             cell.timeLabel.text = "점심1"
+            cell.menuLabel.text = firstLaunchString
         } else if indexPath.row == 2 {
             cell.timeLabel.text = "점심2"
+            cell.menuLabel.text = secondLauchString
         } else if indexPath.row == 3 {
             cell.timeLabel.text = "저녁"
+            cell.menuLabel.text = dinnerString
         } else {
-            cell.timeLabel.text = "kkk"
+            cell.timeLabel.text = "메뉴 없음"
+            cell.menuLabel.text = "메뉴 없음"
         }
-        
-        cell.menuLabel.text = menuString
-        
+
         return cell
     }
 }
@@ -234,20 +222,25 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        menuTableViewDataArray.removeAll()
+        dailyMenu.removeAll()
+        morningString = ""
+        firstLaunchString = ""
+        secondLauchString = ""
+        dinnerString = ""
         
         let formatter        = DateFormatter()
         formatter.locale     = Locale(identifier: "ko_KR")
         formatter.dateFormat = "YYYY-MM-dd"
         
-        let selectDate: String = formatter.string(from: date)
+        selectedDate = formatter.string(from: date)
         
-        let data = menuData.listData
+        print("::LL \(selectedDate)")
         
-        for i in 0..<data.count {
-            let menuData = data[i]
-            if menuData.date == selectDate {
-                menuTableViewDataArray.append(Menu(date: menuData.date, morning: menuData.morning, launch: menuData.launch, dinner: menuData.dinner))
+    
+        for i in 0..<monthlyMenu.count {
+            let data = monthlyMenu[i] as! NSDictionary
+            if data["일자"] as! String == selectedDate {
+                dailyMenu = data as! [String : Any]
             }
         }
         

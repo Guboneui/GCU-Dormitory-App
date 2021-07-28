@@ -350,7 +350,7 @@ class DetailPostViewController: UIViewController {
         let userID = UserDefaults.standard.string(forKey: "userID")
         let currentNO = getPostNumber
         
-        let URL = "13.209.10.30:3000/reply/write"
+        let URL = "http://13.209.10.30:3000/reply/write"
         let PARAM: Parameters = [
             "article_no": currentNO,
             "content": comment,
