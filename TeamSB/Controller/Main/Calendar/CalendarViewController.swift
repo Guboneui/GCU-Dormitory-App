@@ -199,11 +199,15 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         
         var menuString = ""
         let k = menuArr[indexPath.row] as! NSArray
-        
-        print(k.count)
-        
+       
         for i in 0..<k.count {
-            menuString += "\((k[i] as! String))\n"
+            
+            if i == k.count - 1 {
+                menuString += "\((k[i] as! String))"
+            } else {
+                menuString += "\((k[i] as! String))\n"
+            }
+            
         }
         
         print(menuString)

@@ -1,5 +1,5 @@
 //
-//  DelevaryViewController.swift
+//  TaxiViewController.swift
 //  TeamSB
 //
 //  Created by 구본의 on 2021/07/14.
@@ -8,8 +8,10 @@
 import UIKit
 import Alamofire
 
-class DeleveryViewController: UIViewController {
+class TaxiViewController: UIViewController {
 
+    @IBOutlet weak var mainTableView: UITableView!
+    
     var currentPage = 0
     var isLoadedAllData = false
     var saveData = [Any]()
@@ -17,27 +19,34 @@ class DeleveryViewController: UIViewController {
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
     
-    @IBOutlet weak var mainTableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getDelivary(page: currentPage)
+        getTaxi(page: currentPage)
         setTableView()
-        setNavigationBarItem()
+        setNavagationBarItem()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         navigationItemUse()
     }
     
 //MARK: -기본 UI 함수
+    func setTableView() {
+        
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        let mainTableViewNib = UINib(nibName: "TaxiTableViewCell", bundle: nil)
+        mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "TaxiTableViewCell")
+        mainTableView.refreshControl = UIRefreshControl()
+        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+    }
     
-    func setNavigationBarItem() {
-        self.navigationItem.title = "배달"
+    func setNavagationBarItem() {
+        self.navigationItem.title = "택시"
         self.tabBarController?.tabBar.isHidden = true
         writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
         writeButton.tintColor = .black
@@ -46,7 +55,6 @@ class DeleveryViewController: UIViewController {
         searchButton.tintColor = .black
         
         navigationItem.rightBarButtonItems = [writeButton, searchButton]
-        
     }
     
     func navigationItemUse() {
@@ -54,15 +62,6 @@ class DeleveryViewController: UIViewController {
         searchButton.isEnabled = true
     }
     
-    func setTableView() {
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        let mainTableViewNib = UINib(nibName: "DeleveryTableViewCell", bundle: nil)
-        mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "DeleveryTableViewCell")
-        
-        mainTableView.refreshControl = UIRefreshControl()
-        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-    }
 //MARK: -스토리보드 Action 함수
     @objc func refreshData() {
         print(">> 상단 새로고침")
@@ -70,12 +69,15 @@ class DeleveryViewController: UIViewController {
         self.isLoadedAllData = false
         saveData.removeAll()
         mainTableView.reloadData()
-        getDelivary(page: currentPage)
+        getTaxi(page: currentPage)
         
     }
     
+    
     @objc func goWriteView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        
         vc.delegate = self
         
         writeButton.isEnabled = false
@@ -85,7 +87,8 @@ class DeleveryViewController: UIViewController {
     }
     
     @objc func goSearchView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         
         writeButton.isEnabled = false
         searchButton.isEnabled = false
@@ -93,9 +96,9 @@ class DeleveryViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
- 
 //MARK: -API
-    func getDelivary(page: Int) {
+    
+    func getTaxi(page: Int) {
         
         currentPage += 1
         
@@ -105,7 +108,7 @@ class DeleveryViewController: UIViewController {
             return
         }
         
-        let URL = "http://13.209.10.30:3000/home/delivery?page=\(currentPage)"
+        let URL = "http://13.209.10.30:3000/home/taxi?page=\(currentPage)"
         let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
         
         alamo.responseJSON { [self] (response) in
@@ -113,7 +116,7 @@ class DeleveryViewController: UIViewController {
             case .success(let value):
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
-                    print(">> 배달 게시글 API 호출 성공")
+                    print(">> 택시 게시글 API 호출 성공")
                     
                     mainTableView.refreshControl?.endRefreshing()
                     
@@ -145,18 +148,24 @@ class DeleveryViewController: UIViewController {
                     print("서버통신 실패")
                     print(jsonObj)
                 }
+                
             }
+            
         }
     }
+    
+
+    
+
 }
 
-extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
+extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return saveData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DeleveryTableViewCell", for: indexPath) as! DeleveryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaxiTableViewCell", for: indexPath) as! TaxiTableViewCell
         
         let data = saveData[indexPath.row] as! NSDictionary
         
@@ -174,12 +183,12 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.tagLabel.text = hashString
         cell.selectionStyle = .none
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
         
         let data = saveData[indexPath.row] as! NSDictionary
         
@@ -192,25 +201,33 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         vc.getShowCount = data["viewCount"] as! Int
         vc.getUserID = data["userId"] as! String
         
-        vc.delegate = self
         
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (mainTableView.contentSize.height - 50 - scrollView.frame.size.height) {
-            getDelivary(page: currentPage)
+            getTaxi(page: currentPage)
         }
+        
+        
+        //스크롤 위치 확인해보기
+        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
     }
+    
+    
 }
 
-extension DeleveryViewController: UpdateData {
+
+extension TaxiViewController: UpdateData {
     func update() {
         currentPage = 0
         isLoadedAllData = false
         saveData = []
-        getDelivary(page: currentPage)
+        getTaxi(page: currentPage)
     }
+    
+    
 }

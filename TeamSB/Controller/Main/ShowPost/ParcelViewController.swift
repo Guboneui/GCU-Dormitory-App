@@ -77,16 +77,20 @@ class ParcelViewController: UIViewController {
     }
     
     @objc func goWriteView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        
         vc.delegate = self
         
         writeButton.isEnabled = false
-       searchButton.isEnabled = false
+        searchButton.isEnabled = false
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     @objc func goSearchView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         
         writeButton.isEnabled = false
         searchButton.isEnabled = false
@@ -180,7 +184,8 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
         
         let data = saveData[indexPath.row] as! NSDictionary
         

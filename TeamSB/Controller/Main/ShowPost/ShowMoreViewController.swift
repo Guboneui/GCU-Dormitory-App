@@ -78,7 +78,9 @@ class ShowMoreViewController: UIViewController {
     }
     
     @objc func goWriteView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        
         vc.delegate = self
         
         writeButton.isEnabled = false
@@ -88,7 +90,8 @@ class ShowMoreViewController: UIViewController {
     }
     
     @objc func goSearchView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         
         writeButton.isEnabled = false
         searchButton.isEnabled = false
@@ -187,7 +190,8 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
         
         let data = saveAllData[indexPath.row] as! NSDictionary
         

@@ -172,7 +172,12 @@ class MainBaseViewController: UIViewController {
                             let firstMenu = morningMenu[0] as! NSArray
                 
                             for i in 0..<firstMenu.count {
-                                firstMenuString += "\(firstMenu[i])\n"
+                                if i == firstMenu.count - 1 {
+                                    firstMenuString += "\((firstMenu[i] as! String))"
+                                } else {
+                                    firstMenuString += "\((firstMenu[i] as! String))\n"
+                                }
+                                
                             }
                             firstTimeString = "아침"
                             
@@ -187,12 +192,22 @@ class MainBaseViewController: UIViewController {
                             let secondMenu = launchMenu[1] as! NSArray
                             
                             for i in 0..<firstMenu.count {
-                                firstMenuString += "\((firstMenu[i] as! String))\n"
+                                if i == firstMenu.count - 1 {
+                                    firstMenuString += "\((firstMenu[i] as! String))"
+                                } else {
+                                    firstMenuString += "\((firstMenu[i] as! String))\n"
+                                }
+                                
                             }
                             firstTimeString = "점심1"
                             
                             for i in 0..<secondMenu.count {
-                                secondMenuString += "\((secondMenu[i] as! String))\n"
+                                if i == secondMenu.count - 1 {
+                                    secondMenuString += "\((secondMenu[i] as! String))"
+                                } else {
+                                    secondMenuString += "\((secondMenu[i] as! String))\n"
+                                }
+                                
                             }
                             secondTimeString = "점심2"
                             
@@ -207,7 +222,12 @@ class MainBaseViewController: UIViewController {
                             let firstMenu = dinnerMenu[0] as! NSArray
                             
                             for i in 0..<firstMenu.count {
-                                firstMenuString += "\((firstMenu[i] as! String))\n"
+                                if i == firstMenu.count - 1 {
+                                    firstMenuString += "\((firstMenu[i] as! String))"
+                                } else {
+                                    firstMenuString += "\((firstMenu[i] as! String))\n"
+                                }
+                                
                             }
                             firstTimeString = "저녁"
                             
@@ -342,31 +362,41 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func goDelevaryView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "DeleveryViewController") as! DeleveryViewController
+        let storyBoard = UIStoryboard(name: "Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DeleveryViewController") as! DeleveryViewController
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     @objc func goPostView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ParcelViewController") as! ParcelViewController
+        let storyBoard = UIStoryboard(name: "Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ParcelViewController") as! ParcelViewController
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     @objc func goTaxiView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "TaxiViewController") as! TaxiViewController
+        let storyBoard = UIStoryboard(name: "Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "TaxiViewController") as! TaxiViewController
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     @objc func goLaundayView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "LaundryViewController") as! LaundryViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        let storyBoard = UIStoryboard(name: "Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "LaundryViewController") as! LaundryViewController
         
+        self.navigationController?.pushViewController(vc, animated: true)
+    
     }
     
     @objc func goShowMoreView() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ShowMoreViewController") as! ShowMoreViewController
+        let storyBoard = UIStoryboard(name: "Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ShowMoreViewController") as! ShowMoreViewController
+        
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -377,7 +407,7 @@ extension MainBaseViewController: TBCellDelegate {
     func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int) {
         print("프로토콜 연결 성공")
         
-        guard let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailPostViewController") as? DetailPostViewController else {
+        guard let vc = UIStoryboard(name: "In_Post", bundle: nil).instantiateViewController(withIdentifier: "DetailPostViewController") as? DetailPostViewController else {
             return
         }
         
