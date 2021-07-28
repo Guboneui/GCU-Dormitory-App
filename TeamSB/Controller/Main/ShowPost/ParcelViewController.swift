@@ -214,11 +214,13 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (mainTableView.contentSize.height - 50 - scrollView.frame.size.height) {
-            getParcel(page: currentPage)
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
         
+        if offsetY > contentHeight - scrollView.frame.height {
+            getParcel(page: currentPage)
         }
+    
     }
 }
 extension ParcelViewController: UpdateData {

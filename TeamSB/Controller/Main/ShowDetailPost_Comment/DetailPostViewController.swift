@@ -16,17 +16,15 @@ protocol WhenDismissDetailView: AnyObject {
 
 class DetailPostViewController: UIViewController {
     
-    var serverContentDataArray: [Any] = []
-    
-    
-    var reloadCount = 0
-    
-    
     @IBOutlet weak var sendViewBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     
-    
+    var serverContentDataArray: [Any] = []
+    var reloadCount = 0
+    var currentPage = 0
+    var isLoadedAllData = false
+    var saveData = [Any]()
     
     var getPostNumber: Int = 0
     var getTitle: String = ""
@@ -47,7 +45,7 @@ class DetailPostViewController: UIViewController {
         
         setTableView()
         postAccessArticle()
-        postComment()
+        postComment(page: currentPage)
         checkWriter()
         
         IQKeyboardManager.shared().isEnabled = false
@@ -114,14 +112,17 @@ class DetailPostViewController: UIViewController {
     }
     
     
-    
 //MARK: -스토리보드 Action 함수
     @objc func refreshData() {
         print(">> 댓글 상단 새로고침")
-        
-        serverContentDataArray.removeAll()
+        currentPage = 0
+        self.isLoadedAllData = false
+        saveData.removeAll()
+        //serverContentDataArray.removeAll()
         mainTableView.reloadData()
-        postComment()
+        postComment(page: currentPage)
+        mainTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        
         
     }
     
@@ -180,10 +181,6 @@ class DetailPostViewController: UIViewController {
             
         }
     }
-    
-    
-    
-    
 //MARK: -API
     func postAccessArticle() {  //게시글 조회수 더하는 API
         let URL = "http://13.209.10.30:3000/accessArticle"
@@ -274,16 +271,24 @@ class DetailPostViewController: UIViewController {
         }
     }
     
-    func postComment() {
+    func postComment(page: Int) {
         
-        serverContentDataArray.removeAll()
-        mainTableView.reloadData()
+        //serverContentDataArray.removeAll()
+        //mainTableView.reloadData()
+        
+        currentPage += 1
+        
+        guard
+            isLoadedAllData == false
+        else {
+            return
+        }
         
         
         let userID = UserDefaults.standard.string(forKey: "userID")
         let currentNO = getPostNumber
         
-        let URL = "http://13.209.10.30:3000/reply/list"
+        let URL = "http://13.209.10.30:3000/reply/list?page=\(currentPage)"
         let PARAM: Parameters = [
             "curUser": userID!,
             "article_no": currentNO
@@ -307,12 +312,25 @@ class DetailPostViewController: UIViewController {
                         let message = jsonObj.object(forKey: "message") as! String
                         print(">> \(message)")
                         
-                        
                         let content = jsonObj.object(forKey: "content") as! NSArray
                         
-                        for i in 0..<content.count {
-                            serverContentDataArray.append(content[i])
+                        guard content.count > 0 else {
+                            print(">> 더이상 읽어올 게시글 없음")
+                            print(">> 총 읽어온 게시글 개수 = \(saveData.count)")
+                            self.isLoadedAllData = true
+                            return
                         }
+                        
+                        for i in 0..<content.count {
+                            saveData.append(content[i])
+                        }
+                        
+                        print(">> \(URL)")
+                        print(">> 읽어온 댓글 개수: \(content.count), 현재 페이지\(page+1)")
+                        
+        
+                        
+                        
                         mainTableView.reloadData()
                         reloadCount += 1
                         
@@ -374,7 +392,8 @@ class DetailPostViewController: UIViewController {
                         let message = jsonObj.object(forKey: "message") as! String
                         print(">> \(message)")
                         
-                        postComment()
+                        currentPage = 0
+                        postComment(page: currentPage)
                         
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
@@ -445,9 +464,9 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             
             
-            print(serverContentDataArray.count)
+            print(saveData.count)
             
-            return serverContentDataArray.count
+            return saveData.count
         }
     }
     
@@ -488,7 +507,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainCommentsTableViewCell", for: indexPath) as! MainCommentsTableViewCell
-            let data = serverContentDataArray[indexPath.row] as! NSDictionary
+            let data = saveData[indexPath.row] as! NSDictionary
             let deviceID = UserDefaults.standard.string(forKey: "userID")!
             
             cell.nicknameLabel.text = data["userNickname"] as? String
@@ -502,6 +521,18 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.height {
+            postComment(page: currentPage)
+        }
+      
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

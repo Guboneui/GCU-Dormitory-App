@@ -215,10 +215,14 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (mainTableView.contentSize.height - 50 - scrollView.frame.size.height) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.height {
             getTaxi(page: currentPage)
         }
+        
+   
         
         
         //스크롤 위치 확인해보기
