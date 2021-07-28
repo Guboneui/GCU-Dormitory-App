@@ -192,6 +192,11 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
             cell.tagLabel.text = ""
         }
         cell.selectionStyle = .none
+        
+        if indexPath.row == saveData.count - 1 {
+            getTaxi(page: currentPage)
+        }
+        
         return cell
     }
     
@@ -214,20 +219,20 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.height {
-            getTaxi(page: currentPage)
-        }
-        
-   
-        
-        
-        //스크롤 위치 확인해보기
-        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//        
+//        if offsetY > contentHeight - scrollView.frame.height {
+//            getTaxi(page: currentPage)
+//        }
+//        
+//   
+//        
+//        
+//        //스크롤 위치 확인해보기
+//        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
+//    }
     
     
 }

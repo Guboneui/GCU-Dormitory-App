@@ -188,6 +188,10 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
         
+        if indexPath.row == saveData.count - 1 {
+            getDelivary(page: currentPage)
+        }
+        
         return cell
     }
     
@@ -211,18 +215,16 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.height {
-            getDelivary(page: currentPage)
-        }
-        
-
-    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//
+//        if offsetY > contentHeight - scrollView.frame.height {
+//            getDelivary(page: currentPage)
+//        }
+//    }
 }
 
 extension DeleveryViewController: UpdateData {

@@ -190,6 +190,10 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.selectionStyle = .none
         
+        if indexPath.row == saveData.count - 1 {
+            getParcel(page: currentPage)
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -213,15 +217,15 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.height {
-            getParcel(page: currentPage)
-        }
-    
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//
+//        if offsetY > contentHeight - scrollView.frame.height {
+//            getParcel(page: currentPage)
+//        }
+//
+//    }
 }
 extension ParcelViewController: UpdateData {
     func update() {

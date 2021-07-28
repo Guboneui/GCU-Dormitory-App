@@ -187,6 +187,11 @@ extension LaundryViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.selectionStyle = .none
+        
+        if indexPath.row == saveData.count - 1 {
+            getLaundry(page: currentPage)
+        }
+        
         return cell
     }
     
@@ -211,17 +216,17 @@ extension LaundryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.height {
-            getLaundry(page: currentPage)
-        }
-        
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//
+//        if offsetY > contentHeight - scrollView.frame.height {
+//            getLaundry(page: currentPage)
+//        }
+//
+//    }
 }
 
 

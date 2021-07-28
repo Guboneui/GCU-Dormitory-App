@@ -35,6 +35,9 @@ class DetailPostViewController: UIViewController {
     var getContents: String = ""
     var getShowCount: Int = 0
     
+    
+    var cellHeightsDictionary: NSMutableDictionary = [:]
+    
     //weak var delegate: UpdateData?
     
     override func viewDidLoad() {
@@ -114,15 +117,13 @@ class DetailPostViewController: UIViewController {
     
 //MARK: -스토리보드 Action 함수
     @objc func refreshData() {
-        print(">> 댓글 상단 새로고침")
+        print(">> 댓글 상단 새로고침&&&&&")
         currentPage = 0
         self.isLoadedAllData = false
         saveData.removeAll()
         //serverContentDataArray.removeAll()
         mainTableView.reloadData()
         postComment(page: currentPage)
-        mainTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        
         
     }
     
@@ -176,7 +177,8 @@ class DetailPostViewController: UIViewController {
             let message = messageTextField.text!
             postReplyWrite(comment: message)
             messageTextField.text = ""
-            //mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
+            
+            //mainTableView.(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
             
             
         }
@@ -274,9 +276,8 @@ class DetailPostViewController: UIViewController {
     func postComment(page: Int) {
         
         //serverContentDataArray.removeAll()
-        //mainTableView.reloadData()
-        
         currentPage += 1
+        
         
         guard
             isLoadedAllData == false
@@ -325,22 +326,21 @@ class DetailPostViewController: UIViewController {
                             saveData.append(content[i])
                         }
                         
-                        print(">> \(URL)")
                         print(">> 읽어온 댓글 개수: \(content.count), 현재 페이지\(page+1)")
                         
         
-                        
-                        
                         mainTableView.reloadData()
-                        reloadCount += 1
+                                    
                         
-                        if reloadCount == 1 {
-                            print(">> 게시글 화면 처음 접속")
-                        } else {
-                            print(">> 댓글 작성 액션 취함 -> 스크롤 위치 변경")
-                            mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
-                        }
+//댓글 작성 시 아래로 내려가는 스크롤 버그 관련 확인 필요
+//                        if reloadCount == 1 {
+//                            print(">> 게시글 화면 처음 접속")
+//                        }else {
+//                            print(">> 댓글 작성 액션 취함 -> 스크롤 위치 변경")
+//                            mainTableView.setContentOffset(CGPoint(x: 0, y: mainTableView.contentSize.height), animated: true)
+//                        }
                         
+        
                         
                         
                     } else {
@@ -392,8 +392,20 @@ class DetailPostViewController: UIViewController {
                         let message = jsonObj.object(forKey: "message") as! String
                         print(">> \(message)")
                         
-                        currentPage = 0
-                        postComment(page: currentPage)
+                        
+                        let alert = UIAlertController(title: "댓글이 작성되었습니다", message: "", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                        alert.addAction(okButton)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        
+                        DispatchQueue.main.async {
+                            currentPage = 0
+                            isLoadedAllData = false
+                            saveData.removeAll()
+                            postComment(page: currentPage)
+                        }
+                        
                         
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
@@ -515,34 +527,46 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             
             if data["userId"] as? String == deviceID {
                 cell.nicknameLabel.textColor = UIColor.SBColor.SB_BaseYellow
+            } else {
+                cell.nicknameLabel.textColor = .black
             }
             
             cell.selectionStyle = .none
+            
+            if indexPath.row == saveData.count - 1{
+                postComment(page: currentPage)
+            }
             
             return cell
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.height {
-            postComment(page: currentPage)
-        }
-      
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cellHeightsDictionary.setObject(cell.frame.size.height, forKey: indexPath as NSCopying)
     }
     
+
+    
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//
+//        if offsetY > contentHeight - scrollView.frame.height {
+//            postComment(page: currentPage)
+//        }
+//
+//    }
+//
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        
+        if let height = cellHeightsDictionary.object(forKey: indexPath) as? Double {
+            return CGFloat(height)
+        }
+        
         return UITableView.automaticDimension
     }
-    
-    
-    //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    //        mainTableView.scrollToRow(at: [1, 0], at: .bottom, animated: true)
-    //    }
-    
-    
 }

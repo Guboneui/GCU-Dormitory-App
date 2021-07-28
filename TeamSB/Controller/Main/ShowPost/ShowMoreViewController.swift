@@ -193,14 +193,12 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
             cell.timeLabel.text = ""
             cell.contentsLabel.text = ""
         }
-        
-        
-        
-        
-        
-       
-        
         cell.selectionStyle = .none
+        
+        if indexPath.row == saveAllData.count - 1 {
+            getAllPost(page: currentPage)
+        }
+        
         return cell
     }
     
@@ -224,16 +222,16 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        
-        if offsetY > contentHeight - scrollView.frame.height {
-            getAllPost(page: currentPage)
-        }
-    
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//        let offsetY = scrollView.contentOffset.y
+//        let contentHeight = scrollView.contentSize.height
+//
+//        if offsetY > contentHeight - scrollView.frame.height {
+//            getAllPost(page: currentPage)
+//        }
+//
+//    }
 }
 
 extension ShowMoreViewController: UpdateData {
