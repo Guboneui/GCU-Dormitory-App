@@ -79,6 +79,7 @@ class TaxiViewController: UIViewController {
         let vc = storyBoard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
         vc.delegate = self
+        vc.getCategory = "택시"
         
         writeButton.isEnabled = false
         searchButton.isEnabled = false

@@ -111,9 +111,13 @@ class MainBaseViewController: UIViewController {
                         UserDefaults.standard.setValue(userNickname, forKey: "userNickname")
                         print(">> 유저 닉네임: \(UserDefaults.standard.string(forKey: "userNickname")!)")
                         print(">> 유저 닉네임 저장 성공")
+                    } else {
+                        //에러 코드 추가 필요
                     }
                 }
     
+                
+                
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")

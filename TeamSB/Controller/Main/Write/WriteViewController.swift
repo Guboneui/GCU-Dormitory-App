@@ -44,6 +44,7 @@ class WriteViewController: UIViewController {
     var dropdownState = false
     var tagArray: [String] = []
     var keyHeight: CGFloat?
+    var getCategory: String = "선택"
     
     weak var delegate: UpdateData?
     
@@ -64,9 +65,7 @@ class WriteViewController: UIViewController {
             loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,12 +94,13 @@ class WriteViewController: UIViewController {
         
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
         
-        categoryTitle.text = "카테고리"
+        categoryTitle.text = getCategory
         
         contentsTextView.delegate = self
         contentsTextView.text = "내용을 입력 해주세요."
         contentsTextView.textColor = UIColor.SBColor.SB_LightGray
         
+        dropDownImage.tintColor = UIColor.SBColor.SB_BaseYellow
     }
     
     
@@ -113,6 +113,15 @@ class WriteViewController: UIViewController {
         dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
             self.categoryTitle.text = categoryArray[index]
         }
+        
+        dropDown.cancelAction = { [unowned self] in
+            dropDownImage.image = UIImage(systemName: "arrowtriangle.down.fill")
+        }
+
+        dropDown.willShowAction = { [unowned self] in
+            dropDownImage.image = UIImage(systemName: "arrowtriangle.up.fill")
+        }
+        
     }
     
     

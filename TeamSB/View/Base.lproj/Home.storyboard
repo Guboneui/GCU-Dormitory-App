@@ -683,15 +683,24 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowtriangle.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fVG-bk-kMv">
+                                                        <rect key="frame" x="80" y="4.5" width="15" height="11"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="15" id="Ski-Tp-5h2"/>
+                                                            <constraint firstAttribute="height" constant="15" id="Vwp-YK-CoA"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="oJr-si-0Hp" secondAttribute="bottom" id="22Y-oR-T8r"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fVG-bk-kMv" secondAttribute="trailing" constant="5" id="BVt-Nz-p0T"/>
                                                     <constraint firstItem="oJr-si-0Hp" firstAttribute="top" secondItem="mel-Ne-82j" secondAttribute="top" id="GLZ-YI-vkl"/>
                                                     <constraint firstAttribute="height" constant="20" id="H7N-qH-Kib"/>
                                                     <constraint firstAttribute="trailing" secondItem="Fve-4B-cjX" secondAttribute="trailing" id="MGg-jD-lPV"/>
                                                     <constraint firstAttribute="trailing" secondItem="oJr-si-0Hp" secondAttribute="trailing" id="Oqr-Dp-hrj"/>
                                                     <constraint firstAttribute="bottom" secondItem="Fve-4B-cjX" secondAttribute="bottom" id="SOK-7c-2UL"/>
                                                     <constraint firstItem="Fve-4B-cjX" firstAttribute="leading" secondItem="mel-Ne-82j" secondAttribute="leading" id="SOh-4A-c5h"/>
+                                                    <constraint firstItem="fVG-bk-kMv" firstAttribute="centerY" secondItem="mel-Ne-82j" secondAttribute="centerY" id="UB0-Nn-4XC"/>
                                                     <constraint firstItem="oJr-si-0Hp" firstAttribute="leading" secondItem="mel-Ne-82j" secondAttribute="leading" id="dms-yD-hax"/>
                                                     <constraint firstAttribute="width" constant="100" id="mrJ-3t-2aw"/>
                                                     <constraint firstItem="Fve-4B-cjX" firstAttribute="top" secondItem="mel-Ne-82j" secondAttribute="top" id="o9J-3H-slF"/>
@@ -833,6 +842,7 @@
                         <outlet property="addTagButton" destination="pFu-Tk-wfl" id="mkW-I5-qtJ"/>
                         <outlet property="categoryTitle" destination="Fve-4B-cjX" id="J6l-Yr-Kwb"/>
                         <outlet property="contentsTextView" destination="QtC-Zb-agc" id="qMY-Aj-M4w"/>
+                        <outlet property="dropDownImage" destination="fVG-bk-kMv" id="9EG-rH-Mvp"/>
                         <outlet property="dropdownBaseView" destination="mel-Ne-82j" id="koq-fZ-24e"/>
                         <outlet property="guideLineView" destination="RK9-Zx-K2c" id="Oxs-8B-TBz"/>
                         <outlet property="mainScrollView" destination="l9S-Ii-pWU" id="3yt-UB-jgd"/>
@@ -844,7 +854,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3w-Zz-IPf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3033" y="287"/>
+            <point key="canvasLocation" x="3031.884057971015" y="286.60714285714283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r5L-VN-MaM">
@@ -890,6 +900,7 @@
         <image name="B" width="50.5" height="50.5"/>
         <image name="C" width="50.5" height="50.5"/>
         <image name="D" width="43.5" height="43.5"/>
+        <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
         <image name="default_Calendar" width="47" height="48"/>
         <image name="default_Home" width="48" height="48"/>
         <image name="default_Notice" width="48" height="48"/>

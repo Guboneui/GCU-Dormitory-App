@@ -79,6 +79,7 @@ class DeleveryViewController: UIViewController {
         let vc = storyBoard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
         
         vc.delegate = self
+        vc.getCategory = "배달"
         
         writeButton.isEnabled = false
         searchButton.isEnabled = false
