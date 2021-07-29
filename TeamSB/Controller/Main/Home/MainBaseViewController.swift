@@ -80,6 +80,9 @@ extension MainBaseViewController {
     func setNavigationItem() {  //중복 클릭 방지를 위한 세팅
         topBarItem_setting.isEnabled = true
         topBarItem_write.isEnabled = true
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        tabBarController?.tabBar.barTintColor = .white
     }
 
 }
