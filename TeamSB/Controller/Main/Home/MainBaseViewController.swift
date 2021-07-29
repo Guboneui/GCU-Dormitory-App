@@ -112,12 +112,14 @@ class MainBaseViewController: UIViewController {
                         print(">> 유저 닉네임: \(UserDefaults.standard.string(forKey: "userNickname")!)")
                         print(">> 유저 닉네임 저장 성공")
                     } else {
-                        //에러 코드 추가 필요
+                        let message = jsonObj.object(forKey: "message") as! String
+                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                        alert.addAction(okButton)
+                        self.present(alert, animated: true, completion: nil)
                     }
                 }
     
-                
-                
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {
                     print("서버통신 실패")

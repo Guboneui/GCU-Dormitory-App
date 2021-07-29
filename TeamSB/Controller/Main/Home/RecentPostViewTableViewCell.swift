@@ -96,7 +96,7 @@ class RecentPostViewTableViewCell: UITableViewCell {
                         
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
-                        print(">> error: \(message)")
+                        print(message)
                     }
                 }
             case .failure(let error) :

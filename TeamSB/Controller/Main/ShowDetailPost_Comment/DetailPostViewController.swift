@@ -209,11 +209,7 @@ class DetailPostViewController: UIViewController {
                         
                     } else {
                         let message = jsonObj.object(forKey: "message") as! String
-                        
-                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-                        alert.addAction(okButton)
-                        self.present(alert, animated: true, completion: nil)
+                        print(message)
                     }
                 }
                 

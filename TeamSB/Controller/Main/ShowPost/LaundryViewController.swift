@@ -162,6 +162,12 @@ class LaundryViewController: UIViewController {
                         print(">> \(URL)")
                         print(">> 읽어온 게시글의 개수: \(content.count), 현재 페이지\(page+1)")
                         mainTableView.reloadData()
+                    } else {
+                        let message = jsonObj.object(forKey: "message") as! String
+                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                        alert.addAction(okButton)
+                        self.present(alert, animated: true, completion: nil)
                     }
                   
                 }
