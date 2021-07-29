@@ -131,7 +131,6 @@ extension WriteViewController {
         dropDown.willShowAction = { [unowned self] in
             dropDownImage.image = UIImage(systemName: "arrowtriangle.up.fill")
         }
-        
     }
     
     
