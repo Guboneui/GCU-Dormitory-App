@@ -29,6 +29,9 @@
 		2C004A7B26B32D6400D13ABF /* AllPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7A26B32D6400D13ABF /* AllPostResponse.swift */; };
 		2C004A7D26B32DAD00D13ABF /* AllPostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7C26B32DAD00D13ABF /* AllPostDataManager.swift */; };
 		2C004A7F26B3316700D13ABF /* AllPostContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7E26B3316700D13ABF /* AllPostContract.swift */; };
+		2C004A8126B3375800D13ABF /* DeleveryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8026B3375800D13ABF /* DeleveryResponse.swift */; };
+		2C004A8326B3377D00D13ABF /* DeleveryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8226B3377D00D13ABF /* DeleveryDataManager.swift */; };
+		2C004A8526B3378500D13ABF /* DeleveryContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8426B3378500D13ABF /* DeleveryContract.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -110,6 +113,9 @@
 		2C004A7A26B32D6400D13ABF /* AllPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostResponse.swift; sourceTree = "<group>"; };
 		2C004A7C26B32DAD00D13ABF /* AllPostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostDataManager.swift; sourceTree = "<group>"; };
 		2C004A7E26B3316700D13ABF /* AllPostContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostContract.swift; sourceTree = "<group>"; };
+		2C004A8026B3375800D13ABF /* DeleveryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleveryResponse.swift; sourceTree = "<group>"; };
+		2C004A8226B3377D00D13ABF /* DeleveryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleveryDataManager.swift; sourceTree = "<group>"; };
+		2C004A8426B3378500D13ABF /* DeleveryContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleveryContract.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -279,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				2CFDA9CE269E15DA00612EDB /* DeleveryViewController.swift */,
+				2C004A8226B3377D00D13ABF /* DeleveryDataManager.swift */,
+				2C004A8426B3378500D13ABF /* DeleveryContract.swift */,
 				2CF5792526AD835B007DBC9C /* DeleveryTableViewCell.swift */,
 				2CF5792626AD835B007DBC9C /* DeleveryTableViewCell.xib */,
 			);
@@ -319,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				2C004A7A26B32D6400D13ABF /* AllPostResponse.swift */,
+				2C004A8026B3375800D13ABF /* DeleveryResponse.swift */,
 			);
 			path = API_Post;
 			sourceTree = "<group>";
@@ -651,6 +660,7 @@
 				2CFDA9C9269E0DF800612EDB /* WriteViewController.swift in Sources */,
 				2CFDA9C2269DF42600612EDB /* RecentPostContentsTableViewCell.swift in Sources */,
 				2C004A5726B2F43200D13ABF /* String.swift in Sources */,
+				2C004A8526B3378500D13ABF /* DeleveryContract.swift in Sources */,
 				2C004A4B26B2E58300D13ABF /* LoginResponse.swift in Sources */,
 				2C004A6626B30D9D00D13ABF /* GetUserNicknameRequest.swift in Sources */,
 				2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */,
@@ -670,10 +680,12 @@
 				2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */,
 				2CF5794026ADDCF4007DBC9C /* DetailPostViewController.swift in Sources */,
 				2C004A5926B2FD3000D13ABF /* NicknameCheckRequest.swift in Sources */,
+				2C004A8126B3375800D13ABF /* DeleveryResponse.swift in Sources */,
 				2CFDA9D5269E15F600612EDB /* LaundryViewController.swift in Sources */,
 				2C004A5526B2F24500D13ABF /* UIViewController.swift in Sources */,
 				2CFDA9CF269E15DA00612EDB /* DeleveryViewController.swift in Sources */,
 				2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */,
+				2C004A8326B3377D00D13ABF /* DeleveryDataManager.swift in Sources */,
 				2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */,
 				2C004A6826B30DA600D13ABF /* GetUserNicknameResponse.swift in Sources */,
 				2CF5793526AD83AA007DBC9C /* TaxiTableViewCell.swift in Sources */,
