@@ -26,6 +26,9 @@
 		2C004A6D26B30E9D00D13ABF /* MainDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6C26B30E9D00D13ABF /* MainDataManager.swift */; };
 		2C004A6F26B3137300D13ABF /* MenuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6E26B3137300D13ABF /* MenuResponse.swift */; };
 		2C004A7126B3209200D13ABF /* RecentPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7026B3209200D13ABF /* RecentPostResponse.swift */; };
+		2C004A7B26B32D6400D13ABF /* AllPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7A26B32D6400D13ABF /* AllPostResponse.swift */; };
+		2C004A7D26B32DAD00D13ABF /* AllPostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7C26B32DAD00D13ABF /* AllPostDataManager.swift */; };
+		2C004A7F26B3316700D13ABF /* AllPostContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7E26B3316700D13ABF /* AllPostContract.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -76,7 +79,7 @@
 		2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C4269E0DE000612EDB /* SearchViewController.swift */; };
 		2CFDA9C7269E0DEC00612EDB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C6269E0DEC00612EDB /* SettingViewController.swift */; };
 		2CFDA9C9269E0DF800612EDB /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9C8269E0DF800612EDB /* WriteViewController.swift */; };
-		2CFDA9CD269E0E1200612EDB /* ShowMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9CC269E0E1200612EDB /* ShowMoreViewController.swift */; };
+		2CFDA9CD269E0E1200612EDB /* AllPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9CC269E0E1200612EDB /* AllPostViewController.swift */; };
 		2CFDA9CF269E15DA00612EDB /* DeleveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9CE269E15DA00612EDB /* DeleveryViewController.swift */; };
 		2CFDA9D1269E15E300612EDB /* ParcelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9D0269E15E300612EDB /* ParcelViewController.swift */; };
 		2CFDA9D3269E15EA00612EDB /* TaxiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */; };
@@ -104,6 +107,9 @@
 		2C004A6C26B30E9D00D13ABF /* MainDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataManager.swift; sourceTree = "<group>"; };
 		2C004A6E26B3137300D13ABF /* MenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuResponse.swift; sourceTree = "<group>"; };
 		2C004A7026B3209200D13ABF /* RecentPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostResponse.swift; sourceTree = "<group>"; };
+		2C004A7A26B32D6400D13ABF /* AllPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostResponse.swift; sourceTree = "<group>"; };
+		2C004A7C26B32DAD00D13ABF /* AllPostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostDataManager.swift; sourceTree = "<group>"; };
+		2C004A7E26B3316700D13ABF /* AllPostContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostContract.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -157,7 +163,7 @@
 		2CFDA9C4269E0DE000612EDB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		2CFDA9C6269E0DEC00612EDB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2CFDA9C8269E0DF800612EDB /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
-		2CFDA9CC269E0E1200612EDB /* ShowMoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMoreViewController.swift; sourceTree = "<group>"; };
+		2CFDA9CC269E0E1200612EDB /* AllPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostViewController.swift; sourceTree = "<group>"; };
 		2CFDA9CE269E15DA00612EDB /* DeleveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleveryViewController.swift; sourceTree = "<group>"; };
 		2CFDA9D0269E15E300612EDB /* ParcelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelViewController.swift; sourceTree = "<group>"; };
 		2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +251,78 @@
 			path = HomeTableViewCell;
 			sourceTree = "<group>";
 		};
+		2C004A7226B32BF900D13ABF /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				2C004A7326B32C3400D13ABF /* All */,
+				2C004A7426B32C3C00D13ABF /* Delivery */,
+				2C004A7826B32C7400D13ABF /* Parcel */,
+				2C004A7626B32C5800D13ABF /* Taxi */,
+				2C004A7726B32C6B00D13ABF /* Laundry */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		2C004A7326B32C3400D13ABF /* All */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDA9CC269E0E1200612EDB /* AllPostViewController.swift */,
+				2C004A7C26B32DAD00D13ABF /* AllPostDataManager.swift */,
+				2C004A7E26B3316700D13ABF /* AllPostContract.swift */,
+				2C26E64626ACD0AE0086A795 /* AllPostTableViewCell.swift */,
+				2C26E64726ACD0AE0086A795 /* AllPostTableViewCell.xib */,
+			);
+			path = All;
+			sourceTree = "<group>";
+		};
+		2C004A7426B32C3C00D13ABF /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDA9CE269E15DA00612EDB /* DeleveryViewController.swift */,
+				2CF5792526AD835B007DBC9C /* DeleveryTableViewCell.swift */,
+				2CF5792626AD835B007DBC9C /* DeleveryTableViewCell.xib */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
+		2C004A7626B32C5800D13ABF /* Taxi */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */,
+				2CF5793326AD83AA007DBC9C /* TaxiTableViewCell.swift */,
+				2CF5793426AD83AA007DBC9C /* TaxiTableViewCell.xib */,
+			);
+			path = Taxi;
+			sourceTree = "<group>";
+		};
+		2C004A7726B32C6B00D13ABF /* Laundry */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDA9D4269E15F600612EDB /* LaundryViewController.swift */,
+				2CF5793726AD83B6007DBC9C /* LaundryTableViewCell.swift */,
+				2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */,
+			);
+			path = Laundry;
+			sourceTree = "<group>";
+		};
+		2C004A7826B32C7400D13ABF /* Parcel */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDA9D0269E15E300612EDB /* ParcelViewController.swift */,
+				2CF5792F26AD83A1007DBC9C /* ParcelTableViewCell.swift */,
+				2CF5793026AD83A1007DBC9C /* ParcelTableViewCell.xib */,
+			);
+			path = Parcel;
+			sourceTree = "<group>";
+		};
+		2C004A7926B32CE300D13ABF /* API_Post */ = {
+			isa = PBXGroup;
+			children = (
+				2C004A7A26B32D6400D13ABF /* AllPostResponse.swift */,
+			);
+			path = API_Post;
+			sourceTree = "<group>";
+		};
 		2C22FAF226B158C9003AB22A /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,28 +349,6 @@
 				2CF5791C26AD59C9007DBC9C /* TagCollectionViewCell.xib */,
 			);
 			path = Write;
-			sourceTree = "<group>";
-		};
-		2C22FAF526B15920003AB22A /* ShowPost */ = {
-			isa = PBXGroup;
-			children = (
-				2CFDA9CC269E0E1200612EDB /* ShowMoreViewController.swift */,
-				2C26E64626ACD0AE0086A795 /* AllPostTableViewCell.swift */,
-				2C26E64726ACD0AE0086A795 /* AllPostTableViewCell.xib */,
-				2CFDA9CE269E15DA00612EDB /* DeleveryViewController.swift */,
-				2CF5792526AD835B007DBC9C /* DeleveryTableViewCell.swift */,
-				2CF5792626AD835B007DBC9C /* DeleveryTableViewCell.xib */,
-				2CFDA9D0269E15E300612EDB /* ParcelViewController.swift */,
-				2CF5792F26AD83A1007DBC9C /* ParcelTableViewCell.swift */,
-				2CF5793026AD83A1007DBC9C /* ParcelTableViewCell.xib */,
-				2CFDA9D2269E15EA00612EDB /* TaxiViewController.swift */,
-				2CF5793326AD83AA007DBC9C /* TaxiTableViewCell.swift */,
-				2CF5793426AD83AA007DBC9C /* TaxiTableViewCell.xib */,
-				2CFDA9D4269E15F600612EDB /* LaundryViewController.swift */,
-				2CF5793726AD83B6007DBC9C /* LaundryTableViewCell.swift */,
-				2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */,
-			);
-			path = ShowPost;
 			sourceTree = "<group>";
 		};
 		2C22FAF626B1596D003AB22A /* ShowDetailPost_Comment */ = {
@@ -350,6 +406,7 @@
 				2C004A4E26B2E5DE00D13ABF /* ConstantURL.swift */,
 				2C004A5026B2E88F00D13ABF /* API_Login */,
 				2C004A6426B30D5300D13ABF /* API_Home */,
+				2C004A7926B32CE300D13ABF /* API_Post */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -388,6 +445,7 @@
 				2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */,
 				2C5E99882690E74300E3504A /* Login */,
 				2C5E99892690E76500E3504A /* Main */,
+				2C004A7226B32BF900D13ABF /* Post */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -414,7 +472,6 @@
 				2C22FAF226B158C9003AB22A /* Search */,
 				2C22FAF326B158EB003AB22A /* Setting */,
 				2C22FAF426B158FA003AB22A /* Write */,
-				2C22FAF526B15920003AB22A /* ShowPost */,
 				2C22FAF626B1596D003AB22A /* ShowDetailPost_Comment */,
 			);
 			path = Main;
@@ -607,6 +664,7 @@
 				2C004A6F26B3137300D13ABF /* MenuResponse.swift in Sources */,
 				2C004A5D26B2FE4900D13ABF /* NicknameDataManager.swift in Sources */,
 				2C004A5F26B2FF5D00D13ABF /* NicknameConstract.swift in Sources */,
+				2C004A7B26B32D6400D13ABF /* AllPostResponse.swift in Sources */,
 				2C5D0193268E20E000CC6DD4 /* LoginViewController.swift in Sources */,
 				2CFDA9B8269DEA3100612EDB /* RecentPostViewTableViewCell.swift in Sources */,
 				2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */,
@@ -633,10 +691,12 @@
 				2C004A6D26B30E9D00D13ABF /* MainDataManager.swift in Sources */,
 				2C004A5226B2E9B000D13ABF /* LoginContract.swift in Sources */,
 				2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */,
+				2C004A7F26B3316700D13ABF /* AllPostContract.swift in Sources */,
 				2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */,
 				2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */,
 				2C004A4D26B2E5BB00D13ABF /* LoginDataManager.swift in Sources */,
-				2CFDA9CD269E0E1200612EDB /* ShowMoreViewController.swift in Sources */,
+				2CFDA9CD269E0E1200612EDB /* AllPostViewController.swift in Sources */,
+				2C004A7D26B32DAD00D13ABF /* AllPostDataManager.swift in Sources */,
 				2C004A4926B2E55800D13ABF /* LoginRequest.swift in Sources */,
 				2C5D019F268E39ED00CC6DD4 /* NoticeViewController.swift in Sources */,
 				2C26E64826ACD0AE0086A795 /* AllPostTableViewCell.swift in Sources */,
