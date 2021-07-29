@@ -1,17 +1,17 @@
-//  TaxiResponse.swift
+//  LaundryResponse.swift
 //  TeamSB
 //  Created by 구본의 on 2021/07/30.
 
 import Foundation
 
-struct TaxiResponse: Decodable {
+struct LaundryResponse: Decodable {
     var check: Bool
     var code: Int
     var message: String
-    var content: [Taxi]?
+    var content: [Laundry]?
 }
 
-struct Taxi: Decodable {
+struct Laundry: Decodable {
     var no: Int
     var title: String
     var category: String

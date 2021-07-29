@@ -38,6 +38,9 @@
 		2C004A8D26B3428200D13ABF /* TaxiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8C26B3428200D13ABF /* TaxiResponse.swift */; };
 		2C004A8F26B342CB00D13ABF /* TaxiDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8E26B342CB00D13ABF /* TaxiDataManager.swift */; };
 		2C004A9126B342D500D13ABF /* TaxiContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A9026B342D500D13ABF /* TaxiContract.swift */; };
+		2C004A9326B345C100D13ABF /* LaundryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A9226B345C100D13ABF /* LaundryResponse.swift */; };
+		2C004A9526B3491700D13ABF /* LaundryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A9426B3491700D13ABF /* LaundryDataManager.swift */; };
+		2C004A9726B3492200D13ABF /* LaundryContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A9626B3492200D13ABF /* LaundryContract.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -128,6 +131,9 @@
 		2C004A8C26B3428200D13ABF /* TaxiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiResponse.swift; sourceTree = "<group>"; };
 		2C004A8E26B342CB00D13ABF /* TaxiDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiDataManager.swift; sourceTree = "<group>"; };
 		2C004A9026B342D500D13ABF /* TaxiContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxiContract.swift; sourceTree = "<group>"; };
+		2C004A9226B345C100D13ABF /* LaundryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryResponse.swift; sourceTree = "<group>"; };
+		2C004A9426B3491700D13ABF /* LaundryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryDataManager.swift; sourceTree = "<group>"; };
+		2C004A9626B3492200D13ABF /* LaundryContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryContract.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -290,7 +296,8 @@
 				2C26E64626ACD0AE0086A795 /* AllPostTableViewCell.swift */,
 				2C26E64726ACD0AE0086A795 /* AllPostTableViewCell.xib */,
 			);
-			path = All;
+			name = All;
+			path = "전체 게시글";
 			sourceTree = "<group>";
 		};
 		2C004A7426B32C3C00D13ABF /* Delivery */ = {
@@ -302,7 +309,8 @@
 				2CF5792526AD835B007DBC9C /* DeleveryTableViewCell.swift */,
 				2CF5792626AD835B007DBC9C /* DeleveryTableViewCell.xib */,
 			);
-			path = Delivery;
+			name = Delivery;
+			path = "배달 게시글";
 			sourceTree = "<group>";
 		};
 		2C004A7626B32C5800D13ABF /* Taxi */ = {
@@ -314,17 +322,21 @@
 				2CF5793326AD83AA007DBC9C /* TaxiTableViewCell.swift */,
 				2CF5793426AD83AA007DBC9C /* TaxiTableViewCell.xib */,
 			);
-			path = Taxi;
+			name = Taxi;
+			path = "택시 게시글";
 			sourceTree = "<group>";
 		};
 		2C004A7726B32C6B00D13ABF /* Laundry */ = {
 			isa = PBXGroup;
 			children = (
 				2CFDA9D4269E15F600612EDB /* LaundryViewController.swift */,
+				2C004A9426B3491700D13ABF /* LaundryDataManager.swift */,
+				2C004A9626B3492200D13ABF /* LaundryContract.swift */,
 				2CF5793726AD83B6007DBC9C /* LaundryTableViewCell.swift */,
 				2CF5793826AD83B6007DBC9C /* LaundryTableViewCell.xib */,
 			);
-			path = Laundry;
+			name = Laundry;
+			path = "빨래 게시글";
 			sourceTree = "<group>";
 		};
 		2C004A7826B32C7400D13ABF /* Parcel */ = {
@@ -336,7 +348,8 @@
 				2CF5792F26AD83A1007DBC9C /* ParcelTableViewCell.swift */,
 				2CF5793026AD83A1007DBC9C /* ParcelTableViewCell.xib */,
 			);
-			path = Parcel;
+			name = Parcel;
+			path = "택배 게시글";
 			sourceTree = "<group>";
 		};
 		2C004A7926B32CE300D13ABF /* API_Post */ = {
@@ -346,6 +359,7 @@
 				2C004A8026B3375800D13ABF /* DeleveryResponse.swift */,
 				2C004A8A26B33D8200D13ABF /* ParcelResponse.swift */,
 				2C004A8C26B3428200D13ABF /* TaxiResponse.swift */,
+				2C004A9226B345C100D13ABF /* LaundryResponse.swift */,
 			);
 			path = API_Post;
 			sourceTree = "<group>";
@@ -681,6 +695,7 @@
 				2C004A8526B3378500D13ABF /* DeleveryContract.swift in Sources */,
 				2C004A4B26B2E58300D13ABF /* LoginResponse.swift in Sources */,
 				2C004A6626B30D9D00D13ABF /* GetUserNicknameRequest.swift in Sources */,
+				2C004A9326B345C100D13ABF /* LaundryResponse.swift in Sources */,
 				2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */,
 				2C5D01A1268E3ECA00CC6DD4 /* MainTabBarController.swift in Sources */,
 				2CFDA9C7269E0DEC00612EDB /* SettingViewController.swift in Sources */,
@@ -717,6 +732,7 @@
 				2CFDA9BC269DEA4100612EDB /* NowTimeMenuTableViewCell.swift in Sources */,
 				2CF5791D26AD59C9007DBC9C /* TagCollectionViewCell.swift in Sources */,
 				2C004A4F26B2E5DE00D13ABF /* ConstantURL.swift in Sources */,
+				2C004A9726B3492200D13ABF /* LaundryContract.swift in Sources */,
 				2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */,
 				2CEC875B26AF24280073251C /* MainCommentsTableViewCell.swift in Sources */,
 				2CF5792726AD835B007DBC9C /* DeleveryTableViewCell.swift in Sources */,
@@ -732,6 +748,7 @@
 				2CFDA9CD269E0E1200612EDB /* AllPostViewController.swift in Sources */,
 				2C004A7D26B32DAD00D13ABF /* AllPostDataManager.swift in Sources */,
 				2C004A4926B2E55800D13ABF /* LoginRequest.swift in Sources */,
+				2C004A9526B3491700D13ABF /* LaundryDataManager.swift in Sources */,
 				2C004A8F26B342CB00D13ABF /* TaxiDataManager.swift in Sources */,
 				2C5D019F268E39ED00CC6DD4 /* NoticeViewController.swift in Sources */,
 				2C26E64826ACD0AE0086A795 /* AllPostTableViewCell.swift in Sources */,
