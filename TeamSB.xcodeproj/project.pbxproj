@@ -20,6 +20,12 @@
 		2C004A5F26B2FF5D00D13ABF /* NicknameConstract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A5E26B2FF5D00D13ABF /* NicknameConstract.swift */; };
 		2C004A6126B302C200D13ABF /* NicknameSetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6026B302C200D13ABF /* NicknameSetRequest.swift */; };
 		2C004A6326B302F600D13ABF /* NicknameSetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6226B302F600D13ABF /* NicknameSetResponse.swift */; };
+		2C004A6626B30D9D00D13ABF /* GetUserNicknameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6526B30D9D00D13ABF /* GetUserNicknameRequest.swift */; };
+		2C004A6826B30DA600D13ABF /* GetUserNicknameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6726B30DA600D13ABF /* GetUserNicknameResponse.swift */; };
+		2C004A6B26B30E9100D13ABF /* MainContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6A26B30E9100D13ABF /* MainContract.swift */; };
+		2C004A6D26B30E9D00D13ABF /* MainDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6C26B30E9D00D13ABF /* MainDataManager.swift */; };
+		2C004A6F26B3137300D13ABF /* MenuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A6E26B3137300D13ABF /* MenuResponse.swift */; };
+		2C004A7126B3209200D13ABF /* RecentPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A7026B3209200D13ABF /* RecentPostResponse.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -92,6 +98,12 @@
 		2C004A5E26B2FF5D00D13ABF /* NicknameConstract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameConstract.swift; sourceTree = "<group>"; };
 		2C004A6026B302C200D13ABF /* NicknameSetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSetRequest.swift; sourceTree = "<group>"; };
 		2C004A6226B302F600D13ABF /* NicknameSetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSetResponse.swift; sourceTree = "<group>"; };
+		2C004A6526B30D9D00D13ABF /* GetUserNicknameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNicknameRequest.swift; sourceTree = "<group>"; };
+		2C004A6726B30DA600D13ABF /* GetUserNicknameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserNicknameResponse.swift; sourceTree = "<group>"; };
+		2C004A6A26B30E9100D13ABF /* MainContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContract.swift; sourceTree = "<group>"; };
+		2C004A6C26B30E9D00D13ABF /* MainDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataManager.swift; sourceTree = "<group>"; };
+		2C004A6E26B3137300D13ABF /* MenuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuResponse.swift; sourceTree = "<group>"; };
+		2C004A7026B3209200D13ABF /* RecentPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostResponse.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -205,6 +217,34 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		2C004A6426B30D5300D13ABF /* API_Home */ = {
+			isa = PBXGroup;
+			children = (
+				2C004A6526B30D9D00D13ABF /* GetUserNicknameRequest.swift */,
+				2C004A6726B30DA600D13ABF /* GetUserNicknameResponse.swift */,
+				2C004A6E26B3137300D13ABF /* MenuResponse.swift */,
+				2C004A7026B3209200D13ABF /* RecentPostResponse.swift */,
+			);
+			path = API_Home;
+			sourceTree = "<group>";
+		};
+		2C004A6926B30E4F00D13ABF /* HomeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */,
+				2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */,
+				2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */,
+				2CFDA9B3269DEA1400612EDB /* CategoryButtonTableViewCell.xib */,
+				2CFDA9B6269DEA3100612EDB /* RecentPostViewTableViewCell.swift */,
+				2CFDA9B7269DEA3100612EDB /* RecentPostViewTableViewCell.xib */,
+				2CFDA9BA269DEA4100612EDB /* NowTimeMenuTableViewCell.swift */,
+				2CFDA9BB269DEA4100612EDB /* NowTimeMenuTableViewCell.xib */,
+				2CFDA9C0269DF42600612EDB /* RecentPostContentsTableViewCell.swift */,
+				2CFDA9C1269DF42600612EDB /* RecentPostContentsTableViewCell.xib */,
+			);
+			path = HomeTableViewCell;
+			sourceTree = "<group>";
+		};
 		2C22FAF226B158C9003AB22A /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,7 +333,7 @@
 				2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */,
 				2C5D018C268DF80900CC6DD4 /* AppColor */,
 				2C2C4133269A2F8300DB54B5 /* BaseDelegate */,
-				2C5D0190268E209300CC6DD4 /* View */,
+				2C5D0190268E209300CC6DD4 /* View_StoryBoard */,
 				2C2C412E269A2E7100DB54B5 /* API */,
 				2C5D0191268E209B00CC6DD4 /* Controller */,
 				2C004A4726B2E50100D13ABF /* DataManager */,
@@ -309,6 +349,7 @@
 			children = (
 				2C004A4E26B2E5DE00D13ABF /* ConstantURL.swift */,
 				2C004A5026B2E88F00D13ABF /* API_Login */,
+				2C004A6426B30D5300D13ABF /* API_Home */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -330,7 +371,7 @@
 			path = AppColor;
 			sourceTree = "<group>";
 		};
-		2C5D0190268E209300CC6DD4 /* View */ = {
+		2C5D0190268E209300CC6DD4 /* View_StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
 				2C5D01A9268E4B7F00CC6DD4 /* Login.storyboard */,
@@ -338,12 +379,13 @@
 				2C22FAF726B159FC003AB22A /* Post.storyboard */,
 				2C22FAF926B15A8A003AB22A /* In_Post.storyboard */,
 			);
-			path = View;
+			path = View_StoryBoard;
 			sourceTree = "<group>";
 		};
 		2C5D0191268E209B00CC6DD4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */,
 				2C5E99882690E74300E3504A /* Login */,
 				2C5E99892690E76500E3504A /* Main */,
 			);
@@ -366,7 +408,6 @@
 		2C5E99892690E76500E3504A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */,
 				2C5E998A2690E77700E3504A /* Home */,
 				2C5E998B2690E86D00E3504A /* Calendar */,
 				2C5E998C2690E88100E3504A /* Notice */,
@@ -383,16 +424,9 @@
 			isa = PBXGroup;
 			children = (
 				2CFDA9BE269DEFD300612EDB /* MainBaseViewController.swift */,
-				2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */,
-				2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */,
-				2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */,
-				2CFDA9B3269DEA1400612EDB /* CategoryButtonTableViewCell.xib */,
-				2CFDA9B6269DEA3100612EDB /* RecentPostViewTableViewCell.swift */,
-				2CFDA9B7269DEA3100612EDB /* RecentPostViewTableViewCell.xib */,
-				2CFDA9BA269DEA4100612EDB /* NowTimeMenuTableViewCell.swift */,
-				2CFDA9BB269DEA4100612EDB /* NowTimeMenuTableViewCell.xib */,
-				2CFDA9C0269DF42600612EDB /* RecentPostContentsTableViewCell.swift */,
-				2CFDA9C1269DF42600612EDB /* RecentPostContentsTableViewCell.xib */,
+				2C004A6C26B30E9D00D13ABF /* MainDataManager.swift */,
+				2C004A6A26B30E9100D13ABF /* MainContract.swift */,
+				2C004A6926B30E4F00D13ABF /* HomeTableViewCell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -555,11 +589,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C004A6B26B30E9100D13ABF /* MainContract.swift in Sources */,
 				2C004A6126B302C200D13ABF /* NicknameSetRequest.swift in Sources */,
 				2CFDA9C9269E0DF800612EDB /* WriteViewController.swift in Sources */,
 				2CFDA9C2269DF42600612EDB /* RecentPostContentsTableViewCell.swift in Sources */,
 				2C004A5726B2F43200D13ABF /* String.swift in Sources */,
 				2C004A4B26B2E58300D13ABF /* LoginResponse.swift in Sources */,
+				2C004A6626B30D9D00D13ABF /* GetUserNicknameRequest.swift in Sources */,
 				2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */,
 				2C5D01A1268E3ECA00CC6DD4 /* MainTabBarController.swift in Sources */,
 				2CFDA9C7269E0DEC00612EDB /* SettingViewController.swift in Sources */,
@@ -568,6 +604,7 @@
 				2C004A5B26B2FD3700D13ABF /* NicknameCheckResponse.swift in Sources */,
 				2C004A6326B302F600D13ABF /* NicknameSetResponse.swift in Sources */,
 				2CFDA9D3269E15EA00612EDB /* TaxiViewController.swift in Sources */,
+				2C004A6F26B3137300D13ABF /* MenuResponse.swift in Sources */,
 				2C004A5D26B2FE4900D13ABF /* NicknameDataManager.swift in Sources */,
 				2C004A5F26B2FF5D00D13ABF /* NicknameConstract.swift in Sources */,
 				2C5D0193268E20E000CC6DD4 /* LoginViewController.swift in Sources */,
@@ -580,6 +617,7 @@
 				2CFDA9CF269E15DA00612EDB /* DeleveryViewController.swift in Sources */,
 				2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */,
 				2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */,
+				2C004A6826B30DA600D13ABF /* GetUserNicknameResponse.swift in Sources */,
 				2CF5793526AD83AA007DBC9C /* TaxiTableViewCell.swift in Sources */,
 				2CFDA9D1269E15E300612EDB /* ParcelViewController.swift in Sources */,
 				2C5D018E268DF81D00CC6DD4 /* SBColor.swift in Sources */,
@@ -590,7 +628,9 @@
 				2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */,
 				2CEC875B26AF24280073251C /* MainCommentsTableViewCell.swift in Sources */,
 				2CF5792726AD835B007DBC9C /* DeleveryTableViewCell.swift in Sources */,
+				2C004A7126B3209200D13ABF /* RecentPostResponse.swift in Sources */,
 				2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */,
+				2C004A6D26B30E9D00D13ABF /* MainDataManager.swift in Sources */,
 				2C004A5226B2E9B000D13ABF /* LoginContract.swift in Sources */,
 				2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */,
 				2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */,

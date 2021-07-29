@@ -16,7 +16,7 @@ class NicknameDataManager {
     func postNicknameCheck(_ parameters: NicknameCheckRequest, viewController: NickNameViewController) {
         AF.request("\(ConstantURL.BASE_URL)/nicknameCheck", method: .post, parameters: parameters)
             .validate()
-            .responseDecodable(of: LoginResponse.self) { [self] response in
+            .responseDecodable(of: NicknameSetResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
                     print(">>URL: \(ConstantURL.BASE_URL)/nicknameCheck")
@@ -38,7 +38,7 @@ class NicknameDataManager {
     func postNicknameSet(_ parameters: NicknameSetRequest, viewController: NickNameViewController) {
         AF.request("\(ConstantURL.BASE_URL)/nicknameSet", method: .post, parameters: parameters)
             .validate()
-            .responseDecodable(of: LoginResponse.self) { [self] response in
+            .responseDecodable(of: NicknameSetResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
                     print(">>URL: \(ConstantURL.BASE_URL)/nicknameSet")
