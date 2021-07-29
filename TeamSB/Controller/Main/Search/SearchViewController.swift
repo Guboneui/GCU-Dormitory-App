@@ -333,7 +333,29 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = data["title"] as? String
         cell.timeLabel.text = data["timeStamp"] as? String
         cell.contentsLabel.text = data["text"] as? String
+        cell.selectionStyle = .none
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        
+        let data = saveData[indexPath.row] as! NSDictionary
+        
+        vc.getPostNumber = data["no"] as! Int
+        vc.getTitle = data["title"] as! String
+        vc.getCategory = data["category"] as! String
+        vc.getTime = data["timeStamp"] as! String
+        vc.getNickname = data["userNickname"] as! String
+        vc.getContents = data["text"] as! String
+        vc.getShowCount = data["viewCount"] as! Int
+        vc.getUserID = data["userId"] as! String
+        
+        //vc.delegate = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -348,10 +370,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 postSearchWithCategory(category: category, keyword: searchKeyWord,page: currentPage)
             }
         }
-      
     }
 }
-
 
 extension SearchViewController: UpdateData {
     func update() {
