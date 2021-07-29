@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class TaxiViewController: UIViewController {
 
@@ -18,6 +19,25 @@ class TaxiViewController: UIViewController {
     
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
+    
+    var loading: NVActivityIndicatorView!
+    
+//MARK: -생명주기
+    override func loadView() {
+        super.loadView()
+        
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,12 +120,14 @@ class TaxiViewController: UIViewController {
 //MARK: -API
     
     func getTaxi(page: Int) {
+        loading.startAnimating()
         
         currentPage += 1
         
         guard
             isLoadedAllData == false
         else {
+            loading.stopAnimating()
             return
         }
         
@@ -120,7 +142,7 @@ class TaxiViewController: UIViewController {
                     print(">> 택시 게시글 API 호출 성공")
                     
                     mainTableView.refreshControl?.endRefreshing()
-                    
+                    loading.stopAnimating()
                     let result = jsonObj.object(forKey: "check") as! Bool
                     if result == true {
                         let message = jsonObj.object(forKey: "message") as! String
@@ -128,12 +150,12 @@ class TaxiViewController: UIViewController {
                         let content = jsonObj.object(forKey: "content") as! NSArray
                         
                         guard content.count > 0 else {
+                            loading.stopAnimating()
                             print(">> 더이상 읽어올 게시글 없음")
                             print(">> 총 읽어온 게시글 개수 = \(saveData.count)")
                             self.isLoadedAllData = true
                             return
                         }
-                        
                         
                         for i in 0..<content.count {
                             saveData.append(content[i])
@@ -142,7 +164,6 @@ class TaxiViewController: UIViewController {
                         print(">> 읽어온 게시글의 개수: \(content.count), 현재 페이지\(page+1)")
                         mainTableView.reloadData()
                     }
-                  
                 }
             case .failure(let error):
                 if let jsonObj = error as? NSDictionary {

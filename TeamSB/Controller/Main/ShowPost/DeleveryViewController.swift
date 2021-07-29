@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class DeleveryViewController: UIViewController {
 
@@ -18,6 +19,25 @@ class DeleveryViewController: UIViewController {
     var searchButton: UIBarButtonItem!
     
     @IBOutlet weak var mainTableView: UITableView!
+    
+    var loading: NVActivityIndicatorView!
+    
+//MARK: -생명주기
+    override func loadView() {
+        super.loadView()
+        
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,12 +120,13 @@ class DeleveryViewController: UIViewController {
  
 //MARK: -API
     func getDelivary(page: Int) {
+        loading.startAnimating()
         
         currentPage += 1
         
-        guard
-            isLoadedAllData == false
+        guard isLoadedAllData == false
         else {
+            loading.stopAnimating()
             return
         }
         
@@ -120,7 +141,7 @@ class DeleveryViewController: UIViewController {
                     print(">> 배달 게시글 API 호출 성공")
                     
                     mainTableView.refreshControl?.endRefreshing()
-                    
+                    loading.stopAnimating()
                     let result = jsonObj.object(forKey: "check") as! Bool
                     if result == true {
                         let message = jsonObj.object(forKey: "message") as! String
@@ -128,6 +149,7 @@ class DeleveryViewController: UIViewController {
                         let content = jsonObj.object(forKey: "content") as! NSArray
                         
                         guard content.count > 0 else {
+                            loading.stopAnimating()
                             print(">> 더이상 읽어올 게시글 없음")
                             print(">> 총 읽어온 게시글 개수 = \(saveData.count)")
                             self.isLoadedAllData = true

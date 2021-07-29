@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class LaundryViewController: UIViewController {
 
@@ -18,6 +19,25 @@ class LaundryViewController: UIViewController {
     
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
+    
+    var loading: NVActivityIndicatorView!
+    
+//MARK: -생명주기
+    override func loadView() {
+        super.loadView()
+        
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,12 +118,14 @@ class LaundryViewController: UIViewController {
     
 //MARK: -API
     func getLaundry(page: Int) {
+        loading.startAnimating()
         
         currentPage += 1
         
         guard
             isLoadedAllData == false
         else {
+            loading.stopAnimating()
             return
         }
         
@@ -116,7 +138,7 @@ class LaundryViewController: UIViewController {
                 if let jsonObj = value as? NSDictionary {
                     print(">> \(URL)")
                     print(">> 빨래 게시글 API 호출 성공")
-                    
+                    loading.stopAnimating()
                     mainTableView.refreshControl?.endRefreshing()
                     
                     let result = jsonObj.object(forKey: "check") as! Bool
@@ -126,6 +148,7 @@ class LaundryViewController: UIViewController {
                         let content = jsonObj.object(forKey: "content") as! NSArray
                         
                         guard content.count > 0 else {
+                            loading.stopAnimating()
                             print(">> 더이상 읽어올 게시글 없음")
                             print(">> 총 읽어온 게시글 개수 = \(saveData.count)")
                             self.isLoadedAllData = true
@@ -228,7 +251,6 @@ extension LaundryViewController: UITableViewDelegate, UITableViewDataSource {
 //
 //    }
 }
-
 
 extension LaundryViewController: UpdateData {
     func update() {
