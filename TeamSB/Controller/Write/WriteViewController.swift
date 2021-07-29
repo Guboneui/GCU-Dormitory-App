@@ -120,6 +120,7 @@ extension WriteViewController {
         dropDown.topOffset = CGPoint(x: 0, y: -(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
         dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
+            dropDownImage.image = UIImage(systemName: "arrowtriangle.down.fill")
             self.categoryTitle.text = categoryArray[index]
         }
         
@@ -144,7 +145,6 @@ extension WriteViewController {
     
 
 }
-
 
 //MARK: -스토리보드 Action 함수
 extension WriteViewController {

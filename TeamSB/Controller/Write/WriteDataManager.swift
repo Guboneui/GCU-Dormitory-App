@@ -23,6 +23,7 @@ class WriteDataManager {
                     view.stopLoading()
                     if response.check == true {
                         view.popView(message: response.message)
+                        print(">> 글쓰기 완료")
                     } else {
                         view.showAlert(message: response.message)
                     }
