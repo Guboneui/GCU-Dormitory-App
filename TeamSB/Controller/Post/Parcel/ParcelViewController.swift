@@ -12,20 +12,38 @@ import NVActivityIndicatorView
 class ParcelViewController: UIViewController {
 
     @IBOutlet weak var mainTableView: UITableView!
-    
-    var currentPage = 0
-    var isLoadedAllData = false
-    var saveData = [Any]()
-    
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
-    
     var loading: NVActivityIndicatorView!
+    
+    lazy var dataManager: ParcelDataManager = ParcelDataManager(view: self)
+    var parcelPost: [Parcel] = []
+    var currentPage = 0
+    var isLoadedAllData = false
+    
     
 //MARK: -생명주기
     override func loadView() {
         super.loadView()
-        
+        setLoading()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        dataManager.getAllPost(viewController: self, page: currentPage)
+        setTableView()
+        setNavegationBarItem()
+      
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItemUse()
+    }
+    
+//MARK: -기본 UI 함수
+    func setLoading() {
         loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
         loading.translatesAutoresizingMaskIntoConstraints = false
         
@@ -36,25 +54,8 @@ class ParcelViewController: UIViewController {
             loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        getParcel(page: currentPage)
-        setTableView()
-        setNavegationBarItem()
-      
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationItemUse()
-    }
-    
-//MARK: -기본 UI 함수
     func setNavegationBarItem() {
         self.navigationItem.title = "택배"
         self.tabBarController?.tabBar.isHidden = true
@@ -90,9 +91,9 @@ class ParcelViewController: UIViewController {
         print(">> 상단 새로고침")
         currentPage = 0
         self.isLoadedAllData = false
-        saveData.removeAll()
+        parcelPost.removeAll()
         mainTableView.reloadData()
-        getParcel(page: currentPage)
+        dataManager.getAllPost(viewController: self, page: currentPage)
         
     }
     
@@ -119,94 +120,30 @@ class ParcelViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-//MARK: -API
-    func getParcel(page: Int) {
-        loading.startAnimating()
-        
-        currentPage += 1
-        
-        guard
-            isLoadedAllData == false
-        else {
-            loading.stopAnimating()
-            return
-        }
-        
-        let URL = "http://13.209.10.30:3000/home/parcel?page=\(currentPage)"
-        let alamo = AF.request(URL, method: .get, parameters: nil).validate(statusCode: 200...500)
-        
-        alamo.responseJSON { [self] (response) in
-            switch response.result {
-            case .success(let value):
-                if let jsonObj = value as? NSDictionary {
-                    print(">> \(URL)")
-                    print(">> 택배 게시글 API 호출 성공")
-                    
-                    mainTableView.refreshControl?.endRefreshing()
-                    loading.stopAnimating()
-                    let result = jsonObj.object(forKey: "check") as! Bool
-                    if result == true {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        print(">> \(message)")
-                        let content = jsonObj.object(forKey: "content") as! NSArray
-                        
-                        guard content.count > 0 else {
-                            loading.stopAnimating()
-                            print(">> 더이상 읽어올 게시글 없음")
-                            print(">> 총 읽어온 게시글 개수 = \(saveData.count)")
-                            self.isLoadedAllData = true
-                            return
-                        }
-                        
-                        
-                        for i in 0..<content.count {
-                            saveData.append(content[i])
-                        }
-                        print(">> \(URL)")
-                        print(">> 읽어온 게시글의 개수: \(content.count), 현재 페이지\(page+1)")
-                        mainTableView.reloadData()
-                    } else {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-                        alert.addAction(okButton)
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                  
-                }
-            case .failure(let error):
-                if let jsonObj = error as? NSDictionary {
-                    print("서버통신 실패")
-                    print(jsonObj)
-                }
-                
-            }
-            
-        }
-    }
+
 }
 
 extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return saveData.count
+        return parcelPost.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ParcelTableViewCell", for: indexPath) as! ParcelTableViewCell
         
-        if saveData.count != 0 {
-            let data = saveData[indexPath.row] as! NSDictionary
+        if parcelPost.count != 0 {
+            let data = parcelPost[indexPath.row]
             
-            cell.titleLabel.text = data["title"] as? String
-            cell.timeLabel.text = data["timeStamp"] as? String
-            cell.contentsLabel.text = data["text"] as? String
+            cell.titleLabel.text = data.title
+            cell.timeLabel.text = data.timeStamp
+            cell.contentsLabel.text = data.text
             
             var hashString = ""
             
-            let hashData = data["hash"] as! NSArray
+            let hashData = data.hash
             
             for i in 0..<hashData.count {
-                hashString += "#" + "\(hashData[i] as! String) "
+                hashString += "#" + "\(hashData[i]) "
             }
             
             cell.tagLabel.text = hashString
@@ -219,8 +156,8 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.selectionStyle = .none
         
-        if indexPath.row == saveData.count - 1 {
-            getParcel(page: currentPage)
+        if indexPath.row == parcelPost.count - 1 {
+            dataManager.getAllPost(viewController: self, page: currentPage)
         }
         
         return cell
@@ -229,16 +166,16 @@ extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
         let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
         
-        let data = saveData[indexPath.row] as! NSDictionary
+        let data = parcelPost[indexPath.row]
         
-        vc.getPostNumber = data["no"] as! Int
-        vc.getTitle = data["title"] as! String
-        vc.getCategory = data["category"] as! String
-        vc.getTime = data["timeStamp"] as! String
-        vc.getNickname = data["userNickname"] as! String
-        vc.getContents = data["text"] as! String
-        vc.getShowCount = data["viewCount"] as! Int
-        vc.getUserID = data["userId"] as! String
+        vc.getPostNumber = data.no
+        vc.getTitle = data.title
+        vc.getCategory = data.category
+        vc.getTime = data.timeStamp
+        vc.getNickname = data.userNickname
+        vc.getContents = data.text
+        vc.getShowCount = data.viewCount
+        vc.getUserID = data.userId
         
         //vc.delegate = self
         
@@ -261,7 +198,20 @@ extension ParcelViewController: UpdateData {
         mainTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         currentPage = 0
         isLoadedAllData = false
-        saveData = []
-        getParcel(page: currentPage)
+        parcelPost.removeAll()
+        dataManager.getAllPost(viewController: self, page: currentPage)
+    }
+}
+
+//MARK: -DataManager 연결 함수
+extension ParcelViewController: ParcelView {
+    func stopRefreshControl() {
+        self.mainTableView.refreshControl?.endRefreshing()
+    }
+    func startLoading() {
+        self.loading.startAnimating()
+    }
+    func stopLoading() {
+        self.loading.stopAnimating()
     }
 }

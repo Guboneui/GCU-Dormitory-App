@@ -32,7 +32,7 @@ class DeleveryViewController: UIViewController {
         
         setTableView()
         setNavigationBarItem()
-        dataManager.getAllPost(viewController: self, page: currentPage)
+        dataManager.getDeleveryPost(viewController: self, page: currentPage)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +95,7 @@ extension DeleveryViewController {
         self.isLoadedAllData = false
         deleveryPost.removeAll()
         mainTableView.reloadData()
-        dataManager.getAllPost(viewController: self, page: currentPage)
+        dataManager.getDeleveryPost(viewController: self, page: currentPage)
         
     }
     
@@ -159,7 +159,7 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         
         if indexPath.row == deleveryPost.count - 1 {
-            dataManager.getAllPost(viewController: self, page: currentPage)
+            dataManager.getDeleveryPost(viewController: self, page: currentPage)
         }
         
         return cell
@@ -204,7 +204,7 @@ extension DeleveryViewController: UpdateData {
         currentPage = 0
         isLoadedAllData = false
         deleveryPost.removeAll()
-        dataManager.getAllPost(viewController: self, page: currentPage)
+        dataManager.getDeleveryPost(viewController: self, page: currentPage)
     }
 }
 

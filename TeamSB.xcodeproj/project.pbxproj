@@ -32,6 +32,9 @@
 		2C004A8126B3375800D13ABF /* DeleveryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8026B3375800D13ABF /* DeleveryResponse.swift */; };
 		2C004A8326B3377D00D13ABF /* DeleveryDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8226B3377D00D13ABF /* DeleveryDataManager.swift */; };
 		2C004A8526B3378500D13ABF /* DeleveryContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8426B3378500D13ABF /* DeleveryContract.swift */; };
+		2C004A8726B33CDD00D13ABF /* ParcelDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8626B33CDD00D13ABF /* ParcelDataManager.swift */; };
+		2C004A8926B33CE600D13ABF /* ParcelContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8826B33CE600D13ABF /* ParcelContract.swift */; };
+		2C004A8B26B33D8200D13ABF /* ParcelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A8A26B33D8200D13ABF /* ParcelResponse.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -116,6 +119,9 @@
 		2C004A8026B3375800D13ABF /* DeleveryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleveryResponse.swift; sourceTree = "<group>"; };
 		2C004A8226B3377D00D13ABF /* DeleveryDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleveryDataManager.swift; sourceTree = "<group>"; };
 		2C004A8426B3378500D13ABF /* DeleveryContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleveryContract.swift; sourceTree = "<group>"; };
+		2C004A8626B33CDD00D13ABF /* ParcelDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelDataManager.swift; sourceTree = "<group>"; };
+		2C004A8826B33CE600D13ABF /* ParcelContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelContract.swift; sourceTree = "<group>"; };
+		2C004A8A26B33D8200D13ABF /* ParcelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelResponse.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -317,6 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				2CFDA9D0269E15E300612EDB /* ParcelViewController.swift */,
+				2C004A8626B33CDD00D13ABF /* ParcelDataManager.swift */,
+				2C004A8826B33CE600D13ABF /* ParcelContract.swift */,
 				2CF5792F26AD83A1007DBC9C /* ParcelTableViewCell.swift */,
 				2CF5793026AD83A1007DBC9C /* ParcelTableViewCell.xib */,
 			);
@@ -328,6 +336,7 @@
 			children = (
 				2C004A7A26B32D6400D13ABF /* AllPostResponse.swift */,
 				2C004A8026B3375800D13ABF /* DeleveryResponse.swift */,
+				2C004A8A26B33D8200D13ABF /* ParcelResponse.swift */,
 			);
 			path = API_Post;
 			sourceTree = "<group>";
@@ -669,6 +678,8 @@
 				2C5D0195268E20EC00CC6DD4 /* NickNameViewController.swift in Sources */,
 				2CFDA9BF269DEFD300612EDB /* MainBaseViewController.swift in Sources */,
 				2C004A5B26B2FD3700D13ABF /* NicknameCheckResponse.swift in Sources */,
+				2C004A8726B33CDD00D13ABF /* ParcelDataManager.swift in Sources */,
+				2C004A8B26B33D8200D13ABF /* ParcelResponse.swift in Sources */,
 				2C004A6326B302F600D13ABF /* NicknameSetResponse.swift in Sources */,
 				2CFDA9D3269E15EA00612EDB /* TaxiViewController.swift in Sources */,
 				2C004A6F26B3137300D13ABF /* MenuResponse.swift in Sources */,
@@ -682,6 +693,7 @@
 				2C004A5926B2FD3000D13ABF /* NicknameCheckRequest.swift in Sources */,
 				2C004A8126B3375800D13ABF /* DeleveryResponse.swift in Sources */,
 				2CFDA9D5269E15F600612EDB /* LaundryViewController.swift in Sources */,
+				2C004A8926B33CE600D13ABF /* ParcelContract.swift in Sources */,
 				2C004A5526B2F24500D13ABF /* UIViewController.swift in Sources */,
 				2CFDA9CF269E15DA00612EDB /* DeleveryViewController.swift in Sources */,
 				2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */,
