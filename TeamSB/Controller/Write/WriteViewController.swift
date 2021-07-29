@@ -19,7 +19,6 @@ protocol UpdateData: AnyObject {
 
 class WriteViewController: UIViewController {
     
-    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var dropdownBaseView: UIView!
@@ -50,11 +49,33 @@ class WriteViewController: UIViewController {
     
     var loading: NVActivityIndicatorView!
     
+    lazy var dataManager: WriteDataManager = WriteDataManager(view: self)
     
 //MARK: -생명주기
     override func loadView() {
         super.loadView()
+        setLoading()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setDesign()
+        setDropdown()
+        setCollectionView()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNaviTab()
+    }
+
+}
+
+//MARK: -기본 UI 정리
+extension WriteViewController {
+    
+    func setLoading() {
         loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
         loading.translatesAutoresizingMaskIntoConstraints = false
         
@@ -67,24 +88,12 @@ class WriteViewController: UIViewController {
         ])
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setDesign()
-        setDropdown()
-        setCollectionView()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func setNaviTab() {
         self.navigationItem.title = "글쓰기"
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    
-    //MARK: -기본 UI 정리
     
     func setDesign() {
         let ban = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
@@ -117,7 +126,7 @@ class WriteViewController: UIViewController {
         dropDown.cancelAction = { [unowned self] in
             dropDownImage.image = UIImage(systemName: "arrowtriangle.down.fill")
         }
-
+        
         dropDown.willShowAction = { [unowned self] in
             dropDownImage.image = UIImage(systemName: "arrowtriangle.up.fill")
         }
@@ -133,40 +142,54 @@ class WriteViewController: UIViewController {
         
     }
     
+
+}
+
+
 //MARK: -스토리보드 Action 함수
+extension WriteViewController {
     
     @IBAction func categoryOptions(_ sender: Any) {
         dropDown.show()
     }
     
     @objc func saveButtonAction() {
-        if titleTextField.text == "" || titleTextField.text == nil {
-            let alert = UIAlertController(title: "제목을 입력 해주세요.", message: "", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true, completion: nil)
-            
-        } else if categoryTitle.text == "카테고리" || categoryTitle.text == nil {
-            let alert = UIAlertController(title: "카테고리를 선택 해주세요.", message: "", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true, completion: nil)
-            
-        } else if contentsTextView.text == "내용을 입력 해주세요." || contentsTextView.text == nil {
-            let alert = UIAlertController(title: "내용을 입력 해주세요.", message: "", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true, completion: nil)
-            
-        } else {
-            loading.startAnimating()
-            if tagArray.count == 0 {
-                postWriteArticleNoHash()
-            } else {
-                postWriteArticle()
-            }
-
+        
+        guard let title = titleTextField.text?.trim, title.isExists else {
+            self.presentAlert(title: "제목을 입력 해주세요")
+            return
         }
+        
+        guard categoryTitle.text != "선택" else {
+            self.presentAlert(title: "카테고리를 선택 해주세요")
+            return
+        }
+        
+        guard contentsTextView.text != "내용을 입력 해주세요." else {
+            self.presentAlert(title: "내용을 입력 해주세요.")
+            return
+        }
+        
+        self.loading.startAnimating()
+        
+        var category = categoryTitle.text!
+        if categoryTitle.text == "배달" {
+            category = "delivery"
+        } else if categoryTitle.text == "택배" {
+            category = "parcel"
+        } else if categoryTitle.text == "택시" {
+            category = "taxi"
+        } else if categoryTitle.text == "빨래" {
+            category = "laundry"
+        }
+        
+        
+        let userId = UserDefaults.standard.string(forKey: "userID")!
+        let text = contentsTextView.text!
+        
+        let param = WriteArticleRequest(title: title, category: category, userId: userId, text: text, hash: tagArray)
+        dataManager.postWriteArticle(param, viewController: self)
+        
     }
     
     @IBAction func addTagButtonAction(_ sender: Any) {
@@ -192,147 +215,9 @@ class WriteViewController: UIViewController {
             }
         }
     }
-    
-//MARK: -API
-    
-    func postWriteArticle() {
-        let URL = "http://13.209.10.30:3000/writeArticle"
-        
-        var category = ""
-        if categoryTitle.text == "배달" {
-            category = "delivery"
-        } else if categoryTitle.text == "택배" {
-            category = "parcel"
-        } else if categoryTitle.text == "택시" {
-            category = "taxi"
-        } else if categoryTitle.text == "빨래" {
-            category = "laundry"
-        }
-       
-        
-        let PARAM: Parameters = [
-            "title": titleTextField.text!,
-            "category": category,
-            "userId": UserDefaults.standard.string(forKey: "userID")!,
-            "text": contentsTextView.text!,
-            "hash": tagArray,
-        ]
-        
-        let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
-        
-        alamo.responseJSON{ [self](response) in
-            
-            switch response.result {
-            case .success(let value):
-                if let jsonObj = value as? NSDictionary {
-                    print(">> \(URL)")
-                    print(">> 게시글 작성 API 호출 성공")
-                    loading.stopAnimating()
-                    
-                    let result = jsonObj.object(forKey: "check") as! Bool
-                    if result == true {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        print(">> \(message)")
-                        
-                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-                            
-                            delegate?.update()
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                        alert.addAction(okButton)
-                        self.present(alert, animated: true, completion: nil)
-                        
-                    } else {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        
-                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-                        alert.addAction(okButton)
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                    
-                }
-                
-            case .failure(let error) :
-                if let jsonObj = error as? NSDictionary {
-                    print("서버통신 실패")
-                    print(jsonObj)
-                }
-            }
-        }
-    }
-    
-    
-    
-    func postWriteArticleNoHash() {
-        let URL = "http://13.209.10.30:3000/writeArticle"
-        
-        var category = ""
-        if categoryTitle.text == "배달" {
-            category = "delivery"
-        } else if categoryTitle.text == "택배" {
-            category = "parcel"
-        } else if categoryTitle.text == "택시" {
-            category = "taxi"
-        } else if categoryTitle.text == "빨래" {
-            category = "laundry"
-        }
-       
-        
-        let PARAM: Parameters = [
-            "title": titleTextField.text!,
-            "category": category,
-            "userId": UserDefaults.standard.string(forKey: "userID")!,
-            "text": contentsTextView.text!,
-        ]
-        
-        let alamo = AF.request(URL, method: .post, parameters: PARAM).validate(statusCode: 200...500)
-        
-        alamo.responseJSON{ [self](response) in
-            
-            switch response.result {
-            case .success(let value):
-                if let jsonObj = value as? NSDictionary {
-                    print(">> \(URL)")
-                    print(">> 게시글 작성 API 호출 성공")
-                    loading.stopAnimating()
-                    
-                    let result = jsonObj.object(forKey: "check") as! Bool
-                    if result == true {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        print(">> \(message)")
-                        
-                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-                            
-                            delegate?.update()
-                            self.navigationController?.popViewController(animated: true)
-                        })
-                        alert.addAction(okButton)
-                        self.present(alert, animated: true, completion: nil)
-                        
-                    } else {
-                        let message = jsonObj.object(forKey: "message") as! String
-                        
-                        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-                        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-                        alert.addAction(okButton)
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                    
-                }
-                
-            case .failure(let error) :
-                if let jsonObj = error as? NSDictionary {
-                    print("서버통신 실패")
-                    print(jsonObj)
-                }
-            }
-        }
-    }
 }
-        
+      
+//MARK: -TextView PlaceHolder 커스텀
 extension WriteViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         
@@ -363,6 +248,7 @@ extension WriteViewController: UITextViewDelegate {
     }
 }
 
+//MARK: -hash collectionView 설정
 extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -398,6 +284,7 @@ extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
 }
 
+//MARK: -hash collectionView FlowLayout 설정(좌측 정렬)
 class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -418,4 +305,28 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
         return attributes
     }
+}
+
+//MARK: -DataManager 연결 함수
+extension WriteViewController: WriteView {
+    func popView(message: String) {
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
+            
+            delegate?.update()
+            self.navigationController?.popViewController(animated: true)
+        })
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert(message: String) {
+        self.presentAlert(title: message)
+    }
+    
+    func stopLoading() {
+        self.loading.stopAnimating()
+    }
+    
+    
 }
