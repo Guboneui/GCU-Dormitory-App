@@ -29,7 +29,7 @@ class CalendarDataManager {
                         
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/calmenu")
+                    print(">> URL: \(ConstantURL.BASE_URL)/calmenu")
                     print(">> \(error.localizedDescription)")
             }
         }

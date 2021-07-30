@@ -84,7 +84,13 @@ extension BanPopUPViewController: DetailPostView {
     
     func stopRefreshControl() {}
     
-    func popView() {
-        self.dismiss(animated: false, completion: nil)
+    func popView(message: String) {
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
+            self.dismiss(animated: false, completion: nil)
+        })
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }

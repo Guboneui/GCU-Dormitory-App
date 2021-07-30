@@ -55,7 +55,30 @@ class DeleveryDataManager {
                         
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/home/delivery?page=\(page)")
+                    print(">> URL: \(ConstantURL.BASE_URL)/home/delivery?page=\(page)")
+                    print(">> \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func postExist(_ parameters: ExistsArticleRequest, viewController: DeleveryViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/accessArticle/detail", method: .post, parameters: parameters)
+            .validate()
+            .responseDecodable(of: ExistsArticleResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    view.stopLoading()
+                    if response.check == true {
+                        print(">> 존재하는 글")
+                        view.goArticle()
+                    } else {
+                        print(">> 삭제 또는 신고 된 글")
+                        viewController.presentAlert(title: response.message)
+                    }
+                case .failure(let error):
+                    view.stopLoading()
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
                     print(">> \(error.localizedDescription)")
             }
         }

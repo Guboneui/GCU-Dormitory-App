@@ -10,4 +10,5 @@ protocol LaundryView {
     func stopRefreshControl()
     func startLoading()
     func stopLoading()
+    func goArticle()
 }

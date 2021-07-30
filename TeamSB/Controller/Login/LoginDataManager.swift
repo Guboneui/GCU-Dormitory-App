@@ -19,7 +19,7 @@ class LoginDataManager {
             .responseDecodable(of: LoginResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/login")
+                    print(">> URL: \(ConstantURL.BASE_URL)/login")
                     view.stopLoading()
                     if response.check == true {                        
                         if response.nickname! {
@@ -35,7 +35,7 @@ class LoginDataManager {
                     }
                 case .failure(let error):
                     view.stopLoading()
-                    print(">>URL: \(ConstantURL.BASE_URL)/login")
+                    print(">> URL: \(ConstantURL.BASE_URL)/login")
                     view.showAlert(message: "서버 연결 실패")
                     print(">> \(error.localizedDescription)")
             }

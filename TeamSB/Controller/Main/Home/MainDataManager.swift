@@ -27,7 +27,7 @@ class MainDataManager {
                         print(">> 유저 닉네임 새로고침 실패")
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/getUser/nickname")
+                    print(">> URL: \(ConstantURL.BASE_URL)/getUser/nickname")
                     print(">> \(error.localizedDescription)")
             }
         }
@@ -50,7 +50,7 @@ class MainDataManager {
                         
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/calmenu")
+                    print(">> URL: \(ConstantURL.BASE_URL)/calmenu")
                     print(">> \(error.localizedDescription)")
             }
         }
@@ -74,7 +74,7 @@ class MainDataManager {
                         
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/home/recentPost")
+                    print(">> URL: \(ConstantURL.BASE_URL)/home/recentPost")
                     print(">> \(error.localizedDescription)")
             }
         }

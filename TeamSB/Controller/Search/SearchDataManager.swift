@@ -30,7 +30,7 @@ class SearchDataManager {
                 switch response.result {
                 case .success(let response):
                     print(">> 카테고리가 선택된 게시글 검색")
-                    print(">>URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
+                    print(">> URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
                     view.stopLoading()
                     if response.check == true, let result = response.content {
                         if viewController.currentPage == 1 && result.count == 0 {
@@ -55,7 +55,7 @@ class SearchDataManager {
                     }
                 case .failure(let error):
                     view.stopLoading()
-                    print(">>URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
+                    print(">> URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
                     print(">> \(error.localizedDescription)")
             }
         }
@@ -78,7 +78,7 @@ class SearchDataManager {
                 switch response.result {
                 case .success(let response):
                     print(">> 전체 검색")
-                    print(">>URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
+                    print(">> URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
                     view.stopLoading()
                     if response.check == true, let result = response.content {
                         if viewController.currentPage == 1 && result.count == 0 {
@@ -103,7 +103,7 @@ class SearchDataManager {
                     }
                 case .failure(let error):
                     view.stopLoading()
-                    print(">>URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
+                    print(">> URL: \(ConstantURL.BASE_URL)/search?page=\(viewController.currentPage)")
                     print(">> \(error.localizedDescription)")
             }
         }

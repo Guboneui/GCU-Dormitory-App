@@ -322,7 +322,7 @@ extension MainBaseViewController: MainView {
 
 
                 } else {
-                    firstTimeString = "잘 시간 이에요"
+                    firstTimeString = "하루를 마무리 할 시간이에요"
                     firstMenuString = "오늘 메뉴는\n어떠셨나요??"
                     baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
         

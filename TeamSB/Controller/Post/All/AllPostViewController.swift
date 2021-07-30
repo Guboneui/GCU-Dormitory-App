@@ -21,6 +21,9 @@ class ShowMoreViewController: UIViewController {
     var currentPage = 0
     var isLoadedAllData = false
     
+    var cellIdx: Int?
+    
+    
 //MARK: -생명주기
     override func loadView() {
         super.loadView()
@@ -170,35 +173,15 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        self.cellIdx = indexPath.row
         
         let data = allPost[indexPath.row]
-        
-        vc.getPostNumber = data.no
-        vc.getTitle = data.title
-        vc.getCategory = data.category
-        vc.getTime = data.timeStamp
-        vc.getNickname = data.userNickname
-        vc.getContents = data.text
-        vc.getShowCount = data.viewCount
-        vc.getUserID = data.userId
-        
-        //vc.delegate = self
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+        let param = ExistsArticleRequest(no: data.no)
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        let offsetY = scrollView.contentOffset.y
-//        let contentHeight = scrollView.contentSize.height
-//
-//        if offsetY > contentHeight - scrollView.frame.height {
-//            getAllPost(page: currentPage)
-//        }
-//
-//    }
+        dataManager.postExist(param, viewController: self)
+
+    }
+
 }
 
 //MARK: -UpdateData 프로토콜
@@ -212,6 +195,20 @@ extension ShowMoreViewController: UpdateData {
     }
 }
 
+//MARK: -삭제 했을 경우 새로 고침
+extension ShowMoreViewController: WhenDismissDetailView {
+    func reloadView() {
+        currentPage = 0
+        isLoadedAllData = false
+        allPost.removeAll()
+        
+        dataManager.getAllPost(viewController: self, page: currentPage)
+    }
+    
+    
+    
+}
+
 //MARK: -DataManager 연결 함수
 extension ShowMoreViewController: AllPostView {
     func stopRefreshControl() {
@@ -223,5 +220,24 @@ extension ShowMoreViewController: AllPostView {
     }
     func stopLoading() {
         self.loading.stopAnimating()
+    }
+    
+    func goArticle() {
+        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        
+        let data = allPost[cellIdx!]
+        
+        vc.getPostNumber = data.no
+        vc.getTitle = data.title
+        vc.getCategory = data.category
+        vc.getTime = data.timeStamp
+        vc.getNickname = data.userNickname
+        vc.getContents = data.text
+        vc.getShowCount = data.viewCount
+        vc.getUserID = data.userId
+        vc.delegate = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

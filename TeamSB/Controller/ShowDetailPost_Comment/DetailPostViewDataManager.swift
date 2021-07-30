@@ -19,7 +19,7 @@ class DetailPostViewDataManager {
             .responseDecodable(of: AddArticleCountResponse.self) { response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/accessArticle")
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle")
                     if response.check == true{
                         print(response.message)
                         
@@ -27,7 +27,7 @@ class DetailPostViewDataManager {
                         print(">> 조회수 증가 실패")
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/accessArticle")
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle")
                     print(">> \(error.localizedDescription)")
             }
         }
@@ -39,15 +39,16 @@ class DetailPostViewDataManager {
             .responseDecodable(of: DeleteArticleResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/deleteArticle")
+                    print(">> URL: \(ConstantURL.BASE_URL)/deleteArticle")
                     if response.check == true{
                         print(response.message)
-                        view.popView()
+                        view.popView(message: response.message)
                     } else {
                         print(">> 게시글 삭제 실패")
+                        view.popView(message: response.message)
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/deleteArticle")
+                    print(">> URL: \(ConstantURL.BASE_URL)/deleteArticle")
                     print(">> \(error.localizedDescription)")
             }
         }
@@ -59,15 +60,16 @@ class DetailPostViewDataManager {
             .responseDecodable(of: BanArticleResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/report")
+                    print(">> URL: \(ConstantURL.BASE_URL)/report")
                     if response.check == true{
                         print(response.message)
-                        view.popView()
+                        view.popView(message: response.message)
                     } else {
                         print(">> 게시글 신고 실패")
+                        view.popView(message: response.message)
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/report")
+                    print(">> URL: \(ConstantURL.BASE_URL)/report")
                     print(">> \(error.localizedDescription)")
             }
         }
@@ -86,7 +88,7 @@ class DetailPostViewDataManager {
             .responseDecodable(of: GetCommentResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
+                    print(">> URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
                     view.stopRefreshControl()
                     if response.check == true, let result = response.content{
                         
@@ -111,7 +113,7 @@ class DetailPostViewDataManager {
                         print(">> 댓글 읽기 실패")
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
+                    print(">> URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
                     print(">> \(error.localizedDescription)")
             }
         }
@@ -123,7 +125,7 @@ class DetailPostViewDataManager {
             .responseDecodable(of: PostCommentResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/reply/write")
+                    print(">> URL: \(ConstantURL.BASE_URL)/reply/write")
                     if response.check == true{
                         print(response.message)
                         view.successPost()
@@ -134,7 +136,7 @@ class DetailPostViewDataManager {
                         print(">> 댓글 작성 실패")
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/reply/write")
+                    print(">> URL: \(ConstantURL.BASE_URL)/reply/write")
                     print(">> \(error.localizedDescription)")
             }
         }

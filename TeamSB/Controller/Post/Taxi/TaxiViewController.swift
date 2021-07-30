@@ -21,6 +21,8 @@ class TaxiViewController: UIViewController {
     var currentPage = 0
     var isLoadedAllData = false
     
+    var cellIdx: Int?
+    
 //MARK: -생명주기
     override func loadView() {
         super.loadView()
@@ -162,38 +164,13 @@ extension TaxiViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        self.cellIdx = indexPath.row
         
         let data = taxiPost[indexPath.row]
-        
-        vc.getPostNumber = data.no
-        vc.getTitle = data.title
-        vc.getCategory = data.category
-        vc.getTime = data.timeStamp
-        vc.getNickname = data.userNickname
-        vc.getContents = data.text
-        vc.getShowCount = data.viewCount
-        vc.getUserID = data.userId
-        
-        //vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+        let param = ExistsArticleRequest(no: data.no)
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offsetY = scrollView.contentOffset.y
-//        let contentHeight = scrollView.contentSize.height
-//        
-//        if offsetY > contentHeight - scrollView.frame.height {
-//            getTaxi(page: currentPage)
-//        }
-//        
-//   
-//        
-//        
-//        //스크롤 위치 확인해보기
-//        //allPostTableView.scrollToRow(at: IndexPath.init(row: 15, section: 0), at: .middle, animated: true)
-//    }
+        dataManager.postExist(param, viewController: self)
+    }
     
     
 }
@@ -210,6 +187,15 @@ extension TaxiViewController: UpdateData {
 }
 
 
+extension TaxiViewController: WhenDismissDetailView {
+    func reloadView() {
+        currentPage = 0
+        isLoadedAllData = false
+        taxiPost.removeAll()
+        dataManager.getTaxiPost(viewController: self, page: currentPage)
+    }
+}
+
 //MARK: -DataManager 연결 함수
 extension TaxiViewController: TaxiView {
     func stopRefreshControl() {
@@ -220,5 +206,24 @@ extension TaxiViewController: TaxiView {
     }
     func stopLoading() {
         self.loading.stopAnimating()
+    }
+    
+    func goArticle() {
+        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        
+        let data = taxiPost[cellIdx!]
+        
+        vc.getPostNumber = data.no
+        vc.getTitle = data.title
+        vc.getCategory = data.category
+        vc.getTime = data.timeStamp
+        vc.getNickname = data.userNickname
+        vc.getContents = data.text
+        vc.getShowCount = data.viewCount
+        vc.getUserID = data.userId
+        vc.delegate = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

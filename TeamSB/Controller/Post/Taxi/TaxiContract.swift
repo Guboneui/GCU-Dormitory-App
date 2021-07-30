@@ -11,4 +11,5 @@ protocol TaxiView {
     func stopRefreshControl()
     func startLoading()
     func stopLoading()
+    func goArticle()
 }

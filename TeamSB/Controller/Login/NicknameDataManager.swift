@@ -19,7 +19,7 @@ class NicknameDataManager {
             .responseDecodable(of: NicknameSetResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/nicknameCheck")
+                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameCheck")
                     view.stopLoading()
                     if response.check == true {
                         view.showAlertDismissKeyboard(message: response.message)
@@ -31,7 +31,7 @@ class NicknameDataManager {
                     
                 case .failure(let error):
                     view.stopLoading()
-                    print(">>URL: \(ConstantURL.BASE_URL)/nicknameCheck")
+                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameCheck")
                     view.showAlert(message: "서버 연결 실패")
                     print(">> \(error.localizedDescription)")
             }
@@ -44,7 +44,7 @@ class NicknameDataManager {
             .responseDecodable(of: NicknameSetResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/nicknameSet")
+                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
                     view.stopLoading()
                     if response.check == true {
                         view.setMainView()
@@ -55,7 +55,7 @@ class NicknameDataManager {
                     
                 case .failure(let error):
                     view.stopLoading()
-                    print(">>URL: \(ConstantURL.BASE_URL)/nicknameSet")
+                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
                     view.showAlert(message: "서버 연결 실패")
                     print(">> \(error.localizedDescription)")
             }

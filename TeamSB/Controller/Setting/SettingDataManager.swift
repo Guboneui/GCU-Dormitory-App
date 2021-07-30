@@ -19,7 +19,7 @@ class SettingDataManager {
             .responseDecodable(of: GetUserInfoResponse.self) { response in
                 switch response.result {
                 case .success(let response):
-                    print(">>URL: \(ConstantURL.BASE_URL)/getUser")
+                    print(">> URL: \(ConstantURL.BASE_URL)/getUser")
                     if response.check == true{
                         viewController.userInfo = response.content!
                         
@@ -27,7 +27,7 @@ class SettingDataManager {
                         print(">> 유저 정보 가져오기 실패")
                     }
                 case .failure(let error):
-                    print(">>URL: \(ConstantURL.BASE_URL)/getUser")
+                    print(">> URL: \(ConstantURL.BASE_URL)/getUser")
                     print(">> \(error.localizedDescription)")
             }
         }

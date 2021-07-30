@@ -9,4 +9,5 @@ protocol ParcelView {
     func stopRefreshControl()
     func startLoading()
     func stopLoading()
+    func goArticle()
 }

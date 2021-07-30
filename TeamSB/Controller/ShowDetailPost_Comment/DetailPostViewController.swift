@@ -11,7 +11,7 @@ import IQKeyboardManager
 
 
 protocol WhenDismissDetailView: AnyObject {
-    func update()
+    func reloadView()
 }
 
 class DetailPostViewController: UIViewController {
@@ -38,7 +38,7 @@ class DetailPostViewController: UIViewController {
     var isLoadedAllData = false
     
     
-    //weak var delegate: UpdateData?
+    weak var delegate: WhenDismissDetailView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -354,8 +354,15 @@ extension DetailPostViewController: DetailPostView {
         dataManager.postGetArticleComment(param, viewController: self, page: currentPage)
     }
     
-    func popView() {
-        self.navigationController?.popViewController(animated: true)
+    func popView(message: String) {
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { [self] _ in
+            delegate?.reloadView()
+            self.navigationController?.popViewController(animated: true)
+        })
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+        
     }
     func stopRefreshControl() {
         self.mainTableView.refreshControl?.endRefreshing()

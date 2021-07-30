@@ -11,4 +11,5 @@ protocol AllPostView {
     func stopRefreshControl()
     func startLoading()
     func stopLoading()
+    func goArticle()
 }

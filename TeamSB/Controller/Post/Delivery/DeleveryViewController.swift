@@ -20,6 +20,7 @@ class DeleveryViewController: UIViewController {
     var deleveryPost: [Delevery] = []
     var currentPage = 0
     var isLoadedAllData = false
+    var cellIdx: Int?
     
 //MARK: -생명주기
     override func loadView() {
@@ -166,41 +167,28 @@ extension DeleveryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        self.cellIdx = indexPath.row
         
         let data = deleveryPost[indexPath.row]
-        
-        vc.getPostNumber = data.no
-        vc.getTitle = data.title
-        vc.getCategory = data.category
-        vc.getTime = data.timeStamp
-        vc.getNickname = data.userNickname
-        vc.getContents = data.text
-        vc.getShowCount = data.viewCount
-        vc.getUserID = data.userId
-        
-        //vc.delegate = self
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+        let param = ExistsArticleRequest(no: data.no)
     
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        let offsetY = scrollView.contentOffset.y
-//        let contentHeight = scrollView.contentSize.height
-//
-//        if offsetY > contentHeight - scrollView.frame.height {
-//            getDelivary(page: currentPage)
-//        }
-//    }
+        dataManager.postExist(param, viewController: self)
+    }
 }
 
 //MARK: -UpdateData 프로토콜 연결 함수
 extension DeleveryViewController: UpdateData {
     func update() {
         mainTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        currentPage = 0
+        isLoadedAllData = false
+        deleveryPost.removeAll()
+        dataManager.getDeleveryPost(viewController: self, page: currentPage)
+    }
+}
+
+extension DeleveryViewController: WhenDismissDetailView {
+    func reloadView() {
         currentPage = 0
         isLoadedAllData = false
         deleveryPost.removeAll()
@@ -218,5 +206,24 @@ extension DeleveryViewController: DeleveryView {
     }
     func stopLoading() {
         self.loading.stopAnimating()
+    }
+    
+    func goArticle() {
+        let storyBoard = UIStoryboard(name: "In_Post", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DetailPostViewController") as! DetailPostViewController
+        
+        let data = deleveryPost[cellIdx!]
+        
+        vc.getPostNumber = data.no
+        vc.getTitle = data.title
+        vc.getCategory = data.category
+        vc.getTime = data.timeStamp
+        vc.getNickname = data.userNickname
+        vc.getContents = data.text
+        vc.getShowCount = data.viewCount
+        vc.getUserID = data.userId
+        vc.delegate = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
