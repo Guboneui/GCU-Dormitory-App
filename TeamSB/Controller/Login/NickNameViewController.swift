@@ -81,7 +81,7 @@ extension NickNameViewController {
         let id = UserDefaults.standard.string(forKey: "userID")!
         let nickname = nickNameTextField.text!
         
-        let param = NicknameSetRequest(id: id, nickname: nickname)
+        let param = NicknameSetRequest(curId: id, nickname: nickname)
         dataManager.postNicknameSet(param, viewController: self)
     }
 }
@@ -107,5 +107,9 @@ extension NickNameViewController: NicknameView {
         let nickname = nickNameTextField.text!
         UserDefaults.standard.setValue(nickname, forKey: "userNickname")
         UserDefaults.standard.set(true, forKey: "userNicknameExist")
+    }
+    
+    func useButton() {
+        goHomeButton.isEnabled = true
     }
 }

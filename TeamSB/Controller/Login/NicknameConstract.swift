@@ -9,4 +9,5 @@ protocol NicknameView {
     func stopLoading()
     func setUserNickname()
     func setMainView()
+    func useButton()
 }

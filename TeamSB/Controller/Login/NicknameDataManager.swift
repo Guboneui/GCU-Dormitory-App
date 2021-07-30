@@ -20,8 +20,10 @@ class NicknameDataManager {
                 switch response.result {
                 case .success(let response):
                     print(">>URL: \(ConstantURL.BASE_URL)/nicknameCheck")
+                    view.stopLoading()
                     if response.check == true {
                         view.showAlert(message: response.message)
+                        view.useButton()
                     } else {
                         view.showAlert(message: response.message)
                     }

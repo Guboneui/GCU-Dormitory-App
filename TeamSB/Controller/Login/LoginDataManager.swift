@@ -24,6 +24,7 @@ class LoginDataManager {
                     if response.check == true {
                         if response.nickname! {
                             view.goMainView()
+                            
                         } else {
                             view.goNicknameView()
                         }
