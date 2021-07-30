@@ -8,6 +8,12 @@
 import UIKit
 import Alamofire
 
+//Setting 화면 Todo
+//1. 프로필(닉네임, 자신이 쓴 글 개수, 닉네임 수정, ...)
+//2. 기본 설정 로그아웃 -> 구현 완료
+//3. 게시글 수정 -> 별도 화면 필요(자신이 쓴 게시글 목록 보여주고, 게시글 수정할 수 있도록 구성 필요)
+//4. 설정 메인 창 필요(이미지, ... 드롭다운 필요할 수도)
+
 class SettingViewController: UIViewController {
 
     lazy var dataManager: SettingDataManager = SettingDataManager(view: self)
