@@ -83,6 +83,11 @@ extension CalendarViewController {
     }
     
     func showMenu(date: String) {
+        morningString = ""
+        firstLaunchString = ""
+        secondLauchString = ""
+        dinnerString = ""
+        
         for i in 0..<calMenu.count {
             let dateMenu = calMenu[i]
             if dateMenu.일자 == date {
