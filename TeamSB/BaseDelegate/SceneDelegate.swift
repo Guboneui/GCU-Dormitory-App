@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let nicknameVC = storyBoard.instantiateViewController(identifier: "NickNameViewController")
                 window?.rootViewController = nicknameVC
                 window?.makeKeyAndVisible()
-                
+
             } else {
                 let storyBoard = UIStoryboard(name: "Home", bundle: nil)
                 let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")

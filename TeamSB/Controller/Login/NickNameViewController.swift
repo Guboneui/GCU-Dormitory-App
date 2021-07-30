@@ -84,6 +84,7 @@ extension NickNameViewController {
         let param = NicknameSetRequest(curId: id, nickname: nickname)
         dataManager.postNicknameSet(param, viewController: self)
     }
+    
 }
 
 //MARK: -DataManager 함수
@@ -99,7 +100,10 @@ extension NickNameViewController: NicknameView {
     
     ///메인 화면으로 RootView변경
     func setMainView() {
-        self.changeRootViewController(MainBaseViewController())
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
+        
+        self.changeRootViewController(homeVC)
     }
     
     ///유저 닉네임 및 닉네임 존재 여부 디바이스 저장
@@ -111,5 +115,14 @@ extension NickNameViewController: NicknameView {
     
     func useButton() {
         goHomeButton.isEnabled = true
+    }
+    
+    func showAlertDismissKeyboard(message: String) {
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
+            self.view.endEditing(true)
+        })
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
     }
 }

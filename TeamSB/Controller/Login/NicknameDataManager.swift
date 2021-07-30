@@ -22,10 +22,11 @@ class NicknameDataManager {
                     print(">>URL: \(ConstantURL.BASE_URL)/nicknameCheck")
                     view.stopLoading()
                     if response.check == true {
-                        view.showAlert(message: response.message)
+                        view.showAlertDismissKeyboard(message: response.message)
+                        
                         view.useButton()
                     } else {
-                        view.showAlert(message: response.message)
+                        view.showAlertDismissKeyboard(message: response.message)
                     }
                     
                 case .failure(let error):

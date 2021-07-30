@@ -527,10 +527,24 @@
                                 <rect key="frame" x="87" y="563" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tD-71-2nA">
+                                <rect key="frame" x="20" y="188" width="374" height="30"/>
+                                <state key="normal" title="로그아웃"/>
+                                <connections>
+                                    <action selector="logOutAction:" destination="5bC-vI-gDE" eventType="touchUpInside" id="ex8-KI-wOV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yxh-Zd-nKV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6tD-71-2nA" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="FpS-yQ-RLf"/>
+                            <constraint firstItem="6tD-71-2nA" firstAttribute="centerX" secondItem="Uzq-yG-T0M" secondAttribute="centerX" id="aVT-Gm-0Py"/>
+                            <constraint firstItem="6tD-71-2nA" firstAttribute="top" secondItem="Yxh-Zd-nKV" secondAttribute="top" constant="100" id="hKV-Jn-EnS"/>
+                        </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t80-86-22J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

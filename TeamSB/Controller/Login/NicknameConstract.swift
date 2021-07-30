@@ -10,4 +10,5 @@ protocol NicknameView {
     func setUserNickname()
     func setMainView()
     func useButton()
+    func showAlertDismissKeyboard(message: String)
 }

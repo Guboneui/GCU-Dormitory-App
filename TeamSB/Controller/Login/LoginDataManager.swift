@@ -21,10 +21,10 @@ class LoginDataManager {
                 case .success(let response):
                     print(">>URL: \(ConstantURL.BASE_URL)/login")
                     view.stopLoading()
-                    if response.check == true {
+                    if response.check == true {                        
                         if response.nickname! {
                             view.goMainView()
-                            
+
                         } else {
                             view.goNicknameView()
                         }
