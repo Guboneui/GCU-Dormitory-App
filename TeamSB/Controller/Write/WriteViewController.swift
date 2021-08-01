@@ -172,16 +172,16 @@ extension WriteViewController {
         self.loading.startAnimating()
         
         var category = categoryTitle.text!
-        if categoryTitle.text == "배달" {
-            category = "delivery"
-        } else if categoryTitle.text == "택배" {
-            category = "parcel"
-        } else if categoryTitle.text == "택시" {
-            category = "taxi"
-        } else if categoryTitle.text == "빨래" {
-            category = "laundry"
-        }
-        
+//        if categoryTitle.text == "배달" {
+//            category = "delivery"
+//        } else if categoryTitle.text == "택배" {
+//            category = "parcel"
+//        } else if categoryTitle.text == "택시" {
+//            category = "taxi"
+//        } else if categoryTitle.text == "빨래" {
+//            category = "laundry"
+//        }
+//        
         
         let userId = UserDefaults.standard.string(forKey: "userID")!
         let text = contentsTextView.text!

@@ -81,20 +81,20 @@ extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSourc
         let data = recentPost[indexPath.row]
 
         let category = data.category
-        var setCategory = ""
-        if category == "delivery" {
-            setCategory = "배달"
-        } else if category == "parcel" {
-            setCategory = "택배"
-        } else if category == "taxi" {
-            setCategory = "택시"
-        } else if category == "laundry" {
-            setCategory = "빨래"
-        } else {
-            setCategory = "에러"
-        }
+//        var setCategory = ""
+//        if category == "delivery" {
+//            setCategory = "배달"
+//        } else if category == "parcel" {
+//            setCategory = "택배"
+//        } else if category == "taxi" {
+//            setCategory = "택시"
+//        } else if category == "laundry" {
+//            setCategory = "빨래"
+//        } else {
+//            setCategory = "에러"
+//        }
 
-        cell.category.text = setCategory
+        cell.category.text = category
         cell.title.text = data.title
 
         return cell

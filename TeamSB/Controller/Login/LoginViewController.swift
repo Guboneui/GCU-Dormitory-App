@@ -5,6 +5,7 @@
 import UIKit
 import Alamofire
 import NVActivityIndicatorView
+import IQKeyboardManager
 
 class LoginViewController: UIViewController {
     
@@ -28,6 +29,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         configureDesign()
         setAutoLoginImage()
+        IQKeyboardManager.shared().isEnableAutoToolbar = true
+        
     }
 }
 

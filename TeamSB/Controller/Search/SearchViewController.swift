@@ -138,15 +138,15 @@ extension SearchViewController {
             let param = SearchRequestNoCategory(keyword: mainKeyword)
             dataManager.postSearchNoCategory(param, viewController: self, page: currentPage)
         } else {
-            if category == "배달" {
-                category = "delivery"
-            } else if category == "택배" {
-                category = "parcel"
-            } else if category == "택시" {
-                category = "taxi"
-            } else if category == "빨래" {
-                category = "laundry"
-            }
+//            if category == "배달" {
+//                category = "delivery"
+//            } else if category == "택배" {
+//                category = "parcel"
+//            } else if category == "택시" {
+//                category = "taxi"
+//            } else if category == "빨래" {
+//                category = "laundry"
+//            }
             mainCategory = category
             mainKeyword = searchKeyWord
             let param = SearchRequest(category: mainCategory, keyword: mainKeyword)
@@ -183,18 +183,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let category = data.category
         
         
-        if category == "delivery" {
-            cell.categoryLabel.text = "배달"
-        } else if category == "parcel" {
-            cell.categoryLabel.text = "택배"
-        } else if category == "taxi" {
-            cell.categoryLabel.text = "택시"
-        } else if category == "laundry" {
-            cell.categoryLabel.text = "빨래"
-        } else {
-            cell.categoryLabel.text = "error"
-        }
+//        if category == "delivery" {
+//            cell.categoryLabel.text = "배달"
+//        } else if category == "parcel" {
+//            cell.categoryLabel.text = "택배"
+//        } else if category == "taxi" {
+//            cell.categoryLabel.text = "택시"
+//        } else if category == "laundry" {
+//            cell.categoryLabel.text = "빨래"
+//        } else {
+//            cell.categoryLabel.text = "error"
+//        }
         
+        cell.categoryLabel.text = category
         cell.titleLabel.text = data.title
         cell.timeLabel.text = data.timeStamp
         cell.contentsLabel.text = data.text
