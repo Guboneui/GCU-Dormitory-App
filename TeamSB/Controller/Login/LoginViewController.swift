@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
+        idTextView.delegate = self
+        pwTextView.delegate = self
         setLoading()
     }
     
@@ -29,7 +31,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         configureDesign()
         setAutoLoginImage()
-        IQKeyboardManager.shared().isEnableAutoToolbar = true
+        //IQKeyboardManager.shared().isEnableAutoToolbar = true
         
     }
 }
@@ -50,6 +52,9 @@ extension LoginViewController {
     }
     
     func configureDesign() {
+        idTextView.returnKeyType = .next
+        pwTextView.returnKeyType = .done
+        
         idBaseView.layer.borderWidth = 1
         idBaseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
         pwBaseView.layer.borderWidth = 1
@@ -147,4 +152,16 @@ extension LoginViewController: LoginView {
         self.loading.stopAnimating()
     }
     
+}
+
+
+extension LoginViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == idTextView {
+      pwTextView.becomeFirstResponder()
+    } else {
+      pwTextView.resignFirstResponder()
+    }
+    return true
+  }
 }

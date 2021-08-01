@@ -270,22 +270,6 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainPostTableViewCell", for: indexPath) as! MainPostTableViewCell
             
             cell.titleLabel.text = getTitle
-            
-            var setCategory = ""
-            
-//            if getCategory == "delivery" {
-//                setCategory = "배달"
-//            } else if getCategory == "parcel" {
-//                setCategory = "택배"
-//            } else if getCategory == "taxi" {
-//                setCategory = "택시"
-//            } else if getCategory == "laundry" {
-//                setCategory = "빨래"
-//            } else {
-//                setCategory = "에러"
-//            }
-//
-//
             cell.categoryLabel.text = getCategory
             cell.timeLabel.text = getTime
             cell.adminLabel.text = getNickname
@@ -370,6 +354,4 @@ extension DetailPostViewController: DetailPostView {
     func successPost() {
         self.presentAlert(title: "댓글이 작성되었습니다")
     }
-    
-    
 }
