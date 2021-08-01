@@ -139,21 +139,8 @@ extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
         
         if allPost.count != 0 {
             let data = allPost[indexPath.row]
-//
-            let category = data.category
-//            if category == "delivery" {
-//                cell.categoryLabel.text = "배달"
-//            } else if category == "parcel" {
-//                cell.categoryLabel.text = "택배"
-//            } else if category == "taxi" {
-//                cell.categoryLabel.text = "택시"
-//            } else if category == "laundry" {
-//                cell.categoryLabel.text = "빨래"
-//            } else {
-//                cell.categoryLabel.text = "error"
-//            }
-            
-            cell.categoryLabel.text = category
+
+            cell.categoryLabel.text = data.category
             cell.titleLabel.text = data.title
             cell.timeLabel.text = data.timeStamp
             cell.contentsLabel.text = data.text
