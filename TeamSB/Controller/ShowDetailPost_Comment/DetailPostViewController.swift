@@ -98,6 +98,7 @@ extension DetailPostViewController {
         mainTableView.rowHeight = UITableView.automaticDimension
         mainTableView.estimatedRowHeight = 130
         mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+    
         
         let mainPostTableViewNib = UINib(nibName: "MainPostTableViewCell", bundle: nil)
         mainTableView.register(mainPostTableViewNib, forCellReuseIdentifier: "MainPostTableViewCell")
@@ -107,6 +108,7 @@ extension DetailPostViewController {
 
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
     }
     
     func showAdminBarItem() {
@@ -304,6 +306,8 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 let parama = GetCommentRequest(curUser: userID, article_no: getPostNumber)
                 dataManager.postGetArticleComment(parama, viewController: self, page: currentPage)
             }
+            
+        
             
             return cell
         }

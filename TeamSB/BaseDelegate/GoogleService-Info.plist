@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>376572509015-c4qnu2do26kv0q26p4v1v2qrgkhelqm9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.376572509015-c4qnu2do26kv0q26p4v1v2qrgkhelqm9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCpPASLKpOyJUDA6NM2j8k4AzQ9GvWRb0k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>376572509015</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.boni.dormitory</string>
+	<key>PROJECT_ID</key>
+	<string>teamsb-68280</string>
+	<key>STORAGE_BUCKET</key>
+	<string>teamsb-68280.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:376572509015:ios:977ccbf7589b8f4a121c12</string>
+</dict>
+</plist>

@@ -10,6 +10,7 @@ import UIKit
 class MainCommentsTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
@@ -18,6 +19,8 @@ class MainCommentsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        //baseView.backgroundColor = UIColor.SBColor.SB_BaseYellow
         
         guideLineView.backgroundColor = UIColor.SBColor.SB_LightGray
     }

@@ -18,6 +18,7 @@ class LoginDataManager {
             .validate()
             .responseDecodable(of: LoginResponse.self) { [self] response in
                 switch response.result {
+                
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/login")
                     view.stopLoading()

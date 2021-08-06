@@ -105,6 +105,7 @@
 		2CEC875826AF241A0073251C /* MainPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEC875626AF241A0073251C /* MainPostTableViewCell.xib */; };
 		2CEC875B26AF24280073251C /* MainCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875926AF24280073251C /* MainCommentsTableViewCell.swift */; };
 		2CEC875C26AF24280073251C /* MainCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEC875A26AF24280073251C /* MainCommentsTableViewCell.xib */; };
+		2CF11B2C26BDA58600477921 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CF11B2B26BDA58600477921 /* GoogleService-Info.plist */; };
 		2CF5791D26AD59C9007DBC9C /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5791B26AD59C9007DBC9C /* TagCollectionViewCell.swift */; };
 		2CF5791E26AD59C9007DBC9C /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5791C26AD59C9007DBC9C /* TagCollectionViewCell.xib */; };
 		2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5793B26ADB26E007DBC9C /* SearchTableViewCell.swift */; };
@@ -229,6 +230,7 @@
 		2CEC875626AF241A0073251C /* MainPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPostTableViewCell.xib; sourceTree = "<group>"; };
 		2CEC875926AF24280073251C /* MainCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCommentsTableViewCell.swift; sourceTree = "<group>"; };
 		2CEC875A26AF24280073251C /* MainCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCommentsTableViewCell.xib; sourceTree = "<group>"; };
+		2CF11B2B26BDA58600477921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2CF5791B26AD59C9007DBC9C /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CF5791C26AD59C9007DBC9C /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
 		2CF5793B26ADB26E007DBC9C /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 			children = (
 				2C298736268B5D5D005EEA64 /* AppDelegate.swift */,
 				2C298738268B5D5D005EEA64 /* SceneDelegate.swift */,
+				2CF11B2B26BDA58600477921 /* GoogleService-Info.plist */,
 			);
 			path = BaseDelegate;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				2C004AB826B34E5400D13ABF /* TaxiTableViewCell.xib in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
 				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
+				2CF11B2C26BDA58600477921 /* GoogleService-Info.plist in Resources */,
 				2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */,
 				2CEC875C26AF24280073251C /* MainCommentsTableViewCell.xib in Resources */,
 				2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */,
