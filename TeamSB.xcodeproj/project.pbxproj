@@ -99,6 +99,10 @@
 		2C5D019F268E39ED00CC6DD4 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D019E268E39ED00CC6DD4 /* NoticeViewController.swift */; };
 		2C5D01A1268E3ECA00CC6DD4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */; };
 		2C5D01AA268E4B7F00CC6DD4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D01A9268E4B7F00CC6DD4 /* Login.storyboard */; };
+		2C5D39C226BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39C026BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift */; };
+		2C5D39C326BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D39C126BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib */; };
+		2C5D39C626BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39C426BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift */; };
+		2C5D39C726BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D39C526BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib */; };
 		2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E998F2690E8A500E3504A /* CalendarViewController.swift */; };
 		2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */; };
 		2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */; };
@@ -224,6 +228,10 @@
 		2C5D019E268E39ED00CC6DD4 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		2C5D01A9268E4B7F00CC6DD4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		2C5D39C026BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollNoticeTableViewCell.swift; sourceTree = "<group>"; };
+		2C5D39C126BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoScrollNoticeTableViewCell.xib; sourceTree = "<group>"; };
+		2C5D39C426BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollNoticeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C5D39C526BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoScrollNoticeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2C5E998F2690E8A500E3504A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanPopUPViewController.swift; sourceTree = "<group>"; };
 		2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -319,6 +327,10 @@
 		2C004A6926B30E4F00D13ABF /* HomeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				2C5D39C026BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift */,
+				2C5D39C126BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib */,
+				2C5D39C426BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift */,
+				2C5D39C526BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib */,
 				2CFDA9AE269DE9F800612EDB /* SearchButtonTableViewCell.swift */,
 				2CFDA9AF269DE9F800612EDB /* SearchButtonTableViewCell.xib */,
 				2CFDA9B2269DEA1400612EDB /* CategoryButtonTableViewCell.swift */,
@@ -738,11 +750,13 @@
 				2C004AC126B34E5A00D13ABF /* ParcelTableViewCell.xib in Resources */,
 				2CF5791E26AD59C9007DBC9C /* TagCollectionViewCell.xib in Resources */,
 				2C298743268B5D5E005EEA64 /* LaunchScreen.storyboard in Resources */,
+				2C5D39C326BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib in Resources */,
 				2CFDA9B1269DE9F800612EDB /* SearchButtonTableViewCell.xib in Resources */,
 				2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */,
 				2C298740268B5D5E005EEA64 /* Assets.xcassets in Resources */,
 				2C004AB826B34E5400D13ABF /* TaxiTableViewCell.xib in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
+				2C5D39C726BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib in Resources */,
 				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
 				2CF11B2C26BDA58600477921 /* GoogleService-Info.plist in Resources */,
 				2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */,
@@ -830,6 +844,7 @@
 				2C004AB526B34E5400D13ABF /* TaxiDataManager.swift in Sources */,
 				2CFDA9BF269DEFD300612EDB /* MainBaseViewController.swift in Sources */,
 				2C004A5B26B2FD3700D13ABF /* NicknameCheckResponse.swift in Sources */,
+				2C5D39C226BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift in Sources */,
 				2C004A8B26B33D8200D13ABF /* ParcelResponse.swift in Sources */,
 				2C004AF726B382B900D13ABF /* DetailPostViewContract.swift in Sources */,
 				2C004B0726B3928500D13ABF /* PostCommentResponse.swift in Sources */,
@@ -859,6 +874,7 @@
 				2CF5794026ADDCF4007DBC9C /* DetailPostViewController.swift in Sources */,
 				2C004A5926B2FD3000D13ABF /* NicknameCheckRequest.swift in Sources */,
 				2C004AE326B36E8300D13ABF /* SettingDataManager.swift in Sources */,
+				2C5D39C626BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift in Sources */,
 				2C004A8126B3375800D13ABF /* DeleveryResponse.swift in Sources */,
 				2C004AEA26B36EEA00D13ABF /* GetUserInfoResponse.swift in Sources */,
 				2C004AAC26B34E4800D13ABF /* DeleveryContract.swift in Sources */,

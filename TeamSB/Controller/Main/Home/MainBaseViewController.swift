@@ -64,6 +64,9 @@ extension MainBaseViewController {
         baseTableView.allowsSelection = false
         
         
+        let noticeAutoScrollCellNib = UINib(nibName: "AutoScrollNoticeTableViewCell", bundle: nil)
+        baseTableView.register(noticeAutoScrollCellNib, forCellReuseIdentifier: "AutoScrollNoticeTableViewCell")
+        
         let searchButtonTableViewCellNib = UINib(nibName: "SearchButtonTableViewCell", bundle: nil)
         baseTableView.register(searchButtonTableViewCellNib, forCellReuseIdentifier: "SearchButtonTableViewCell")
         
@@ -134,8 +137,8 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchButtonTableViewCell", for: indexPath) as! SearchButtonTableViewCell
-            cell.searchButton.addTarget(self, action: #selector(goSearchView), for: .touchUpInside)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AutoScrollNoticeTableViewCell", for: indexPath) as! AutoScrollNoticeTableViewCell
+            //cell.searchButton.addTarget(self, action: #selector(goSearchView), for: .touchUpInside)
         
             return cell
             
