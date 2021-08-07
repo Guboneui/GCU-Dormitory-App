@@ -38,7 +38,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendAPI()
+        
         configDesign()
         
      
@@ -49,9 +49,10 @@ class SettingViewController: UIViewController {
         self.navigationItem.title = "설정"
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
+        getUserInfo()
     }
     
-    func sendAPI() {
+    func getUserInfo() {
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = GetUserInfoRequest(id: id)
         dataManager.postSearch(param, viewController: self)
@@ -108,6 +109,7 @@ class SettingViewController: UIViewController {
             self.picker.sourceType = .photoLibrary // 방식 선택. 앨범에서 가져오는걸로 선택.
             self.picker.allowsEditing = true // 수정가능하게 할지 선택. 하지만 false
             self.picker.delegate = self
+            self.picker.modalPresentationStyle = .fullScreen
             self.present(self.picker, animated: true)
             
            
@@ -115,8 +117,14 @@ class SettingViewController: UIViewController {
         })
         
         let profileNicknameChange = UIAlertAction(title: "닉네임 변경", style: .default, handler: { [self] _ in
-            let param = ChangeUserNicknameRequest(curId: "starku2249", nickname: "String")
-            dataManager.postChangeNickname(param, viewController: self)
+            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "ChangeNicknameViewController") as! ChangeNicknameViewController
+            vc.delegate = self
+            vc.modalPresentationStyle = .overCurrentContext
+            present(vc, animated: true, completion: nil)
+            
+            
+            
         })
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         alert.addAction(profileImageChange)
@@ -155,6 +163,10 @@ extension SettingViewController {
 }
 
 extension SettingViewController: SettingView {
+    func successChangeNickname() {
+        
+    }
+    
     func settingNickname(nickname: String) {
         nicknameLabel.text = nickname
     }
@@ -201,4 +213,12 @@ extension UIImage {
         let data = self.jpegData(compressionQuality: cq)
         return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
+}
+
+extension SettingViewController: ChangeNickNameDelegate {
+    func changeNicknameLabel(text: String?) {
+        self.nicknameLabel.text = text!
+    }
+    
+    
 }

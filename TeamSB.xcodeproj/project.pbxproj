@@ -107,6 +107,7 @@
 		2C5D39CB26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CA26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift */; };
 		2C5D39CD26BE30790046CD32 /* ChangeUserNicknameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CC26BE30790046CD32 /* ChangeUserNicknameRequest.swift */; };
 		2C5D39CF26BE30890046CD32 /* ChangeUserNicknameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */; };
+		2C5D39D126BE38BE0046CD32 /* ChangeNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */; };
 		2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E998F2690E8A500E3504A /* CalendarViewController.swift */; };
 		2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */; };
 		2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */; };
@@ -240,6 +241,7 @@
 		2C5D39CA26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileImageResponse.swift; sourceTree = "<group>"; };
 		2C5D39CC26BE30790046CD32 /* ChangeUserNicknameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNicknameRequest.swift; sourceTree = "<group>"; };
 		2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNicknameResponse.swift; sourceTree = "<group>"; };
+		2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameViewController.swift; sourceTree = "<group>"; };
 		2C5E998F2690E8A500E3504A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanPopUPViewController.swift; sourceTree = "<group>"; };
 		2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				2CFDA9C6269E0DEC00612EDB /* SettingViewController.swift */,
 				2C004AE226B36E8300D13ABF /* SettingDataManager.swift */,
 				2C004AE426B36E9100D13ABF /* SettingContract.swift */,
+				2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				2C004ACE26B34E6000D13ABF /* LaundryDataManager.swift in Sources */,
 				2C5D0193268E20E000CC6DD4 /* LoginViewController.swift in Sources */,
 				2C004AD226B3508E00D13ABF /* WriteArticleRequest.swift in Sources */,
+				2C5D39D126BE38BE0046CD32 /* ChangeNicknameViewController.swift in Sources */,
 				2C35B9AC26B4396B0032CDA1 /* ExistsArticleRequest.swift in Sources */,
 				2CFDA9B8269DEA3100612EDB /* RecentPostViewTableViewCell.swift in Sources */,
 				2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */,

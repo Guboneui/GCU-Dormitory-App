@@ -4,4 +4,5 @@
 
 protocol SettingView {
     func settingNickname(nickname: String)
+    func successChangeNickname()
 }

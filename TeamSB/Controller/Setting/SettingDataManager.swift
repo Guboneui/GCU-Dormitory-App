@@ -53,7 +53,7 @@ class SettingDataManager {
         }
     }
     
-    func postChangeNickname(_ parameters: ChangeUserNicknameRequest, viewController: SettingViewController) {
+    func postChangeNickname(_ parameters: ChangeUserNicknameRequest, viewController: ChangeNicknameViewController) {
         AF.request("\(ConstantURL.BASE_URL)/nicknameSet", method: .post, parameters: parameters)
             .validate()
             .responseDecodable(of: ChangeUserNicknameResponse.self) { [self] response in
@@ -62,8 +62,11 @@ class SettingDataManager {
                     print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
                     if response.check == true {
                         print("닉네임 변경 성공")
+                        view.successChangeNickname()
                     } else {
                         print(">> 닉네임 변경 실패")
+                        viewController.presentAlert(title: response.message)
+                        
                     }
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
@@ -71,5 +74,11 @@ class SettingDataManager {
             }
         }
     }
+    
+    
+    
+    
+    
+    
 }
 
