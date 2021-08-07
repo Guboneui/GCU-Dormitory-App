@@ -11,9 +11,10 @@ import NVActivityIndicatorView
 
 class ParcelViewController: UIViewController {
 
-    @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var mainCollectionView: UICollectionView!
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
+    var backButton: UIBarButtonItem!
     var loading: NVActivityIndicatorView!
     
     lazy var dataManager: ParcelDataManager = ParcelDataManager(view: self)
@@ -65,7 +66,11 @@ class ParcelViewController: UIViewController {
         searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
         searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         searchButton.tintColor = .black
+        backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backButton.tintColor = .black
         
+        navigationItem.leftBarButtonItem = backButton
         navigationItem.rightBarButtonItems = [writeButton, searchButton]
 
     }
@@ -77,12 +82,11 @@ class ParcelViewController: UIViewController {
     
     func setTableView() {
         
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        let mainTableViewNib = UINib(nibName: "ParcelTableViewCell", bundle: nil)
-        mainTableView.register(mainTableViewNib, forCellReuseIdentifier: "ParcelTableViewCell")
-        mainTableView.refreshControl = UIRefreshControl()
-        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
+        mainCollectionView.register(UINib(nibName: "ParcelCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ParcelCollectionViewCell")
+        mainCollectionView.refreshControl = UIRefreshControl()
+        mainCollectionView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
     }
     
@@ -93,7 +97,7 @@ class ParcelViewController: UIViewController {
         currentPage = 0
         self.isLoadedAllData = false
         parcelPost.removeAll()
-        mainTableView.reloadData()
+        mainCollectionView.reloadData()
         dataManager.getParcelPost(viewController: self, page: currentPage)
         
     }
@@ -120,62 +124,98 @@ class ParcelViewController: UIViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @objc func backButtonAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 
 }
 
-extension ParcelViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ParcelViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return parcelPost.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ParcelTableViewCell", for: indexPath) as! ParcelTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ParcelCollectionViewCell", for: indexPath) as! ParcelCollectionViewCell
         
         if parcelPost.count != 0 {
             let data = parcelPost[indexPath.row]
             
+            cell.nicknameLabel.text = data.userNickname
+            
             cell.titleLabel.text = data.title
-            cell.timeLabel.text = data.timeStamp
             cell.contentsLabel.text = data.text
+            cell.commentCountLabel.text = String(data.replyCount)
+            var time = data.timeStamp
+            time = time.substring(from: 11, to: 16)
+            cell.timeLabel.text = time
             
-            var hashString = ""
-            
-            let hashData = data.hash
-            
-            for i in 0..<hashData.count {
-                hashString += "#" + "\(hashData[i]) "
-            }
-            
-            cell.tagLabel.text = hashString
-            
+            let profileImage = data.imageSource ?? ""
+            let userImage = profileImage.toImage()
+            cell.profileImage.image = userImage
+           
+
+           
+
         } else {
+            cell.nicknameLabel.text = ""
+           
             cell.titleLabel.text = ""
-            cell.timeLabel.text = ""
             cell.contentsLabel.text = ""
-            cell.tagLabel.text = ""
+            cell.commentCountLabel.text = String(0)
         }
-        cell.selectionStyle = .none
         
         if indexPath.row == parcelPost.count - 1 {
             dataManager.getParcelPost(viewController: self, page: currentPage)
         }
+     
+        
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 0.0
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 6, height: 4)
+        cell.layer.shadowRadius = 5.0
+        cell.layer.shadowOpacity = 0.15
+        cell.layer.masksToBounds = false
+        
         
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.cellIdx = indexPath.row
-        
+
         let data = parcelPost[indexPath.row]
         let param = ExistsArticleRequest(no: data.no)
-    
+
         dataManager.postExist(param, viewController: self)
+    }
+
+}
+
+extension ParcelViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+     
+        return CGSize(width: self.mainCollectionView.frame.width * 0.43, height: self.mainCollectionView.frame.width * 0.39)
+       
         
     }
+//
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 13
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+
 }
+
 extension ParcelViewController: UpdateData {
     func update() {
-        mainTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        mainCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         currentPage = 0
         isLoadedAllData = false
         parcelPost.removeAll()
@@ -195,7 +235,7 @@ extension ParcelViewController: WhenDismissDetailView {
 //MARK: -DataManager 연결 함수
 extension ParcelViewController: ParcelView {
     func stopRefreshControl() {
-        self.mainTableView.refreshControl?.endRefreshing()
+        self.mainCollectionView.refreshControl?.endRefreshing()
     }
     func startLoading() {
         self.loading.startAnimating()
@@ -219,6 +259,7 @@ extension ParcelViewController: ParcelView {
         vc.getShowCount = data.viewCount
         vc.getUserID = data.userId
         vc.delegate = self
+        vc.getHash = data.hash
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

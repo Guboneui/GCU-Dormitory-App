@@ -18,4 +18,5 @@ struct Comment: Decodable {
     var timeStamp: String
     var mod_timeStamp: String
     var right: Bool
+    var imageSource: String
 }

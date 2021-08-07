@@ -23,6 +23,7 @@ class MainCommentsTableViewCell: UITableViewCell {
         //baseView.backgroundColor = UIColor.SBColor.SB_BaseYellow
         
         guideLineView.backgroundColor = UIColor.SBColor.SB_LightGray
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

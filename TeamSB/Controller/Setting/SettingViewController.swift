@@ -16,6 +16,7 @@ import Alamofire
 
 class SettingViewController: UIViewController {
     
+    var backButton: UIBarButtonItem!
     
     @IBOutlet weak var profileBaseView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -38,7 +39,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getProfileImage()
         configDesign()
         
      
@@ -52,6 +53,12 @@ class SettingViewController: UIViewController {
         getUserInfo()
     }
     
+    func getProfileImage() {
+        let imageString = UserDefaults.standard.string(forKey: "userProfileImage")!
+        let userProfileImage = imageString.toImage()
+        profileImage.image = userProfileImage
+    }
+    
     func getUserInfo() {
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = GetUserInfoRequest(id: id)
@@ -60,6 +67,12 @@ class SettingViewController: UIViewController {
     }
     
     func configDesign() {
+        
+        backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backButton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = backButton
         
         profileBaseView.layer.cornerRadius = 10
         profileBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
@@ -133,6 +146,9 @@ class SettingViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @objc func backButtonAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
    
     
     
@@ -192,11 +208,10 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
         let id = UserDefaults.standard.string(forKey: "userID")!
         let changeImageString = newImage?.toPngString()
         
+        UserDefaults.standard.set(changeImageString, forKey: "userProfileImage")
+        
         let param = ChangeProfileImageRequest(curId: id, profile_image: changeImageString!)
-        print(changeImageString)
-        
         dataManager.postChangeProfileImage(param, viewController: self)
-        
         self.profileImage.image = newImage // 받아온 이미지를 update
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
         
@@ -214,6 +229,8 @@ extension UIImage {
         return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }
+
+
 
 extension SettingViewController: ChangeNickNameDelegate {
     func changeNicknameLabel(text: String?) {

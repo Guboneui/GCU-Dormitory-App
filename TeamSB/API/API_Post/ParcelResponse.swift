@@ -22,5 +22,7 @@ struct Parcel: Decodable {
     var text: String
     var viewCount: Int
     var reportCount: Int
+    var replyCount: Int
     var hash: [String]
+    var imageSource: String?
 }

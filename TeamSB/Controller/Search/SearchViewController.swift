@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
     var mainKeyword: String = ""
     
     let dropDown = DropDown()
-    let categoryArray = ["전체", "배달", "택배", "택시", "빨래"]
+    let categoryArray = ["전체", "배달", "택배", "택시", "룸메"]
     
     var loading: NVActivityIndicatorView!
 

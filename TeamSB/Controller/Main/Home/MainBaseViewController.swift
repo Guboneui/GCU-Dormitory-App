@@ -25,6 +25,7 @@ class MainBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getProfileImage()
         dataManagerSetNickname()
         setTableView()
     }
@@ -90,6 +91,12 @@ extension MainBaseViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         tabBarController?.tabBar.barTintColor = .white
     }
+    
+    func getProfileImage() {
+        let id = UserDefaults.standard.string(forKey: "userID")!
+        let param = GetProfileImageRequest(curId: id)
+        dataManager.postProfileImage(param, viewController: self)
+    }
 
 }
 
@@ -152,7 +159,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             cell.delevaryButton.addTarget(self, action: #selector(goDelevaryView), for: .touchUpInside)
             cell.postButton.addTarget(self, action: #selector(goPostView), for: .touchUpInside)
             cell.taxiButton.addTarget(self, action: #selector(goTaxiView), for: .touchUpInside)
-            cell.laundaryButton.addTarget(self, action: #selector(goLaundayView), for: .touchUpInside)
+            cell.roommateButton.addTarget(self, action: #selector(goLaundayView), for: .touchUpInside)
             
             return cell
             
@@ -217,7 +224,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func goLaundayView() {
         let storyBoard = UIStoryboard(name: "Post", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "LaundryViewController") as! LaundryViewController
+        let vc = storyBoard.instantiateViewController(withIdentifier: "RoomMateViewController") as! RoomMateViewController
         
         self.navigationController?.pushViewController(vc, animated: true)
     

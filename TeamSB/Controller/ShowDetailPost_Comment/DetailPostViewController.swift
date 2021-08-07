@@ -29,6 +29,7 @@ class DetailPostViewController: UIViewController {
     var getNickname: String = ""
     var getContents: String = ""
     var getShowCount: Int = 0
+    var getHash: [String] = []
     
     var cellHeightsDictionary: NSMutableDictionary = [:]
     
@@ -62,6 +63,7 @@ class DetailPostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigation_Tab()
+        makeBackButton()
         
     }
     
@@ -128,6 +130,14 @@ extension DetailPostViewController {
         navigationItem.rightBarButtonItem = ban
     }
     
+    func makeBackButton() {
+        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backButton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
     func checkWriter() {
         let userid = UserDefaults.standard.string(forKey: "userID")
         if getUserID == userid {
@@ -157,6 +167,15 @@ extension DetailPostViewController {
     
     @objc func editPost() {
         print(">> 게시글을 수정합니다.")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+        vc.originNo = self.getPostNumber
+        vc.originTitle = self.getTitle
+        vc.originCategory = self.getCategory
+        vc.originText = self.getContents
+        vc.originHash = self.getHash
+        vc.originID = self.getUserID
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -210,6 +229,10 @@ extension DetailPostViewController {
             dataManager.postSendArticleComment(param, viewController: self)
             messageTextView.text = ""
         }
+    }
+    
+    @objc func backButtonAction() {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }
@@ -299,6 +322,9 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.nicknameLabel.textColor = .black
             }
             
+            let profileImage = data.imageSource.toImage()
+            
+            cell.profileImageView.image = profileImage
             cell.selectionStyle = .none
             
             if indexPath.row == comment.count - 1{

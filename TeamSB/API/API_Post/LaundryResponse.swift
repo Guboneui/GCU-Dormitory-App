@@ -4,14 +4,14 @@
 
 import Foundation
 
-struct LaundryResponse: Decodable {
+struct RoomMateResponse: Decodable {
     var check: Bool
     var code: Int
     var message: String
-    var content: [Laundry]?
+    var content: [RoomMate]?
 }
 
-struct Laundry: Decodable {
+struct RoomMate: Decodable {
     var no: Int
     var title: String
     var category: String
@@ -22,5 +22,7 @@ struct Laundry: Decodable {
     var text: String
     var viewCount: Int
     var reportCount: Int
+    var replyCount: Int
     var hash: [String]
+    var imageSource: String?
 }

@@ -79,4 +79,26 @@ class MainDataManager {
             }
         }
     }
+    
+    
+    func postProfileImage(_ parameters: GetProfileImageRequest, viewController: MainBaseViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/getUser/profile_image", method: .post, parameters: parameters)
+            .validate()
+            .responseDecodable(of: GetProfileImageResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/getUser/profile_image")
+                    if response.check == true {
+                        print(">> 유저 프로필 이미지 가져오기 성공")
+                        let stringImage = response.content
+                        UserDefaults.standard.set(stringImage, forKey: "userProfileImage")
+                    } else {
+                        print(">> 유저프로필 이미지 가져오기 실패")
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/getUser/profile_image")
+                    print(">> \(error.localizedDescription)")
+            }
+        }
+    }
 }

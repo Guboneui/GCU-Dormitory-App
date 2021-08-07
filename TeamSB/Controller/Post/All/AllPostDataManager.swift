@@ -50,7 +50,7 @@ class AllPostDataManager {
                         
                         print(">> 읽어온 게시글의 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
                         
-                        viewController.allPostTableView.reloadData()
+                        viewController.allPostCollectionView.reloadData()
                     } else {
                         print(">> 전체 게시글 가져오기 실패")
                         

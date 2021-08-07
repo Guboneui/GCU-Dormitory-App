@@ -49,7 +49,7 @@ class ParcelDataManager {
                         }
                         print(">> 읽어온 게시글의 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
                         
-                        viewController.mainTableView.reloadData()
+                        viewController.mainCollectionView.reloadData()
                     } else {
                         print(">> 택배 게시글 가져오기 실패")
                         

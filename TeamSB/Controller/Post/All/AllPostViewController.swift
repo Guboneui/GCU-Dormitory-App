@@ -11,9 +11,11 @@ import NVActivityIndicatorView
 
 class ShowMoreViewController: UIViewController {
 
-    @IBOutlet weak var allPostTableView: UITableView!
+    @IBOutlet weak var allPostCollectionView: UICollectionView!
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
+    var backButton: UIBarButtonItem!
+    
     var loading: NVActivityIndicatorView!
     
     lazy var dataManager: AllPostDataManager = AllPostDataManager(view: self)
@@ -22,12 +24,29 @@ class ShowMoreViewController: UIViewController {
     var isLoadedAllData = false
     
     var cellIdx: Int?
-    
+    let deviceType = UIDevice().type
     
 //MARK: -생명주기
     override func loadView() {
         super.loadView()
         setLoading()
+        print(deviceType)
+        
+        switch deviceType {
+        case .iPhone4, .iPhone5, .iPhone6, .iPhone7, .iPhone7Plus, .iPhone8, .iPhone8Plus, .iPhoneSE, .iPhoneSE2 :
+            NSLayoutConstraint.activate([
+                allPostCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
+            ])
+            break
+            
+        default :
+            NSLayoutConstraint.activate([
+                allPostCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 17)
+            ])
+            break
+        }
+        
+        
     }
     
     override func viewDidLoad() {
@@ -61,13 +80,11 @@ extension ShowMoreViewController {
     
     
     func setTableView() {
-        allPostTableView.delegate = self
-        allPostTableView.dataSource = self
-        let allPostTableViewNib = UINib(nibName: "AllPostTableViewCell", bundle: nil)
-        allPostTableView.register(allPostTableViewNib, forCellReuseIdentifier: "AllPostTableViewCell")
-        allPostTableView.rowHeight = 120
-        allPostTableView.refreshControl = UIRefreshControl()
-        allPostTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        allPostCollectionView.delegate = self
+        allPostCollectionView.dataSource = self
+        allPostCollectionView.register(UINib(nibName: "AllPostCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AllPostCollectionViewCell")
+        allPostCollectionView.refreshControl = UIRefreshControl()
+        allPostCollectionView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
     func setNavigationBarItem() {
@@ -78,6 +95,11 @@ extension ShowMoreViewController {
         searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
         searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         searchButton.tintColor = .black
+        backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backButton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = backButton
         
         navigationItem.rightBarButtonItems = [writeButton, searchButton]
         
@@ -98,7 +120,7 @@ extension ShowMoreViewController {
         currentPage = 0
         self.isLoadedAllData = false
         allPost.removeAll()
-        allPostTableView.reloadData()
+        allPostCollectionView.reloadData()
         dataManager.getAllPost(viewController: self, page: currentPage)
     }
     
@@ -123,59 +145,93 @@ extension ShowMoreViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    @objc func backButtonAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
         
 }
 
 //MARK: -tableView 세팅
-extension ShowMoreViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPost.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AllPostTableViewCell", for: indexPath) as! AllPostTableViewCell
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllPostCollectionViewCell", for: indexPath) as! AllPostCollectionViewCell
         
         if allPost.count != 0 {
             let data = allPost[indexPath.row]
-
+            
+            cell.nicknameLabel.text = data.userNickname
             cell.categoryLabel.text = data.category
             cell.titleLabel.text = data.title
-            cell.timeLabel.text = data.timeStamp
             cell.contentsLabel.text = data.text
-            
+            cell.commentCountLabel.text = String(data.replyCount)
+            let profileImage = data.imageSource ?? ""
+            let userImage = profileImage.toImage()
+            cell.profileImageView.image = userImage
+
         } else {
+            cell.nicknameLabel.text = ""
+            cell.categoryLabel.text = ""
             cell.titleLabel.text = ""
-            cell.timeLabel.text = ""
             cell.contentsLabel.text = ""
+            cell.commentCountLabel.text = String(0)
         }
-        
-        cell.selectionStyle = .none
         
         if indexPath.row == allPost.count - 1 {
             dataManager.getAllPost(viewController: self, page: currentPage)
         }
+     
+        
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 0.0
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 6, height: 4)
+        cell.layer.shadowRadius = 5.0
+        cell.layer.shadowOpacity = 0.15
+        cell.layer.masksToBounds = false //<-
+        
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.cellIdx = indexPath.row
-        
+
         let data = allPost[indexPath.row]
         let param = ExistsArticleRequest(no: data.no)
-    
-        dataManager.postExist(param, viewController: self)
 
+        dataManager.postExist(param, viewController: self)
+    }
+}
+
+
+extension ShowMoreViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+     
+        return CGSize(width: self.allPostCollectionView.frame.width * 0.43, height: self.allPostCollectionView.frame.width * 0.39)
+       
+        
+    }
+//    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 13
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
 
 }
 
+
 //MARK: -UpdateData 프로토콜
 extension ShowMoreViewController: UpdateData {
     func update() {
-        allPostTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        allPostCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         currentPage = 0
         isLoadedAllData = false
         allPost.removeAll()
@@ -200,7 +256,7 @@ extension ShowMoreViewController: WhenDismissDetailView {
 //MARK: -DataManager 연결 함수
 extension ShowMoreViewController: AllPostView {
     func stopRefreshControl() {
-        self.allPostTableView.refreshControl?.endRefreshing()
+        self.allPostCollectionView.refreshControl?.endRefreshing()
     }
     
     func startLoading() {
@@ -225,6 +281,7 @@ extension ShowMoreViewController: AllPostView {
         vc.getShowCount = data.viewCount
         vc.getUserID = data.userId
         vc.delegate = self
+        vc.getHash = data.hash
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

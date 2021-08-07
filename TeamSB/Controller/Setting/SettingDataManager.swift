@@ -42,7 +42,7 @@ class SettingDataManager {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/profileSet")
                     if response.check == true {
-                        print("프로필 이미지 변경 성공")
+                        viewController.presentAlert(title: "프로필 이미지 변경 성공")
                     } else {
                         print(">> 프로필 이미지 변경 실패")
                     }

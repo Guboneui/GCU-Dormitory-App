@@ -38,7 +38,7 @@ class WriteViewController: UIViewController {
     }
     
     let dropDown = DropDown()
-    let categoryArray = ["배달", "택배", "택시", "빨래"]
+    let categoryArray = ["배달", "택배", "택시", "룸메"]
     
     var dropdownState = false
     var tagArray: [String] = []
@@ -176,6 +176,7 @@ extension WriteViewController {
         let text = contentsTextView.text!
         
         let param = WriteArticleRequest(title: title, category: category, userId: userId, text: text, hash: tagArray)
+        
         dataManager.postWriteArticle(param, viewController: self)
         
     }

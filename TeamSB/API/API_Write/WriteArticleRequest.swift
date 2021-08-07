@@ -9,6 +9,6 @@ struct WriteArticleRequest: Encodable {
     var category: String
     var userId: String
     var text: String
-    var hash: [String]?
+    var hash: [String]
     
 }
