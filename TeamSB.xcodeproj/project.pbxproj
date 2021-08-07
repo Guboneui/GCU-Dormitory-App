@@ -103,6 +103,10 @@
 		2C5D39C326BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D39C126BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib */; };
 		2C5D39C626BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39C426BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift */; };
 		2C5D39C726BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C5D39C526BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib */; };
+		2C5D39C926BE2D300046CD32 /* ChangeProfileImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39C826BE2D300046CD32 /* ChangeProfileImageRequest.swift */; };
+		2C5D39CB26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CA26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift */; };
+		2C5D39CD26BE30790046CD32 /* ChangeUserNicknameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CC26BE30790046CD32 /* ChangeUserNicknameRequest.swift */; };
+		2C5D39CF26BE30890046CD32 /* ChangeUserNicknameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */; };
 		2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E998F2690E8A500E3504A /* CalendarViewController.swift */; };
 		2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */; };
 		2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */; };
@@ -232,6 +236,10 @@
 		2C5D39C126BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoScrollNoticeTableViewCell.xib; sourceTree = "<group>"; };
 		2C5D39C426BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollNoticeCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C5D39C526BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoScrollNoticeCollectionViewCell.xib; sourceTree = "<group>"; };
+		2C5D39C826BE2D300046CD32 /* ChangeProfileImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileImageRequest.swift; sourceTree = "<group>"; };
+		2C5D39CA26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileImageResponse.swift; sourceTree = "<group>"; };
+		2C5D39CC26BE30790046CD32 /* ChangeUserNicknameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNicknameRequest.swift; sourceTree = "<group>"; };
+		2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNicknameResponse.swift; sourceTree = "<group>"; };
 		2C5E998F2690E8A500E3504A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanPopUPViewController.swift; sourceTree = "<group>"; };
 		2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -464,6 +472,10 @@
 			children = (
 				2C004AE726B36EDF00D13ABF /* GetUserInfoRequest.swift */,
 				2C004AE926B36EEA00D13ABF /* GetUserInfoResponse.swift */,
+				2C5D39C826BE2D300046CD32 /* ChangeProfileImageRequest.swift */,
+				2C5D39CA26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift */,
+				2C5D39CC26BE30790046CD32 /* ChangeUserNicknameRequest.swift */,
+				2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */,
 			);
 			path = API_Setting;
 			sourceTree = "<group>";
@@ -869,6 +881,7 @@
 				2C004AF326B3820A00D13ABF /* AddArticleCountResponse.swift in Sources */,
 				2C004ACC26B34E6000D13ABF /* LaundryContract.swift in Sources */,
 				2C004ACB26B34E6000D13ABF /* LaundryViewController.swift in Sources */,
+				2C5D39C926BE2D300046CD32 /* ChangeProfileImageRequest.swift in Sources */,
 				2C004AA226B34E3500D13ABF /* AllPostViewController.swift in Sources */,
 				2C004AF526B382AC00D13ABF /* DetailPostViewDataManager.swift in Sources */,
 				2CF5794026ADDCF4007DBC9C /* DetailPostViewController.swift in Sources */,
@@ -883,6 +896,7 @@
 				2C004A5526B2F24500D13ABF /* UIViewController.swift in Sources */,
 				2C004B0326B38C9000D13ABF /* GetCommentResponse.swift in Sources */,
 				2C004AEC26B3771100D13ABF /* CalendarDataManager.swift in Sources */,
+				2C5D39CD26BE30790046CD32 /* ChangeUserNicknameRequest.swift in Sources */,
 				2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */,
 				2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */,
 				2C004A6826B30DA600D13ABF /* GetUserNicknameResponse.swift in Sources */,
@@ -895,6 +909,7 @@
 				2C004AC226B34E5A00D13ABF /* ParcelViewController.swift in Sources */,
 				2CF5791D26AD59C9007DBC9C /* TagCollectionViewCell.swift in Sources */,
 				2C004A4F26B2E5DE00D13ABF /* ConstantURL.swift in Sources */,
+				2C5D39CB26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift in Sources */,
 				2CFDA9B0269DE9F800612EDB /* SearchButtonTableViewCell.swift in Sources */,
 				2CEC875B26AF24280073251C /* MainCommentsTableViewCell.swift in Sources */,
 				2C004A7126B3209200D13ABF /* RecentPostResponse.swift in Sources */,
@@ -907,6 +922,7 @@
 				2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */,
 				2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */,
 				2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */,
+				2C5D39CF26BE30890046CD32 /* ChangeUserNicknameResponse.swift in Sources */,
 				2C004B0526B3927A00D13ABF /* PostCommentRequest.swift in Sources */,
 				2C004AE526B36E9100D13ABF /* SettingContract.swift in Sources */,
 				2C004A4D26B2E5BB00D13ABF /* LoginDataManager.swift in Sources */,

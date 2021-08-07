@@ -16,18 +16,57 @@ class SettingDataManager {
     func postSearch(_ parameters: GetUserInfoRequest, viewController: SettingViewController) {
         AF.request("\(ConstantURL.BASE_URL)/getUser", method: .post, parameters: parameters)
             .validate()
-            .responseDecodable(of: GetUserInfoResponse.self) { response in
+            .responseDecodable(of: GetUserInfoResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/getUser")
-                    if response.check == true{
-                        viewController.userInfo = response.content!
+                    if response.check == true, let result = response.content {
+                        let data = result[0]
+                        view.settingNickname(nickname: data.nickname)
                         
                     } else {
                         print(">> 유저 정보 가져오기 실패")
                     }
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/getUser")
+                    print(">> \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func postChangeProfileImage(_ parameters: ChangeProfileImageRequest, viewController: SettingViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/profileSet", method: .post, parameters: parameters)
+            .validate()
+            .responseDecodable(of: ChangeProfileImageResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet")
+                    if response.check == true {
+                        print("프로필 이미지 변경 성공")
+                    } else {
+                        print(">> 프로필 이미지 변경 실패")
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet")
+                    print(">> \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func postChangeNickname(_ parameters: ChangeUserNicknameRequest, viewController: SettingViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/nicknameSet", method: .post, parameters: parameters)
+            .validate()
+            .responseDecodable(of: ChangeUserNicknameResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
+                    if response.check == true {
+                        print("닉네임 변경 성공")
+                    } else {
+                        print(">> 닉네임 변경 실패")
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
                     print(">> \(error.localizedDescription)")
             }
         }

@@ -8,10 +8,12 @@ import Alamofire
 class MainBaseViewController: UIViewController {
 
     @IBOutlet weak var baseTableView: UITableView!
-    @IBOutlet weak var writeBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var topBarItem_setting: UIBarButtonItem!
-    @IBOutlet weak var topBarItem_write: UIBarButtonItem!
+    
+    @IBOutlet weak var settomgBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var noticeBarButtonItem: UIBarButtonItem!
+    
+   
     
     var firstMenuString = ""
     var secondMenuString = ""
@@ -81,8 +83,9 @@ extension MainBaseViewController {
     }
     
     func setNavigationItem() {  //중복 클릭 방지를 위한 세팅
-        topBarItem_setting.isEnabled = true
-        topBarItem_write.isEnabled = true
+        settomgBarButtonItem.isEnabled = true
+        searchBarButtonItem.isEnabled = true
+        noticeBarButtonItem.isEnabled = true
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         tabBarController?.tabBar.barTintColor = .white
@@ -94,20 +97,22 @@ extension MainBaseViewController {
 extension MainBaseViewController {
     
     @IBAction func writeBarButtonAction(_ sender: Any) {
-        print("글쓰기 화면으로 이동합니다.")
+        print("검색 화면으로 이동합니다.")
         
-        topBarItem_write.isEnabled = false
-        topBarItem_setting.isEnabled = false
+        settomgBarButtonItem.isEnabled = false
+        searchBarButtonItem.isEnabled = false
+        noticeBarButtonItem.isEnabled = false
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func settingBarButtonAction(_ sender: Any) {
         print("세팅 화면으로 이동합니다.")
         
-        topBarItem_write.isEnabled = false
-        topBarItem_setting.isEnabled = false
+        settomgBarButtonItem.isEnabled = false
+        searchBarButtonItem.isEnabled = false
+        noticeBarButtonItem.isEnabled = false
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         self.navigationController?.pushViewController(vc, animated: true)
