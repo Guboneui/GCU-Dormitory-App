@@ -7,4 +7,5 @@ protocol DetailPostView {
     func stopRefreshControl()
     func successPost()
     func updateTableView()
+    func reloadPost()
 }

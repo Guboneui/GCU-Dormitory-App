@@ -142,4 +142,29 @@ class DetailPostViewDataManager {
         }
     }
     
+    
+    func repostArticle(_ parameters: RePostRequest, viewCcntroller: DetailPostViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/accessArticle/detail", method: .post, parameters: parameters)
+            .validate()
+            .responseDecodable(of: RePostResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    print(">> 게시글 수정 후 게시글 다시 불러오기")
+                    if response.check == true{
+                        print(response.message)
+                        viewCcntroller.post = response.content
+                        view.reloadPost()
+                       
+                    } else {
+                        print(">> 댓글 작성 실패")
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    print(">> \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
 }

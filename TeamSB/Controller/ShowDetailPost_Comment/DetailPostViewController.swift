@@ -35,6 +35,8 @@ class DetailPostViewController: UIViewController {
     
     lazy var dataManager: DetailPostViewDataManager = DetailPostViewDataManager(view: self)
     var comment: [Comment] = []
+    var post: [RePost] = []
+    var reload = false
     var currentPage = 0
     var isLoadedAllData = false
     
@@ -174,6 +176,7 @@ extension DetailPostViewController {
         vc.originText = self.getContents
         vc.originHash = self.getHash
         vc.originID = self.getUserID
+        vc.afterEditDelegate = self
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -294,15 +297,27 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainPostTableViewCell", for: indexPath) as! MainPostTableViewCell
             
-            cell.titleLabel.text = getTitle
-            cell.categoryLabel.text = getCategory
-            cell.timeLabel.text = getTime
-            cell.adminLabel.text = getNickname
-            cell.contentsTextView.text = getContents
-            cell.contentsTextView.isEditable = false
+            if reload == false {
+                cell.titleLabel.text = getTitle
+                cell.categoryLabel.text = getCategory
+                cell.timeLabel.text = getTime
+                cell.adminLabel.text = getNickname
+                cell.contentsTextView.text = getContents
+                cell.contentsTextView.isEditable = false
+                cell.selectionStyle = .none
+            } else {
+                let data = post[0]
+                cell.titleLabel.text = data.title
+                cell.categoryLabel.text = data.category
+                cell.timeLabel.text = data.timeStamp
+                cell.adminLabel.text = data.userNickname
+                cell.contentsTextView.text = data.text
+                cell.contentsTextView.isEditable = false
+                cell.selectionStyle = .none
+            }
             
             
-            cell.selectionStyle = .none
+           
             
             return cell
             
@@ -356,6 +371,12 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: -DataManager 연결 함수
 extension DetailPostViewController: DetailPostView {
+    func reloadPost() {
+        self.reload = true
+        self.mainTableView.reloadData()
+        
+    }
+    
     func updateTableView() {
         
         let userID = UserDefaults.standard.string(forKey: "userID")!
@@ -384,4 +405,35 @@ extension DetailPostViewController: DetailPostView {
     func successPost() {
         self.presentAlert(title: "댓글이 작성되었습니다")
     }
+}
+
+
+extension DetailPostViewController: AfterEditDelegate {
+    func updateComment(articleNO: Int) {
+        let userID = UserDefaults.standard.string(forKey: "userID")!
+        let secondParam = GetCommentRequest(curUser: userID, article_no: articleNO)
+        
+        self.currentPage = 0
+        self.isLoadedAllData = false
+        self.comment.removeAll()
+        
+        dataManager.postGetArticleComment(secondParam, viewController: self, page: currentPage)
+    }
+    
+    func afterEdit(articleNO: Int) {
+        let param = RePostRequest(no: articleNO)
+        dataManager.repostArticle(param, viewCcntroller: self)
+        
+        let userID = UserDefaults.standard.string(forKey: "userID")!
+        let secondParam = GetCommentRequest(curUser: userID, article_no: articleNO)
+        
+        self.currentPage = 0
+        self.isLoadedAllData = false
+        self.comment.removeAll()
+        
+        dataManager.postGetArticleComment(secondParam, viewController: self, page: currentPage)
+        
+    }
+    
+    
 }

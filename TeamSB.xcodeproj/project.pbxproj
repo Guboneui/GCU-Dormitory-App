@@ -72,6 +72,8 @@
 		2C004B0326B38C9000D13ABF /* GetCommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004B0226B38C9000D13ABF /* GetCommentResponse.swift */; };
 		2C004B0526B3927A00D13ABF /* PostCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004B0426B3927A00D13ABF /* PostCommentRequest.swift */; };
 		2C004B0726B3928500D13ABF /* PostCommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004B0626B3928500D13ABF /* PostCommentResponse.swift */; };
+		2C18C96026C15E6600C852B2 /* RePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C95F26C15E6600C852B2 /* RePostRequest.swift */; };
+		2C18C96226C15E6F00C852B2 /* RePostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C96126C15E6F00C852B2 /* RePostResponse.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -213,6 +215,8 @@
 		2C004B0226B38C9000D13ABF /* GetCommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommentResponse.swift; sourceTree = "<group>"; };
 		2C004B0426B3927A00D13ABF /* PostCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentRequest.swift; sourceTree = "<group>"; };
 		2C004B0626B3928500D13ABF /* PostCommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentResponse.swift; sourceTree = "<group>"; };
+		2C18C95F26C15E6600C852B2 /* RePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePostRequest.swift; sourceTree = "<group>"; };
+		2C18C96126C15E6F00C852B2 /* RePostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePostResponse.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -522,6 +526,8 @@
 				2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */,
 				2CD92B4B26BF5C4D00A3263E /* EditArticleRequest.swift */,
 				2CD92B4D26BF5C5700A3263E /* EditArticleResponse.swift */,
+				2C18C95F26C15E6600C852B2 /* RePostRequest.swift */,
+				2C18C96126C15E6F00C852B2 /* RePostResponse.swift */,
 			);
 			path = API_InArticle;
 			sourceTree = "<group>";
@@ -881,6 +887,7 @@
 				2C5D01A1268E3ECA00CC6DD4 /* MainTabBarController.swift in Sources */,
 				2CFDA9C7269E0DEC00612EDB /* SettingViewController.swift in Sources */,
 				2C004AEE26B3772100D13ABF /* CalendarContract.swift in Sources */,
+				2C18C96226C15E6F00C852B2 /* RePostResponse.swift in Sources */,
 				2C5D0195268E20EC00CC6DD4 /* NickNameViewController.swift in Sources */,
 				2C004AFF26B3887500D13ABF /* BanArticleResponse.swift in Sources */,
 				2C004AFB26B3860100D13ABF /* DeleteArticleResponse.swift in Sources */,
@@ -905,6 +912,7 @@
 				2C004B0126B38C8200D13ABF /* GetCommentRequest.swift in Sources */,
 				2C004AAB26B34E4800D13ABF /* DeleveryViewController.swift in Sources */,
 				2CD92B4C26BF5C4D00A3263E /* EditArticleRequest.swift in Sources */,
+				2C18C96026C15E6600C852B2 /* RePostRequest.swift in Sources */,
 				2C004AF126B381FD00D13ABF /* AddArticleCountRequest.swift in Sources */,
 				2C004A7B26B32D6400D13ABF /* AllPostResponse.swift in Sources */,
 				2CD92B4526BF491B00A3263E /* EditTagCollectionViewCell.swift in Sources */,

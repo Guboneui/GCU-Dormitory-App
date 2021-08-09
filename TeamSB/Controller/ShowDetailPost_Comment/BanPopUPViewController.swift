@@ -78,6 +78,8 @@ extension BanPopUPViewController {
 
 //MARK: -DataManager 연결 함수
 extension BanPopUPViewController: DetailPostView {
+    func reloadPost() {}
+    
     func updateTableView() {}
     
     func successPost() {}

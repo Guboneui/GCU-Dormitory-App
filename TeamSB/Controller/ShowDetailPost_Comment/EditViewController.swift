@@ -11,6 +11,13 @@ import Alamofire
 import IQKeyboardManager
 import NVActivityIndicatorView
 
+
+protocol AfterEditDelegate: AnyObject {
+    func afterEdit(articleNO: Int)
+    func updateComment(articleNO: Int)
+}
+
+
 class EditViewController: UIViewController {
 
     
@@ -38,6 +45,7 @@ class EditViewController: UIViewController {
         }
     }
         
+    weak var afterEditDelegate: AfterEditDelegate?
     
     let dropDown = DropDown()
     let categoryArray = ["배달", "택배", "택시", "룸메"]
@@ -75,67 +83,19 @@ class EditViewController: UIViewController {
     }
 
 
+   
+    
+}
+
+
+extension EditViewController {
+    
     func originArticle() {
         titleTextField.text = originTitle
         categoryTitle.text = originCategory
         contentsTextView.text = originText
     }
     
-    @IBAction func dropDownButton(_ sender: Any) {
-        dropDown.show()
-    }
-    @IBAction func addTagButton(_ sender: Any) {
-        self.view.endEditing(true)
-        
-        if tagTextField.text == "" || tagTextField.text == nil {
-            let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            if originHash.count < 3 {
-                let hashTag = tagTextField.text!
-                originHash.append(hashTag)
-                tagTextField.text = ""
-                
-                tagCollectionView.reloadData()
-            } else {
-                let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-                alert.addAction(okButton)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    @objc func saveButtonAction() {
-        
-        guard let title = titleTextField.text?.trim, title.isExists else {
-            self.presentAlert(title: "제목을 입력 해주세요")
-            return
-        }
-        
-        guard categoryTitle.text != "선택" else {
-            self.presentAlert(title: "카테고리를 선택 해주세요")
-            return
-        }
-        
-        guard contentsTextView.text != "내용을 입력 해주세요." else {
-            self.presentAlert(title: "내용을 입력 해주세요.")
-            return
-        }
-        
-        self.loading.startAnimating()
-    
-        let param = EditArticleRequest(curUser: "starku2249", title: titleTextField.text!, category: categoryTitle.text!, text: contentsTextView.text, hash: originHash, no: originNo)
-        print(param)
-        
-        dataManager.changeArticle(param, viewController: self)
-    }
-    
-}
-
-
-extension EditViewController {
     
     func setLoading() {
         loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
@@ -260,12 +220,73 @@ extension EditViewController: UICollectionViewDelegate, UICollectionViewDataSour
     @objc func backButtonAction() {
         let alert = UIAlertController(title: "글쓰기 취소", message: "수정 내용이 저장되지 않습니다.", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-        let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { [self] _ in
+            self.afterEditDelegate?.updateComment(articleNO: originNo)
             self.navigationController?.popViewController(animated: true)
         })
         alert.addAction(cancelButton)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+extension EditViewController{
+    @IBAction func dropDownButton(_ sender: Any) {
+        dropDown.show()
+    }
+    @IBAction func addTagButton(_ sender: Any) {
+        self.view.endEditing(true)
+        
+        if tagTextField.text == "" || tagTextField.text == nil {
+            let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if originHash.count < 3 {
+                let hashTag = tagTextField.text!
+                originHash.append(hashTag)
+                tagTextField.text = ""
+                
+                tagCollectionView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    @objc func saveButtonAction() {
+        
+        guard let title = titleTextField.text?.trim, title.isExists else {
+            self.presentAlert(title: "제목을 입력 해주세요")
+            return
+        }
+        
+        guard categoryTitle.text != "선택" else {
+            self.presentAlert(title: "카테고리를 선택 해주세요")
+            return
+        }
+        
+        guard contentsTextView.text != "내용을 입력 해주세요." else {
+            self.presentAlert(title: "내용을 입력 해주세요.")
+            return
+        }
+        
+        self.loading.startAnimating()
+    
+        
+        let sendId = UserDefaults.standard.string(forKey: "userID")!
+        let sendTitle = titleTextField.text!
+        let sendCategory = categoryTitle.text!
+        let sendText = contentsTextView.text!
+        let sendHash = originHash
+        let sendNO = originNo
+        let param = EditArticleRequest(curUser: sendId, title: sendTitle, category: sendCategory, text: sendText, hash: sendHash, no: sendNO)
+        
+        dataManager.changeArticle(param, viewController: self)
     }
     
 }
@@ -279,7 +300,7 @@ extension EditViewController: EditView {
         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
 
-            delegate?.update()
+            afterEditDelegate?.afterEdit(articleNO: self.originNo)
             self.navigationController?.popViewController(animated: true)
         })
         alert.addAction(okButton)
