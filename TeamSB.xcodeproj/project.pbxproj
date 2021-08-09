@@ -74,6 +74,13 @@
 		2C004B0726B3928500D13ABF /* PostCommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004B0626B3928500D13ABF /* PostCommentResponse.swift */; };
 		2C18C96026C15E6600C852B2 /* RePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C95F26C15E6600C852B2 /* RePostRequest.swift */; };
 		2C18C96226C15E6F00C852B2 /* RePostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C96126C15E6F00C852B2 /* RePostResponse.swift */; };
+		2C18C96D26C19DA900C852B2 /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C96C26C19DA900C852B2 /* MyPostViewController.swift */; };
+		2C18C97026C19E2500C852B2 /* MyPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C96E26C19E2500C852B2 /* MyPostCollectionViewCell.swift */; };
+		2C18C97126C19E2500C852B2 /* MyPostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C18C96F26C19E2500C852B2 /* MyPostCollectionViewCell.xib */; };
+		2C18C97326C1A01B00C852B2 /* MyPostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97226C1A01B00C852B2 /* MyPostDataManager.swift */; };
+		2C18C97526C1A02300C852B2 /* MyPostContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97426C1A02300C852B2 /* MyPostContract.swift */; };
+		2C18C97726C1A08400C852B2 /* MyPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97626C1A08400C852B2 /* MyPostRequest.swift */; };
+		2C18C97926C1A08D00C852B2 /* MyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97826C1A08D00C852B2 /* MyPostResponse.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -217,6 +224,13 @@
 		2C004B0626B3928500D13ABF /* PostCommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentResponse.swift; sourceTree = "<group>"; };
 		2C18C95F26C15E6600C852B2 /* RePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePostRequest.swift; sourceTree = "<group>"; };
 		2C18C96126C15E6F00C852B2 /* RePostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePostResponse.swift; sourceTree = "<group>"; };
+		2C18C96C26C19DA900C852B2 /* MyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewController.swift; sourceTree = "<group>"; };
+		2C18C96E26C19E2500C852B2 /* MyPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		2C18C96F26C19E2500C852B2 /* MyPostCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostCollectionViewCell.xib; sourceTree = "<group>"; };
+		2C18C97226C1A01B00C852B2 /* MyPostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDataManager.swift; sourceTree = "<group>"; };
+		2C18C97426C1A02300C852B2 /* MyPostContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostContract.swift; sourceTree = "<group>"; };
+		2C18C97626C1A08400C852B2 /* MyPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostRequest.swift; sourceTree = "<group>"; };
+		2C18C97826C1A08D00C852B2 /* MyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostResponse.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -357,6 +371,8 @@
 				2C004A7026B3209200D13ABF /* RecentPostResponse.swift */,
 				2CD92B3B26BF36BA00A3263E /* GetProfileImageRequest.swift */,
 				2CD92B3D26BF36CC00A3263E /* GetProfileImageResponse.swift */,
+				2C18C97626C1A08400C852B2 /* MyPostRequest.swift */,
+				2C18C97826C1A08D00C852B2 /* MyPostResponse.swift */,
 			);
 			path = API_Home;
 			sourceTree = "<group>";
@@ -532,6 +548,18 @@
 			path = API_InArticle;
 			sourceTree = "<group>";
 		};
+		2C18C96B26C19D8B00C852B2 /* MyPost */ = {
+			isa = PBXGroup;
+			children = (
+				2C18C96C26C19DA900C852B2 /* MyPostViewController.swift */,
+				2C18C97226C1A01B00C852B2 /* MyPostDataManager.swift */,
+				2C18C97426C1A02300C852B2 /* MyPostContract.swift */,
+				2C18C96E26C19E2500C852B2 /* MyPostCollectionViewCell.swift */,
+				2C18C96F26C19E2500C852B2 /* MyPostCollectionViewCell.xib */,
+			);
+			path = MyPost;
+			sourceTree = "<group>";
+		};
 		2C22FAF226B158C9003AB22A /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,6 +715,7 @@
 			isa = PBXGroup;
 			children = (
 				2C5E998A2690E77700E3504A /* Home */,
+				2C18C96B26C19D8B00C852B2 /* MyPost */,
 				2C5E998B2690E86D00E3504A /* Calendar */,
 				2C5E998C2690E88100E3504A /* Notice */,
 			);
@@ -815,6 +844,7 @@
 				2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */,
 				2CEC875C26AF24280073251C /* MainCommentsTableViewCell.xib in Resources */,
 				2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */,
+				2C18C97126C19E2500C852B2 /* MyPostCollectionViewCell.xib in Resources */,
 				2CFDA9B5269DEA1400612EDB /* CategoryButtonTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -894,6 +924,7 @@
 				2CD92B2726BF01BE00A3263E /* AllPostCollectionViewCell.swift in Sources */,
 				2C004AE126B35BEC00D13ABF /* SearchContract.swift in Sources */,
 				2CD92B2D26BF1C7500A3263E /* DeliveryCollectionViewCell.swift in Sources */,
+				2C18C97726C1A08400C852B2 /* MyPostRequest.swift in Sources */,
 				2C004AB526B34E5400D13ABF /* TaxiDataManager.swift in Sources */,
 				2CFDA9BF269DEFD300612EDB /* MainBaseViewController.swift in Sources */,
 				2C004A5B26B2FD3700D13ABF /* NicknameCheckResponse.swift in Sources */,
@@ -930,10 +961,12 @@
 				2CD92B2A26BF174100A3263E /* Device.swift in Sources */,
 				2C004ACB26B34E6000D13ABF /* RoomMateViewController.swift in Sources */,
 				2C5D39C926BE2D300046CD32 /* ChangeProfileImageRequest.swift in Sources */,
+				2C18C97326C1A01B00C852B2 /* MyPostDataManager.swift in Sources */,
 				2C004AA226B34E3500D13ABF /* AllPostViewController.swift in Sources */,
 				2C004AF526B382AC00D13ABF /* DetailPostViewDataManager.swift in Sources */,
 				2CF5794026ADDCF4007DBC9C /* DetailPostViewController.swift in Sources */,
 				2C004A5926B2FD3000D13ABF /* NicknameCheckRequest.swift in Sources */,
+				2C18C96D26C19DA900C852B2 /* MyPostViewController.swift in Sources */,
 				2C004AE326B36E8300D13ABF /* SettingDataManager.swift in Sources */,
 				2C5D39C626BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.swift in Sources */,
 				2C004A8126B3375800D13ABF /* DeleveryResponse.swift in Sources */,
@@ -947,6 +980,7 @@
 				2C004AEC26B3771100D13ABF /* CalendarDataManager.swift in Sources */,
 				2C5D39CD26BE30790046CD32 /* ChangeUserNicknameRequest.swift in Sources */,
 				2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */,
+				2C18C97926C1A08D00C852B2 /* MyPostResponse.swift in Sources */,
 				2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */,
 				2C004A6826B30DA600D13ABF /* GetUserNicknameResponse.swift in Sources */,
 				2C004ADB26B35B3D00D13ABF /* SearchRequest.swift in Sources */,
@@ -963,10 +997,12 @@
 				2CD92B3926BF289800A3263E /* RoomMateCollectionViewCell.swift in Sources */,
 				2CD92B3126BF20BF00A3263E /* ParcelCollectionViewCell.swift in Sources */,
 				2C004A7126B3209200D13ABF /* RecentPostResponse.swift in Sources */,
+				2C18C97526C1A02300C852B2 /* MyPostContract.swift in Sources */,
 				2CD92B4E26BF5C5700A3263E /* EditArticleResponse.swift in Sources */,
 				2C004AB726B34E5400D13ABF /* TaxiViewController.swift in Sources */,
 				2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */,
 				2C004AD426B3509B00D13ABF /* WriteArticleResponse.swift in Sources */,
+				2C18C97026C19E2500C852B2 /* MyPostCollectionViewCell.swift in Sources */,
 				2C004AD626B3516900D13ABF /* WriteDataManager.swift in Sources */,
 				2C004A6D26B30E9D00D13ABF /* MainDataManager.swift in Sources */,
 				2C004A5226B2E9B000D13ABF /* LoginContract.swift in Sources */,

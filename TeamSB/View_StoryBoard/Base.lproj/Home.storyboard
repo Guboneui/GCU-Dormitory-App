@@ -528,21 +528,52 @@
             </objects>
             <point key="canvasLocation" x="-29" y="-46"/>
         </scene>
-        <!--View Controller-->
+        <!--My Post View Controller-->
         <scene sceneID="M6e-3o-dFx">
             <objects>
-                <viewController id="mY3-Hr-IbP" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MyPostViewController" storyboardIdentifier="MyPostViewController" id="mY3-Hr-IbP" customClass="MyPostViewController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HY0-fX-a9s">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xo6-I1-mlz">
+                                <rect key="frame" x="0.0" y="97" width="428" height="746"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vRz-94-GH0">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="7" maxX="16" maxY="7"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xYm-TG-eQj">
+                                        <rect key="frame" x="16" y="7" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Pe6-CX-BVO">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="y2S-fm-F8c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="y2S-fm-F8c" firstAttribute="trailing" secondItem="xo6-I1-mlz" secondAttribute="trailing" id="Tm2-Uo-6Ij"/>
+                            <constraint firstItem="y2S-fm-F8c" firstAttribute="bottom" secondItem="xo6-I1-mlz" secondAttribute="bottom" id="fwY-wA-jkj"/>
+                            <constraint firstItem="xo6-I1-mlz" firstAttribute="leading" secondItem="y2S-fm-F8c" secondAttribute="leading" id="uBm-H8-lcC"/>
+                            <constraint firstItem="xo6-I1-mlz" firstAttribute="top" secondItem="y2S-fm-F8c" secondAttribute="top" constant="9" id="zlI-RO-ddO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gmk-xg-dv5"/>
+                    <connections>
+                        <outlet property="mainCollectionView" destination="xo6-I1-mlz" id="a8h-ka-fvR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IUl-RJ-Lbt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="-71"/>
+            <point key="canvasLocation" x="845.32710280373828" y="-71.274298056155516"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="3QU-UL-If1">
@@ -559,7 +590,7 @@
                                         <rect key="frame" x="20" y="10" width="80" height="80"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0C-bN-MLh">
-                                        <rect key="frame" x="120.00000000000001" y="39.666666666666657" width="44.666666666666671" height="20.666666666666671"/>
+                                        <rect key="frame" x="120.00000000000001" y="39.666666666666657" width="44.666666666666671" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
