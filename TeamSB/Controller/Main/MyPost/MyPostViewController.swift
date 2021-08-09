@@ -35,6 +35,9 @@ class MyPostViewController: UIViewController {
         super.viewWillAppear(animated)
         
         loading.startAnimating()
+        currentPage = 0
+        self.isLoadedAllData = false
+        myPost.removeAll()
         mainCollectionView.reloadData()
         
         let id = UserDefaults.standard.string(forKey: "userID")!
@@ -47,16 +50,20 @@ class MyPostViewController: UIViewController {
     
     
     @objc func refreshData() {
+        
+   
         print(">> 상단 새로고침")
         currentPage = 0
         self.isLoadedAllData = false
         myPost.removeAll()
-        mainCollectionView.reloadData()
+        //mainCollectionView.reloadData()
+        
+        
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = MyPostRequest(curUser: id)
         dataManager.postMyArticle(param, viewController: self, page: currentPage)
+        
     }
-    
 
 
 }
@@ -169,6 +176,8 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
         dataManager.postExist(param, viewController: self)
     }
+    
+    
 }
 
 
@@ -220,7 +229,6 @@ extension MyPostViewController: MyPostView {
         vc.getContents = data.text
         vc.getShowCount = data.viewCount
         vc.getUserID = data.userId
-        vc.delegate = self
         vc.getHash = data.hash ?? []
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -229,17 +237,3 @@ extension MyPostViewController: MyPostView {
     
 }
 
-extension MyPostViewController: WhenDismissDetailView {
-    func reloadView() {
-        currentPage = 0
-        isLoadedAllData = false
-        myPost.removeAll()
-        
-        let id = UserDefaults.standard.string(forKey: "userID")!
-        let param = MyPostRequest(curUser: id)
-        dataManager.postMyArticle(param, viewController: self, page: currentPage)
-    }
-    
-    
-    
-}

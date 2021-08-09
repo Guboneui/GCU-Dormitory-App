@@ -34,7 +34,7 @@ class MyPostDataManager {
                 switch response.result {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/myArticlelist?page=\(viewController.currentPage)")
-                    view.stopRefreshControl()
+                    
                     view.stopLoading()
                     
                     if response.check == true, let result = response.content {
@@ -53,13 +53,17 @@ class MyPostDataManager {
                         }
                         
                         print(">> 읽어온 게시글의 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
+                        view.stopRefreshControl()
                         
+                        
+                        usleep(500000)
                         viewController.mainCollectionView.reloadData()
                     } else {
                         print(">> 전체 게시글 가져오기 실패")
                         
                     }
                 case .failure(let error):
+                    view.stopRefreshControl()
                     print(">> URL: \(ConstantURL.BASE_URL)/myArticlelist?page=\(page)")
                     print(">> \(error.localizedDescription)")
                     print(">> \(error)")
