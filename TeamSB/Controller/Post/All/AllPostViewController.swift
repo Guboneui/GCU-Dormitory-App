@@ -171,6 +171,9 @@ extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewData
             let profileImage = data.imageSource ?? ""
             let userImage = profileImage.toImage()
             cell.profileImageView.image = userImage
+            var time = data.timeStamp
+            time = time.substring(from: 11, to: 16)
+            cell.timeLabel.text = time
 
         } else {
             cell.nicknameLabel.text = ""

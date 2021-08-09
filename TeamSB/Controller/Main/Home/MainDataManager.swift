@@ -57,7 +57,7 @@ class MainDataManager {
     }
     
     
-    func getRecentPost(view: RecentPostViewTableViewCell) {
+    func getRecentPost(view: RecentPostViewTableViewCell, viewController: MainBaseViewController) {
         AF.request("\(ConstantURL.BASE_URL)/home/recentPost", method: .get, parameters: nil)
             .validate()
             .responseDecodable(of: RecentPostResponse.self) { response in
@@ -73,11 +73,14 @@ class MainDataManager {
                         print(">> 최근 게시글 가져오기 실패")
                         
                     }
+                    viewController.loading.stopAnimating()
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/home/recentPost")
                     print(">> \(error.localizedDescription)")
             }
         }
+        
+        
     }
     
     

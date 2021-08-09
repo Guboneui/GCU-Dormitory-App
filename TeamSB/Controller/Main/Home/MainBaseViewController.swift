@@ -4,6 +4,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class MainBaseViewController: UIViewController {
 
@@ -13,18 +14,21 @@ class MainBaseViewController: UIViewController {
     @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var noticeBarButtonItem: UIBarButtonItem!
     
-   
     
     var firstMenuString = ""
     var secondMenuString = ""
     var firstTimeString = ""
     var secondTimeString = ""
     
+    var loading: NVActivityIndicatorView!
+
+    
     var calMenu: [Menu] = []
     lazy var dataManager: MainDataManager = MainDataManager(view: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLoading()
         getProfileImage()
         dataManagerSetNickname()
         setTableView()
@@ -34,6 +38,9 @@ class MainBaseViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "홈"
         self.tabBarController?.tabBar.isHidden = false
+        
+        loading.startAnimating()
+        
         
         setDefault()
         setNavigationItem()
@@ -45,6 +52,19 @@ class MainBaseViewController: UIViewController {
 
 //MARK: -기본 UI 함수 설정
 extension MainBaseViewController {
+    func setLoading() {
+        loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 60),
+            loading.heightAnchor.constraint(equalToConstant: 60),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+    
    
     func dataManagerSetNickname() {
         let id = UserDefaults.standard.string(forKey: "userID")!
@@ -165,11 +185,9 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
         } else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecentPostViewTableViewCell", for: indexPath) as! RecentPostViewTableViewCell
-            
             cell.showMoreButton.addTarget(self, action: #selector(goShowMoreView), for: .touchUpInside)
-            dataManager.getRecentPost(view: cell)
+            dataManager.getRecentPost(view: cell, viewController: self)
             cell.delegate = self
-            
             return cell
             
         } else if indexPath.row == 3 {
@@ -266,6 +284,7 @@ extension MainBaseViewController: TBCellDelegate {
 
 //MARK: -DataManager 연결 함수
 extension MainBaseViewController: MainView {
+   
     func setUserNickname(nickname: String) {
         UserDefaults.standard.setValue(nickname, forKey: "userNickname")
     }

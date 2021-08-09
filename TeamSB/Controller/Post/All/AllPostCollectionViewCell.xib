@@ -113,6 +113,7 @@
                 <outlet property="contentsLabel" destination="2XQ-VT-xLK" id="ghI-b5-OKO"/>
                 <outlet property="nicknameLabel" destination="8rS-8g-YjW" id="z0p-Ya-tln"/>
                 <outlet property="profileImageView" destination="7si-m5-X2F" id="891-dw-z47"/>
+                <outlet property="timeLabel" destination="FCg-CC-c1a" id="e5f-dl-SE0"/>
                 <outlet property="titleLabel" destination="qa5-be-eft" id="Pn5-O1-8zc"/>
             </connections>
             <point key="canvasLocation" x="66.666666666666671" y="28.794642857142854"/>

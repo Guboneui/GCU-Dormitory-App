@@ -16,6 +16,7 @@ class AllPostCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentsLabel: UILabel!
     @IBOutlet weak var commentCountLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     
     

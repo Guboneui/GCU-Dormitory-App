@@ -6,5 +6,5 @@ import Foundation
 
 protocol MainView {
     func setUserNickname(nickname: String)
-    func setTodayMenu() 
+    func setTodayMenu()
 }

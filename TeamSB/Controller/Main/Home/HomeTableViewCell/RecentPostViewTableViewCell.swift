@@ -82,7 +82,6 @@ extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSourc
 
         cell.category.text = data.category
         cell.title.text = data.title
-
         return cell
     }
     
@@ -110,7 +109,7 @@ extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSourc
 extension RecentPostViewTableViewCell: UpdateData {
     func update() {
         recentPost.removeAll()
-        dataManager.getRecentPost(view: self)
+        dataManager.getRecentPost(view: self, viewController: MainBaseViewController())
     }
 }
 
