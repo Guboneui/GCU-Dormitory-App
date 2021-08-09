@@ -14,9 +14,11 @@ class WriteDataManager {
     }
     
     func postWriteArticle(_ parameters: WriteArticleRequest, viewController: WriteViewController) {
-        AF.request("\(ConstantURL.BASE_URL)/writeArticle", method: .post, parameters: parameters)
+        print(parameters)
+        
+        AF.request("\(ConstantURL.BASE_URL)/writeArticle", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
             .validate()
-            .responseDecodable(of: LoginResponse.self) { [self] response in
+            .responseDecodable(of: WriteArticleResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/writeArticle")

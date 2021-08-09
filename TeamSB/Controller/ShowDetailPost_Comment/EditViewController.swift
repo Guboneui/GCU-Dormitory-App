@@ -21,7 +21,7 @@ class EditViewController: UIViewController {
     var originHash: [String] = []
     var originNo = 0
     
-    
+   
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var dropdownBaseView: UIView!
@@ -33,6 +33,10 @@ class EditViewController: UIViewController {
     @IBOutlet weak var tagTextField: UITextField!
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var addTagButton: UIButton!
+    @IBOutlet weak var tagCollectionViewLayout: LeftAlignedCollectionViewFlowLayout! {
+        didSet {
+        }
+    }
         
     
     let dropDown = DropDown()
@@ -47,7 +51,7 @@ class EditViewController: UIViewController {
     
     var loading: NVActivityIndicatorView!
     
-    //lazy var dataManager: WriteDataManager = WriteDataManager(view: self)
+    lazy var dataManager: EditDataManager = EditDataManager(view: self)
     
     override func loadView() {
         super.loadView()
@@ -67,6 +71,7 @@ class EditViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNaviTab()
+        
     }
 
 
@@ -120,14 +125,11 @@ class EditViewController: UIViewController {
         }
         
         self.loading.startAnimating()
+    
+        let param = EditArticleRequest(curUser: "starku2249", title: titleTextField.text!, category: categoryTitle.text!, text: contentsTextView.text, hash: originHash, no: originNo)
+        print(param)
         
-        let category = categoryTitle.text!
-        let userId = UserDefaults.standard.string(forKey: "userID")!
-        let text = contentsTextView.text!
-        
-        //let param = WriteArticleRequest(title: title, category: category, userId: userId, text: text, hash: tagArray)
-        //dataManager.postWriteArticle(param, viewController: self)
-        
+        dataManager.changeArticle(param, viewController: self)
     }
     
 }
@@ -149,7 +151,7 @@ extension EditViewController {
     }
     
     func setNaviTab() {
-        self.navigationItem.title = "글쓰기"
+        self.navigationItem.title = "수정"
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -160,6 +162,13 @@ extension EditViewController {
         ban.tintColor = .black
         
         self.navigationItem.rightBarButtonItem = ban
+        
+        let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backButton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = backButton
+        
         
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
         
@@ -197,6 +206,13 @@ extension EditViewController {
         tagCollectionView.dataSource = self
         let tagCollectionViewNib = UINib(nibName: "EditTagCollectionViewCell", bundle: nil)
         tagCollectionView.register(tagCollectionViewNib, forCellWithReuseIdentifier: "EditTagCollectionViewCell")
+        tagCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        if let flowLayout = tagCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            
+        }
+
+        
         
     }
     
@@ -241,31 +257,43 @@ extension EditViewController: UICollectionViewDelegate, UICollectionViewDataSour
         tagCollectionView.reloadData()
     }
     
+    @objc func backButtonAction() {
+        let alert = UIAlertController(title: "글쓰기 취소", message: "수정 내용이 저장되지 않습니다.", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        })
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 
 
 //MARK: -DataManager 연결 함수
-extension EditViewController: WriteView {
+extension EditViewController: EditView {
+   
     func popView(message: String) {
         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-            
+
             delegate?.update()
             self.navigationController?.popViewController(animated: true)
         })
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func showAlert(message: String) {
         self.presentAlert(title: message)
     }
-    
+
     func stopLoading() {
         self.loading.stopAnimating()
     }
-    
+
     
 }
 

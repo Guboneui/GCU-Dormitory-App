@@ -241,7 +241,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: -TBCellDelegate 선언 부분
 extension MainBaseViewController: TBCellDelegate {
-    func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int) {
+    func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int, hash: [String]) {
         print("프로토콜 연결 성공")
         
         guard let vc = UIStoryboard(name: "In_Post", bundle: nil).instantiateViewController(withIdentifier: "DetailPostViewController") as? DetailPostViewController else {
@@ -256,6 +256,7 @@ extension MainBaseViewController: TBCellDelegate {
         vc.getNickname = nickname
         vc.getContents = contents
         vc.getShowCount = showCount
+        vc.getHash = hash
         
         self.navigationController?.pushViewController(vc, animated: true)
         

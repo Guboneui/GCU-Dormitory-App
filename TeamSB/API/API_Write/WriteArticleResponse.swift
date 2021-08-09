@@ -5,7 +5,7 @@
 import Foundation
 
 struct WriteArticleResponse: Decodable {
-    var check: String
+    var check: Bool
     var code: Int
     var message: String
 }

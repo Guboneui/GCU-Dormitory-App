@@ -24,3 +24,4 @@ struct Search: Decodable {
     var reportCount: Int
     var hash: [String]
 }
+

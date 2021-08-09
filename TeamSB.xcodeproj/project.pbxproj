@@ -115,6 +115,10 @@
 		2CD92B4126BF422000A3263E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B3F26BF422000A3263E /* EditViewController.swift */; };
 		2CD92B4526BF491B00A3263E /* EditTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B4326BF491B00A3263E /* EditTagCollectionViewCell.swift */; };
 		2CD92B4626BF491B00A3263E /* EditTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CD92B4426BF491B00A3263E /* EditTagCollectionViewCell.xib */; };
+		2CD92B4826BF5B0800A3263E /* EditDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B4726BF5B0800A3263E /* EditDataManager.swift */; };
+		2CD92B4A26BF5B2300A3263E /* EditViewContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B4926BF5B2300A3263E /* EditViewContract.swift */; };
+		2CD92B4C26BF5C4D00A3263E /* EditArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B4B26BF5C4D00A3263E /* EditArticleRequest.swift */; };
+		2CD92B4E26BF5C5700A3263E /* EditArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B4D26BF5C5700A3263E /* EditArticleResponse.swift */; };
 		2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */; };
 		2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */; };
 		2CEC875826AF241A0073251C /* MainPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CEC875626AF241A0073251C /* MainPostTableViewCell.xib */; };
@@ -255,6 +259,10 @@
 		2CD92B3F26BF422000A3263E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		2CD92B4326BF491B00A3263E /* EditTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CD92B4426BF491B00A3263E /* EditTagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTagCollectionViewCell.xib; sourceTree = "<group>"; };
+		2CD92B4726BF5B0800A3263E /* EditDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDataManager.swift; sourceTree = "<group>"; };
+		2CD92B4926BF5B2300A3263E /* EditViewContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewContract.swift; sourceTree = "<group>"; };
+		2CD92B4B26BF5C4D00A3263E /* EditArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArticleRequest.swift; sourceTree = "<group>"; };
+		2CD92B4D26BF5C5700A3263E /* EditArticleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArticleResponse.swift; sourceTree = "<group>"; };
 		2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanPopUPViewController.swift; sourceTree = "<group>"; };
 		2CEC875526AF241A0073251C /* MainPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPostTableViewCell.swift; sourceTree = "<group>"; };
 		2CEC875626AF241A0073251C /* MainPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainPostTableViewCell.xib; sourceTree = "<group>"; };
@@ -512,6 +520,8 @@
 				2C004B0626B3928500D13ABF /* PostCommentResponse.swift */,
 				2C35B9AB26B4396B0032CDA1 /* ExistsArticleRequest.swift */,
 				2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */,
+				2CD92B4B26BF5C4D00A3263E /* EditArticleRequest.swift */,
+				2CD92B4D26BF5C5700A3263E /* EditArticleResponse.swift */,
 			);
 			path = API_InArticle;
 			sourceTree = "<group>";
@@ -551,6 +561,8 @@
 				2CEC875626AF241A0073251C /* MainPostTableViewCell.xib */,
 				2CEC875326AF0E8D0073251C /* BanPopUPViewController.swift */,
 				2CD92B3F26BF422000A3263E /* EditViewController.swift */,
+				2CD92B4726BF5B0800A3263E /* EditDataManager.swift */,
+				2CD92B4926BF5B2300A3263E /* EditViewContract.swift */,
 				2CD92B4326BF491B00A3263E /* EditTagCollectionViewCell.swift */,
 				2CD92B4426BF491B00A3263E /* EditTagCollectionViewCell.xib */,
 			);
@@ -859,6 +871,7 @@
 				2CFDA9C2269DF42600612EDB /* RecentPostContentsTableViewCell.swift in Sources */,
 				2C004AD826B3517300D13ABF /* WriteContract.swift in Sources */,
 				2C004AF926B385F700D13ABF /* DeleteArticleRequest.swift in Sources */,
+				2CD92B4826BF5B0800A3263E /* EditDataManager.swift in Sources */,
 				2C004AA926B34E4800D13ABF /* DeleveryDataManager.swift in Sources */,
 				2C004A5726B2F43200D13ABF /* String.swift in Sources */,
 				2C004A4B26B2E58300D13ABF /* LoginResponse.swift in Sources */,
@@ -891,10 +904,12 @@
 				2C004ADF26B35BDA00D13ABF /* SearchDataManager.swift in Sources */,
 				2C004B0126B38C8200D13ABF /* GetCommentRequest.swift in Sources */,
 				2C004AAB26B34E4800D13ABF /* DeleveryViewController.swift in Sources */,
+				2CD92B4C26BF5C4D00A3263E /* EditArticleRequest.swift in Sources */,
 				2C004AF126B381FD00D13ABF /* AddArticleCountRequest.swift in Sources */,
 				2C004A7B26B32D6400D13ABF /* AllPostResponse.swift in Sources */,
 				2CD92B4526BF491B00A3263E /* EditTagCollectionViewCell.swift in Sources */,
 				2C004ACE26B34E6000D13ABF /* RoomMateDataManager.swift in Sources */,
+				2CD92B4A26BF5B2300A3263E /* EditViewContract.swift in Sources */,
 				2C5D0193268E20E000CC6DD4 /* LoginViewController.swift in Sources */,
 				2C004AD226B3508E00D13ABF /* WriteArticleRequest.swift in Sources */,
 				2C5D39D126BE38BE0046CD32 /* ChangeNicknameViewController.swift in Sources */,
@@ -940,6 +955,7 @@
 				2CD92B3926BF289800A3263E /* RoomMateCollectionViewCell.swift in Sources */,
 				2CD92B3126BF20BF00A3263E /* ParcelCollectionViewCell.swift in Sources */,
 				2C004A7126B3209200D13ABF /* RecentPostResponse.swift in Sources */,
+				2CD92B4E26BF5C5700A3263E /* EditArticleResponse.swift in Sources */,
 				2C004AB726B34E5400D13ABF /* TaxiViewController.swift in Sources */,
 				2CFDA9C5269E0DE000612EDB /* SearchViewController.swift in Sources */,
 				2C004AD426B3509B00D13ABF /* WriteArticleResponse.swift in Sources */,
