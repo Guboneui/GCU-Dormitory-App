@@ -171,10 +171,35 @@ extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewData
             let profileImage = data.imageSource ?? ""
             let userImage = profileImage.toImage()
             cell.profileImageView.image = userImage
+            
+            let formatter        = DateFormatter()
+            formatter.locale     = Locale(identifier: "ko_KR")
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             var time = data.timeStamp
-            time = time.substring(from: 11, to: 16)
-            cell.timeLabel.text = time
-
+            //현재 시간 값을 받아옴
+            let today: String = formatter.string(from: Date())
+            
+            let nowDay = today.substring(from: 0, to: 10)
+            let nowHour = Int(today.substring(from: 11, to: 13))!
+            let nowMinute = Int(today.substring(from: 14, to: 16))!
+            
+            let articleDay = time.substring(from: 0, to: 10)
+            let articleHour = Int(time.substring(from: 11, to: 13))!
+            let articleMinute = Int(time.substring(from: 14, to: 16))!
+            
+            let totalArticleTime = articleHour * 60 + articleMinute
+            let totalNowTime = nowHour * 60 + nowMinute
+            
+            if nowDay == articleDay {
+                if totalNowTime - totalArticleTime < 60 {
+                    cell.timeLabel.text = String((totalNowTime - totalArticleTime) % 60)+"분 전"
+                } else {
+                    cell.timeLabel.text = String((totalNowTime - totalArticleTime) / 60)+"시간 전"
+                }
+            } else {
+                cell.timeLabel.text = time.substring(from: 5, to: 10)
+            }
+            
         } else {
             cell.nicknameLabel.text = ""
             cell.categoryLabel.text = ""

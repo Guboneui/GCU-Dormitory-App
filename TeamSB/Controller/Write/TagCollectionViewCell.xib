@@ -11,33 +11,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="TagCollectionViewCell" reuseIdentifier="TagCollectionViewCell" id="gTV-IL-0wX" customClass="TagCollectionViewCell" customModule="TeamSB" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="152" height="25"/>
+            <rect key="frame" x="0.0" y="0.0" width="108" height="21"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="152" height="25"/>
+                <rect key="frame" x="0.0" y="0.0" width="108" height="21"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6Z-XH-Tno">
-                        <rect key="frame" x="0.0" y="0.0" width="152" height="25"/>
+                        <rect key="frame" x="0.0" y="0.0" width="108" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxy-1P-Oar">
-                                <rect key="frame" x="15" y="0.0" width="122" height="25"/>
+                                <rect key="frame" x="10" y="3" width="88" height="15"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="yNa-Mq-dCp"/>
+                                    <constraint firstAttribute="height" constant="15" id="yNa-Mq-dCp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstItem="oxy-1P-Oar" firstAttribute="leading" secondItem="w6Z-XH-Tno" secondAttribute="leading" constant="15" id="FbL-Lv-7af"/>
-                            <constraint firstAttribute="trailing" secondItem="oxy-1P-Oar" secondAttribute="trailing" constant="15" id="M6U-xg-Iy7"/>
-                            <constraint firstAttribute="height" constant="25" id="UvC-TH-Esk"/>
-                            <constraint firstItem="oxy-1P-Oar" firstAttribute="centerY" secondItem="w6Z-XH-Tno" secondAttribute="centerY" id="YOb-N4-Rs3"/>
-                            <constraint firstItem="oxy-1P-Oar" firstAttribute="centerX" secondItem="w6Z-XH-Tno" secondAttribute="centerX" id="tQj-mO-BPI"/>
+                            <constraint firstItem="oxy-1P-Oar" firstAttribute="top" secondItem="w6Z-XH-Tno" secondAttribute="top" constant="3" id="En1-aT-XKX"/>
+                            <constraint firstItem="oxy-1P-Oar" firstAttribute="leading" secondItem="w6Z-XH-Tno" secondAttribute="leading" constant="10" id="FbL-Lv-7af"/>
+                            <constraint firstAttribute="bottom" secondItem="oxy-1P-Oar" secondAttribute="bottom" constant="3" id="Fic-Og-rKx"/>
+                            <constraint firstAttribute="trailing" secondItem="oxy-1P-Oar" secondAttribute="trailing" constant="10" id="M6U-xg-Iy7"/>
+                            <constraint firstAttribute="height" constant="21" id="UvC-TH-Esk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -49,12 +49,12 @@
                 <constraint firstItem="w6Z-XH-Tno" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iXY-b1-5VK"/>
                 <constraint firstAttribute="trailing" secondItem="w6Z-XH-Tno" secondAttribute="trailing" id="lGS-Gu-fjJ"/>
             </constraints>
-            <size key="customSize" width="152" height="25"/>
+            <size key="customSize" width="108" height="21"/>
             <connections>
                 <outlet property="tagLabel" destination="oxy-1P-Oar" id="EXo-PB-1ts"/>
                 <outlet property="tagRoundView" destination="w6Z-XH-Tno" id="6d9-Ix-h77"/>
             </connections>
-            <point key="canvasLocation" x="-123.18840579710145" y="84.709821428571431"/>
+            <point key="canvasLocation" x="-155.07246376811597" y="82.700892857142847"/>
         </collectionViewCell>
     </objects>
     <resources>

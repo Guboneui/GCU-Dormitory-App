@@ -81,6 +81,7 @@
 		2C18C97526C1A02300C852B2 /* MyPostContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97426C1A02300C852B2 /* MyPostContract.swift */; };
 		2C18C97726C1A08400C852B2 /* MyPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97626C1A08400C852B2 /* MyPostRequest.swift */; };
 		2C18C97926C1A08D00C852B2 /* MyPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97826C1A08D00C852B2 /* MyPostResponse.swift */; };
+		2C18C97B26C1CCC000C852B2 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C18C97A26C1CCC000C852B2 /* UIImage.swift */; };
 		2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF726B159FC003AB22A /* Post.storyboard */; };
 		2C22FAFA26B15A8A003AB22A /* In_Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C22FAF926B15A8A003AB22A /* In_Post.storyboard */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
@@ -231,6 +232,7 @@
 		2C18C97426C1A02300C852B2 /* MyPostContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostContract.swift; sourceTree = "<group>"; };
 		2C18C97626C1A08400C852B2 /* MyPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostRequest.swift; sourceTree = "<group>"; };
 		2C18C97826C1A08D00C852B2 /* MyPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostResponse.swift; sourceTree = "<group>"; };
+		2C18C97A26C1CCC000C852B2 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		2C1D65BD26B0AD4D00F1B565 /* TeamSB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSB.entitlements; sourceTree = "<group>"; };
 		2C22FAF726B159FC003AB22A /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		2C22FAF926B15A8A003AB22A /* In_Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = In_Post.storyboard; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				2C004A5426B2F24500D13ABF /* UIViewController.swift */,
 				2C004A5626B2F43200D13ABF /* String.swift */,
 				2CD92B2926BF174100A3263E /* Device.swift */,
+				2C18C97A26C1CCC000C852B2 /* UIImage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 				2C004B0126B38C8200D13ABF /* GetCommentRequest.swift in Sources */,
 				2C004AAB26B34E4800D13ABF /* DeleveryViewController.swift in Sources */,
 				2CD92B4C26BF5C4D00A3263E /* EditArticleRequest.swift in Sources */,
+				2C18C97B26C1CCC000C852B2 /* UIImage.swift in Sources */,
 				2C18C96026C15E6600C852B2 /* RePostRequest.swift in Sources */,
 				2C004AF126B381FD00D13ABF /* AddArticleCountRequest.swift in Sources */,
 				2C004A7B26B32D6400D13ABF /* AllPostResponse.swift in Sources */,
@@ -1168,7 +1172,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1193,7 +1197,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

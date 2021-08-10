@@ -19,6 +19,11 @@ protocol UpdateData: AnyObject {
 
 class WriteViewController: UIViewController {
 
+    @IBOutlet weak var categoryBaseView: UIView!
+    @IBOutlet weak var titleBaseView: UIView!
+    @IBOutlet weak var tagBaseView: UIView!
+    
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var dropdownBaseView: UIView!
@@ -92,10 +97,39 @@ extension WriteViewController {
         self.navigationItem.title = "글쓰기"
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
+    
     }
 
 
     func setDesign() {
+        
+        dropdownBaseView.layer.borderWidth = 1
+        dropdownBaseView.layer.borderColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+        
+        categoryBaseView.backgroundColor = .white
+        categoryBaseView.layer.cornerRadius = categoryBaseView.frame.height / 2
+        categoryBaseView.layer.borderWidth = 2
+        categoryBaseView.layer.borderColor = #colorLiteral(red: 1, green: 0.8901960784, blue: 0.5450980392, alpha: 1)
+        
+        titleBaseView.backgroundColor = .white
+        titleBaseView.layer.cornerRadius = categoryBaseView.frame.height / 2
+        titleBaseView.layer.borderWidth = 2
+        titleBaseView.layer.borderColor = #colorLiteral(red: 1, green: 0.8901960784, blue: 0.5450980392, alpha: 1)
+        
+        tagBaseView.backgroundColor = .white
+        tagBaseView.layer.cornerRadius = categoryBaseView.frame.height / 2
+        tagBaseView.layer.borderWidth = 2
+        tagBaseView.layer.borderColor = #colorLiteral(red: 1, green: 0.8901960784, blue: 0.5450980392, alpha: 1)
+        
+        
+        addTagButton.layer.cornerRadius = addTagButton.frame.height / 2
+        addTagButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        addTagButton.layer.shadowRadius = addTagButton.frame.height / 2
+        addTagButton.layer.shadowOpacity = 0.25
+        
+        
+        
+        
         let ban = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
         ban.tintColor = .black
 
@@ -125,11 +159,11 @@ extension WriteViewController {
         }
 
         dropDown.cancelAction = { [unowned self] in
-            dropDownImage.image = UIImage(systemName: "arrowtriangle.down.fill")
+            dropDownImage.image = UIImage(named: "drop")
         }
 
         dropDown.willShowAction = { [unowned self] in
-            dropDownImage.image = UIImage(systemName: "arrowtriangle.up.fill")
+            dropDownImage.image = UIImage(named: "upDrop")
         }
     }
 
@@ -257,6 +291,7 @@ extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell", for: indexPath) as! TagCollectionViewCell
 
         cell.tagLabel.text = "#" + " \(tagArray[indexPath.row])"
+        //cell.tagLabel.font = UIFont.boldSystemFont(ofSize: 13)
 
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))

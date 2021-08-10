@@ -24,4 +24,5 @@ class MyPost: Decodable {
     var reportCount: Int
     var replyCount: Int
     var hash: [String]?
+    var imageSource: String?
 }

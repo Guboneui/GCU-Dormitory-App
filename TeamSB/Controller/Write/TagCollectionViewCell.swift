@@ -17,9 +17,11 @@ class TagCollectionViewCell: UICollectionViewCell {
         // Initialization code
         tagRoundView.layer.cornerRadius = tagRoundView.frame.height / 2
         tagRoundView.backgroundColor = UIColor.SBColor.SB_BaseYellow
-        tagLabel.layer.cornerRadius = 10
+        //tagLabel.layer.cornerRadius = 10
         tagLabel.layer.masksToBounds = true
-        tagLabel.textColor = UIColor.SBColor.SB_LightGray
+        tagLabel.textColor = UIColor.white
+        
+        tagLabel.font = UIFont.boldSystemFont(ofSize: 13)
         
     }
 }

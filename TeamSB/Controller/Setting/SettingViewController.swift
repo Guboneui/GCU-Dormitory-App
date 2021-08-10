@@ -7,6 +7,8 @@
 
 import UIKit
 import Alamofire
+import Firebase
+import FirebaseStorage
 
 //Setting 화면 Todo
 //1. 프로필(닉네임, 자신이 쓴 글 개수, 닉네임 수정, ...)
@@ -54,7 +56,7 @@ class SettingViewController: UIViewController {
     }
     
     func getProfileImage() {
-        let imageString = UserDefaults.standard.string(forKey: "userProfileImage")!
+        let imageString = UserDefaults.standard.string(forKey: "userProfileImage") ?? ""
         let userProfileImage = imageString.toImage()
         profileImage.image = userProfileImage
     }
@@ -114,6 +116,7 @@ class SettingViewController: UIViewController {
     }
     
     
+    
     @IBAction func changeProfile(_ sender: Any) {
         print(">> 프로필 변경 버튼이 눌렸습니다")
         let alert = UIAlertController(title: "프로필 변경", message: "무엇을 변경하시겠어요?", preferredStyle: .actionSheet)
@@ -149,6 +152,8 @@ class SettingViewController: UIViewController {
     @objc func backButtonAction() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+   
    
     
     
@@ -203,16 +208,65 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             newImage = possibleImage // 원본 이미지가 있을 경우
         }
         
-        print(">> 바뀐 프로필 이미지 \(String(describing: newImage))")
+        
+        
+//        let storage = Storage.storage()
+//        let storageRef = storage.reference()
+//
+//        let photoRef = storageRef.child("\(UserDefaults.standard.string(forKey: "userID"))").child
+//
+//        guard let imageData = newImage?.jpegData(compressionQuality: 0.5) else {
+//            print("업로드 실패")
+//            return
+//        }
+//
+//        photoRef.putData(imageData, metadata: nil, completion: { _, error in
+//            guard error == nil else {
+//                print("업로드 실패2")
+//                print(error)
+//                return
+//            }
+//            photoRef.downloadURL(completion: { [self] url, error in
+//                guard let url = url, error == nil else {
+//                    return
+//                }
+//
+//                let urlString = url.absoluteString
+//                print(urlString)
+////                self.presenter.executeUserProfile(profileImg: urlString, nickname: UserDefaults.standard.string(forKey: UserDefaultKey.nickname) ?? "")
+//
+////                WEKITLog.debug("Download URL: \(urlString)")
+//            })
+//
+//        })
+//
+//
+//
+//
+//
+        
+        
+        
+        
+        
+        
+        //print(">> 바뀐 프로필 이미지 \(String(describing: newImage))")
         
         let id = UserDefaults.standard.string(forKey: "userID")!
-        let changeImageString = newImage?.toPngString()
+        var editImage = newImage?.resize(newWidth: 300)
+        let jpgImage = editImage?.jpegData(compressionQuality: 0.5)
+//        var editImage = newImage?.resize(newWidth: 100)
+//
+//        editImage = newImage?.downSample1(scale: 0.25)
+        //let changeImageString = editImage?.toPngString()
         
-        UserDefaults.standard.set(changeImageString, forKey: "userProfileImage")
+        let jpgString = jpgImage?.base64EncodedString(options: .lineLength64Characters)
         
-        let param = ChangeProfileImageRequest(curId: id, profile_image: changeImageString!)
+        UserDefaults.standard.set(jpgString, forKey: "userProfileImage")
+        
+        let param = ChangeProfileImageRequest(curId: id, profile_image: jpgString!)
         dataManager.postChangeProfileImage(param, viewController: self)
-        self.profileImage.image = newImage // 받아온 이미지를 update
+        self.profileImage.image = UIImage(data: jpgImage!) // 받아온 이미지를 update
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
         
     }

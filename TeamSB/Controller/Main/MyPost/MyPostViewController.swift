@@ -137,9 +137,9 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
             var time = data.timeStamp
             time = time.substring(from: 11, to: 16)
             cell.timeLabel.text = time
-            //let profileImage = data.imageSource ?? ""
-            //let userImage = profileImage.toImage()
-            //cell.profileImageView.image = userImage
+            let profileImage = data.imageSource ?? ""
+            let userImage = profileImage.toImage()
+            cell.profileImageView.image = userImage
 
         } else {
             cell.nicknameLabel.text = ""
