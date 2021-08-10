@@ -379,6 +379,8 @@ extension ShowMoreViewController: AllPostView {
         vc.getUserID = data.userId
         vc.delegate = self
         vc.getHash = data.hash
+        vc.getImage = data.imageSource ?? ""
+        vc.getMainTitle = data.category
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -14,7 +14,8 @@ class MainCommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var guideLineView: UIView!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     
     
     override func awakeFromNib() {
@@ -22,7 +23,7 @@ class MainCommentsTableViewCell: UITableViewCell {
         
         //baseView.backgroundColor = UIColor.SBColor.SB_BaseYellow
         
-        guideLineView.backgroundColor = UIColor.SBColor.SB_LightGray
+        
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
 
@@ -31,5 +32,11 @@ class MainCommentsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 20, bottom: 13, right: 20))
+//    }
     
 }

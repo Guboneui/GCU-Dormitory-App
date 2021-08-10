@@ -15,6 +15,7 @@ import NVActivityIndicatorView
 protocol AfterEditDelegate: AnyObject {
     func afterEdit(articleNO: Int)
     func updateComment(articleNO: Int)
+    func updateGetData(getPostNumber: Int, getTitle: String, getCategory: String, getUserID: String, getNickname: String, getContents: String, getHash: [String])
 }
 
 
@@ -29,13 +30,15 @@ class EditViewController: UIViewController {
     var originNo = 0
     
    
+    @IBOutlet weak var categoryBaseView: UIView!
+    @IBOutlet weak var titleBaseView: UIView!
+    @IBOutlet weak var tagBaseView: UIView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var dropdownBaseView: UIView!
     @IBOutlet weak var categoryTitle: UILabel!
     @IBOutlet weak var guideLineView: UIView!
     @IBOutlet weak var contentsTextView: UITextView!
-    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var dropDownImage: UIImageView!
     @IBOutlet weak var tagTextField: UITextField!
     @IBOutlet weak var tagCollectionView: UICollectionView!
@@ -118,6 +121,34 @@ extension EditViewController {
     
     
     func setDesign() {
+        
+        dropdownBaseView.layer.borderWidth = 1
+        dropdownBaseView.layer.borderColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+        
+        categoryBaseView.backgroundColor = .white
+        categoryBaseView.layer.cornerRadius = categoryBaseView.frame.height / 2
+        categoryBaseView.layer.borderWidth = 2
+        categoryBaseView.layer.borderColor = #colorLiteral(red: 1, green: 0.8901960784, blue: 0.5450980392, alpha: 1)
+        
+        titleBaseView.backgroundColor = .white
+        titleBaseView.layer.cornerRadius = categoryBaseView.frame.height / 2
+        titleBaseView.layer.borderWidth = 2
+        titleBaseView.layer.borderColor = #colorLiteral(red: 1, green: 0.8901960784, blue: 0.5450980392, alpha: 1)
+        
+        tagBaseView.backgroundColor = .white
+        tagBaseView.layer.cornerRadius = categoryBaseView.frame.height / 2
+        tagBaseView.layer.borderWidth = 2
+        tagBaseView.layer.borderColor = #colorLiteral(red: 1, green: 0.8901960784, blue: 0.5450980392, alpha: 1)
+        
+        
+        addTagButton.layer.cornerRadius = addTagButton.frame.height / 2
+        addTagButton.layer.shadowOffset = CGSize(width: 3, height: 3)
+        addTagButton.layer.shadowRadius = addTagButton.frame.height / 2
+        addTagButton.layer.shadowOpacity = 0.25
+        
+        
+        
+        
         let ban = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
         ban.tintColor = .black
         
@@ -152,11 +183,11 @@ extension EditViewController {
         }
         
         dropDown.cancelAction = { [unowned self] in
-            dropDownImage.image = UIImage(systemName: "arrowtriangle.down.fill")
+            dropDownImage.image = UIImage(named: "drop")
         }
-        
+
         dropDown.willShowAction = { [unowned self] in
-            dropDownImage.image = UIImage(systemName: "arrowtriangle.up.fill")
+            dropDownImage.image = UIImage(named: "upDrop")
         }
     }
     
@@ -277,7 +308,7 @@ extension EditViewController{
         
         self.loading.startAnimating()
     
-        
+        let sendNickname = UserDefaults.standard.string(forKey: "userNickname")!
         let sendId = UserDefaults.standard.string(forKey: "userID")!
         let sendTitle = titleTextField.text!
         let sendCategory = categoryTitle.text!
@@ -285,6 +316,7 @@ extension EditViewController{
         let sendHash = originHash
         let sendNO = originNo
         let param = EditArticleRequest(curUser: sendId, title: sendTitle, category: sendCategory, text: sendText, hash: sendHash, no: sendNO)
+        afterEditDelegate?.updateGetData(getPostNumber: originNo, getTitle: sendTitle, getCategory: sendCategory, getUserID: sendId, getNickname: sendNickname, getContents: sendText, getHash: originHash)
         
         dataManager.changeArticle(param, viewController: self)
     }

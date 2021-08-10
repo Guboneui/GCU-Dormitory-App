@@ -10,10 +10,14 @@ import UIKit
 class MainPostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var commentCountLabel: UILabel!
+    @IBOutlet weak var contentsLabel: UILabel!
+    @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var adminLabel: UILabel!
-    @IBOutlet weak var contentsTextView: UITextView!
+    
     @IBOutlet weak var guideLineView: UIView!
     
     override func awakeFromNib() {
@@ -30,11 +34,7 @@ class MainPostTableViewCell: UITableViewCell {
     
 //MARK: -기본 UI함수
     func setDesign() {
-        contentsTextView.isEditable = false
-        contentsTextView.isScrollEnabled = false
-        
-        contentsTextView.layer.cornerRadius = 1
-        
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
     }
 

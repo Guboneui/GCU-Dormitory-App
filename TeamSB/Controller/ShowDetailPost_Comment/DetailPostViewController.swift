@@ -16,11 +16,14 @@ protocol WhenDismissDetailView: AnyObject {
 
 class DetailPostViewController: UIViewController {
     
+    @IBOutlet weak var bottomBaseView: UIView!
     @IBOutlet weak var sendViewBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     //@IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var sendButton: UIButton!
     
+    var getMainTitle = ""
     var getPostNumber: Int = 0
     var getTitle: String = ""
     var getCategory: String = ""
@@ -30,6 +33,7 @@ class DetailPostViewController: UIViewController {
     var getContents: String = ""
     var getShowCount: Int = 0
     var getHash: [String] = []
+    var getImage: String = ""
     
     var cellHeightsDictionary: NSMutableDictionary = [:]
     
@@ -51,9 +55,11 @@ class DetailPostViewController: UIViewController {
         
         setTableView()
         
+        messageTextView.delegate = self
+        
         postAddArticleCount()
         postGetArticleComment()
-        
+        configDesign()
        
         checkWriter()
         
@@ -70,12 +76,13 @@ class DetailPostViewController: UIViewController {
     }
     
    
+   
     
 }
 //MARK: -생명주기(뷰 로드 시)에서 사용되는 API 함수
 extension DetailPostViewController {
     func setNavigation_Tab(){
-        self.navigationItem.title = "게시글"
+        self.navigationItem.title = "\(getMainTitle)"
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -95,6 +102,16 @@ extension DetailPostViewController {
 
 //MARK: -기본 UI 함수
 extension DetailPostViewController {
+    
+    func configDesign() {
+        bottomBaseView.backgroundColor = .white
+        bottomBaseView.layer.cornerRadius = bottomBaseView.frame.height / 2
+        bottomBaseView.layer.borderWidth = 2
+        bottomBaseView.layer.borderColor = #colorLiteral(red: 0.9764705882, green: 0.8549019608, blue: 0.4705882353, alpha: 1)
+        
+        sendButton.layer.cornerRadius = sendButton.frame.height / 2
+        sendButton.backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.8549019608, blue: 0.4705882353, alpha: 1)
+    }
 
     func setTableView() {
         mainTableView.delegate = self
@@ -299,20 +316,62 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             
             if reload == false {
                 cell.titleLabel.text = getTitle
-                cell.categoryLabel.text = getCategory
                 cell.timeLabel.text = getTime
                 cell.adminLabel.text = getNickname
-                cell.contentsTextView.text = getContents
-                cell.contentsTextView.isEditable = false
+                cell.contentsLabel.text = getContents
+                
+                var hashString = ""
+                
+                if getHash.count != 0 {
+                    for i in 0..<getHash.count {
+                        if i == getHash.count - 1{
+                            hashString += "#" + getHash[i]
+                        } else {
+                            hashString += "#\(getHash[i])\n"
+                        }
+                    }
+                    cell.tagLabel.text = hashString
+                } else {
+                    cell.tagLabel.text = ""
+                }
+                
+                
+                let imageString = getImage
+                let userProfileImage = imageString.toImage()
+                cell.profileImageView.image = userProfileImage
+                
+                
+                cell.commentCountLabel.text = String(getShowCount)
                 cell.selectionStyle = .none
             } else {
                 let data = post[0]
                 cell.titleLabel.text = data.title
-                cell.categoryLabel.text = data.category
+                
                 cell.timeLabel.text = data.timeStamp
                 cell.adminLabel.text = data.userNickname
-                cell.contentsTextView.text = data.text
-                cell.contentsTextView.isEditable = false
+                cell.contentsLabel.text = data.text
+                cell.commentCountLabel.text = String(data.viewCount)
+                
+                
+                let imageString = data.imageSource ?? ""
+                let userProfileImage = imageString.toImage()
+                cell.profileImageView.image = userProfileImage
+                
+                
+                var hashString = ""
+                
+                if data.hash.count != 0 {
+                    for i in 0..<data.hash.count {
+                        if i == data.hash.count - 1{
+                            hashString += "#" + data.hash[i]
+                        } else {
+                            hashString += "#\(data.hash[i])\n"
+                        }
+                    }
+                    cell.tagLabel.text = hashString
+                } else {
+                    cell.tagLabel.text = ""
+                }
                 cell.selectionStyle = .none
             }
             
@@ -330,6 +389,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.nicknameLabel.text = data.userNickname
             cell.commentLabel.text = data.content
+            cell.timeLabel.text = data.timeStamp.substring(from: 5, to: 16)
             
             if data.userId == deviceID {
                 cell.nicknameLabel.textColor = UIColor.SBColor.SB_BaseYellow
@@ -339,6 +399,8 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
             
             let profileImage = data.imageSource.toImage()
             
+            
+            
             cell.profileImageView.image = profileImage
             cell.selectionStyle = .none
             
@@ -347,8 +409,6 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 let parama = GetCommentRequest(curUser: userID, article_no: getPostNumber)
                 dataManager.postGetArticleComment(parama, viewController: self, page: currentPage)
             }
-            
-        
             
             return cell
         }
@@ -367,7 +427,12 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         
         return UITableView.automaticDimension
     }
+    
+    
 }
+
+
+
 
 //MARK: -DataManager 연결 함수
 extension DetailPostViewController: DetailPostView {
@@ -409,6 +474,16 @@ extension DetailPostViewController: DetailPostView {
 
 
 extension DetailPostViewController: AfterEditDelegate {
+    func updateGetData(getPostNumber: Int, getTitle: String, getCategory: String, getUserID: String, getNickname: String, getContents: String, getHash: [String]) {
+        self.getPostNumber = getPostNumber
+        self.getTitle = getTitle
+        self.getCategory = getCategory
+        self.getUserID = getUserID
+        self.getNickname = getNickname
+        self.getContents = getContents
+        self.getHash = getHash
+    }
+    
     func updateComment(articleNO: Int) {
         let userID = UserDefaults.standard.string(forKey: "userID")!
         let secondParam = GetCommentRequest(curUser: userID, article_no: articleNO)
@@ -436,4 +511,18 @@ extension DetailPostViewController: AfterEditDelegate {
     }
     
     
+}
+
+extension DetailPostViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        //let size = CGSize(width: view.frame.width, height: .infinity)
+        let size = CGSize(width: view.frame.width, height: self.messageTextView.frame.height)
+        let estimatedSize = textView.sizeThatFits(size)
+        messageTextView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+            
+        }
+    }
 }
