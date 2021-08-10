@@ -54,7 +54,7 @@ class SettingDataManager {
     }
     
     func postChangeNickname(_ parameters: ChangeUserNicknameRequest, viewController: ChangeNicknameViewController) {
-        AF.request("\(ConstantURL.BASE_URL)/nicknameSet", method: .post, parameters: parameters)
+        AF.request("\(ConstantURL.BASE_URL)/nicknameSet", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
             .validate()
             .responseDecodable(of: ChangeUserNicknameResponse.self) { [self] response in
                 switch response.result {
@@ -71,6 +71,7 @@ class SettingDataManager {
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
                     print(">> \(error.localizedDescription)")
+                    print(error)
             }
         }
     }

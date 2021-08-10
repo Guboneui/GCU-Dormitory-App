@@ -39,12 +39,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글 내용이 보이는 자리입니당~ 몇글자까지 보이는게 이쁠까요?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="im1-00-CWs">
-                                <rect key="frame" x="8" y="63" width="142" height="47"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE8-zk-DYT">
                                 <rect key="frame" x="8" y="120" width="33.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -64,28 +58,52 @@
                                     <constraint firstAttribute="width" constant="13" id="cqx-t1-2zW"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFt-Sx-vDm">
+                                <rect key="frame" x="8" y="63" width="140" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP7-JZ-UBy">
+                                <rect key="frame" x="8" y="79" width="140" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob8-Dj-pOB">
+                                <rect key="frame" x="8" y="95" width="140" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ob8-Dj-pOB" secondAttribute="trailing" constant="8" id="0x1-Eh-s8O"/>
                             <constraint firstItem="FE8-zk-DYT" firstAttribute="leading" secondItem="eww-h9-1Io" secondAttribute="leading" constant="8" id="1DE-Lt-rXi"/>
+                            <constraint firstAttribute="trailing" secondItem="fFt-Sx-vDm" secondAttribute="trailing" constant="8" id="2t8-sP-kB2"/>
+                            <constraint firstItem="fFt-Sx-vDm" firstAttribute="leading" secondItem="eww-h9-1Io" secondAttribute="leading" constant="8" id="8xt-td-m50"/>
                             <constraint firstItem="mOd-GI-EQF" firstAttribute="leading" secondItem="eww-h9-1Io" secondAttribute="leading" constant="8" id="AQ0-HZ-cT7"/>
+                            <constraint firstItem="GP7-JZ-UBy" firstAttribute="top" secondItem="fFt-Sx-vDm" secondAttribute="bottom" constant="1" id="Aeg-e9-tJq"/>
                             <constraint firstItem="NlI-fz-9xO" firstAttribute="leading" secondItem="my8-EX-geV" secondAttribute="trailing" constant="4" id="Bd0-Ju-a1R"/>
                             <constraint firstItem="mOd-GI-EQF" firstAttribute="top" secondItem="ap5-WK-wUi" secondAttribute="bottom" constant="9" id="Fgb-4a-wUW"/>
-                            <constraint firstItem="im1-00-CWs" firstAttribute="top" secondItem="mOd-GI-EQF" secondAttribute="bottom" constant="5" id="IIU-K8-Wbd"/>
-                            <constraint firstAttribute="trailing" secondItem="im1-00-CWs" secondAttribute="trailing" constant="6" id="K1w-Po-jQe"/>
-                            <constraint firstItem="im1-00-CWs" firstAttribute="leading" secondItem="eww-h9-1Io" secondAttribute="leading" constant="8" id="KLb-EB-EGe"/>
                             <constraint firstItem="ap5-WK-wUi" firstAttribute="top" secondItem="eww-h9-1Io" secondAttribute="top" constant="8" id="L5d-8G-wTR"/>
                             <constraint firstItem="VDC-Yy-2dV" firstAttribute="centerY" secondItem="ap5-WK-wUi" secondAttribute="centerY" id="V2s-WP-jcb"/>
+                            <constraint firstAttribute="trailing" secondItem="GP7-JZ-UBy" secondAttribute="trailing" constant="8" id="Xke-Gg-0AK"/>
+                            <constraint firstItem="ob8-Dj-pOB" firstAttribute="top" secondItem="GP7-JZ-UBy" secondAttribute="bottom" constant="1" id="ZQd-Qv-91s"/>
                             <constraint firstAttribute="width" constant="156" id="a6q-uK-aPM"/>
                             <constraint firstAttribute="bottom" secondItem="FE8-zk-DYT" secondAttribute="bottom" constant="6" id="dn7-te-ACz"/>
                             <constraint firstAttribute="trailing" secondItem="NlI-fz-9xO" secondAttribute="trailing" constant="10" id="gMS-U4-E2N"/>
                             <constraint firstItem="VDC-Yy-2dV" firstAttribute="leading" secondItem="ap5-WK-wUi" secondAttribute="trailing" constant="6" id="hCj-x2-ozP"/>
                             <constraint firstAttribute="height" constant="142" id="iOg-4l-P5F"/>
+                            <constraint firstItem="ob8-Dj-pOB" firstAttribute="leading" secondItem="eww-h9-1Io" secondAttribute="leading" constant="8" id="iqW-oh-hzm"/>
                             <constraint firstAttribute="trailing" secondItem="mOd-GI-EQF" secondAttribute="trailing" constant="6" id="la5-Gc-ith"/>
                             <constraint firstItem="ap5-WK-wUi" firstAttribute="leading" secondItem="eww-h9-1Io" secondAttribute="leading" constant="8" id="moi-e4-bje"/>
                             <constraint firstAttribute="trailing" secondItem="VDC-Yy-2dV" secondAttribute="trailing" constant="8" id="vzQ-RS-K7c"/>
                             <constraint firstAttribute="bottom" secondItem="NlI-fz-9xO" secondAttribute="bottom" constant="6" id="wx9-e3-DvD"/>
                             <constraint firstItem="my8-EX-geV" firstAttribute="centerY" secondItem="NlI-fz-9xO" secondAttribute="centerY" id="xaT-Hi-UpM"/>
+                            <constraint firstItem="fFt-Sx-vDm" firstAttribute="top" secondItem="mOd-GI-EQF" secondAttribute="bottom" constant="5" id="xdB-hq-5gu"/>
+                            <constraint firstItem="GP7-JZ-UBy" firstAttribute="leading" secondItem="eww-h9-1Io" secondAttribute="leading" constant="8" id="zwt-DO-BEF"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -101,13 +119,15 @@
             <connections>
                 <outlet property="baseView" destination="eww-h9-1Io" id="XEL-Og-KSt"/>
                 <outlet property="commentCountLabel" destination="NlI-fz-9xO" id="xsf-sh-tm6"/>
-                <outlet property="contentsLabel" destination="im1-00-CWs" id="amk-mr-WY1"/>
                 <outlet property="nicknameLabel" destination="VDC-Yy-2dV" id="UnY-kS-65o"/>
                 <outlet property="profileImage" destination="ap5-WK-wUi" id="Dcs-y8-znS"/>
+                <outlet property="tagLabel0" destination="fFt-Sx-vDm" id="ZOj-AY-Iyg"/>
+                <outlet property="tagLabel1" destination="GP7-JZ-UBy" id="dfw-Kn-VDW"/>
+                <outlet property="tagLabel2" destination="ob8-Dj-pOB" id="2z4-yQ-rRv"/>
                 <outlet property="timeLabel" destination="FE8-zk-DYT" id="CWS-AA-cnx"/>
                 <outlet property="titleLabel" destination="mOd-GI-EQF" id="Fi9-VP-1xj"/>
             </connections>
-            <point key="canvasLocation" x="226.08695652173915" y="47.544642857142854"/>
+            <point key="canvasLocation" x="229" y="29"/>
         </collectionViewCell>
     </objects>
     <resources>

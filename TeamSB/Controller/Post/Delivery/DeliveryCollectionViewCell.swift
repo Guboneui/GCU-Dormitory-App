@@ -13,7 +13,12 @@ class DeliveryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var contentsLabel: UILabel!
+    
+    @IBOutlet weak var tagLabel0: UILabel!
+    @IBOutlet weak var tagLabel1: UILabel!
+    @IBOutlet weak var tagLabel2: UILabel!
+    
+    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var commentCountLabel: UILabel!
     override func awakeFromNib() {

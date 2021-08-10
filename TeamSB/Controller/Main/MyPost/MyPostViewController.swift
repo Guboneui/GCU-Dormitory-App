@@ -132,11 +132,101 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.nicknameLabel.text = data.userNickname
             cell.categoryLabel.text = data.category
             cell.titleLabel.text = data.title
-            cell.contentsLabel.text = data.text
+            if data.hash.count == 0 {
+                cell.tagLabel0.text = " "
+                cell.tagLabel1.text = " "
+                cell.tagLabel2.text = " "
+            } else if data.hash.count == 1 {
+                
+                let text0 = data.hash[0]
+                cell.tagLabel0.text = "# \(text0)"
+                let attributedString = NSMutableAttributedString(string: cell.tagLabel0.text!)
+                attributedString.addAttribute(.foregroundColor, value: UIColor.SBColor.SB_BaseYellow, range: (cell.tagLabel0.text! as NSString).range(of: "#"))
+                attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 13), range: (cell.tagLabel0.text! as NSString).range(of: "#"))
+                
+                
+                cell.tagLabel0.attributedText = attributedString
+                
+                cell.tagLabel1.text = ""
+                cell.tagLabel2.text = ""
+                
+            } else if data.hash.count == 2 {
+                let text0 = data.hash[0]
+                cell.tagLabel0.text = "# \(text0)"
+                let attributedString0 = NSMutableAttributedString(string: cell.tagLabel0.text!)
+                attributedString0.addAttribute(.foregroundColor, value: UIColor.SBColor.SB_BaseYellow, range: (cell.tagLabel0.text! as NSString).range(of: "#"))
+                attributedString0.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 13), range: (cell.tagLabel0.text! as NSString).range(of: "#"))
+                cell.tagLabel0.attributedText = attributedString0
+                
+                let text1 = data.hash[1]
+                cell.tagLabel1.text = "# \(text1)"
+                let attributedString1 = NSMutableAttributedString(string: cell.tagLabel1.text!)
+                attributedString1.addAttribute(.foregroundColor, value: UIColor.SBColor.SB_BaseYellow, range: (cell.tagLabel1.text! as NSString).range(of: "#"))
+                attributedString1.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 13), range: (cell.tagLabel1.text! as NSString).range(of: "#"))
+                cell.tagLabel1.attributedText = attributedString1
+                
+                cell.tagLabel2.text = ""
+                
+            } else if data.hash.count == 3 {
+                let text0 = data.hash[0]
+                cell.tagLabel0.text = "# \(text0)"
+                let attributedString0 = NSMutableAttributedString(string: cell.tagLabel0.text!)
+                attributedString0.addAttribute(.foregroundColor, value: UIColor.SBColor.SB_BaseYellow, range: (cell.tagLabel0.text! as NSString).range(of: "#"))
+                attributedString0.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 13), range: (cell.tagLabel0.text! as NSString).range(of: "#"))
+                cell.tagLabel0.attributedText = attributedString0
+                
+                let text1 = data.hash[1]
+                cell.tagLabel1.text = "# \(text1)"
+                let attributedString1 = NSMutableAttributedString(string: cell.tagLabel1.text!)
+                attributedString1.addAttribute(.foregroundColor, value: UIColor.SBColor.SB_BaseYellow, range: (cell.tagLabel1.text! as NSString).range(of: "#"))
+                attributedString1.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 13), range: (cell.tagLabel1.text! as NSString).range(of: "#"))
+                cell.tagLabel1.attributedText = attributedString1
+                
+                let text2 = data.hash[2]
+                cell.tagLabel2.text = "# \(text2)"
+                let attributedString2 = NSMutableAttributedString(string: cell.tagLabel2.text!)
+                attributedString2.addAttribute(.foregroundColor, value: UIColor.SBColor.SB_BaseYellow, range: (cell.tagLabel2.text! as NSString).range(of: "#"))
+                attributedString2.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 13), range: (cell.tagLabel2.text! as NSString).range(of: "#"))
+                cell.tagLabel2.attributedText = attributedString2
+                
+                
+            } else {
+                cell.tagLabel0.text = " "
+                cell.tagLabel1.text = " "
+                cell.tagLabel2.text = " "
+            }
             cell.commentCountLabel.text = String(data.replyCount)
+            
+            let formatter        = DateFormatter()
+            formatter.locale     = Locale(identifier: "ko_KR")
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             var time = data.timeStamp
-            time = time.substring(from: 11, to: 16)
-            cell.timeLabel.text = time
+            //현재 시간 값을 받아옴
+            let today: String = formatter.string(from: Date())
+            
+            let nowDay = today.substring(from: 0, to: 10)
+            let nowHour = Int(today.substring(from: 11, to: 13))!
+            let nowMinute = Int(today.substring(from: 14, to: 16))!
+            
+            let articleDay = time.substring(from: 0, to: 10)
+            let articleHour = Int(time.substring(from: 11, to: 13))!
+            let articleMinute = Int(time.substring(from: 14, to: 16))!
+            
+            let totalArticleTime = articleHour * 60 + articleMinute
+            let totalNowTime = nowHour * 60 + nowMinute
+            
+            if nowDay == articleDay {
+                if totalNowTime - totalArticleTime < 60 {
+                    cell.timeLabel.text = String((totalNowTime - totalArticleTime) % 60)+"분 전"
+                } else {
+                    //cell.timeLabel.text = String((totalNowTime - totalArticleTime) / 60)+"시간 전"
+                    cell.timeLabel.text = time.substring(from: 11, to: 16)
+                }
+            } else {
+                cell.timeLabel.text = time.substring(from: 5, to: 10)
+            }
+            
+            
             let profileImage = data.imageSource ?? ""
             let userImage = profileImage.toImage()
             cell.profileImageView.image = userImage
@@ -145,7 +235,9 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.nicknameLabel.text = ""
             cell.categoryLabel.text = ""
             cell.titleLabel.text = ""
-            cell.contentsLabel.text = ""
+            cell.tagLabel0.text = " "
+            cell.tagLabel1.text = " "
+            cell.tagLabel2.text = " "
             cell.commentCountLabel.text = String(0)
         }
         

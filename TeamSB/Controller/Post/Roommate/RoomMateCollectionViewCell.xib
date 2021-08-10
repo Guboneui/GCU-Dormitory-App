@@ -58,9 +58,21 @@
                                     <constraint firstAttribute="width" constant="13" id="tdo-hz-mnP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qnv-Dh-oyW">
-                                <rect key="frame" x="8" y="63" width="142" height="16"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agy-7V-tMD">
+                                <rect key="frame" x="8" y="63" width="140" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX3-f4-jNe">
+                                <rect key="frame" x="8" y="79" width="140" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrH-h2-fgx">
+                                <rect key="frame" x="8" y="95" width="140" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -69,22 +81,28 @@
                         <constraints>
                             <constraint firstItem="CJI-j2-vdj" firstAttribute="centerY" secondItem="5mH-bN-Rq0" secondAttribute="centerY" id="138-mB-b6J"/>
                             <constraint firstAttribute="bottom" secondItem="RYO-My-m3d" secondAttribute="bottom" constant="6" id="3Mc-U1-cRc"/>
-                            <constraint firstItem="Qnv-Dh-oyW" firstAttribute="leading" secondItem="a0i-NL-WqI" secondAttribute="leading" constant="8" id="CZc-Xd-0JW"/>
-                            <constraint firstAttribute="trailing" secondItem="Qnv-Dh-oyW" secondAttribute="trailing" constant="6" id="Dp9-gl-2Or"/>
+                            <constraint firstItem="Agy-7V-tMD" firstAttribute="leading" secondItem="a0i-NL-WqI" secondAttribute="leading" constant="8" id="5sH-nZ-AHn"/>
+                            <constraint firstAttribute="trailing" secondItem="ZX3-f4-jNe" secondAttribute="trailing" constant="8" id="BYc-wh-lT9"/>
                             <constraint firstItem="0VG-yd-G05" firstAttribute="top" secondItem="5mH-bN-Rq0" secondAttribute="bottom" constant="9" id="F2L-Dg-KTw"/>
+                            <constraint firstAttribute="trailing" secondItem="QrH-h2-fgx" secondAttribute="trailing" constant="8" id="Fo0-TC-u3a"/>
                             <constraint firstItem="5mH-bN-Rq0" firstAttribute="top" secondItem="a0i-NL-WqI" secondAttribute="top" constant="8" id="H7K-ia-yxg"/>
                             <constraint firstItem="5mH-bN-Rq0" firstAttribute="leading" secondItem="a0i-NL-WqI" secondAttribute="leading" constant="8" id="J29-ol-hCE"/>
                             <constraint firstAttribute="bottom" secondItem="5fL-AK-NJG" secondAttribute="bottom" constant="6" id="S0s-86-m5V"/>
                             <constraint firstItem="CJI-j2-vdj" firstAttribute="leading" secondItem="5mH-bN-Rq0" secondAttribute="trailing" constant="6" id="UcT-hE-hSe"/>
                             <constraint firstAttribute="height" constant="142" id="aHv-CC-v8a"/>
+                            <constraint firstAttribute="trailing" secondItem="Agy-7V-tMD" secondAttribute="trailing" constant="8" id="asQ-8T-SzL"/>
                             <constraint firstItem="0VG-yd-G05" firstAttribute="leading" secondItem="a0i-NL-WqI" secondAttribute="leading" constant="8" id="fVg-1R-vh6"/>
                             <constraint firstItem="5fL-AK-NJG" firstAttribute="leading" secondItem="OEc-ze-mRx" secondAttribute="trailing" constant="4" id="g9g-2x-hSQ"/>
                             <constraint firstAttribute="trailing" secondItem="0VG-yd-G05" secondAttribute="trailing" constant="8" id="gbA-Cd-MH3"/>
+                            <constraint firstItem="Agy-7V-tMD" firstAttribute="top" secondItem="0VG-yd-G05" secondAttribute="bottom" constant="5" id="ghP-PR-YFi"/>
+                            <constraint firstItem="QrH-h2-fgx" firstAttribute="leading" secondItem="a0i-NL-WqI" secondAttribute="leading" constant="8" id="hs4-kF-jBi"/>
+                            <constraint firstItem="ZX3-f4-jNe" firstAttribute="leading" secondItem="a0i-NL-WqI" secondAttribute="leading" constant="8" id="icX-VW-p6N"/>
                             <constraint firstItem="RYO-My-m3d" firstAttribute="leading" secondItem="a0i-NL-WqI" secondAttribute="leading" constant="8" id="iw9-rn-OND"/>
+                            <constraint firstItem="QrH-h2-fgx" firstAttribute="top" secondItem="ZX3-f4-jNe" secondAttribute="bottom" constant="1" id="jmd-RR-Hn7"/>
                             <constraint firstItem="OEc-ze-mRx" firstAttribute="centerY" secondItem="5fL-AK-NJG" secondAttribute="centerY" id="lb5-Gt-rDf"/>
                             <constraint firstAttribute="trailing" secondItem="5fL-AK-NJG" secondAttribute="trailing" constant="10" id="nVT-ig-k1B"/>
                             <constraint firstAttribute="width" constant="156" id="q6v-qp-X4h"/>
-                            <constraint firstItem="Qnv-Dh-oyW" firstAttribute="top" secondItem="0VG-yd-G05" secondAttribute="bottom" constant="5" id="ucQ-OX-fbO"/>
+                            <constraint firstItem="ZX3-f4-jNe" firstAttribute="top" secondItem="Agy-7V-tMD" secondAttribute="bottom" constant="1" id="ts4-MH-I5d"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -100,9 +118,11 @@
             <connections>
                 <outlet property="baseView" destination="a0i-NL-WqI" id="2dH-zf-bBE"/>
                 <outlet property="commentCountLabel" destination="5fL-AK-NJG" id="SzI-gG-Afj"/>
-                <outlet property="contentsLabel" destination="Qnv-Dh-oyW" id="ZH5-jf-z99"/>
                 <outlet property="nicknameLabel" destination="CJI-j2-vdj" id="TA8-sz-eBb"/>
                 <outlet property="profileImage" destination="5mH-bN-Rq0" id="et4-u5-XQR"/>
+                <outlet property="tagLabel0" destination="Agy-7V-tMD" id="vd8-aP-bad"/>
+                <outlet property="tagLabel1" destination="ZX3-f4-jNe" id="1IE-8w-tte"/>
+                <outlet property="tagLabel2" destination="QrH-h2-fgx" id="mf0-vq-kF0"/>
                 <outlet property="timeLabel" destination="RYO-My-m3d" id="hjf-bx-IXh"/>
                 <outlet property="titleLabel" destination="0VG-yd-G05" id="okK-Je-GxS"/>
             </connections>
