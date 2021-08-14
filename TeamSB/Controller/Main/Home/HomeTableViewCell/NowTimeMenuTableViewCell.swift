@@ -15,6 +15,7 @@ class NowTimeMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var menuLabel: UILabel!
+    @IBOutlet weak var subMenuLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -45,11 +45,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VF-bt-NOD">
-                        <rect key="frame" x="40" y="31" width="275" height="197"/>
+                        <rect key="frame" x="40" y="50" width="275" height="178"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXa-v7-8Mm">
-                                <rect key="frame" x="25" y="36" width="225" height="151"/>
-                                <string key="text">쌀밥
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="vgn-me-5j5">
+                                <rect key="frame" x="20" y="5" width="235" height="153"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXa-v7-8Mm">
+                                        <rect key="frame" x="0.0" y="0.0" width="86.5" height="143.5"/>
+                                        <string key="text">쌀밥
 육개장 칼국수
 두부조림
 콩자반
@@ -57,45 +60,59 @@
 미역국
 우유
 생딸기 주스</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="점심" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3d-1s-zWm">
-                                <rect key="frame" x="20" y="10" width="29.5" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVm-a1-hTU">
+                                        <rect key="frame" x="148.5" y="0.0" width="86.5" height="90"/>
+                                        <string key="text">쌀밥
+육개장 칼국수
+두부조림
+콩자반
+</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="NXa-v7-8Mm" secondAttribute="bottom" constant="10" id="C1N-1T-lQa"/>
-                            <constraint firstItem="NXa-v7-8Mm" firstAttribute="top" secondItem="a3d-1s-zWm" secondAttribute="bottom" constant="5" id="IN4-Bm-ZiA"/>
-                            <constraint firstItem="a3d-1s-zWm" firstAttribute="top" secondItem="4VF-bt-NOD" secondAttribute="top" constant="10" id="cKJ-bG-0Pc"/>
-                            <constraint firstAttribute="trailing" secondItem="NXa-v7-8Mm" secondAttribute="trailing" constant="25" id="eME-ah-st0"/>
-                            <constraint firstItem="NXa-v7-8Mm" firstAttribute="leading" secondItem="4VF-bt-NOD" secondAttribute="leading" constant="25" id="m2s-QR-npC"/>
-                            <constraint firstItem="a3d-1s-zWm" firstAttribute="leading" secondItem="4VF-bt-NOD" secondAttribute="leading" constant="20" id="rlT-f4-43F"/>
+                            <constraint firstAttribute="bottom" secondItem="vgn-me-5j5" secondAttribute="bottom" constant="20" id="OeT-TP-b4a"/>
+                            <constraint firstItem="vgn-me-5j5" firstAttribute="leading" secondItem="4VF-bt-NOD" secondAttribute="leading" constant="20" id="PQp-su-cHR"/>
+                            <constraint firstAttribute="trailing" secondItem="vgn-me-5j5" secondAttribute="trailing" constant="20" id="RtY-8v-TFu"/>
+                            <constraint firstItem="vgn-me-5j5" firstAttribute="top" secondItem="4VF-bt-NOD" secondAttribute="top" constant="5" id="WvL-gc-wPM"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B83-Fy-7fQ">
+                        <rect key="frame" x="159" y="31" width="37" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="4VF-bt-NOD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="0wl-Em-Tcg"/>
+                    <constraint firstItem="B83-Fy-7fQ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9x3-Yh-IpX"/>
+                    <constraint firstItem="4VF-bt-NOD" firstAttribute="top" secondItem="B83-Fy-7fQ" secondAttribute="bottom" constant="2" id="F6g-r6-Hzx"/>
                     <constraint firstItem="qQ3-NY-BGV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="FgT-IO-4eu"/>
                     <constraint firstAttribute="trailingMargin" secondItem="4VF-bt-NOD" secondAttribute="trailing" constant="20" id="Q2I-hz-ok3"/>
                     <constraint firstItem="qQ3-NY-BGV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="WJc-zb-APA"/>
                     <constraint firstAttribute="bottomMargin" secondItem="4VF-bt-NOD" secondAttribute="bottom" id="Xcn-tB-2Ia"/>
                     <constraint firstAttribute="trailingMargin" secondItem="qQ3-NY-BGV" secondAttribute="trailing" constant="15" id="ah4-Y1-2KF"/>
                     <constraint firstAttribute="bottom" secondItem="qQ3-NY-BGV" secondAttribute="bottom" constant="7" id="dco-3a-xTK"/>
-                    <constraint firstItem="4VF-bt-NOD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="ksL-c5-0YF"/>
+                    <constraint firstItem="4VF-bt-NOD" firstAttribute="top" secondItem="qQ3-NY-BGV" secondAttribute="top" constant="30" id="ksL-c5-0YF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="baseView" destination="4VF-bt-NOD" id="lah-BX-mHb"/>
                 <outlet property="menuLabel" destination="NXa-v7-8Mm" id="CTt-e0-OU2"/>
-                <outlet property="timeLabel" destination="a3d-1s-zWm" id="AiT-92-ZEw"/>
+                <outlet property="subMenuLabel" destination="tVm-a1-hTU" id="w2J-15-n8C"/>
+                <outlet property="timeLabel" destination="B83-Fy-7fQ" id="gBJ-e4-JaQ"/>
                 <outlet property="yellowBaseView" destination="qQ3-NY-BGV" id="oN7-GI-Q6l"/>
             </connections>
             <point key="canvasLocation" x="-110.86956521739131" y="185.82589285714286"/>

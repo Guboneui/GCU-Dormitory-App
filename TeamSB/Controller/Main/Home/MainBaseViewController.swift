@@ -17,8 +17,8 @@ class MainBaseViewController: UIViewController {
     
    
     
-    var firstMenuString = ""
-    var secondMenuString = ""
+    var firstMenuString: String? = ""
+    var secondMenuString: String? = ""
     var firstTimeString = ""
     var secondTimeString = ""
     
@@ -182,21 +182,7 @@ extension MainBaseViewController {
 extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let hourFormatter        = DateFormatter()
-        hourFormatter.locale     = Locale(identifier: "ko_KR")
-        hourFormatter.dateFormat = "HH"
-        
-        //현재 시간 값을 받아옴
-        let today: String = hourFormatter.string(from: Date())
-        let nowTime: Int = Int(today)!
-  
-
-        // 점심에는 메뉴 2개, 아침 저녁 메뉴 1개
-        if nowTime >= 9 && nowTime < 14 {
-            return 5
-        } else {
-            return 4
-        }
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -226,7 +212,9 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NowTimeMenuTableViewCell", for: indexPath) as! NowTimeMenuTableViewCell
             
             cell.timeLabel.text = firstTimeString
+            
             cell.menuLabel.text = firstMenuString
+            cell.subMenuLabel.text = secondMenuString
             
             
             return cell
@@ -235,6 +223,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.timeLabel.text = secondTimeString
             cell.menuLabel.text = secondMenuString
+            
             
             return cell
         }
@@ -358,47 +347,55 @@ extension MainBaseViewController: MainView {
                 if nowTime >= 0 && nowTime < 9 {
                     for i in 0..<dateMenu.아침[0].count {
                         if i == dateMenu.아침[0].count - 1 {
-                            firstMenuString += "\(dateMenu.아침[0][i])"
+                            firstMenuString! += "\(dateMenu.아침[0][i])"
                         } else {
-                            firstMenuString += "\(dateMenu.아침[0][i])\n"
+                            firstMenuString! += "\(dateMenu.아침[0][i])\n"
                         }
                     }
-                    firstTimeString = "아침"
+                    firstTimeString = "아침 (07:00~08:30)"
+                    secondMenuString = nil
                     baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
 
                 } else if nowTime >= 9 && nowTime < 14 {
                     for i in 0..<dateMenu.점심[0].count {
                         if i == dateMenu.점심[0].count - 1 {
-                            firstMenuString += "\(dateMenu.점심[0][i])"
+                            firstMenuString! += "\(dateMenu.점심[0][i])"
                         } else {
-                            firstMenuString += "\(dateMenu.점심[0][i])\n"
+                            firstMenuString! += "\(dateMenu.점심[0][i])\n"
                         }
                     }
-                    firstTimeString = "점심1"
+                    firstTimeString = "점심 (11:50~13:30)"
                     
                     
                     for i in 0..<dateMenu.점심[1].count {
                         if i == dateMenu.점심[1].count - 1 {
-                            secondMenuString += "\(dateMenu.점심[1][i])"
+                            secondMenuString! += "\(dateMenu.점심[1][i])"
                         } else {
-                            secondMenuString += "\(dateMenu.점심[1][i])\n"
+                            secondMenuString! += "\(dateMenu.점심[1][i])\n"
                         }
                     }
+                    
+                    
+                    firstMenuString = "A코스\n" + firstMenuString!
+                    secondMenuString = "B코스\n" + secondMenuString!
+                    
+                    
                     secondTimeString = "점심2"
         
                     baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
-                    baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
+                    
         
         
                 } else if nowTime >= 14 && nowTime < 20 {
                     for i in 0..<dateMenu.저녁[0].count {
                         if i == dateMenu.저녁[0].count - 1 {
-                            firstMenuString += "\(dateMenu.저녁[0][i])"
+                            firstMenuString! += "\(dateMenu.저녁[0][i])"
                         } else {
-                            firstMenuString += "\(dateMenu.저녁[0][i])\n"
+                            firstMenuString! += "\(dateMenu.저녁[0][i])\n"
                         }
                     }
-                    firstTimeString = "저녁"
+                    firstTimeString = "저녁 (18:00~19:30)"
+                    secondMenuString = nil
                     baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
 
 
