@@ -69,9 +69,9 @@ extension DeleveryViewController {
         
         self.navigationItem.title = "배달"
         self.tabBarController?.tabBar.isHidden = true
-        writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
+        writeButton = UIBarButtonItem(image: UIImage(named: "write_icon"), style: .plain, target: self, action: #selector(goWriteView))
         writeButton.tintColor = .black
-        searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
+        searchButton = UIBarButtonItem(image: UIImage(named: "search_icon"), style: .plain, target: self, action: #selector(goSearchView))
         searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         searchButton.tintColor = .black
         backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))

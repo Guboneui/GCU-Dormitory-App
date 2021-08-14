@@ -50,6 +50,7 @@ class DetailPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         print(">> 게시글 작성자 ID = \(getUserID)...닉네임 = \(getNickname)")
         print(">> \(getPostNumber) 게시글의 현재 조회수는 \(getShowCount)")
         
@@ -83,6 +84,7 @@ class DetailPostViewController: UIViewController {
 extension DetailPostViewController {
     func setNavigation_Tab(){
         self.navigationItem.title = "\(getMainTitle)"
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
@@ -249,6 +251,7 @@ extension DetailPostViewController {
             let param = PostCommentRequest(article_no: getPostNumber, content: message, curUser: userID)
             dataManager.postSendArticleComment(param, viewController: self)
             messageTextView.text = ""
+            
         }
     }
     
@@ -471,6 +474,14 @@ extension DetailPostViewController: DetailPostView {
     }
     func successPost() {
         self.presentAlert(title: "댓글이 작성되었습니다")
+        let size = CGSize(width: view.frame.width, height: self.messageTextView.frame.height)
+        let estimatedSize = messageTextView.sizeThatFits(size)
+        messageTextView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+            
+        }
     }
 }
 
@@ -490,6 +501,7 @@ extension DetailPostViewController: AfterEditDelegate {
         let userID = UserDefaults.standard.string(forKey: "userID")!
         let secondParam = GetCommentRequest(curUser: userID, article_no: articleNO)
         
+        
         self.currentPage = 0
         self.isLoadedAllData = false
         self.comment.removeAll()
@@ -508,6 +520,8 @@ extension DetailPostViewController: AfterEditDelegate {
         self.isLoadedAllData = false
         self.comment.removeAll()
         
+       
+        
         dataManager.postGetArticleComment(secondParam, viewController: self, page: currentPage)
         
     }
@@ -519,6 +533,7 @@ extension DetailPostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         //let size = CGSize(width: view.frame.width, height: .infinity)
         let size = CGSize(width: view.frame.width, height: self.messageTextView.frame.height)
+       
         let estimatedSize = textView.sizeThatFits(size)
         messageTextView.constraints.forEach { (constraint) in
             if constraint.firstAttribute == .height {

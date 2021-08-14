@@ -23,4 +23,5 @@ struct RecentPost: Decodable {
     var viewCount: Int
     var reportCount: Int
     var hash: [String]
+    var imageSource: String
 }
