@@ -24,6 +24,6 @@ struct Search: Decodable {
     var reportCount: Int
     var replyCount: Int
     var hash: [String]
-    var imageSource: String
+    var imageSource: String?
 }
 

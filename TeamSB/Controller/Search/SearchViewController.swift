@@ -336,7 +336,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.commentCountLabel.text = String(data.replyCount)
             let profileImage = data.imageSource ?? ""
             let userImage = profileImage.toImage()
-            cell.profileImageView.image = userImage
+            cell.profileImage.image = userImage
             
             let formatter        = DateFormatter()
             formatter.locale     = Locale(identifier: "ko_KR")
