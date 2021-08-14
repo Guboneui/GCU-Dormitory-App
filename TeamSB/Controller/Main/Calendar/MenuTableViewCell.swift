@@ -11,6 +11,8 @@ class MenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var menuLabel: UILabel!
+    @IBOutlet weak var subMenuLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,9 +26,9 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     func setDesign() {
-        menuLabel.layer.cornerRadius = 10
-        menuLabel.layer.borderWidth = 0.8
-        menuLabel.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+//        menuLabel.layer.cornerRadius = 10
+//        menuLabel.layer.borderWidth = 0.8
+//        menuLabel.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
     }
     
 }

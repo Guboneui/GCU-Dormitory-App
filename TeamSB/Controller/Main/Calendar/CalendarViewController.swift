@@ -12,6 +12,7 @@ import Alamofire
 //MARK: -캘린더 class
 class CalendarViewController: UIViewController {
     
+    @IBOutlet weak var topGuideLineView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var menuTableView: UITableView!
   
@@ -41,6 +42,10 @@ class CalendarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "식단"
+        setDesign()
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        tabBarController?.tabBar.barTintColor = .white
         dataManager.getCalMenu(viewController: self)
    
     }
@@ -54,13 +59,22 @@ extension CalendarViewController {
     func setTableView() {
         menuTableView.delegate = self
         menuTableView.dataSource = self
+        menuTableView.separatorStyle = .none
         let menuTableViewCellNib = UINib(nibName: "MenuTableViewCell", bundle: nil)
         menuTableView.register(menuTableViewCellNib, forCellReuseIdentifier: "MenuTableViewCell")
         
     }
     
+    func setDesign() {
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
+    }
+    
+    
     
     func setCalendar() {
+        
+    
         
         calendar.delegate = self
         calendar.dataSource = self
@@ -140,25 +154,36 @@ extension CalendarViewController {
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         
         if indexPath.row == 0 {
-            cell.timeLabel.text = "아침"
+            cell.timeLabel.text = "아침 (07:00~08:30)"
             cell.menuLabel.text = morningString
+            cell.subMenuLabel.text = nil
         } else if indexPath.row == 1 {
-            cell.timeLabel.text = "점심1"
-            cell.menuLabel.text = firstLaunchString
+            cell.timeLabel.text = "점심 (11:50~13:30)"
+            cell.menuLabel.text = "A코스\n" + firstLaunchString
+            cell.subMenuLabel.text = "B코스\n" + secondLauchString
+            
+            let firstAttributed = NSMutableAttributedString(string: cell.menuLabel.text!)
+            firstAttributed.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .semibold), range: (cell.menuLabel.text! as NSString).range(of: "A"))
+            cell.menuLabel.attributedText = firstAttributed
+            
+            let secondAttributed = NSMutableAttributedString(string: cell.subMenuLabel.text!)
+            secondAttributed.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .semibold), range: (cell.subMenuLabel.text! as NSString).range(of: "B"))
+            cell.subMenuLabel.attributedText = secondAttributed
+            
+            
         } else if indexPath.row == 2 {
-            cell.timeLabel.text = "점심2"
-            cell.menuLabel.text = secondLauchString
-        } else if indexPath.row == 3 {
-            cell.timeLabel.text = "저녁"
+            cell.timeLabel.text = "저녁 (18:00~19:30)"
             cell.menuLabel.text = dinnerString
-        } else {
+            cell.subMenuLabel.text = nil
+        }
+        else {
             cell.timeLabel.text = "메뉴 없음"
             cell.menuLabel.text = "메뉴 없음"
         }

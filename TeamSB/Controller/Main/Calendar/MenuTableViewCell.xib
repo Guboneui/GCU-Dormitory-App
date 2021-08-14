@@ -9,50 +9,66 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="MenuTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="239" id="KGk-i7-Jjw" customClass="MenuTableViewCell" customModule="TeamSB" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="404" height="239"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="MenuTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="175" id="KGk-i7-Jjw" customClass="MenuTableViewCell" customModule="TeamSB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="404" height="239"/>
+                <rect key="frame" x="0.0" y="0.0" width="404" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLr-Dc-hKd">
-                        <rect key="frame" x="10" y="10" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLr-Dc-hKd">
+                        <rect key="frame" x="24" y="5" width="35.5" height="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86c-VD-MrS">
-                        <rect key="frame" x="20" y="39" width="364" height="154"/>
-                        <string key="text">흰 쌀밥
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AMY-db-83A">
+                        <rect key="frame" x="29" y="27" width="346" height="133"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86c-VD-MrS">
+                                <rect key="frame" x="0.0" y="0.0" width="168" height="86"/>
+                                <string key="text">흰 쌀밥
 미역국
 오댕볶음
 제육볶음
 김
 우유</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
-                        </userDefinedRuntimeAttributes>
-                    </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBH-SH-MQj">
+                                <rect key="frame" x="178" y="0.0" width="168" height="57.5"/>
+                                <string key="text">흰 쌀밥
+미역국
+오댕볶음
+우유</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="86c-VD-MrS" secondAttribute="bottom" constant="20" id="HCi-dA-eNm"/>
-                    <constraint firstItem="pLr-Dc-hKd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ie0-R1-oYa"/>
-                    <constraint firstAttribute="trailing" secondItem="86c-VD-MrS" secondAttribute="trailing" constant="20" id="OCW-pI-YmN"/>
-                    <constraint firstItem="pLr-Dc-hKd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kB8-au-zL6"/>
-                    <constraint firstItem="86c-VD-MrS" firstAttribute="top" secondItem="pLr-Dc-hKd" secondAttribute="bottom" constant="20" id="lIt-Ob-8uZ"/>
-                    <constraint firstItem="86c-VD-MrS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wkA-40-sJ8"/>
+                    <constraint firstAttribute="trailing" secondItem="AMY-db-83A" secondAttribute="trailing" constant="29" id="GDd-W5-xvv"/>
+                    <constraint firstAttribute="bottom" secondItem="AMY-db-83A" secondAttribute="bottom" constant="15" id="MuC-Rw-jAp"/>
+                    <constraint firstItem="pLr-Dc-hKd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="VTu-0J-Gup"/>
+                    <constraint firstItem="AMY-db-83A" firstAttribute="top" secondItem="pLr-Dc-hKd" secondAttribute="bottom" constant="6" id="goX-dA-kol"/>
+                    <constraint firstItem="pLr-Dc-hKd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="idE-T2-UJE"/>
+                    <constraint firstItem="AMY-db-83A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="29" id="rcB-VS-5Nx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="menuLabel" destination="86c-VD-MrS" id="86a-Bv-g39"/>
+                <outlet property="subMenuLabel" destination="sBH-SH-MQj" id="0fw-jh-jSh"/>
                 <outlet property="timeLabel" destination="pLr-Dc-hKd" id="F4c-zK-XRY"/>
             </connections>
-            <point key="canvasLocation" x="50.724637681159422" y="69.977678571428569"/>
+            <point key="canvasLocation" x="50.724637681159422" y="48.549107142857139"/>
         </tableViewCell>
     </objects>
 </document>

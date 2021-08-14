@@ -33,6 +33,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var photoPencilBaseView: UIView!
     @IBOutlet weak var photoPencilImage: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var topGuideLineView: UIView!
     
     
     var getNickname = ""
@@ -74,6 +75,11 @@ class SettingViewController: UIViewController {
     }
     
     func configDesign() {
+        
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
+        
+        
         emailLabel.text = UserDefaults.standard.string(forKey: "userID")! + "@gachon.ac.kr"
         
         backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
