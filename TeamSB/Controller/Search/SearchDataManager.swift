@@ -48,7 +48,7 @@ class SearchDataManager {
                             viewController.searchArray.append(result[i])
                         }
                         print(">> 읽어온 게시글의 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
-                        viewController.mainTableView.reloadData()
+                        viewController.mainCollectionView.reloadData()
                         
                     } else {
                         print(">> 검색 실패")
@@ -96,7 +96,7 @@ class SearchDataManager {
                             viewController.searchArray.append(result[i])
                         }
                         print(">> 읽어온 게시글의 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
-                        viewController.mainTableView.reloadData()
+                        viewController.mainCollectionView.reloadData()
                         
                     } else {
                         print(">> 검색 실패")
@@ -108,4 +108,32 @@ class SearchDataManager {
             }
         }
     }
+    
+    
+    func postExist(_ parameters: ExistsArticleRequest, viewController: SearchViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/accessArticle/detail", method: .post, parameters: parameters)
+            .validate()
+            .responseDecodable(of: ExistsArticleResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    view.stopLoading()
+                    if response.check == true {
+                        print(">> 존재하는 글")
+                        view.goArticle()
+                    } else {
+                        print(">> 삭제 또는 신고 된 글")
+                        viewController.presentAlert(title: response.message)
+                    }
+                case .failure(let error):
+                    view.stopLoading()
+                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    print(">> \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
+    
+    
 }

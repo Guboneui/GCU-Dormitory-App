@@ -11,5 +11,6 @@ protocol SearchView {
     func stopRefreshControl()
     func startLoading()
     func stopLoading()
-    func noSearchResult() 
+    func noSearchResult()
+    func goArticle()
 }

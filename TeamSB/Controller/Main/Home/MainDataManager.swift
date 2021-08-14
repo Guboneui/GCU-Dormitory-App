@@ -104,4 +104,49 @@ class MainDataManager {
             }
         }
     }
+    
+    func fcmToken(_ parameters: FCMRequest, viewController: MainBaseViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/getToken", method: .post, parameters: parameters, encoder: JSONParameterEncoder())
+            .validate()
+            .responseDecodable(of: FCMResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/getToken")
+                    if response.check == true {
+                        print(">> 유저 닉네임 새로고침 성공")
+                        print(response.message)
+                    } else {
+                        print(response.message)
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/getToken")
+                    print(">> \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func getCheckUserAlert(_ parameters: CheckUserAlertRequest, viewController: MainBaseViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/notification/check", method: .post, parameters: parameters, encoder: JSONParameterEncoder())
+            .validate()
+            .responseDecodable(of: CheckUserAlertResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/notification/check")
+                    if response.check == true {
+                        print(">> 유저 알림 정보 통신 성공")
+                        print(">> 유저가 읽지 않은 알림 개수는 \(String(describing: response.notificationCount))개 입니다")
+                        print(response.message)
+                        view.setNoticeColor(notificationCount: response.notificationCount!)
+                    } else {
+                        print(">> 유저 알림 정보 통신 실패")
+                        print(response.message)
+                    }
+                    
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/notification/check")
+                    print(">> \(error.localizedDescription)")
+                    print(">> 유저 알림 정보 통신 에러")
+            }
+        }
+    }
 }

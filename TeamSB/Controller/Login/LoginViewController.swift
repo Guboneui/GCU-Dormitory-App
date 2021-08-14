@@ -9,8 +9,8 @@ import IQKeyboardManager
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var idBaseView: UIView!
-    @IBOutlet weak var pwBaseView: UIView!
+    
+    @IBOutlet weak var loginBaseView: UIView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var autoLoginButton: UIButton!
     @IBOutlet weak var idTextView: UITextField!
@@ -55,12 +55,11 @@ extension LoginViewController {
         idTextView.returnKeyType = .next
         pwTextView.returnKeyType = .done
         
-        idBaseView.layer.borderWidth = 1
-        idBaseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
-        pwBaseView.layer.borderWidth = 1
-        pwBaseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
-        loginButton.layer.borderWidth = 1
-        loginButton.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        loginBaseView.layer.cornerRadius = 5
+        loginBaseView.layer.borderWidth = 1
+        loginBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        
+        
     }
     
     func setAutoLoginImage() {

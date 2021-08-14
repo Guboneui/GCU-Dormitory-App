@@ -209,6 +209,7 @@ extension DetailPostViewController {
             let param = DeleteArticleRequest(curUser: UserDefaults.standard.string(forKey: "userID")!, no: getPostNumber)
             dataManager.postDeleteArticleCount(param, viewController: self)
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(cancelButton)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
@@ -226,7 +227,7 @@ extension DetailPostViewController {
             
             self.present(vc, animated: false, completion: nil)
         })
-        
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(cancelButton)
         alert.addAction(okButton)
 
@@ -460,6 +461,7 @@ extension DetailPostViewController: DetailPostView {
             delegate?.reloadView()
             self.navigationController?.popViewController(animated: true)
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
         

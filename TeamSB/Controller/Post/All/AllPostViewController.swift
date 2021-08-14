@@ -108,6 +108,7 @@ extension ShowMoreViewController {
     func navigationItemUse() {
         writeButton.isEnabled = true
         searchButton.isEnabled = true
+        self.navigationController?.navigationBar.isHidden = false
     }
     
 }

@@ -45,12 +45,13 @@ extension NickNameViewController {
     
     func configureDesign() {
         nickNameBaseView.layer.borderWidth = 1
-        nickNameBaseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
+        nickNameBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        nickNameBaseView.layer.cornerRadius = 4
+        
         
         checkNicknameButton.layer.borderWidth = 1
-        checkNicknameButton.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
-        
-        goHomeButton.isEnabled = false
+        checkNicknameButton.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        checkNicknameButton.layer.cornerRadius = 4
     }
 }
 
@@ -76,15 +77,19 @@ extension NickNameViewController {
     }
     
     @IBAction func goHomeAction(_ sender: Any) {
-        loading.startAnimating()
         
-        let id = UserDefaults.standard.string(forKey: "userID")!
-        let nickname = nickNameTextField.text!
-        
-        let param = NicknameSetRequest(curId: id, nickname: nickname)
-        dataManager.postNicknameSet(param, viewController: self)
+        if UserDefaults.standard.bool(forKey: "userNicknameExist") == nil || UserDefaults.standard.bool(forKey: "userNicknameExist") == false {
+            self.presentAlert(title: "닉네임 중복확인을 먼저 해주세요.")
+        } else {
+            loading.startAnimating()
+            
+            let id = UserDefaults.standard.string(forKey: "userID")!
+            let nickname = nickNameTextField.text!
+            
+            let param = NicknameSetRequest(curId: id, nickname: nickname)
+            dataManager.postNicknameSet(param, viewController: self)
+        }
     }
-    
 }
 
 //MARK: -DataManager 함수
@@ -122,6 +127,7 @@ extension NickNameViewController: NicknameView {
         let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
             self.view.endEditing(true)
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }

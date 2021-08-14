@@ -52,6 +52,7 @@ class SettingViewController: UIViewController {
         self.navigationItem.title = "설정"
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
         getUserInfo()
     }
     
@@ -139,10 +140,15 @@ class SettingViewController: UIViewController {
             vc.modalPresentationStyle = .overCurrentContext
             present(vc, animated: true, completion: nil)
             
-            
-            
         })
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+    
+        profileImageChange.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        profileNicknameChange.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 0/255, blue: 0/255, alpha: 1), forKey: "titleTextColor")
+        
+        
         alert.addAction(profileImageChange)
         alert.addAction(profileNicknameChange)
         alert.addAction(cancelButton)
@@ -177,6 +183,10 @@ extension SettingViewController {
             self.changeRootViewController(loginVC)
             
         })
+        
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 0/255, blue: 0/255, alpha: 1), forKey: "titleTextColor")
+        
         alert.addAction(cancelButton)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)

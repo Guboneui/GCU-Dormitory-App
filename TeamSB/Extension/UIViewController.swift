@@ -18,6 +18,7 @@ extension UIViewController {
                       handler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         let actionDone = UIAlertAction(title: "확인", style: .default, handler: handler)
+        actionDone.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(actionDone)
         if isCancelActionIncluded {
             let actionCancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)

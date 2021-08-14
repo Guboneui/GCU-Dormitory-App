@@ -229,6 +229,7 @@ extension WriteViewController {
         if tagTextField.text == "" || tagTextField.text == nil {
             let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
@@ -241,6 +242,7 @@ extension WriteViewController {
             } else {
                 let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
                 alert.addAction(okButton)
                 self.present(alert, animated: true, completion: nil)
             }
@@ -351,6 +353,7 @@ extension WriteViewController: WriteView {
             delegate?.update()
             self.navigationController?.popViewController(animated: true)
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }

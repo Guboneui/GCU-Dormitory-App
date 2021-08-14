@@ -87,6 +87,7 @@ class TaxiViewController: UIViewController {
     func navigationItemUse() {
         writeButton.isEnabled = true
         searchButton.isEnabled = true
+        self.navigationController?.navigationBar.isHidden = false
     }
     
 //MARK: -스토리보드 Action 함수

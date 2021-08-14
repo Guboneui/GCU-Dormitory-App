@@ -12,6 +12,10 @@ import NVActivityIndicatorView
 class MyPostViewController: UIViewController {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    var writeButton: UIBarButtonItem!
+    var searchButton: UIBarButtonItem!
+    var backButton: UIBarButtonItem!
+    
     
     var loading: NVActivityIndicatorView!
     
@@ -33,6 +37,7 @@ class MyPostViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavigationBarItem()
         
         loading.startAnimating()
         currentPage = 0
@@ -90,28 +95,53 @@ extension MyPostViewController {
         mainCollectionView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
     
-//    func setNavigationBarItem() {
-//        self.navigationItem.title = "게시글"
-//        self.tabBarController?.tabBar.isHidden = true
-//        writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
-//        writeButton.tintColor = .black
-//        searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
-//        searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
-//        searchButton.tintColor = .black
-//        backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
-//        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        backButton.tintColor = .black
-//
-//        navigationItem.leftBarButtonItem = backButton
-//
-//        navigationItem.rightBarButtonItems = [writeButton, searchButton]
-//
-//    }
-//
-//    func navigationItemUse() {
-//        writeButton.isEnabled = true
-//        searchButton.isEnabled = true
-//    }
+    func setNavigationBarItem() {
+        self.navigationItem.title = "나의 글"
+        self.tabBarController?.tabBar.isHidden = true
+        writeButton = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(goWriteView))
+        writeButton.tintColor = .black
+        searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
+        searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        searchButton.tintColor = .black
+        backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backButton.tintColor = .black
+
+        navigationItem.leftBarButtonItem = backButton
+
+        navigationItem.rightBarButtonItems = [writeButton, searchButton]
+
+    }
+
+    func navigationItemUse() {
+        writeButton.isEnabled = true
+        searchButton.isEnabled = true
+    }
+    
+    @objc func goWriteView() {
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WriteViewController") as! WriteViewController
+        
+        vc.delegate = self
+        
+        writeButton.isEnabled = false
+        searchButton.isEnabled = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goSearchView() {
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        
+        writeButton.isEnabled = false
+        searchButton.isEnabled = false
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @objc func backButtonAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }
 
@@ -331,3 +361,14 @@ extension MyPostViewController: MyPostView {
     
 }
 
+extension MyPostViewController: UpdateData {
+    func update() {
+        mainCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        currentPage = 0
+        isLoadedAllData = false
+        myPost.removeAll()
+        let id = UserDefaults.standard.string(forKey: "userID")!
+        let param = MyPostRequest(curUser: id)
+        dataManager.postMyArticle(param, viewController: self, page: currentPage)
+    }
+}

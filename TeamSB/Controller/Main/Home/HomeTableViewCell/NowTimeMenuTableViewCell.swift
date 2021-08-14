@@ -11,6 +11,7 @@ import Alamofire
 
 class NowTimeMenuTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var yellowBaseView: UIView!
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var menuLabel: UILabel!
@@ -27,8 +28,10 @@ class NowTimeMenuTableViewCell: UITableViewCell {
 //MARK: -기본 UI함수 정리
     
     func configureDesign() {
+        
+        yellowBaseView.layer.cornerRadius = 10
         baseView.layer.cornerRadius = 10
-        baseView.layer.borderWidth = 0.5
+        //baseView.layer.borderWidth = 0.5
         baseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
     }
     

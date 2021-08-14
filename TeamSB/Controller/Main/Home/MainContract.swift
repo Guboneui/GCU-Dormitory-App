@@ -7,4 +7,5 @@ import Foundation
 protocol MainView {
     func setUserNickname(nickname: String)
     func setTodayMenu()
+    func setNoticeColor(notificationCount: Int)
 }

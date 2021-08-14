@@ -64,6 +64,7 @@ extension BanPopUPViewController {
         if dropdownLabel.text == "사유를 선택 해주세요" || dropdownLabel.text == nil {
             let alert = UIAlertController(title: "사유를 선택 해주세요", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
@@ -91,6 +92,7 @@ extension BanPopUPViewController: DetailPostView {
         let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
             self.dismiss(animated: false, completion: nil)
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
         

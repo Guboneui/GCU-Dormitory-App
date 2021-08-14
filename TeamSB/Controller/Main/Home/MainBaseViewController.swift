@@ -10,10 +10,12 @@ class MainBaseViewController: UIViewController {
 
     @IBOutlet weak var baseTableView: UITableView!
     
-    @IBOutlet weak var settomgBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var noticeBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var settomgBarButtonItem: UIButton!
+    @IBOutlet weak var searchBarButtonItem: UIButton!
+    @IBOutlet weak var noticeBarButtonItem: UIButton!
+    @IBOutlet weak var noticeImage: UIImageView!
     
+   
     
     var firstMenuString = ""
     var secondMenuString = ""
@@ -32,6 +34,15 @@ class MainBaseViewController: UIViewController {
         getProfileImage()
         dataManagerSetNickname()
         setTableView()
+        
+        
+        let id = UserDefaults.standard.string(forKey: "userID")!
+        let token = UserDefaults.standard.string(forKey: "FCMToken")!
+        let param = FCMRequest(curUser: id, token: token)
+        dataManager.fcmToken(param, viewController: self)
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,8 +57,12 @@ class MainBaseViewController: UIViewController {
         setNavigationItem()
         baseTableView.reloadData()
         dataManager.getCalMenu(viewController: self)
+        checkUserAlertCount()
 
+        self.navigationController?.navigationBar.isHidden = true
     }
+    
+    
 }
 
 //MARK: -기본 UI 함수 설정
@@ -63,6 +78,12 @@ extension MainBaseViewController {
             loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+    }
+    
+    func checkUserAlertCount() {
+        let id = UserDefaults.standard.string(forKey: "userID")!
+        let param = CheckUserAlertRequest(curUser: id)
+        dataManager.getCheckUserAlert(param, viewController: self)
     }
     
    
@@ -120,10 +141,12 @@ extension MainBaseViewController {
 
 }
 
+
+
 //MARK: -스토리보드 Action함수 정리
 extension MainBaseViewController {
     
-    @IBAction func writeBarButtonAction(_ sender: Any) {
+    @IBAction func searchBarButtonAction(_ sender: UIButton) {
         print("검색 화면으로 이동합니다.")
         
         settomgBarButtonItem.isEnabled = false
@@ -134,7 +157,7 @@ extension MainBaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func settingBarButtonAction(_ sender: Any) {
+    @IBAction func settingBarButtonAction(_ sender: UIButton) {
         print("세팅 화면으로 이동합니다.")
         
         settomgBarButtonItem.isEnabled = false
@@ -144,6 +167,15 @@ extension MainBaseViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func noticeBarButtonAction(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AlertViewController") as! AlertViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    
 }
 
 //MARK: -테이블뷰 세팅
@@ -196,10 +228,11 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             cell.timeLabel.text = firstTimeString
             cell.menuLabel.text = firstMenuString
             
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NowTimeMenuTableViewCell", for: indexPath) as! NowTimeMenuTableViewCell
-    
+            
             cell.timeLabel.text = secondTimeString
             cell.menuLabel.text = secondMenuString
             
@@ -255,7 +288,11 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    
+    
 }
+
+
 
 //MARK: -TBCellDelegate 선언 부분
 extension MainBaseViewController: TBCellDelegate {
@@ -284,6 +321,15 @@ extension MainBaseViewController: TBCellDelegate {
 
 //MARK: -DataManager 연결 함수
 extension MainBaseViewController: MainView {
+    func setNoticeColor(notificationCount: Int) {
+        if notificationCount == 0 {
+            noticeImage.image = UIImage(named: "notice_icon")
+        } else {
+            noticeImage.image = UIImage(named: "exist_notice_icon")
+        }
+    }
+    
+    
    
     func setUserNickname(nickname: String) {
         UserDefaults.standard.setValue(nickname, forKey: "userNickname")

@@ -69,6 +69,7 @@ extension ChangeNicknameViewController: SettingView {
             delegate?.changeNicknameLabel(text: nicknameTextField.text)
             
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }

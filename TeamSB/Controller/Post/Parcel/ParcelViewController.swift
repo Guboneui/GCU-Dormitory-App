@@ -78,6 +78,7 @@ class ParcelViewController: UIViewController {
     func navigationItemUse() {
         writeButton.isEnabled = true
         searchButton.isEnabled = true
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     func setTableView() {

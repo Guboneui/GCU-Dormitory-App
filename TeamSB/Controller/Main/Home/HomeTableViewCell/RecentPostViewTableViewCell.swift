@@ -115,6 +115,8 @@ extension RecentPostViewTableViewCell: UpdateData {
 
 //MARK: -필요 없음
 extension RecentPostViewTableViewCell: MainView {
+    func setNoticeColor(notificationCount: Int) {}
+    
     func setUserNickname(nickname: String) {}
     func setTodayMenu() {}
 }

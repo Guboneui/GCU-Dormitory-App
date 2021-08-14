@@ -255,6 +255,7 @@ extension EditViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.afterEditDelegate?.updateComment(articleNO: originNo)
             self.navigationController?.popViewController(animated: true)
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(cancelButton)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
@@ -272,6 +273,7 @@ extension EditViewController{
         if tagTextField.text == "" || tagTextField.text == nil {
             let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
         } else {
@@ -284,6 +286,7 @@ extension EditViewController{
             } else {
                 let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+                okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
                 alert.addAction(okButton)
                 self.present(alert, animated: true, completion: nil)
             }
@@ -335,6 +338,7 @@ extension EditViewController: EditView {
             afterEditDelegate?.afterEdit(articleNO: self.originNo)
             self.navigationController?.popViewController(animated: true)
         })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }

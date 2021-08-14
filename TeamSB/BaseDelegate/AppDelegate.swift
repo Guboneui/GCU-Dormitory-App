@@ -32,15 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
         
-        Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-            print("FCM registration token: \(token)")
-            //self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
-          }
-        }
-        
+//        Messaging.messaging().token { token, error in
+//          if let error = error {
+//            print("Error fetching FCM registration token: \(error)")
+//          } else if let token = token {
+//            print("FCM registration token: \(token)")
+//            //self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
+//          }
+//        }
+//
         
         
         
@@ -124,7 +124,8 @@ extension AppDelegate: MessagingDelegate {
       if let error = error {
         print("Error fetching FCM registration token: \(error)")
       } else if let token = token {
-        print("FCM registration token: \(token)")
+        print("^^FCM registration token: \(token)")
+        UserDefaults.standard.set(token, forKey: "FCMToken")
         //self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
         }
         }
