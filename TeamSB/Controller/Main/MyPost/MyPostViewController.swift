@@ -14,7 +14,6 @@ class MyPostViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
-    var backButton: UIBarButtonItem!
     
     
     var loading: NVActivityIndicatorView!
@@ -103,11 +102,7 @@ extension MyPostViewController {
         searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(goSearchView))
         searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         searchButton.tintColor = .black
-        backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
-        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        backButton.tintColor = .black
-
-        navigationItem.leftBarButtonItem = backButton
+        
 
         navigationItem.rightBarButtonItems = [writeButton, searchButton]
 
@@ -139,9 +134,7 @@ extension MyPostViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    @objc func backButtonAction() {
-        self.navigationController?.popViewController(animated: true)
-    }
+  
     
 }
 

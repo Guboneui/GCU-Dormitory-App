@@ -23,7 +23,6 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var profileBaseView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var logOutButton: UIButton!
-    @IBOutlet weak var changeProfileButton: UIButton!
     @IBOutlet weak var firstBaseView: UIView!
     @IBOutlet weak var secondBaseView: UIView!
     @IBOutlet weak var thirdBaseView: UIView!
@@ -31,6 +30,10 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var fifthBaseView: UIView!
     @IBOutlet weak var sixthBaseView: UIView!
     @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var photoPencilBaseView: UIView!
+    @IBOutlet weak var photoPencilImage: UIImageView!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     
     var getNickname = ""
     let picker = UIImagePickerController()
@@ -41,7 +44,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getProfileImage()
+      
         configDesign()
         
      
@@ -54,6 +57,7 @@ class SettingViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = false
         getUserInfo()
+        getProfileImage()
     }
     
     func getProfileImage() {
@@ -70,6 +74,7 @@ class SettingViewController: UIViewController {
     }
     
     func configDesign() {
+        emailLabel.text = UserDefaults.standard.string(forKey: "userID")! + "@gachon.ac.kr"
         
         backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
         backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -77,21 +82,24 @@ class SettingViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = backButton
         
+        photoPencilBaseView.layer.cornerRadius = photoPencilBaseView.frame.height / 2
+        photoPencilBaseView.layer.borderWidth = 2.5
+        photoPencilBaseView.layer.borderColor = UIColor.white.cgColor
+        
+       // photoPencilImage.layer.cornerRadius = photoPencilImage.frame.height / 2
+       
         profileBaseView.layer.cornerRadius = 10
         profileBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
         profileBaseView.layer.borderWidth = 1
         
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
-        profileImage.layer.borderWidth = 1
+        profileImage.layer.borderWidth = 0.3
         profileImage.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
         
         nicknameLabel.text = getNickname
         
         logOutButton.layer.cornerRadius = 10
         
-        changeProfileButton.layer.cornerRadius = 8
-        changeProfileButton.layer.borderWidth = 1
-        changeProfileButton.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
         
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         
@@ -117,49 +125,29 @@ class SettingViewController: UIViewController {
     }
     
     
-    
-    @IBAction func changeProfile(_ sender: Any) {
-        print(">> 프로필 변경 버튼이 눌렸습니다")
-        let alert = UIAlertController(title: "프로필 변경", message: "무엇을 변경하시겠어요?", preferredStyle: .actionSheet)
-        let profileImageChange = UIAlertAction(title: "프로필 사진 변경", style: .default, handler: {_ in
-           
-            self.picker.sourceType = .photoLibrary // 방식 선택. 앨범에서 가져오는걸로 선택.
-            self.picker.allowsEditing = true // 수정가능하게 할지 선택. 하지만 false
-            self.picker.delegate = self
-            self.picker.modalPresentationStyle = .fullScreen
-            self.present(self.picker, animated: true)
-            
-           
-            
-        })
-        
-        let profileNicknameChange = UIAlertAction(title: "닉네임 변경", style: .default, handler: { [self] _ in
-            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "ChangeNicknameViewController") as! ChangeNicknameViewController
-            vc.delegate = self
-            vc.modalPresentationStyle = .overCurrentContext
-            present(vc, animated: true, completion: nil)
-            
-        })
-        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
-    
-        profileImageChange.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
-        profileNicknameChange.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
-        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 0/255, blue: 0/255, alpha: 1), forKey: "titleTextColor")
-        
-        
-        alert.addAction(profileImageChange)
-        alert.addAction(profileNicknameChange)
-        alert.addAction(cancelButton)
-        self.present(alert, animated: true, completion: nil)
+    @IBAction func changeNicknameButtonAction(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ChangeNicknameViewController") as! ChangeNicknameViewController
+        vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
     }
+    
     
     @objc func backButtonAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
-   
+    
+    
+    @IBAction func changeProfileImageButtonAction(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewViewController") as! EditProfileViewViewController
+        vc.mainDelegate = self
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true, completion: nil)
+    }
+    
    
     
     
@@ -194,6 +182,10 @@ extension SettingViewController {
 }
 
 extension SettingViewController: SettingView {
+    func dismissProfileView() {
+        
+    }
+    
     func successChangeNickname() {
         
     }
@@ -275,7 +267,7 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
         UserDefaults.standard.set(jpgString, forKey: "userProfileImage")
         
         let param = ChangeProfileImageRequest(curId: id, profile_image: jpgString!)
-        dataManager.postChangeProfileImage(param, viewController: self)
+        //dataManager.postChangeProfileImage(param, viewController: self)
         self.profileImage.image = UIImage(data: jpgImage!) // 받아온 이미지를 update
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
         
@@ -300,6 +292,18 @@ extension SettingViewController: ChangeNickNameDelegate {
     func changeNicknameLabel(text: String?) {
         self.nicknameLabel.text = text!
     }
+    
+    
+}
+
+extension SettingViewController: ChangeProfileImage {
+    func changeProfile(image: String) {
+        let imageString = image
+        let userProfileImage = imageString.toImage()
+        profileImage.image = userProfileImage
+    }
+    
+    
     
     
 }

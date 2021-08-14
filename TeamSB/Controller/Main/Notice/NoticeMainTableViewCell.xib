@@ -20,13 +20,13 @@
                         <rect key="frame" x="15" y="5" width="368" height="78"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u91-9U-FPg">
-                                <rect key="frame" x="10" y="8" width="28.5" height="13.5"/>
+                                <rect key="frame" x="10" y="13" width="28.5" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooC-9V-xfz">
-                                <rect key="frame" x="9" y="23.5" width="322" height="44.5"/>
+                                <rect key="frame" x="9" y="37.5" width="322" height="27.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MM5-Q1-fIG">
-                                <rect key="frame" x="41.5" y="9" width="10" height="12"/>
+                                <rect key="frame" x="41.5" y="14" width="10" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="ewr-3S-KkX"/>
                                     <constraint firstAttribute="width" constant="10" id="g0J-Us-Oa9"/>
@@ -49,15 +49,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="32D-t2-PRq" firstAttribute="leading" secondItem="ooC-9V-xfz" secondAttribute="trailing" constant="9" id="4ep-TE-wGO"/>
-                            <constraint firstItem="u91-9U-FPg" firstAttribute="top" secondItem="ioQ-SY-1xi" secondAttribute="top" constant="8" id="A3S-qE-SlU"/>
+                            <constraint firstItem="u91-9U-FPg" firstAttribute="top" secondItem="ioQ-SY-1xi" secondAttribute="top" constant="13" id="A3S-qE-SlU"/>
                             <constraint firstItem="32D-t2-PRq" firstAttribute="centerY" secondItem="ioQ-SY-1xi" secondAttribute="centerY" id="CtP-mW-uDh"/>
                             <constraint firstAttribute="trailing" secondItem="32D-t2-PRq" secondAttribute="trailing" constant="13" id="Cuz-jh-PFw"/>
                             <constraint firstItem="MM5-Q1-fIG" firstAttribute="centerY" secondItem="u91-9U-FPg" secondAttribute="centerY" id="EU2-3C-TiE"/>
                             <constraint firstItem="MM5-Q1-fIG" firstAttribute="leading" secondItem="u91-9U-FPg" secondAttribute="trailing" constant="3" id="IWH-NS-bwe"/>
                             <constraint firstItem="u91-9U-FPg" firstAttribute="leading" secondItem="ioQ-SY-1xi" secondAttribute="leading" constant="10" id="VlB-Ip-4Ic"/>
-                            <constraint firstItem="ooC-9V-xfz" firstAttribute="top" secondItem="u91-9U-FPg" secondAttribute="bottom" constant="2" id="lwq-gt-rTQ"/>
+                            <constraint firstItem="ooC-9V-xfz" firstAttribute="top" secondItem="u91-9U-FPg" secondAttribute="bottom" constant="11" id="lwq-gt-rTQ"/>
                             <constraint firstItem="ooC-9V-xfz" firstAttribute="leading" secondItem="ioQ-SY-1xi" secondAttribute="leading" constant="9" id="ng3-dg-VkL"/>
-                            <constraint firstAttribute="bottom" secondItem="ooC-9V-xfz" secondAttribute="bottom" constant="10" id="szH-vw-CCy"/>
+                            <constraint firstAttribute="bottom" secondItem="ooC-9V-xfz" secondAttribute="bottom" constant="13" id="szH-vw-CCy"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -66,17 +66,24 @@ extension CalendarViewController {
         calendar.dataSource = self
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.placeholderType = .none
-        calendar.backgroundColor = UIColor.SBColor.SB_LightGray
+        calendar.backgroundColor = #colorLiteral(red: 1, green: 0.9490196078, blue: 0.8, alpha: 1)
         calendar.appearance.weekdayTextColor = UIColor.black
         calendar.appearance.headerTitleColor = UIColor.black
         calendar.appearance.eventSelectionColor = UIColor.SBColor.SB_BaseYellow
-        calendar.appearance.todayColor = UIColor.SBColor.SB_LightYellow
-        calendar.appearance.todaySelectionColor = UIColor.SBColor.SB_LightYellow
-        calendar.appearance.titleTodayColor = UIColor.black
+        
+        
+
+        calendar.appearance.todayColor = .white
+
+        
+        
+        
+        calendar.appearance.titleTodayColor = .black
         calendar.appearance.selectionColor = UIColor.SBColor.SB_BaseYellow
+        calendar.appearance.titleSelectionColor = UIColor.black
         calendar.headerHeight = 50
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerDateFormat = "M월"
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
         

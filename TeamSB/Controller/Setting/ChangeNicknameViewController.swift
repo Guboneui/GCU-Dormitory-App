@@ -62,6 +62,10 @@ extension ChangeNicknameViewController {
 
 
 extension ChangeNicknameViewController: SettingView {
+    func dismissProfileView() {
+        
+    }
+    
     func successChangeNickname() {
         let alert = UIAlertController(title: "닉네임 변경 성공", message: "", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "확인", style: .default, handler: { [self] _ in

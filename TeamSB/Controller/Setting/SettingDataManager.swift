@@ -34,7 +34,7 @@ class SettingDataManager {
         }
     }
     
-    func postChangeProfileImage(_ parameters: ChangeProfileImageRequest, viewController: SettingViewController) {
+    func postChangeProfileImage(_ parameters: ChangeProfileImageRequest, viewController: EditProfileViewViewController) {
         AF.request("\(ConstantURL.BASE_URL)/profileSet", method: .post, parameters: parameters)
             .validate()
             .responseDecodable(of: ChangeProfileImageResponse.self) { [self] response in
@@ -42,9 +42,11 @@ class SettingDataManager {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/profileSet")
                     if response.check == true {
-                        viewController.presentAlert(title: "프로필 이미지 변경 성공")
+                        //viewController.presentAlert(title: "프로필 이미지 변경 성공")
+                        view.dismissProfileView()
                     } else {
                         print(">> 프로필 이미지 변경 실패")
+                        viewController.presentAlert(title: response.message)
                     }
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/profileSet")
