@@ -8,7 +8,8 @@
 import UIKit
 import Alamofire
 import Firebase
-import FirebaseStorage
+import FirebaseCore
+import FirebaseMessaging
 
 //Setting 화면 Todo
 //1. 프로필(닉네임, 자신이 쓴 글 개수, 닉네임 수정, ...)
@@ -20,6 +21,7 @@ class SettingViewController: UIViewController {
     
     var backButton: UIBarButtonItem!
     
+    @IBOutlet weak var fcmSwitch: UISwitch!
     @IBOutlet weak var profileBaseView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var logOutButton: UIButton!
@@ -39,6 +41,7 @@ class SettingViewController: UIViewController {
     var getNickname = ""
     let picker = UIImagePickerController()
     
+    var isON = UserDefaults.standard.bool(forKey: "alertAccess")
 
     lazy var dataManager: SettingDataManager = SettingDataManager(view: self)
    
@@ -47,6 +50,9 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
       
         configDesign()
+        
+        fcmSwitch.isOn = self.isON
+        
         
      
     }
@@ -59,6 +65,16 @@ class SettingViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         getUserInfo()
         getProfileImage()
+        
+        let isRegistered = UIApplication.shared.isRegisteredForRemoteNotifications
+        if(isRegistered) {
+            //
+            //_ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신이 설정되어 있습니다", style: AlertStyle.warning) return
+            print("알림이 활성화 되어있습니")
+        } else {
+           // _ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신 설정을 활성화 하세요", style: AlertStyle.warning) return
+            print("알림을 활성화 하세요")
+        }
     }
     
     func getProfileImage() {
@@ -154,7 +170,26 @@ class SettingViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
-   
+    
+    
+    @IBAction func fcmSwitchAction(_ sender: UISwitch) {
+        print(1)
+        self.isON = !self.isON
+        UserDefaults.standard.set(fcmSwitch.isOn, forKey: "alertAccess")
+        print(UserDefaults.standard.bool(forKey: "alertAccess"))
+        
+        if isON == false {
+            //let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
+            //dataManager.removeFcmToken(param, viewController: self)
+            print("꺼짐")
+        } else {
+            print("켜짐")
+           // FirebaseApp.configure()
+            //Messaging.messaging().delegate = self
+        }
+        
+    }
+    
     
     
 }
@@ -165,10 +200,12 @@ extension SettingViewController {
         
         let alert = UIAlertController(title: "로그아웃 하시겠어요?", message: "", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-        let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { [self]_ in
             let storyBoard = UIStoryboard(name: "Login", bundle: nil)
             let loginVC = storyBoard.instantiateViewController(identifier: "LoginNavigationVC")
             
+            let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
+            dataManager.removeFcmToken(param, viewController: self)
             UserDefaults.standard.set(nil, forKey: "userID")
             UserDefaults.standard.set(nil, forKey: "userNicknameExist")
             UserDefaults.standard.set(nil, forKey: "userNickname")
@@ -197,7 +234,9 @@ extension SettingViewController: SettingView {
     }
     
     func settingNickname(nickname: String) {
+        
         nicknameLabel.text = nickname
+        
     }
     
     
@@ -312,4 +351,30 @@ extension SettingViewController: ChangeProfileImage {
     
     
     
+}
+
+
+extension SettingViewController: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+      print("Firebase registration token: \(String(describing: fcmToken))")
+
+      let dataDict: [String: String] = ["token": fcmToken ?? ""]
+      NotificationCenter.default.post(
+        name: Notification.Name("FCMToken"),
+        object: nil,
+        userInfo: dataDict
+      )
+        
+        
+    Messaging.messaging().token { token, error in
+      if let error = error {
+        print("Error fetching FCM registration token: \(error)")
+      } else if let token = token {
+        print("^^FCM registration token: \(token)")
+        UserDefaults.standard.set(token, forKey: "FCMToken")
+        //self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
+        }
+        }
+    }
+
 }

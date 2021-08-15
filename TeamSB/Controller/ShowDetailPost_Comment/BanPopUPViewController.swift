@@ -12,9 +12,13 @@ import Alamofire
 class BanPopUPViewController: UIViewController {
     var getPostNumber: Int = 0
 
+    @IBOutlet weak var dropdownImage: UIImageView!
+    @IBOutlet weak var banButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var dropdownBaseView: UIView!
     @IBOutlet weak var dropdownLabel: UILabel!
     @IBOutlet var mainBaseView: UIView!
+    @IBOutlet weak var baseView: UIView!
     
     let dropDown = DropDown()
     let banReason = ["욕설 및 비방", "불쾌한 게시글", "불쾌한 닉네임"]
@@ -24,6 +28,7 @@ class BanPopUPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDropdown()
+        configDesign()
         
     }
 }
@@ -42,8 +47,27 @@ extension BanPopUPViewController {
         dropDown.direction = .bottom
         dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
             print("selected item: \(item) at index: \(index)")
+            dropdownImage.image = UIImage(named: "gray_drop_down")
             self.dropdownLabel.text = banReason[index]
         }
+        
+        dropDown.cancelAction = { [unowned self] in
+            dropdownImage.image = UIImage(named: "gray_drop_down")
+        }
+
+        dropDown.willShowAction = { [unowned self] in
+            dropdownImage.image = UIImage(named: "gray_drop_up")
+        }
+        
+    }
+    
+    func configDesign() {
+        banButton.layer.cornerRadius = 3
+        cancelButton.layer.cornerRadius = 3
+        baseView.layer.cornerRadius = 3
+        baseView.layer.borderWidth = 1.5
+        baseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        baseView.backgroundColor = .white
     }
 }
 

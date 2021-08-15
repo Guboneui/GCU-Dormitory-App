@@ -23,6 +23,8 @@ class WriteViewController: UIViewController {
     @IBOutlet weak var titleBaseView: UIView!
     @IBOutlet weak var tagBaseView: UIView!
     
+    var backButton: UIBarButtonItem!
+    
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -130,11 +132,18 @@ extension WriteViewController {
         
         
         
-        let ban = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
-        ban.tintColor = .black
-
-        self.navigationItem.rightBarButtonItem = ban
-
+       // let saveArticle = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
+        
+        let saveArticle = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonAction))
+        saveArticle.tintColor = UIColor.SBColor.SB_BaseYellow
+        self.navigationItem.rightBarButtonItem = saveArticle
+        
+        backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        backButton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = backButton
+        
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
 
         categoryTitle.text = getCategory
@@ -154,7 +163,7 @@ extension WriteViewController {
         dropDown.topOffset = CGPoint(x: 0, y: -(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
         dropDown.selectionAction = {[unowned self] (index: Int, item: String) in
-            dropDownImage.image = UIImage(systemName: "arrowtriangle.down.fill")
+            dropDownImage.image = UIImage(named: "drop")
             self.categoryTitle.text = categoryArray[index]
         }
 
@@ -247,6 +256,10 @@ extension WriteViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    @objc func backButtonAction() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

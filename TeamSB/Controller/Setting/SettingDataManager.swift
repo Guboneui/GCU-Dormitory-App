@@ -78,6 +78,28 @@ class SettingDataManager {
         }
     }
     
+    func removeFcmToken(_ parameters: RemoveFcmTokenRequest, viewController: SettingViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/deleteToken", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
+            .validate()
+            .responseDecodable(of: RemoveFcmTokenResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    if response.check == true {
+                        print("토큰 제거 성공")
+                        view.successChangeNickname()
+                    } else {
+                        print(">> 토큰 제거 실패")
+                        viewController.presentAlert(title: response.message)
+                        
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    print(">> \(error.localizedDescription)")
+                    print(error)
+            }
+        }
+    }
     
     
     

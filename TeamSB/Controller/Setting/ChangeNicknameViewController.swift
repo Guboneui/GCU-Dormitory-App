@@ -18,6 +18,7 @@ class ChangeNicknameViewController: UIViewController{
     
     lazy var dataManager: SettingDataManager = SettingDataManager(view: self)
     
+    @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var configButton: UIButton!
@@ -38,8 +39,11 @@ class ChangeNicknameViewController: UIViewController{
 //MARK: -기본 UI 함수
 extension ChangeNicknameViewController {
     func configDesign() {
-        cancelButton.layer.cornerRadius = 8
-        configButton.layer.cornerRadius = 8
+        cancelButton.layer.cornerRadius = 3
+        configButton.layer.cornerRadius = 3
+        
+        baseView.layer.borderWidth = 1.5
+        baseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
     }
 }
 

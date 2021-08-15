@@ -22,7 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
           UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
-            completionHandler: { _, _ in }
+            completionHandler: { didAllow, Error in
+                print(didAllow)
+                UserDefaults.standard.set(didAllow, forKey: "alertAccess")
+            }
+            
           )
         } else {
           let settings: UIUserNotificationSettings =
