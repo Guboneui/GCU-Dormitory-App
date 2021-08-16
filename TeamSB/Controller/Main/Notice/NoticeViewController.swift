@@ -22,6 +22,8 @@ class NoticeViewController: UIViewController {
     
     var noticeArray: [TopNotice] = []
     
+    var subNoticeState = false
+    
     lazy var dataManager: NoticeDataManager = NoticeDataManager(view: self)
     
     override func loadView() {
@@ -42,13 +44,21 @@ class NoticeViewController: UIViewController {
         
         topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         topGuideLineView.layer.shadowOpacity = 0.15
-        dataManager.getTopNotice(viewController: self, page: currentPage)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "공지사항"
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        print(">><<")
+        currentPage = 0
+        isLoadedAllData = false
+        currentNormalPage = 0
+        isLoadedAllNormalData = false
+        noticeArray.removeAll()
+        subNoticeState = false
+        dataManager.getTopNotice(viewController: self, page: currentPage)
     }
     
     
@@ -81,17 +91,7 @@ class NoticeViewController: UIViewController {
 
 
 extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5// 이게 CGFloat 양수 최소값 상수
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .white
-        return headerView
-    }
 
-   
     //델리게이트
     //열리고 닫히고 상태가 변경될 떄
     func tableView(_ tableView: ExpyTableView, expyState state: ExpyState, changeForSection section: Int) {
@@ -144,9 +144,17 @@ extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
 
         if section == noticeArray.count - 1 {
             
+//            if isLoadedAllData == false {
+//                dataManager.getTopNotice(viewController: self, page: currentPage)
+//            } else {
+//                dataManager.getNormalNotice(viewController: self, page: currentNormalPage)
+//            }
+            
             if isLoadedAllData == false {
                 dataManager.getTopNotice(viewController: self, page: currentPage)
-            } else {
+                
+            }
+            if subNoticeState == true {
                 dataManager.getNormalNotice(viewController: self, page: currentNormalPage)
             }
         }

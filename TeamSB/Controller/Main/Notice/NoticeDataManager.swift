@@ -47,6 +47,10 @@ class NoticeDataManager {
                             return
                         }
                         
+                        if result.count < 10 {
+                            viewController.subNoticeState = true
+                        }
+                        
                         for i in 0..<result.count {
                             viewController.noticeArray.append(result[i])
                         }
