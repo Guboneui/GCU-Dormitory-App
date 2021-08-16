@@ -25,6 +25,7 @@ class WriteViewController: UIViewController {
     
     var backButton: UIBarButtonItem!
     
+    @IBOutlet weak var topGuideLineView: UIView!
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -104,6 +105,8 @@ extension WriteViewController {
 
 
     func setDesign() {
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
         
         dropdownBaseView.layer.borderWidth = 1
         dropdownBaseView.layer.borderColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)

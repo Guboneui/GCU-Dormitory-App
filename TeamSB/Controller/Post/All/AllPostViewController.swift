@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 class ShowMoreViewController: UIViewController {
 
     @IBOutlet weak var allPostCollectionView: UICollectionView!
+    @IBOutlet weak var topGuideLineView: UIView!
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
     var backButton: UIBarButtonItem!
@@ -45,6 +46,9 @@ class ShowMoreViewController: UIViewController {
             ])
             break
         }
+        
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
         
         
     }

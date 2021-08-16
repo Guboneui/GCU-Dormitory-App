@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 class ParcelViewController: UIViewController {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    @IBOutlet weak var topGuideLineView: UIView!
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
     var backButton: UIBarButtonItem!
@@ -28,6 +29,8 @@ class ParcelViewController: UIViewController {
     override func loadView() {
         super.loadView()
         setLoading()
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
     }
     
     override func viewDidLoad() {

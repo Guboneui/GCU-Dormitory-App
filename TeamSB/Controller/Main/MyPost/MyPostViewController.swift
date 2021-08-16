@@ -12,6 +12,7 @@ import NVActivityIndicatorView
 class MyPostViewController: UIViewController {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    @IBOutlet weak var topGuideLineView: UIView!
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
     
@@ -30,7 +31,8 @@ class MyPostViewController: UIViewController {
         
         setLoading()
         setTableView()
-        
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
         
     }
     
@@ -103,7 +105,8 @@ extension MyPostViewController {
         searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         searchButton.tintColor = .black
         
-
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationItem.rightBarButtonItems = [writeButton, searchButton]
 
     }

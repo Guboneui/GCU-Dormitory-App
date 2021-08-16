@@ -13,6 +13,7 @@ class NoticeViewController: UIViewController {
 
     @IBOutlet weak var mainTableView: ExpyTableView!
     
+    @IBOutlet weak var topGuideLineView: UIView!
     var currentPage = 0
     var isLoadedAllData = false
     var currentNormalPage = 0
@@ -39,12 +40,15 @@ class NoticeViewController: UIViewController {
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
-        
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
         dataManager.getTopNotice(viewController: self, page: currentPage)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "공지사항"
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
     }
     
     

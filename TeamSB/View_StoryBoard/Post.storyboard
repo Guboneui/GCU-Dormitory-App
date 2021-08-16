@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NeP-b5-Gje">
-                                <rect key="frame" x="0.0" y="45" width="414" height="851"/>
+                                <rect key="frame" x="0.0" y="47" width="414" height="849"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HAN-Qg-5Lm">
                                     <size key="itemSize" width="128" height="128"/>
@@ -39,7 +39,7 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tll-ds-Ghq">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="wi1-8U-q23"/>
                                 </constraints>
@@ -52,13 +52,14 @@
                             <constraint firstAttribute="bottom" secondItem="NeP-b5-Gje" secondAttribute="bottom" id="8Fr-S3-EkO"/>
                             <constraint firstItem="ip0-Qk-s6h" firstAttribute="trailing" secondItem="NeP-b5-Gje" secondAttribute="trailing" id="G3d-6X-JeS"/>
                             <constraint firstItem="tll-ds-Ghq" firstAttribute="leading" secondItem="ip0-Qk-s6h" secondAttribute="leading" id="Sx6-Ld-JQq"/>
-                            <constraint firstItem="NeP-b5-Gje" firstAttribute="top" secondItem="tll-ds-Ghq" secondAttribute="bottom" id="VZi-2N-hKm"/>
+                            <constraint firstItem="NeP-b5-Gje" firstAttribute="top" secondItem="tll-ds-Ghq" secondAttribute="bottom" constant="2" id="VZi-2N-hKm"/>
                             <constraint firstItem="tll-ds-Ghq" firstAttribute="top" secondItem="ip0-Qk-s6h" secondAttribute="top" id="iWQ-M1-N2M"/>
                             <constraint firstItem="ip0-Qk-s6h" firstAttribute="trailing" secondItem="tll-ds-Ghq" secondAttribute="trailing" id="ugh-FO-CjN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="allPostCollectionView" destination="NeP-b5-Gje" id="5jW-aN-aOQ"/>
+                        <outlet property="topGuideLineView" destination="tll-ds-Ghq" id="XaE-Yb-3dX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbK-s6-XMF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -75,13 +76,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6f2-Z4-d9N">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="B7E-cO-pgO"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sem-7M-3h9">
-                                <rect key="frame" x="0.0" y="45" width="414" height="851"/>
+                                <rect key="frame" x="0.0" y="47" width="414" height="849"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="APy-xu-1jU">
                                     <size key="itemSize" width="128" height="128"/>
@@ -105,7 +106,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6f2-Z4-d9N" secondAttribute="trailing" id="9tA-JL-zQq"/>
-                            <constraint firstItem="sem-7M-3h9" firstAttribute="top" secondItem="6f2-Z4-d9N" secondAttribute="bottom" id="J1c-eR-8Jo"/>
+                            <constraint firstItem="sem-7M-3h9" firstAttribute="top" secondItem="6f2-Z4-d9N" secondAttribute="bottom" constant="2" id="J1c-eR-8Jo"/>
                             <constraint firstItem="hVx-w7-K88" firstAttribute="trailing" secondItem="sem-7M-3h9" secondAttribute="trailing" id="R3X-aE-hNf"/>
                             <constraint firstItem="sem-7M-3h9" firstAttribute="leading" secondItem="hVx-w7-K88" secondAttribute="leading" id="TfD-f5-Nqp"/>
                             <constraint firstItem="6f2-Z4-d9N" firstAttribute="leading" secondItem="5Yr-cK-mTJ" secondAttribute="leading" id="cso-e4-dVB"/>
@@ -115,6 +116,7 @@
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="sem-7M-3h9" id="9hy-uc-HAD"/>
+                        <outlet property="topGuideLineView" destination="6f2-Z4-d9N" id="52S-ek-tay"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCR-l3-FSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -131,13 +133,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4O-aK-xBD">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="fOL-Em-inN"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ip7-Xj-b5x">
-                                <rect key="frame" x="0.0" y="45" width="414" height="851"/>
+                                <rect key="frame" x="0.0" y="47" width="414" height="849"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Iu-eK-x2d">
                                     <size key="itemSize" width="128" height="128"/>
@@ -162,7 +164,7 @@
                         <constraints>
                             <constraint firstItem="ip7-Xj-b5x" firstAttribute="leading" secondItem="HHL-Rv-wjh" secondAttribute="leading" id="7vz-6P-oqd"/>
                             <constraint firstAttribute="bottom" secondItem="ip7-Xj-b5x" secondAttribute="bottom" id="Ev0-DW-ffr"/>
-                            <constraint firstItem="ip7-Xj-b5x" firstAttribute="top" secondItem="X4O-aK-xBD" secondAttribute="bottom" id="ch9-RM-5ky"/>
+                            <constraint firstItem="ip7-Xj-b5x" firstAttribute="top" secondItem="X4O-aK-xBD" secondAttribute="bottom" constant="2" id="ch9-RM-5ky"/>
                             <constraint firstItem="X4O-aK-xBD" firstAttribute="leading" secondItem="mql-rw-gss" secondAttribute="leading" id="f5y-Vr-BpK"/>
                             <constraint firstItem="HHL-Rv-wjh" firstAttribute="trailing" secondItem="ip7-Xj-b5x" secondAttribute="trailing" id="g4g-Tz-AZS"/>
                             <constraint firstAttribute="trailing" secondItem="X4O-aK-xBD" secondAttribute="trailing" id="kLD-7g-oah"/>
@@ -171,6 +173,7 @@
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="ip7-Xj-b5x" id="aUO-jh-3mH"/>
+                        <outlet property="topGuideLineView" destination="X4O-aK-xBD" id="BsT-eD-oXk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7k-pb-w7z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -187,13 +190,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KIu-7w-bMS">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="QKC-cv-AzV"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ni5-0L-Jp7">
-                                <rect key="frame" x="0.0" y="45" width="414" height="851"/>
+                                <rect key="frame" x="0.0" y="47" width="414" height="849"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9jK-Bx-QhH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -222,11 +225,12 @@
                             <constraint firstItem="KIu-7w-bMS" firstAttribute="top" secondItem="O2M-tE-lAZ" secondAttribute="top" id="Pfj-gI-5Hd"/>
                             <constraint firstItem="ni5-0L-Jp7" firstAttribute="leading" secondItem="O2M-tE-lAZ" secondAttribute="leading" id="Uhl-et-6oq"/>
                             <constraint firstAttribute="bottom" secondItem="ni5-0L-Jp7" secondAttribute="bottom" id="YhL-Wd-JmA"/>
-                            <constraint firstItem="ni5-0L-Jp7" firstAttribute="top" secondItem="KIu-7w-bMS" secondAttribute="bottom" id="orG-ar-FqO"/>
+                            <constraint firstItem="ni5-0L-Jp7" firstAttribute="top" secondItem="KIu-7w-bMS" secondAttribute="bottom" constant="2" id="orG-ar-FqO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="ni5-0L-Jp7" id="s94-7m-tdv"/>
+                        <outlet property="topGuideLineView" destination="KIu-7w-bMS" id="WBE-SS-62a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7et-lY-9eU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -243,13 +247,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFg-LU-yl7">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Nqx-bX-v3D"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EzG-Tk-EJg">
-                                <rect key="frame" x="0.0" y="45" width="414" height="851"/>
+                                <rect key="frame" x="0.0" y="47" width="414" height="849"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aA8-jJ-PQo">
                                     <size key="itemSize" width="128" height="128"/>
@@ -276,13 +280,14 @@
                             <constraint firstItem="zJh-9x-0ln" firstAttribute="trailing" secondItem="EzG-Tk-EJg" secondAttribute="trailing" id="OyU-9g-6IJ"/>
                             <constraint firstItem="EzG-Tk-EJg" firstAttribute="leading" secondItem="zJh-9x-0ln" secondAttribute="leading" id="Sui-n7-gVk"/>
                             <constraint firstItem="qFg-LU-yl7" firstAttribute="leading" secondItem="eB0-tc-bIK" secondAttribute="leading" id="Wk5-nm-JuV"/>
-                            <constraint firstItem="EzG-Tk-EJg" firstAttribute="top" secondItem="qFg-LU-yl7" secondAttribute="bottom" id="XhJ-xa-bD1"/>
+                            <constraint firstItem="EzG-Tk-EJg" firstAttribute="top" secondItem="qFg-LU-yl7" secondAttribute="bottom" constant="2" id="XhJ-xa-bD1"/>
                             <constraint firstItem="qFg-LU-yl7" firstAttribute="top" secondItem="zJh-9x-0ln" secondAttribute="top" id="sMn-bE-ybA"/>
                             <constraint firstAttribute="bottom" secondItem="EzG-Tk-EJg" secondAttribute="bottom" id="xvO-ab-Dc5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="EzG-Tk-EJg" id="DBq-3h-WLu"/>
+                        <outlet property="topGuideLineView" destination="qFg-LU-yl7" id="TEw-k9-ZmQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OnN-nB-4I0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -293,9 +298,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
