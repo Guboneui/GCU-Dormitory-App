@@ -34,7 +34,7 @@ class MyPostDataManager {
                 switch response.result {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/myArticlelist?page=\(viewController.currentPage)")
-                    
+                    view.stopRefreshControl()
                     view.stopLoading()
                     
                     if response.check == true, let result = response.content {
@@ -44,6 +44,7 @@ class MyPostDataManager {
                             view.stopLoading()
                             print(">> 더이상 읽어올 게시글 없음")
                             print(">> 총 읽어온 게시글 개수 = \(viewController.myPost.count)")
+                            viewController.mainCollectionView.reloadData()
                             viewController.isLoadedAllData = true
                             return
                         }

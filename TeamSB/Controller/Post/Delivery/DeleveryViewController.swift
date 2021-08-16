@@ -368,6 +368,7 @@ extension DeleveryViewController: DeleveryView {
         vc.getHash = data.hash
         vc.getImage = data.imageSource ?? ""
         vc.getMainTitle = data.category
+        vc.getReplyCount = data.replyCount
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

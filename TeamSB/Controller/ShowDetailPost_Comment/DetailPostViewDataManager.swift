@@ -138,6 +138,7 @@ class DetailPostViewDataManager {
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/reply/write")
                     print(">> \(error.localizedDescription)")
+                    print(error)
             }
         }
     }

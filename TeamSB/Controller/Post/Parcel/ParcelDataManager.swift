@@ -40,6 +40,7 @@ class ParcelDataManager {
                             view.stopLoading()
                             print(">> 더이상 읽어올 게시글 없음")
                             print(">> 총 읽어온 게시글 개수 = \(viewController.parcelPost.count)")
+                            viewController.mainCollectionView.reloadData()
                             viewController.isLoadedAllData = true
                             return
                         }

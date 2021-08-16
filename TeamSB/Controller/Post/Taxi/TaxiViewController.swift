@@ -296,7 +296,7 @@ extension TaxiViewController: UICollectionViewDelegateFlowLayout {
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 10
     }
 
 }
@@ -353,6 +353,7 @@ extension TaxiViewController: TaxiView {
         vc.getHash = data.hash
         vc.getImage = data.imageSource ?? ""
         vc.getMainTitle = data.category
+        vc.getReplyCount = data.replyCount
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -34,6 +34,7 @@ class DetailPostViewController: UIViewController {
     var getShowCount: Int = 0
     var getHash: [String] = []
     var getImage: String = ""
+    var getReplyCount: Int = 0
     
     var cellHeightsDictionary: NSMutableDictionary = [:]
     
@@ -183,6 +184,12 @@ extension DetailPostViewController {
         let userID = UserDefaults.standard.string(forKey: "userID")!
         let parama = GetCommentRequest(curUser: userID, article_no: getPostNumber)
         dataManager.postGetArticleComment(parama, viewController: self, page: currentPage)
+        
+        
+        
+        let param = RePostRequest(no: getPostNumber)
+        dataManager.repostArticle(param, viewCcntroller: self)
+        
         
     }
     
@@ -345,7 +352,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.profileImageView.image = userProfileImage
                 
                 
-                cell.commentCountLabel.text = String(getShowCount)
+                cell.commentCountLabel.text = String(getReplyCount)
                 cell.selectionStyle = .none
             } else {
                 let data = post[0]
@@ -354,7 +361,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.timeLabel.text = data.timeStamp
                 cell.adminLabel.text = data.userNickname
                 cell.contentsLabel.text = data.text
-                cell.commentCountLabel.text = String(data.viewCount)
+                cell.commentCountLabel.text = String(data.replyCount)
                 
                 
                 let imageString = data.imageSource ?? ""
