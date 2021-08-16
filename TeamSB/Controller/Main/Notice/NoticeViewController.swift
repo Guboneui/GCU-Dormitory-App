@@ -39,6 +39,7 @@ class NoticeViewController: UIViewController {
         mainTableView.refreshControl = UIRefreshControl()
         mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
+        
         dataManager.getTopNotice(viewController: self, page: currentPage)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +77,17 @@ class NoticeViewController: UIViewController {
 
 
 extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5// 이게 CGFloat 양수 최소값 상수
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .white
+        return headerView
+    }
+
+   
     //델리게이트
     //열리고 닫히고 상태가 변경될 떄
     func tableView(_ tableView: ExpyTableView, expyState state: ExpyState, changeForSection section: Int) {
