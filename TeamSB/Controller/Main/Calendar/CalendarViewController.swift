@@ -47,6 +47,10 @@ class CalendarViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         tabBarController?.tabBar.barTintColor = .white
         dataManager.getCalMenu(viewController: self)
+        
+        
+        calendar.calendarWeekdayView.weekdayLabels[0].textColor = UIColor.SBColor.SB_DarkGray
+        calendar.calendarWeekdayView.weekdayLabels[6].textColor = UIColor.SBColor.SB_DarkGray
    
     }
     
@@ -80,26 +84,29 @@ extension CalendarViewController {
         calendar.dataSource = self
         calendar.locale = Locale(identifier: "ko_KR")
         calendar.placeholderType = .none
-        calendar.backgroundColor = #colorLiteral(red: 1, green: 0.9490196078, blue: 0.8, alpha: 1)
+        calendar.backgroundColor = .white
         calendar.appearance.weekdayTextColor = UIColor.black
         calendar.appearance.headerTitleColor = UIColor.black
         calendar.appearance.eventSelectionColor = UIColor.SBColor.SB_BaseYellow
         
         
 
-        calendar.appearance.todayColor = .white
-
+        calendar.appearance.todayColor = .none
+        calendar.appearance.titleTodayColor = UIColor.SBColor.SB_BaseYellow
+        
+        calendar.appearance.titleWeekendColor = UIColor.SBColor.SB_DarkGray
         
         
         
-        calendar.appearance.titleTodayColor = .black
         calendar.appearance.selectionColor = UIColor.SBColor.SB_BaseYellow
-        calendar.appearance.titleSelectionColor = UIColor.black
+        calendar.appearance.titleSelectionColor = UIColor.white
         calendar.headerHeight = 50
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.headerDateFormat = "M월"
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
+        
+
         
     }
     
