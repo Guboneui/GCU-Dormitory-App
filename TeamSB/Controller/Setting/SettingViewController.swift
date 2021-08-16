@@ -17,7 +17,7 @@ import FirebaseMessaging
 //3. 게시글 수정 -> 별도 화면 필요(자신이 쓴 게시글 목록 보여주고, 게시글 수정할 수 있도록 구성 필요)
 //4. 설정 메인 창 필요(이미지, ... 드롭다운 필요할 수도)
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, UISceneDelegate {
     
     var backButton: UIBarButtonItem!
     
@@ -51,12 +51,21 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
       
         configDesign()
-        
-        fcmSwitch.isOn = self.isON
-        
-        
-     
+        checkNotificationState()
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+       
     }
+    @objc func applicationDidBecomeActive(notification: NSNotification) {
+   
+        checkNotificationState()
+
+    }
+    
+    deinit {
+       NotificationCenter.default.removeObserver(self)
+    }
+
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,16 +76,46 @@ class SettingViewController: UIViewController {
         getUserInfo()
         getProfileImage()
         
+        
         let isRegistered = UIApplication.shared.isRegisteredForRemoteNotifications
-        if(isRegistered) {
-            //
-            //_ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신이 설정되어 있습니다", style: AlertStyle.warning) return
-            print("알림이 활성화 되어있습니")
-        } else {
-           // _ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신 설정을 활성화 하세요", style: AlertStyle.warning) return
-            print("알림을 활성화 하세요")
-        }
+//        if(isRegistered) {
+//            //
+//            //_ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신이 설정되어 있습니다", style: AlertStyle.warning) return
+//            print("알림이 활성화 되어있습니")
+//        } else {
+//           // _ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신 설정을 활성화 하세요", style: AlertStyle.warning) return
+//            print("알림을 활성화 하세요")
+//        }
+        
+        
+        
+
+    
     }
+    
+    
+    func checkNotificationState() {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { [self] settings in
+            
+            DispatchQueue.main.async {
+                if settings.alertSetting == .enabled {
+                    print("활성화")
+                    UserDefaults.standard.set(true, forKey: "alertAccess")
+                    fcmSwitch.isOn = true
+                    
+                } else {
+                    print("비활성화")
+                    UserDefaults.standard.set(false, forKey: "alertAccess")
+                    fcmSwitch.isOn = false
+                }
+            }
+
+        }
+
+    }
+    
+    
     
     func getProfileImage() {
         let imageString = UserDefaults.standard.string(forKey: "userProfileImage") ?? ""
@@ -186,20 +225,80 @@ class SettingViewController: UIViewController {
     
     
     @IBAction func fcmSwitchAction(_ sender: UISwitch) {
-        print(1)
-        self.isON = !self.isON
-        UserDefaults.standard.set(fcmSwitch.isOn, forKey: "alertAccess")
-        print(UserDefaults.standard.bool(forKey: "alertAccess"))
+       
         
-        if isON == false {
-            //let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
-            //dataManager.removeFcmToken(param, viewController: self)
-            print("꺼짐")
-        } else {
-            print("켜짐")
-           // FirebaseApp.configure()
-            //Messaging.messaging().delegate = self
+        
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { [self] settings in
+            
+            DispatchQueue.main.async {
+                if settings.alertSetting == .enabled {
+                    print("활성화")
+                    self.isON = !UserDefaults.standard.bool(forKey: "alertAccess")
+                    UserDefaults.standard.set(fcmSwitch.isOn, forKey: "alertAccess")
+                    print(UserDefaults.standard.bool(forKey: "alertAccess"))
+            
+                    if isON == false {
+                        //let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
+                        //dataManager.removeFcmToken(param, viewController: self)
+                        print("꺼짐")
+                        UIApplication.shared.unregisterForRemoteNotifications()
+                    } else {
+                        print("켜짐")
+                        UIApplication.shared.registerForRemoteNotifications()
+                       // FirebaseApp.configure()
+                        //Messaging.messaging().delegate = self
+                    }
+                            
+                } else {
+                    print("비활성화")
+                    let alert = UIAlertController(title: "알림을 허용 해주세요", message: "권한을 허용해주셔야 댓글, 공지사항에 대한 알림을 받으실 수 있어요", preferredStyle: .alert)
+                    let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                    let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
+                        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                        }
+                    })
+                    okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+                    cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
+                    alert.addAction(cancelButton)
+                    alert.addAction(okButton)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+            
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+//            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+//        }
+//        print(1)
+//        self.isON = !self.isON
+//        UserDefaults.standard.set(fcmSwitch.isOn, forKey: "alertAccess")
+//        print(UserDefaults.standard.bool(forKey: "alertAccess"))
+//
+//        if isON == false {
+//            //let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
+//            //dataManager.removeFcmToken(param, viewController: self)
+//            print("꺼짐")
+//            UIApplication.shared.unregisterForRemoteNotifications()
+//        } else {
+//            print("켜짐")
+//            UIApplication.shared.registerForRemoteNotifications()
+//           // FirebaseApp.configure()
+//            //Messaging.messaging().delegate = self
+//        }
         
     }
     
@@ -228,8 +327,9 @@ extension SettingViewController {
             
         })
         
+        
         okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
-        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 0/255, blue: 0/255, alpha: 1), forKey: "titleTextColor")
+        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
         
         alert.addAction(cancelButton)
         alert.addAction(okButton)
@@ -391,3 +491,10 @@ extension SettingViewController: MessagingDelegate {
     }
 
 }
+
+//
+//extension SettingViewController: UISceneDelegate {
+//    func sceneDidBecomeActive(_ scene: UIScene) {
+//        print(1)
+//    }
+//}
