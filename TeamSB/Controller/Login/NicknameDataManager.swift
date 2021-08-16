@@ -23,7 +23,7 @@ class NicknameDataManager {
                     view.stopLoading()
                     if response.check == true {
                         view.showAlertDismissKeyboard(message: response.message)
-                        
+                        UserDefaults.standard.set(true, forKey: "userNicknameExist")
                         view.useButton()
                     } else {
                         view.showAlertDismissKeyboard(message: response.message)

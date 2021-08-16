@@ -24,11 +24,11 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="7" maxX="16" maxY="7"/>
+                                    <inset key="sectionInset" minX="20" minY="7" maxX="20" maxY="7"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gZw-R0-srV">
-                                        <rect key="frame" x="16" y="7" width="128" height="128"/>
+                                        <rect key="frame" x="20" y="7" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GYN-u2-Fwq">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -87,11 +87,11 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="7" maxX="16" maxY="7"/>
+                                    <inset key="sectionInset" minX="20" minY="7" maxX="20" maxY="7"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Z7m-Ar-OBs">
-                                        <rect key="frame" x="16" y="7" width="128" height="128"/>
+                                        <rect key="frame" x="20" y="7" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vWA-Oa-ZNf">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -143,11 +143,11 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="7" maxX="16" maxY="7"/>
+                                    <inset key="sectionInset" minX="20" minY="7" maxX="20" maxY="7"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="blF-0u-kMR">
-                                        <rect key="frame" x="16" y="7" width="128" height="128"/>
+                                        <rect key="frame" x="20" y="7" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GPp-ZE-oZe">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -199,11 +199,11 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="7" maxX="16" maxY="7"/>
+                                    <inset key="sectionInset" minX="20" minY="7" maxX="20" maxY="7"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wZh-Rx-4SY">
-                                        <rect key="frame" x="16" y="7" width="128" height="128"/>
+                                        <rect key="frame" x="20" y="7" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="w6s-DD-K4i">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -255,11 +255,11 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="7" maxX="16" maxY="7"/>
+                                    <inset key="sectionInset" minX="20" minY="7" maxX="20" maxY="7"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aT3-0u-znl">
-                                        <rect key="frame" x="16" y="7" width="128" height="128"/>
+                                        <rect key="frame" x="20" y="7" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7M7-zA-ywg">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>

@@ -78,7 +78,7 @@ extension NickNameViewController {
     
     @IBAction func goHomeAction(_ sender: Any) {
         
-        if UserDefaults.standard.bool(forKey: "userNicknameExist") == nil || UserDefaults.standard.bool(forKey: "userNicknameExist") == false {
+        if UserDefaults.standard.bool(forKey: "userNicknameExist") != true {
             self.presentAlert(title: "닉네임 중복확인을 먼저 해주세요.")
         } else {
             loading.startAnimating()

@@ -42,6 +42,7 @@ extension RecentPostViewTableViewCell {
         recentPostTableView.delegate = self
         recentPostTableView.dataSource = self
         recentPostTableView.rowHeight = 35
+        recentPostTableView.separatorStyle = .none
         
         let recentPostContentsTableViewCellNib = UINib(nibName: "RecentPostContentsTableViewCell", bundle: nil)
         recentPostTableView.register(recentPostContentsTableViewCellNib, forCellReuseIdentifier: "RecentPostContentsTableViewCell")

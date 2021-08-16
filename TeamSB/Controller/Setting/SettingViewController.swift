@@ -36,6 +36,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var photoPencilImage: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var topGuideLineView: UIView!
+    @IBOutlet weak var logoutBaseView: UIView!
     
     
     var getNickname = ""
@@ -126,23 +127,35 @@ class SettingViewController: UIViewController {
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         
         
-        firstBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        firstBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         firstBaseView.layer.borderWidth = 1
+        firstBaseView.layer.cornerRadius = 3
         
-        secondBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        secondBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         secondBaseView.layer.borderWidth = 1
+        secondBaseView.layer.cornerRadius = 3
         
-        thirdBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        thirdBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         thirdBaseView.layer.borderWidth = 1
+        thirdBaseView.layer.cornerRadius = 3
         
-        fourthBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        fourthBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         fourthBaseView.layer.borderWidth = 1
+        fourthBaseView.layer.cornerRadius = 3
         
-        fifthBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        fifthBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         fifthBaseView.layer.borderWidth = 1
+        fifthBaseView.layer.cornerRadius = 3
         
-        sixthBaseView.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
+        sixthBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         sixthBaseView.layer.borderWidth = 1
+        sixthBaseView.layer.cornerRadius = 3
+        
+        logoutBaseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        logoutBaseView.layer.borderWidth = 1
+        logoutBaseView.layer.cornerRadius = 3
+        
+        
         
     }
     
