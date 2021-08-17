@@ -49,8 +49,8 @@ class CalendarViewController: UIViewController {
         dataManager.getCalMenu(viewController: self)
         
         
-        calendar.calendarWeekdayView.weekdayLabels[0].textColor = UIColor.SBColor.SB_DarkGray
-        //calendar.calendarWeekdayView.weekdayLabels[6].textColor = UIColor.SBColor.SB_DarkGray
+        calendar.calendarWeekdayView.weekdayLabels[0].textColor = #colorLiteral(red: 0.5411211252, green: 0.5412155986, blue: 0.5497140288, alpha: 1)
+        calendar.calendarWeekdayView.weekdayLabels[6].textColor = #colorLiteral(red: 0.5411211252, green: 0.5412155986, blue: 0.5497140288, alpha: 1)
    
     }
     
@@ -94,7 +94,7 @@ extension CalendarViewController {
         calendar.appearance.todayColor = .none
         calendar.appearance.titleTodayColor = UIColor.SBColor.SB_BaseYellow
         
-        calendar.appearance.titleWeekendColor = UIColor.SBColor.SB_DarkGray
+        calendar.appearance.titleWeekendColor = #colorLiteral(red: 0.5411211252, green: 0.5412155986, blue: 0.5497140288, alpha: 1)
         
         
         
