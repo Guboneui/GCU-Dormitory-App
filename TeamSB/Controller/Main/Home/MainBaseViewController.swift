@@ -55,6 +55,8 @@ class MainBaseViewController: UIViewController {
         
         setDefault()
         setNavigationItem()
+        baseTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        
         baseTableView.reloadData()
         dataManager.getCalMenu(viewController: self)
         checkUserAlertCount()
