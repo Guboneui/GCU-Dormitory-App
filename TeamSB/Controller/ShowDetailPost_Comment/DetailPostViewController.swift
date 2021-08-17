@@ -226,8 +226,8 @@ extension DetailPostViewController {
     }
     
     @objc func showBanAlert() {
-        let alert = UIAlertController(title: "게시글 신고", message: "", preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        let alert = UIAlertController(title: "게시글 신고", message: "", preferredStyle: .actionSheet)
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "BanPopUPViewController") as! BanPopUPViewController
@@ -237,6 +237,7 @@ extension DetailPostViewController {
             self.present(vc, animated: false, completion: nil)
         })
         okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
         alert.addAction(cancelButton)
         alert.addAction(okButton)
 
