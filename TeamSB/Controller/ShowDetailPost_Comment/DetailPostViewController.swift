@@ -137,21 +137,25 @@ extension DetailPostViewController {
     
     
     func showAdminBarItem() {
-        let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
-        delete.tintColor = .black
-        let edit = UIBarButtonItem(image: UIImage(systemName: "wand.and.rays"), style: .plain, target: self, action: #selector(editPost))
-        edit.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
-        edit.tintColor = .black
-        print("test")
+        let line = UIBarButtonItem(image: UIImage(named: "line"), style: .plain, target: self, action: #selector(adminPost))
+        line.tintColor = .black
         
-        navigationItem.rightBarButtonItems = [delete, edit]
+        navigationItem.rightBarButtonItem = line
+//        let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
+//        delete.tintColor = .black
+//        let edit = UIBarButtonItem(image: UIImage(systemName: "wand.and.rays"), style: .plain, target: self, action: #selector(editPost))
+//        edit.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+//        edit.tintColor = .black
+//        print("test")
+//
+//        navigationItem.rightBarButtonItems = [delete, edit]
     }
     
     func showUserBarItem() {
-        let ban = UIBarButtonItem(image: UIImage(named: "line"), style: .plain, target: self, action: #selector(showBanAlert))
-        ban.tintColor = .black
+        let line = UIBarButtonItem(image: UIImage(named: "line"), style: .plain, target: self, action: #selector(showBanAlert))
+        line.tintColor = .black
         
-        navigationItem.rightBarButtonItem = ban
+        navigationItem.rightBarButtonItem = line
     }
     
     func makeBackButton() {
@@ -195,42 +199,85 @@ extension DetailPostViewController {
         
     }
     
-    @objc func editPost() {
-        print(">> 게시글을 수정합니다.")
-        let vc = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
-        vc.originNo = self.getPostNumber
-        vc.originTitle = self.getTitle
-        vc.originCategory = self.getCategory
-        vc.originText = self.getContents
-        vc.originHash = self.getHash
-        vc.originID = self.getUserID
-        vc.afterEditDelegate = self
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    @objc func editPost() {
+//        print(">> 게시글을 수정합니다.")
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+//        vc.originNo = self.getPostNumber
+//        vc.originTitle = self.getTitle
+//        vc.originCategory = self.getCategory
+//        vc.originText = self.getContents
+//        vc.originHash = self.getHash
+//        vc.originID = self.getUserID
+//        vc.afterEditDelegate = self
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     
-    @objc func deletePost() {
-        print(">> 게시글을 삭제버튼 클릭")
-        let alert = UIAlertController(title: "삭제하시겠어요?", message: "", preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: {_ in
-            print("게시글 삭제 취소")
+//    @objc func deletePost() {
+//        print(">> 게시글을 삭제버튼 클릭")
+//        let alert = UIAlertController(title: "삭제하시겠어요?", message: "", preferredStyle: .alert)
+//        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: {_ in
+//            print("게시글 삭제 취소")
+//        })
+//        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
+//            let param = DeleteArticleRequest(curUser: UserDefaults.standard.string(forKey: "userID")!, no: getPostNumber)
+//            dataManager.postDeleteArticleCount(param, viewController: self)
+//        })
+//        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+//        alert.addAction(cancelButton)
+//        alert.addAction(okButton)
+//        self.present(alert, animated: true, completion: nil)
+//
+//    }
+    
+    
+    @objc func adminPost() {
+        let alert = UIAlertController(title: "관리자 권한", message: "", preferredStyle: .actionSheet)
+        let editButton = UIAlertAction(title: "게시글 수정", style: .default, handler: { [self] _ in
+            print(">> 게시글을 수정합니다.")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+            vc.originNo = self.getPostNumber
+            vc.originTitle = self.getTitle
+            vc.originCategory = self.getCategory
+            vc.originText = self.getContents
+            vc.originHash = self.getHash
+            vc.originID = self.getUserID
+            vc.afterEditDelegate = self
+            
+            self.navigationController?.pushViewController(vc, animated: true)
         })
-        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-            let param = DeleteArticleRequest(curUser: UserDefaults.standard.string(forKey: "userID")!, no: getPostNumber)
-            dataManager.postDeleteArticleCount(param, viewController: self)
+        let deleteButton = UIAlertAction(title: "게시글 삭제", style: .default, handler: { _ in
+            print(">> 게시글을 삭제버튼 클릭")
+            let alert = UIAlertController(title: "삭제하시겠어요?", message: "", preferredStyle: .alert)
+            let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: {_ in
+                print("게시글 삭제 취소")
+            })
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
+                let param = DeleteArticleRequest(curUser: UserDefaults.standard.string(forKey: "userID")!, no: getPostNumber)
+                dataManager.postDeleteArticleCount(param, viewController: self)
+            })
+            okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+            alert.addAction(cancelButton)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
         })
-        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        editButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        deleteButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
+        alert.addAction(editButton)
+        alert.addAction(deleteButton)
         alert.addAction(cancelButton)
-        alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
-        
     }
+    
+    
     
     @objc func showBanAlert() {
         let alert = UIAlertController(title: "게시글 신고", message: "", preferredStyle: .actionSheet)
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
+        let okButton = UIAlertAction(title: "신고", style: .default, handler: {[self] _ in
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "BanPopUPViewController") as! BanPopUPViewController
             vc.modalPresentationStyle = .overCurrentContext
