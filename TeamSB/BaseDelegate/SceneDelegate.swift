@@ -44,7 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("22222222222222222222")
         
         if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-            let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
+            let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID") ?? "")
             removeFcmToken(param)
         }
         

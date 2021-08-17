@@ -50,7 +50,7 @@ class CalendarViewController: UIViewController {
         
         
         calendar.calendarWeekdayView.weekdayLabels[0].textColor = UIColor.SBColor.SB_DarkGray
-        calendar.calendarWeekdayView.weekdayLabels[6].textColor = UIColor.SBColor.SB_DarkGray
+        //calendar.calendarWeekdayView.weekdayLabels[6].textColor = UIColor.SBColor.SB_DarkGray
    
     }
     
