@@ -135,12 +135,14 @@ extension DetailPostViewController {
         
     }
     
+    
     func showAdminBarItem() {
         let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
         delete.tintColor = .black
         let edit = UIBarButtonItem(image: UIImage(systemName: "wand.and.rays"), style: .plain, target: self, action: #selector(editPost))
         edit.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
         edit.tintColor = .black
+        print("test")
         
         navigationItem.rightBarButtonItems = [delete, edit]
     }
