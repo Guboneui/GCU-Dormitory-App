@@ -45,6 +45,9 @@ class MainBaseViewController: UIViewController {
         
     }
     
+    
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "홈"
@@ -105,7 +108,8 @@ extension MainBaseViewController {
         baseTableView.delegate = self
         baseTableView.dataSource = self
         baseTableView.rowHeight = UITableView.automaticDimension
-        baseTableView.estimatedRowHeight = 100
+        baseTableView.estimatedRowHeight = 75
+        
         baseTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         baseTableView.allowsSelection = false
         
@@ -121,6 +125,9 @@ extension MainBaseViewController {
         
         let recentPostViewTableViewCellNib = UINib(nibName: "RecentPostViewTableViewCell", bundle: nil)
         baseTableView.register(recentPostViewTableViewCellNib, forCellReuseIdentifier: "RecentPostViewTableViewCell")
+        
+        let honeyTipTableViewCellNib = UINib(nibName: "HoneyTipTableViewCell", bundle: nil)
+        baseTableView.register(honeyTipTableViewCellNib, forCellReuseIdentifier: "HoneyTipTableViewCell")
         
         let nowTimeMenuTableViewCellNib = UINib(nibName: "NowTimeMenuTableViewCell", bundle: nil)
         baseTableView.register(nowTimeMenuTableViewCellNib, forCellReuseIdentifier: "NowTimeMenuTableViewCell")
@@ -182,9 +189,12 @@ extension MainBaseViewController {
 
 //MARK: -테이블뷰 세팅
 extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -201,6 +211,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             cell.taxiButton.addTarget(self, action: #selector(goTaxiView), for: .touchUpInside)
             cell.roommateButton.addTarget(self, action: #selector(goLaundayView), for: .touchUpInside)
             
+            
             return cell
             
         } else if indexPath.row == 2{
@@ -211,16 +222,19 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         } else if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HoneyTipTableViewCell", for: indexPath) as! HoneyTipTableViewCell
+
+            
+            return cell
+        } else if indexPath.row == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NowTimeMenuTableViewCell", for: indexPath) as! NowTimeMenuTableViewCell
             
             cell.timeLabel.text = firstTimeString
-            
             cell.menuLabel.text = firstMenuString
             cell.subMenuLabel.text = secondMenuString
             
-            
             return cell
-        } else {
+        }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NowTimeMenuTableViewCell", for: indexPath) as! NowTimeMenuTableViewCell
             
             cell.timeLabel.text = secondTimeString
@@ -333,17 +347,17 @@ extension MainBaseViewController: MainView {
         let hourFormatter        = DateFormatter()
         hourFormatter.locale     = Locale(identifier: "ko_KR")
         hourFormatter.dateFormat = "HH"
-        
+
         let dateFormatter        = DateFormatter()
         dateFormatter.locale     = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        
+
+
         let date: String = dateFormatter.string(from: Date())
         let today: String = hourFormatter.string(from: Date())
         let nowTime: Int = Int(today)!
-        
-        
+
+
         //오늘에 해당하는 배열 인덱스 가져옴
         for i in 0..<calMenu.count {
             let dateMenu = calMenu[i]
@@ -357,8 +371,8 @@ extension MainBaseViewController: MainView {
                         }
                     }
                     firstTimeString = "아침 (07:00~08:30)"
-                    secondMenuString = nil
-                    baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
+                    secondMenuString = "준비된 메뉴가\n없습니다."
+                    baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
 
                 } else if nowTime >= 9 && nowTime < 14 {
                     for i in 0..<dateMenu.점심[0].count {
@@ -369,8 +383,8 @@ extension MainBaseViewController: MainView {
                         }
                     }
                     firstTimeString = "점심 (11:50~13:30)"
-                    
-                    
+
+
                     for i in 0..<dateMenu.점심[1].count {
                         if i == dateMenu.점심[1].count - 1 {
                             secondMenuString! += "\(dateMenu.점심[1][i])"
@@ -378,18 +392,18 @@ extension MainBaseViewController: MainView {
                             secondMenuString! += "\(dateMenu.점심[1][i])\n"
                         }
                     }
-                    
-                    
-                    firstMenuString = "A코스\n" + firstMenuString!
-                    secondMenuString = "B코스\n" + secondMenuString!
-                    
-                    
-                    secondTimeString = "점심2"
-        
-                    baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
-                    
-        
-        
+
+
+                    firstMenuString = firstMenuString!
+                    secondMenuString = secondMenuString!
+
+
+                    //secondTimeString = "점심2"
+
+                    baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
+
+
+
                 } else if nowTime >= 14 && nowTime < 20 {
                     for i in 0..<dateMenu.저녁[0].count {
                         if i == dateMenu.저녁[0].count - 1 {
@@ -399,17 +413,17 @@ extension MainBaseViewController: MainView {
                         }
                     }
                     firstTimeString = "저녁 (18:00~19:30)"
-                    secondMenuString = nil
-                    baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
+                    secondMenuString = "준비된 메뉴가\n없습니다."
+                    baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
 
 
                 } else {
                     firstTimeString = "하루를 마무리 할 시간이에요"
                     firstMenuString = "오늘 메뉴는\n어떠셨나요??"
-                    baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
-        
+                    baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
+
                 }
-                
+
             }
         }
     }

@@ -17,13 +17,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="택배 좀 찾아주세요" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2I3-Nt-0Bk">
-                        <rect key="frame" x="55" y="18.5" width="294" height="15"/>
+                        <rect key="frame" x="40" y="0.0" width="316" height="52"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="택배" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acY-0R-RdQ">
-                        <rect key="frame" x="15" y="18" width="25" height="16"/>
+                        <rect key="frame" x="0.0" y="18" width="25" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="Qdy-Ct-Bfy"/>
                         </constraints>
@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NM2-n2-GZ6">
-                        <rect key="frame" x="359" y="20.5" width="20" height="11.5"/>
+                        <rect key="frame" x="366" y="20.5" width="20" height="11.5"/>
                         <color key="tintColor" red="0.72941178080000002" green="0.72156864399999998" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="LcW-U9-EA6"/>
@@ -41,11 +41,13 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="NM2-n2-GZ6" secondAttribute="trailing" constant="10" id="1Zd-v8-KBF"/>
+                    <constraint firstItem="2I3-Nt-0Bk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="140-nf-yvQ"/>
+                    <constraint firstAttribute="trailing" secondItem="NM2-n2-GZ6" secondAttribute="trailing" constant="3" id="1Zd-v8-KBF"/>
+                    <constraint firstAttribute="bottom" secondItem="2I3-Nt-0Bk" secondAttribute="bottom" id="1f0-0b-lCe"/>
                     <constraint firstItem="NM2-n2-GZ6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2mW-pa-Kgh"/>
                     <constraint firstItem="2I3-Nt-0Bk" firstAttribute="leading" secondItem="acY-0R-RdQ" secondAttribute="trailing" constant="15" id="4hy-qh-RQk"/>
                     <constraint firstItem="acY-0R-RdQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="89Z-qQ-VS5"/>
-                    <constraint firstItem="acY-0R-RdQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="A8l-8Y-jrS"/>
+                    <constraint firstItem="acY-0R-RdQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="A8l-8Y-jrS"/>
                     <constraint firstItem="NM2-n2-GZ6" firstAttribute="leading" secondItem="2I3-Nt-0Bk" secondAttribute="trailing" constant="10" id="gdj-dl-MQe"/>
                     <constraint firstItem="2I3-Nt-0Bk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tAb-QU-aF5"/>
                 </constraints>

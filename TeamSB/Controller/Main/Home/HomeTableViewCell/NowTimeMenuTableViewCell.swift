@@ -11,8 +11,9 @@ import Alamofire
 
 class NowTimeMenuTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var yellowBaseView: UIView!
+    
     @IBOutlet weak var baseView: UIView!
+    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var menuLabel: UILabel!
     @IBOutlet weak var subMenuLabel: UILabel!
@@ -20,6 +21,8 @@ class NowTimeMenuTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureDesign()
+        
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,10 +33,10 @@ class NowTimeMenuTableViewCell: UITableViewCell {
     
     func configureDesign() {
         
-        yellowBaseView.layer.cornerRadius = 10
-        baseView.layer.cornerRadius = 10
-        //baseView.layer.borderWidth = 0.5
-        baseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
+        
+        baseView.layer.cornerRadius = 9
+        baseView.layer.borderWidth = 3
+        baseView.layer.borderColor = #colorLiteral(red: 0.9983385205, green: 0.7219318748, blue: 0, alpha: 1)
     }
     
 //MARK: -API

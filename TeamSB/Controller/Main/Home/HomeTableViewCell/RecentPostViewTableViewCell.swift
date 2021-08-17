@@ -41,7 +41,7 @@ extension RecentPostViewTableViewCell {
     func setTableView() {
         recentPostTableView.delegate = self
         recentPostTableView.dataSource = self
-        recentPostTableView.rowHeight = 35
+        recentPostTableView.rowHeight = 27.5
         recentPostTableView.separatorStyle = .none
         
         let recentPostContentsTableViewCellNib = UINib(nibName: "RecentPostContentsTableViewCell", bundle: nil)
@@ -49,12 +49,22 @@ extension RecentPostViewTableViewCell {
     }
     
     func configureDesign() {
-        baseView.layer.cornerRadius = 10
-        baseView.layer.borderWidth = 0.5
-        baseView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
+        baseView.layer.cornerRadius = 9
+        baseView.layer.borderWidth = 3
+        baseView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         
-        showMoreButton.tintColor = UIColor.SBColor.SB_LightGray
-        showMoreBottomView.backgroundColor = UIColor.SBColor.SB_DarkGray
+        showMoreButton.tintColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+        //showMoreBottomView.backgroundColor = UIColor.SBColor.SB_DarkGray
+        
+        
+        let userText = "더보기"
+        let textRange = NSRange(location: 0, length: userText.count)
+        let attributedText = NSMutableAttributedString(string: userText)
+        attributedText.addAttribute(.underlineStyle,
+                                    value: NSUnderlineStyle.single.rawValue,
+                                    range: textRange)
+        showMoreButton.titleLabel!.attributedText = attributedText
+        
     }
 }
 
