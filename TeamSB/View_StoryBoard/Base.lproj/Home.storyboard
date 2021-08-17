@@ -504,34 +504,34 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exist_notice_icon" translatesAutoresizingMaskIntoConstraints="NO" id="toR-oP-9B6">
-                                        <rect key="frame" x="394" y="10" width="24" height="24"/>
+                                        <rect key="frame" x="395" y="10.666666666666664" width="23" height="23"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="IaA-F5-I6q"/>
-                                            <constraint firstAttribute="width" constant="24" id="nrh-kf-AUz"/>
+                                            <constraint firstAttribute="height" constant="23" id="IaA-F5-I6q"/>
+                                            <constraint firstAttribute="width" constant="23" id="nrh-kf-AUz"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-black" translatesAutoresizingMaskIntoConstraints="NO" id="taD-er-zM1">
-                                        <rect key="frame" x="360" y="10" width="24" height="24"/>
+                                        <rect key="frame" x="368" y="12" width="20" height="20"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="mDP-Cp-fW0"/>
-                                            <constraint firstAttribute="width" constant="24" id="pvc-rb-i1u"/>
+                                            <constraint firstAttribute="height" constant="20" id="mDP-Cp-fW0"/>
+                                            <constraint firstAttribute="width" constant="20" id="pvc-rb-i1u"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_icon" translatesAutoresizingMaskIntoConstraints="NO" id="YG2-zd-Mrg">
-                                        <rect key="frame" x="10" y="10" width="24" height="24"/>
+                                        <rect key="frame" x="10" y="11.666666666666664" width="21" height="21"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="HJZ-Ld-SFT"/>
-                                            <constraint firstAttribute="height" constant="24" id="qNq-wX-RvP"/>
+                                            <constraint firstAttribute="width" constant="21" id="HJZ-Ld-SFT"/>
+                                            <constraint firstAttribute="height" constant="21" id="qNq-wX-RvP"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKz-2A-zkN">
-                                        <rect key="frame" x="394" y="10" width="24" height="24"/>
+                                        <rect key="frame" x="395" y="10.666666666666664" width="23" height="23"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="5ah-Rn-3XV"/>
-                                            <constraint firstAttribute="width" constant="24" id="V1l-Uz-Sfv"/>
+                                            <constraint firstAttribute="height" constant="23" id="5ah-Rn-3XV"/>
+                                            <constraint firstAttribute="width" constant="23" id="V1l-Uz-Sfv"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -539,11 +539,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWT-CI-IUG">
-                                        <rect key="frame" x="360" y="10" width="24" height="24"/>
+                                        <rect key="frame" x="368" y="12" width="20" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="aUz-jK-kw0"/>
-                                            <constraint firstAttribute="height" constant="24" id="tLx-pZ-OwP"/>
+                                            <constraint firstAttribute="width" constant="20" id="aUz-jK-kw0"/>
+                                            <constraint firstAttribute="height" constant="20" id="tLx-pZ-OwP"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -551,11 +551,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoW-hy-fzd">
-                                        <rect key="frame" x="10" y="10" width="24" height="24"/>
+                                        <rect key="frame" x="10" y="11.666666666666664" width="21" height="21"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Ghg-xB-DhE"/>
-                                            <constraint firstAttribute="width" constant="24" id="k4B-ya-bw6"/>
+                                            <constraint firstAttribute="height" constant="21" id="Ghg-xB-DhE"/>
+                                            <constraint firstAttribute="width" constant="21" id="k4B-ya-bw6"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
@@ -568,8 +568,8 @@
                                     <constraint firstAttribute="height" constant="44" id="1Od-o0-Tn9"/>
                                     <constraint firstItem="eKz-2A-zkN" firstAttribute="centerY" secondItem="628-Po-2M7" secondAttribute="centerY" id="5ms-2N-ktB"/>
                                     <constraint firstItem="toR-oP-9B6" firstAttribute="centerY" secondItem="628-Po-2M7" secondAttribute="centerY" id="C8U-d8-u9g"/>
-                                    <constraint firstItem="toR-oP-9B6" firstAttribute="leading" secondItem="taD-er-zM1" secondAttribute="trailing" constant="10" id="Cv5-zh-xw6"/>
-                                    <constraint firstItem="toR-oP-9B6" firstAttribute="leading" secondItem="tWT-CI-IUG" secondAttribute="trailing" constant="10" id="DQN-Gt-Vpb"/>
+                                    <constraint firstItem="toR-oP-9B6" firstAttribute="leading" secondItem="taD-er-zM1" secondAttribute="trailing" constant="7" id="Cv5-zh-xw6"/>
+                                    <constraint firstItem="toR-oP-9B6" firstAttribute="leading" secondItem="tWT-CI-IUG" secondAttribute="trailing" constant="7" id="DQN-Gt-Vpb"/>
                                     <constraint firstItem="taD-er-zM1" firstAttribute="centerY" secondItem="628-Po-2M7" secondAttribute="centerY" id="FEQ-Gc-9Xe"/>
                                     <constraint firstItem="YG2-zd-Mrg" firstAttribute="centerY" secondItem="628-Po-2M7" secondAttribute="centerY" id="MDe-jZ-jbp"/>
                                     <constraint firstItem="tWT-CI-IUG" firstAttribute="centerY" secondItem="628-Po-2M7" secondAttribute="centerY" id="RcX-sJ-u5S"/>
@@ -1841,13 +1841,13 @@
         <image name="default_Notice" width="24.666666030883789" height="25"/>
         <image name="default_myList" width="24.666666030883789" height="25"/>
         <image name="drop" width="166.33332824707031" height="128"/>
-        <image name="exist_notice_icon" width="25" height="25"/>
+        <image name="exist_notice_icon" width="20" height="20"/>
         <image name="filter" width="21.666666030883789" height="24.333333969116211"/>
         <image name="logOut" width="24" height="24"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="pencil" width="11" height="11"/>
-        <image name="search-black" width="128" height="128"/>
-        <image name="setting_icon" width="128" height="128"/>
+        <image name="search-black" width="20" height="20"/>
+        <image name="setting_icon" width="20" height="20"/>
         <image name="testLogo" width="1198" height="900"/>
         <image name="whiteSearch" width="19.333333969116211" height="21.333333969116211"/>
         <systemColor name="labelColor">

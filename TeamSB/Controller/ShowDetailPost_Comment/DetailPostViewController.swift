@@ -146,7 +146,7 @@ extension DetailPostViewController {
     }
     
     func showUserBarItem() {
-        let ban = UIBarButtonItem(image: UIImage(named: "dotdotdot"), style: .plain, target: self, action: #selector(showBanAlert))
+        let ban = UIBarButtonItem(image: UIImage(named: "line"), style: .plain, target: self, action: #selector(showBanAlert))
         ban.tintColor = .black
         
         navigationItem.rightBarButtonItem = ban

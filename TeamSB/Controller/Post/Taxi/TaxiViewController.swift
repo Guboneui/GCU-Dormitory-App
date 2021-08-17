@@ -74,9 +74,10 @@ class TaxiViewController: UIViewController {
         self.navigationItem.title = "택시"
         self.tabBarController?.tabBar.isHidden = true
         writeButton = UIBarButtonItem(image: UIImage(named: "write_icon"), style: .plain, target: self, action: #selector(goWriteView))
+        writeButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -5)
         writeButton.tintColor = .black
         searchButton = UIBarButtonItem(image: UIImage(named: "search_icon"), style: .plain, target: self, action: #selector(goSearchView))
-        searchButton.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        searchButton.imageInsets = UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 0)
         searchButton.tintColor = .black
         backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
         backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
