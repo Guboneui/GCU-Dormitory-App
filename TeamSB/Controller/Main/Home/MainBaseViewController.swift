@@ -24,7 +24,7 @@ class MainBaseViewController: UIViewController {
     
     var loading: NVActivityIndicatorView!
 
-    
+    var bannerList: [String] = []
     var calMenu: [Menu] = []
     lazy var dataManager: MainDataManager = MainDataManager(view: self)
     

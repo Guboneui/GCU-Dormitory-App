@@ -76,6 +76,14 @@ class SettingViewController: UIViewController, UISceneDelegate {
         getProfileImage()
         
         
+        if UserDefaults.standard.bool(forKey: "alertAccess") == true {
+            fcmSwitch.isOn = true
+        } else {
+            fcmSwitch.isOn = false
+        }
+        
+     
+        
         let isRegistered = UIApplication.shared.isRegisteredForRemoteNotifications
 //        if(isRegistered) {
 //            //
@@ -94,14 +102,24 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     
     func checkNotificationState() {
+        
+       
+        
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { [self] settings in
             
             DispatchQueue.main.async {
                 if settings.alertSetting == .enabled {
                     print("활성화")
-                    UserDefaults.standard.set(true, forKey: "alertAccess")
-                    fcmSwitch.isOn = true
+                    
+//                    if UserDefaults.standard.bool(forKey: "alertAccess") == true {
+                        UserDefaults.standard.set(true, forKey: "alertAccess")
+                        fcmSwitch.isOn = true
+//                    } else {
+//                        UserDefaults.standard.set(false, forKey: "alertAccess")
+//                        fcmSwitch.isOn = false
+//                    }
+//
                     
                 } else {
                     print("비활성화")
@@ -113,8 +131,7 @@ class SettingViewController: UIViewController, UISceneDelegate {
         }
 
     }
-    
-    
+   
     
     func getProfileImage() {
         let imageString = UserDefaults.standard.string(forKey: "userProfileImage") ?? ""

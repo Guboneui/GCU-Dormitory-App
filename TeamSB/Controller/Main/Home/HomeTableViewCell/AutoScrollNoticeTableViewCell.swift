@@ -7,17 +7,27 @@
 
 import UIKit
 
-class AutoScrollNoticeTableViewCell: UITableViewCell {
+class AutoScrollNoticeTableViewCell: UITableViewCell, MainView {
+    func setUserNickname(nickname: String) {
+        
+    }
+    
+    func setTodayMenu() {
+        
+    }
+    
+    func setNoticeColor(notificationCount: Int) {
+        
+    }
+    
 
     var nowPage = 0
     @IBOutlet weak var mainCollectionView: UICollectionView!
     let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
-    var notice: [String] = [
-        "1. 글 작성 관련 주의사항 들어가는 곳 입니다.",
-        "2. 글 작성 관련 주의사항 들어가는 곳 입니다.",
-        "3. 글 작성 관련 주의사항 들어가는 곳 입니다."
-    ]
+    var notice: [String] = []
+    
+    lazy var dataManager: MainDataManager = MainDataManager(view: self)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +36,10 @@ class AutoScrollNoticeTableViewCell: UITableViewCell {
         mainCollectionView.register(UINib(nibName: "AutoScrollNoticeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AutoScrollNoticeCollectionViewCell")
         
         bannerTimer()
+        dataManager.getBanner(viewController: self)
+        
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

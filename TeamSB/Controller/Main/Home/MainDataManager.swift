@@ -149,4 +149,27 @@ class MainDataManager {
             }
         }
     }
+    
+    func getBanner(viewController: AutoScrollNoticeTableViewCell) {
+        AF.request("\(ConstantURL.BASE_URL)/topBanner", method: .get)
+            .validate()
+            .responseDecodable(of: GetBannerResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/topBanner")
+                    if response.check == true {
+                        print(">> 배너 가져오기 성공")
+                        viewController.notice = response.topBannerList
+                        viewController.mainCollectionView.reloadData()
+                    } else {
+                       print(">> 배너 가져오기 실패")
+                    }
+                    
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/topBanner")
+                    print(">> \(error.localizedDescription)")
+                    print(">> 유저 알림 정보 통신 에러")
+            }
+        }
+    }
 }

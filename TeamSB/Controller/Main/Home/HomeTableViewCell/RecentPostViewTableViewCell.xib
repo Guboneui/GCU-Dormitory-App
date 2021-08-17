@@ -13,11 +13,11 @@
         <tableViewCell contentMode="scaleToFill" restorationIdentifier="RecentPostViewTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecentPostViewTableViewCell" rowHeight="412" id="KGk-i7-Jjw" customClass="RecentPostViewTableViewCell" customModule="TeamSB" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="482" height="412"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="482" height="412"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9v-Fb-JWa" userLabel="BaseView">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9v-Fb-JWa" userLabel="BaseView">
                         <rect key="frame" x="30" y="11" width="422" height="390"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 올라온 게시글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gz2-eq-Q7a">
@@ -27,24 +27,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Av-Ne-GWT">
-                                <rect key="frame" x="363" y="15.5" width="39" height="30"/>
+                                <rect key="frame" x="363" y="-119" width="39" height="299"/>
                                 <state key="normal" title="더보기"/>
                                 <connections>
                                     <action selector="showMoreButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="alk-km-U5k"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdM-jq-TA5">
-                                <rect key="frame" x="363" y="40.5" width="39" height="1"/>
+                                <rect key="frame" x="363" y="175" width="39" height="1"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Lux-rE-UN3"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A3R-Fb-3mm">
-                                <rect key="frame" x="20" y="65.5" width="382" height="350"/>
+                                <rect key="frame" x="20" y="200" width="382" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="Yv4-hP-oJC"/>
+                                    <constraint firstAttribute="height" constant="180" id="Yv4-hP-oJC"/>
                                 </constraints>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>

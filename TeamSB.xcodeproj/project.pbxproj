@@ -95,6 +95,7 @@
 		2C298743268B5D5E005EEA64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C298741268B5D5E005EEA64 /* LaunchScreen.storyboard */; };
 		2C35B9AC26B4396B0032CDA1 /* ExistsArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35B9AB26B4396B0032CDA1 /* ExistsArticleRequest.swift */; };
 		2C35B9AE26B439760032CDA1 /* ExistsArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */; };
+		2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */; };
 		2C44FB6D26C7659B00C6B7D4 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44FB6C26C7659B00C6B7D4 /* AlertViewController.swift */; };
 		2C44FB7026C7671C00C6B7D4 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44FB6E26C7671C00C6B7D4 /* AlertTableViewCell.swift */; };
 		2C44FB7126C7671C00C6B7D4 /* AlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C44FB6F26C7671C00C6B7D4 /* AlertTableViewCell.xib */; };
@@ -279,6 +280,7 @@
 		2C298744268B5D5E005EEA64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C35B9AB26B4396B0032CDA1 /* ExistsArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsArticleRequest.swift; sourceTree = "<group>"; };
 		2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsArticleResponse.swift; sourceTree = "<group>"; };
+		2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBannerResponse.swift; sourceTree = "<group>"; };
 		2C44FB6C26C7659B00C6B7D4 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		2C44FB6E26C7671C00C6B7D4 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		2C44FB6F26C7671C00C6B7D4 /* AlertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertTableViewCell.xib; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				2C18C97826C1A08D00C852B2 /* MyPostResponse.swift */,
 				2C44FB7B26C76E1300C6B7D4 /* CheckUserAlertRequest.swift */,
 				2C44FB7D26C76E1F00C6B7D4 /* CheckUserAlertResponse.swift */,
+				2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */,
 			);
 			path = API_Home;
 			sourceTree = "<group>";
@@ -1054,6 +1057,7 @@
 				2C004AFB26B3860100D13ABF /* DeleteArticleResponse.swift in Sources */,
 				2C44FB6D26C7659B00C6B7D4 /* AlertViewController.swift in Sources */,
 				2C44FB8426C7D30300C6B7D4 /* ReadNoticeRequest.swift in Sources */,
+				2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */,
 				2CD92B2726BF01BE00A3263E /* AllPostCollectionViewCell.swift in Sources */,
 				2C004AE126B35BEC00D13ABF /* SearchContract.swift in Sources */,
 				2CD92B2D26BF1C7500A3263E /* DeliveryCollectionViewCell.swift in Sources */,
