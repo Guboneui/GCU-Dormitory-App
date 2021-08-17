@@ -87,7 +87,7 @@ class SettingDataManager {
                     print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
                     if response.check == true {
                         print("토큰 제거 성공")
-                        view.successChangeNickname()
+                        
                     } else {
                         print(">> 토큰 제거 실패")
                         viewController.presentAlert(title: response.message)

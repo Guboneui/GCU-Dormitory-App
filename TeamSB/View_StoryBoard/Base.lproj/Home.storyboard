@@ -828,18 +828,6 @@
                                     <constraint firstAttribute="height" constant="1" id="BJk-qu-Law"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tD-71-2nA">
-                                <rect key="frame" x="288" y="822" width="120" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.89019607840000003" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="ux6-7j-YHw"/>
-                                    <constraint firstAttribute="height" constant="50" id="vhU-uL-p1i"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="로그아웃" image="logOut">
-                                    <color key="titleColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-Jl-0nq">
                                 <rect key="frame" x="20" y="249" width="388" height="50"/>
                                 <subviews>
@@ -1092,7 +1080,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="C9a-7Q-gIc" secondAttribute="trailing" constant="20" id="0fC-MX-ftx"/>
-                            <constraint firstAttribute="trailing" secondItem="6tD-71-2nA" secondAttribute="trailing" constant="20" id="14i-QM-glT"/>
                             <constraint firstItem="zh3-yQ-fiJ" firstAttribute="top" secondItem="F7H-F7-bsg" secondAttribute="bottom" constant="5" id="1IU-qv-Vs5"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="Tft-ba-Utb" secondAttribute="trailing" constant="20" id="2FZ-ba-WWO"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="ZpD-R1-Cco" secondAttribute="trailing" constant="20" id="3be-wa-SrH"/>
@@ -1108,7 +1095,6 @@
                             <constraint firstItem="yVT-JI-MQK" firstAttribute="top" secondItem="4UT-cv-XnG" secondAttribute="bottom" constant="19" id="W7f-du-ZqH"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="4UT-cv-XnG" secondAttribute="trailing" id="XdX-pf-ELa"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="Bbl-Jl-0nq" secondAttribute="trailing" constant="20" id="aa4-Jw-xWw"/>
-                            <constraint firstItem="Yxh-Zd-nKV" firstAttribute="bottom" secondItem="6tD-71-2nA" secondAttribute="bottom" constant="20" id="cSK-RE-aKc"/>
                             <constraint firstItem="F7H-F7-bsg" firstAttribute="top" secondItem="zEB-vx-fhh" secondAttribute="bottom" constant="5" id="caX-ds-lNc"/>
                             <constraint firstItem="ZpD-R1-Cco" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="ddE-Al-WnF"/>
                             <constraint firstItem="97U-ar-ooh" firstAttribute="top" secondItem="C9a-7Q-gIc" secondAttribute="bottom" constant="5" id="fdX-HD-9Dm"/>
@@ -1136,7 +1122,6 @@
                         <outlet property="fifthBaseView" destination="C9a-7Q-gIc" id="kcP-Eh-zAs"/>
                         <outlet property="firstBaseView" destination="Bbl-Jl-0nq" id="0zC-4e-mRp"/>
                         <outlet property="fourthBaseView" destination="zh3-yQ-fiJ" id="WQr-yf-Ypa"/>
-                        <outlet property="logOutButton" destination="6tD-71-2nA" id="vXn-ak-N6g"/>
                         <outlet property="logoutBaseView" destination="Tft-ba-Utb" id="34K-bR-PGi"/>
                         <outlet property="nicknameLabel" destination="F0C-bN-MLh" id="qn3-ZO-n9I"/>
                         <outlet property="photoPencilBaseView" destination="RuJ-ZQ-dNy" id="ecD-iZ-APY"/>
@@ -1851,10 +1836,10 @@
         <image name="C" width="128" height="128"/>
         <image name="D" width="128" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="default_Calendar" width="30" height="30"/>
-        <image name="default_Home" width="30" height="30"/>
-        <image name="default_Notice" width="30" height="30"/>
-        <image name="default_myList" width="30" height="30"/>
+        <image name="default_Calendar" width="24.666666030883789" height="25"/>
+        <image name="default_Home" width="25" height="25"/>
+        <image name="default_Notice" width="24.666666030883789" height="25"/>
+        <image name="default_myList" width="24.666666030883789" height="25"/>
         <image name="drop" width="166.33332824707031" height="128"/>
         <image name="exist_notice_icon" width="25" height="25"/>
         <image name="filter" width="21.666666030883789" height="24.333333969116211"/>

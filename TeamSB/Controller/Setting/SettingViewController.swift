@@ -24,7 +24,6 @@ class SettingViewController: UIViewController, UISceneDelegate {
     @IBOutlet weak var fcmSwitch: UISwitch!
     @IBOutlet weak var profileBaseView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var firstBaseView: UIView!
     @IBOutlet weak var secondBaseView: UIView!
     @IBOutlet weak var thirdBaseView: UIView!
@@ -159,10 +158,7 @@ class SettingViewController: UIViewController, UISceneDelegate {
         profileImage.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
         
         nicknameLabel.text = getNickname
-        
-        logOutButton.layer.cornerRadius = 10
-        
-        
+    
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         
         

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -41,10 +42,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidDisconnect(_ scene: UIScene) {
         print("22222222222222222222")
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        
+        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+            let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
+            removeFcmToken(param)
+        }
+        
+        
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -72,6 +76,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    
+    func removeFcmToken(_ parameters: RemoveFcmTokenRequest) {
+        print(">> 자동로그인이 활성화 되어있지 않아. 앱 종료 시 fcm 토큰이 삭제됩니다")
+        AF.request("\(ConstantURL.BASE_URL)/deleteToken", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
+            .validate()
+            .responseDecodable(of: RemoveFcmTokenResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    if response.check == true {
+                        
+                        print("토큰 제거 성공")
+                        
+                        UserDefaults.standard.set(nil, forKey: "userID")
+                        UserDefaults.standard.set(nil, forKey: "userNicknameExist")
+                        UserDefaults.standard.set(nil, forKey: "userNickname")
+                        UserDefaults.standard.set(false, forKey: "autoLoginState")
+                    } else {
+                        print(">> 토큰 제거 실패")
+                    
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    print(">> \(error.localizedDescription)")
+                    print(error)
+            }
+        }
+    }
+    
+    
 
 }
 

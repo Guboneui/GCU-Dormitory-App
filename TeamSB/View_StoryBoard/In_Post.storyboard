@@ -21,7 +21,7 @@
                                 <rect key="frame" x="16" y="812.5" width="382" height="49.5"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ONz-uy-6UR">
-                                        <rect key="frame" x="20.5" y="9" width="315.5" height="31.5"/>
+                                        <rect key="frame" x="20.5" y="9" width="306.5" height="31.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31.600000000000001" id="ydT-oK-Iso"/>
@@ -31,11 +31,11 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-iP-Xnd">
-                                        <rect key="frame" x="356" y="22.5" width="20" height="20"/>
+                                        <rect key="frame" x="347" y="14.5" width="25" height="25"/>
                                         <color key="backgroundColor" red="1" green="0.81568627449999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="52V-sf-IaT"/>
-                                            <constraint firstAttribute="width" constant="20" id="UHb-Br-DR5"/>
+                                            <constraint firstAttribute="height" constant="25" id="52V-sf-IaT"/>
+                                            <constraint firstAttribute="width" constant="25" id="UHb-Br-DR5"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="sendImage"/>
@@ -48,8 +48,8 @@
                                 <constraints>
                                     <constraint firstItem="A0j-iP-Xnd" firstAttribute="leading" secondItem="ONz-uy-6UR" secondAttribute="trailing" constant="20" id="B3X-K7-f3m"/>
                                     <constraint firstItem="ONz-uy-6UR" firstAttribute="centerY" secondItem="XQX-dh-dDa" secondAttribute="centerY" id="NTE-88-j1u"/>
-                                    <constraint firstAttribute="trailing" secondItem="A0j-iP-Xnd" secondAttribute="trailing" constant="6" id="VzC-mm-vL1"/>
-                                    <constraint firstAttribute="bottom" secondItem="A0j-iP-Xnd" secondAttribute="bottom" constant="7" id="Wct-Ut-Bko"/>
+                                    <constraint firstAttribute="trailing" secondItem="A0j-iP-Xnd" secondAttribute="trailing" constant="10" id="VzC-mm-vL1"/>
+                                    <constraint firstAttribute="bottom" secondItem="A0j-iP-Xnd" secondAttribute="bottom" constant="10" id="Wct-Ut-Bko"/>
                                     <constraint firstItem="ONz-uy-6UR" firstAttribute="leading" secondItem="XQX-dh-dDa" secondAttribute="leading" constant="20.699999999999999" id="b2V-Wi-Q74"/>
                                     <constraint firstItem="ONz-uy-6UR" firstAttribute="top" secondItem="XQX-dh-dDa" secondAttribute="top" constant="9" id="cLc-9f-Pa2"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="kyX-qv-j5v"/>
