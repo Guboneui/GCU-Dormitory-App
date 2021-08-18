@@ -137,7 +137,7 @@ extension WriteViewController {
         
        // let saveArticle = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
         
-        let saveArticle = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonAction))
+        let saveArticle = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(saveButtonAction))
         saveArticle.tintColor = UIColor.SBColor.SB_BaseYellow
         self.navigationItem.rightBarButtonItem = saveArticle
         

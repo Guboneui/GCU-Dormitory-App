@@ -149,10 +149,12 @@ extension EditViewController {
         
         
         
-        let ban = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(saveButtonAction))
-        ban.tintColor = .black
         
-        self.navigationItem.rightBarButtonItem = ban
+        let edit = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonAction))
+        
+        edit.tintColor = UIColor.SBColor.SB_BaseYellow
+        
+        self.navigationItem.rightBarButtonItem = edit
         
         let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
         backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
