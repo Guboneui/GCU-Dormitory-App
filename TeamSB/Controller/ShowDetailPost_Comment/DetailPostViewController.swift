@@ -397,9 +397,21 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 
-                let imageString = getImage
-                let userProfileImage = imageString.toImage()
-                cell.profileImageView.image = userProfileImage
+//                let imageString = getImage
+//                let userProfileImage = imageString.toImage()
+//                cell.profileImageView.image = userProfileImage
+//
+                if getImage == "" || getImage == nil {
+                    cell.profileImageView.image = UIImage(named: "default_profileImage")
+                } else {
+                    let profileImage = getImage ?? ""
+                    let userImage = profileImage.toImage()
+                    cell.profileImageView.image = userImage
+                }
+                
+                
+                
+                
                 
                 
                 cell.commentCountLabel.text = String(getReplyCount)
@@ -414,9 +426,14 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.commentCountLabel.text = String(data.replyCount)
                 
                 
-                let imageString = data.imageSource ?? ""
-                let userProfileImage = imageString.toImage()
-                cell.profileImageView.image = userProfileImage
+                if data.imageSource == "" || data.imageSource == nil {
+                    cell.profileImageView.image = UIImage(named: "default_profileImage")
+                } else {
+                    let profileImage = data.imageSource ?? ""
+                    let userImage = profileImage.toImage()
+                    cell.profileImageView.image = userImage
+                }
+            
                 
                 
                 var hashString = ""
@@ -458,11 +475,16 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.nicknameLabel.textColor = .black
             }
             
-            let profileImage = data.imageSource.toImage()
+            if data.imageSource == "" || data.imageSource == nil {
+                cell.profileImageView.image = UIImage(named: "default_profileImage")
+            } else {
+                let profileImage = data.imageSource ?? ""
+                let userImage = profileImage.toImage()
+                cell.profileImageView.image = userImage
+            }
             
             
             
-            cell.profileImageView.image = profileImage
             cell.selectionStyle = .none
             
             if indexPath.row == comment.count - 1{

@@ -58,7 +58,7 @@ class NoticeViewController: UIViewController {
         isLoadedAllNormalData = false
         noticeArray.removeAll()
         subNoticeState = false
-        dataManager.getTopNotice(viewController: self, page: currentPage)
+        dataManager.getTopNotice(viewController: self)
     }
     
     
@@ -83,7 +83,7 @@ class NoticeViewController: UIViewController {
         isLoadedAllNormalData = false
         noticeArray.removeAll()
         mainTableView.reloadData()
-        dataManager.getTopNotice(viewController: self, page: currentPage)
+        dataManager.getTopNotice(viewController: self)
     }
     
 
@@ -132,33 +132,18 @@ extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
         
         
         cell.timeLabel?.text = date
-        
-        
-        
-        
-        if data.fixTop == true {
+        if data.realTop == true {
             cell.topStateImage.image = UIImage(named: "pin")
         } else {
             cell.topStateImage.image = UIImage(named: "")
         }
-
+        
         if section == noticeArray.count - 1 {
+                    
+              dataManager.getNormalNotice(viewController: self, page: currentNormalPage)
             
-//            if isLoadedAllData == false {
-//                dataManager.getTopNotice(viewController: self, page: currentPage)
-//            } else {
-//                dataManager.getNormalNotice(viewController: self, page: currentNormalPage)
-//            }
-            
-            if isLoadedAllData == false {
-                dataManager.getTopNotice(viewController: self, page: currentPage)
-                
-            }
-            if subNoticeState == true {
-                dataManager.getNormalNotice(viewController: self, page: currentNormalPage)
-            }
         }
-       
+
         
         return cell
     }
@@ -173,6 +158,8 @@ extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
         let data = noticeArray[indexPath.section]
         cell.subTitleLabel.text = data.title
         cell.contentsLabel.text = data.content
+        
+        
         
         
         

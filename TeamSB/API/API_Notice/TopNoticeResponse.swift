@@ -17,5 +17,8 @@ struct TopNotice: Decodable {
     var timeStamp: String
     var content: String
     var fixTop: Bool
+    var realTop: Bool
     var viewCount: Int
 }
+
+

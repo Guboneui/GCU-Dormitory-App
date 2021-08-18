@@ -159,8 +159,18 @@ extension AlertViewController: UITableViewDelegate, UITableViewDataSource {
         cell.alertTimeLabel.text = timeText
         
         
-        let userProfileImage = data.imageSource.toImage()
-        cell.userProfileImage.image = userProfileImage
+       
+        
+        if data.imageSource == "" || data.imageSource == nil {
+            cell.userProfileImage.image = UIImage(named: "default_profileImage")
+        } else {
+            let profileImage = data.imageSource ?? ""
+            let userImage = profileImage.toImage()
+            cell.userProfileImage.image = userImage
+        }
+        
+        
+        
         
         
         

@@ -15,18 +15,11 @@ class NoticeDataManager {
         self.view = view
     }
     
-    func getTopNotice(viewController: NoticeViewController, page: Int) {
+    func getTopNotice(viewController: NoticeViewController) {
         view.startLoading()
-        viewController.currentPage += 1
-        
-        guard viewController.isLoadedAllData == false
-        else {
-            view.stopLoading()
-            return
-        }
         
         
-        AF.request("\(ConstantURL.BASE_URL)/notice/list/top?page=\(viewController.currentPage)", method: .get)
+        AF.request("\(ConstantURL.BASE_URL)/notice/list/top", method: .get)
             .validate()
             .responseDecodable(of: TopNoticeResponse.self) { [self] response in
                 switch response.result {
@@ -37,26 +30,15 @@ class NoticeDataManager {
                     
                     if response.check == true, let result = response.content {
                         print(">> 상단 게시글 불러오기 성공")
-                        
-                        guard result.count > 0 else {
-                            view.stopLoading()
-                            print(">> 더이상 읽어올 알림 없음")
-                            print(">> 총 상단 게시글 개수 = \(viewController.noticeArray.count)")
-                            viewController.isLoadedAllData = true
-                        
-                            return
-                        }
-                        
-                        if result.count < 10 {
-                            viewController.subNoticeState = true
-                        }
-                        
+                    
                         for i in 0..<result.count {
                             viewController.noticeArray.append(result[i])
                         }
                         print(">> 읽어온 알림 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
                         
                         viewController.mainTableView.reloadData()
+                        getNormalNotice(viewController: NoticeViewController(), page: viewController.currentNormalPage)
+                        
                     } else {
                         print(">> 상단 게시글 불러오기 실패")
                         
@@ -82,7 +64,7 @@ class NoticeDataManager {
         
         AF.request("\(ConstantURL.BASE_URL)/notice/list?page=\(viewController.currentNormalPage)", method: .get)
             .validate()
-            .responseDecodable(of: TopNoticeResponse.self) { [self] response in
+            .responseDecodable(of: NormalNoticeResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/notice/list?page=\(viewController.currentNormalPage)")
