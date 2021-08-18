@@ -96,6 +96,13 @@
 		2C35B9AC26B4396B0032CDA1 /* ExistsArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35B9AB26B4396B0032CDA1 /* ExistsArticleRequest.swift */; };
 		2C35B9AE26B439760032CDA1 /* ExistsArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */; };
 		2C3A389326CD62EA006D10A3 /* GetGuideResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A389226CD62EA006D10A3 /* GetGuideResponse.swift */; };
+		2C3A389726CD74A2006D10A3 /* DormitodyGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A389526CD74A2006D10A3 /* DormitodyGuideViewController.swift */; };
+		2C3A389B26CD753D006D10A3 /* DormitoryGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A389926CD753D006D10A3 /* DormitoryGuideTableViewCell.swift */; };
+		2C3A389C26CD753D006D10A3 /* DormitoryGuideTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A389A26CD753D006D10A3 /* DormitoryGuideTableViewCell.xib */; };
+		2C3A389F26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A389D26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.swift */; };
+		2C3A38A026CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A389E26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib */; };
+		2C3A38A226CD7825006D10A3 /* DormitoryGuideDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A126CD7825006D10A3 /* DormitoryGuideDataManager.swift */; };
+		2C3A38A426CD7A57006D10A3 /* DormitodyGuideContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A326CD7A57006D10A3 /* DormitodyGuideContract.swift */; };
 		2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */; };
 		2C41DC7E26CC682A00B98794 /* HoneyTipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */; };
 		2C41DC7F26CC682A00B98794 /* HoneyTipTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */; };
@@ -284,6 +291,13 @@
 		2C35B9AB26B4396B0032CDA1 /* ExistsArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsArticleRequest.swift; sourceTree = "<group>"; };
 		2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsArticleResponse.swift; sourceTree = "<group>"; };
 		2C3A389226CD62EA006D10A3 /* GetGuideResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGuideResponse.swift; sourceTree = "<group>"; };
+		2C3A389526CD74A2006D10A3 /* DormitodyGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitodyGuideViewController.swift; sourceTree = "<group>"; };
+		2C3A389926CD753D006D10A3 /* DormitoryGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitoryGuideTableViewCell.swift; sourceTree = "<group>"; };
+		2C3A389A26CD753D006D10A3 /* DormitoryGuideTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DormitoryGuideTableViewCell.xib; sourceTree = "<group>"; };
+		2C3A389D26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitoryGuideSubTableViewCell.swift; sourceTree = "<group>"; };
+		2C3A389E26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DormitoryGuideSubTableViewCell.xib; sourceTree = "<group>"; };
+		2C3A38A126CD7825006D10A3 /* DormitoryGuideDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitoryGuideDataManager.swift; sourceTree = "<group>"; };
+		2C3A38A326CD7A57006D10A3 /* DormitodyGuideContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitodyGuideContract.swift; sourceTree = "<group>"; };
 		2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBannerResponse.swift; sourceTree = "<group>"; };
 		2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyTipTableViewCell.swift; sourceTree = "<group>"; };
 		2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HoneyTipTableViewCell.xib; sourceTree = "<group>"; };
@@ -747,6 +761,20 @@
 			path = BaseDelegate;
 			sourceTree = "<group>";
 		};
+		2C3A389426CD7471006D10A3 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				2C3A389526CD74A2006D10A3 /* DormitodyGuideViewController.swift */,
+				2C3A38A126CD7825006D10A3 /* DormitoryGuideDataManager.swift */,
+				2C3A38A326CD7A57006D10A3 /* DormitodyGuideContract.swift */,
+				2C3A389926CD753D006D10A3 /* DormitoryGuideTableViewCell.swift */,
+				2C3A389A26CD753D006D10A3 /* DormitoryGuideTableViewCell.xib */,
+				2C3A389D26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.swift */,
+				2C3A389E26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		2C44FB6B26C7657D00C6B7D4 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +841,7 @@
 				2C22FAF226B158C9003AB22A /* Search */,
 				2C22FAF326B158EB003AB22A /* Setting */,
 				2C22FAF626B1596D003AB22A /* ShowDetailPost_Comment */,
+				2C3A389426CD7471006D10A3 /* Guide */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -981,12 +1010,14 @@
 				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
 				2CF11B2C26BDA58600477921 /* GoogleService-Info.plist in Resources */,
 				2C44FB9226C8127E00C6B7D4 /* NoticeSubTableViewCell.xib in Resources */,
+				2C3A38A026CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib in Resources */,
 				2CD92B3226BF20BF00A3263E /* ParcelCollectionViewCell.xib in Resources */,
 				2C44FB7126C7671C00C6B7D4 /* AlertTableViewCell.xib in Resources */,
 				2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */,
 				2CEC875C26AF24280073251C /* MainCommentsTableViewCell.xib in Resources */,
 				2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */,
 				2C18C97126C19E2500C852B2 /* MyPostCollectionViewCell.xib in Resources */,
+				2C3A389C26CD753D006D10A3 /* DormitoryGuideTableViewCell.xib in Resources */,
 				2CFDA9B5269DEA1400612EDB /* CategoryButtonTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1066,10 +1097,12 @@
 				2C5D0195268E20EC00CC6DD4 /* NickNameViewController.swift in Sources */,
 				2C004AFF26B3887500D13ABF /* BanArticleResponse.swift in Sources */,
 				2C004AFB26B3860100D13ABF /* DeleteArticleResponse.swift in Sources */,
+				2C3A389B26CD753D006D10A3 /* DormitoryGuideTableViewCell.swift in Sources */,
 				2C44FB6D26C7659B00C6B7D4 /* AlertViewController.swift in Sources */,
 				2C44FB8426C7D30300C6B7D4 /* ReadNoticeRequest.swift in Sources */,
 				2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */,
 				2CD92B2726BF01BE00A3263E /* AllPostCollectionViewCell.swift in Sources */,
+				2C3A389F26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.swift in Sources */,
 				2C004AE126B35BEC00D13ABF /* SearchContract.swift in Sources */,
 				2CD92B2D26BF1C7500A3263E /* DeliveryCollectionViewCell.swift in Sources */,
 				2C18C97726C1A08400C852B2 /* MyPostRequest.swift in Sources */,
@@ -1083,6 +1116,7 @@
 				2C44FB8A26C7DA9600C6B7D4 /* GoArticleDetailResponse.swift in Sources */,
 				2C004A8B26B33D8200D13ABF /* ParcelResponse.swift in Sources */,
 				2C004AF726B382B900D13ABF /* DetailPostViewContract.swift in Sources */,
+				2C3A38A426CD7A57006D10A3 /* DormitodyGuideContract.swift in Sources */,
 				2C004B0726B3928500D13ABF /* PostCommentResponse.swift in Sources */,
 				2C004A6326B302F600D13ABF /* NicknameSetResponse.swift in Sources */,
 				2C004A6F26B3137300D13ABF /* MenuResponse.swift in Sources */,
@@ -1112,6 +1146,7 @@
 				2C35B9AC26B4396B0032CDA1 /* ExistsArticleRequest.swift in Sources */,
 				2CFDA9B8269DEA3100612EDB /* RecentPostViewTableViewCell.swift in Sources */,
 				2CEC875426AF0E8D0073251C /* BanPopUPViewController.swift in Sources */,
+				2C3A38A226CD7825006D10A3 /* DormitoryGuideDataManager.swift in Sources */,
 				2C004AF326B3820A00D13ABF /* AddArticleCountResponse.swift in Sources */,
 				2C004ACC26B34E6000D13ABF /* RoomMateContract.swift in Sources */,
 				2CD92B4126BF422000A3263E /* EditViewController.swift in Sources */,
@@ -1144,6 +1179,7 @@
 				2C18C97926C1A08D00C852B2 /* MyPostResponse.swift in Sources */,
 				2CEC875726AF241A0073251C /* MainPostTableViewCell.swift in Sources */,
 				2C44FB7626C76CCD00C6B7D4 /* UserAlertResponse.swift in Sources */,
+				2C3A389726CD74A2006D10A3 /* DormitodyGuideViewController.swift in Sources */,
 				2C004A6826B30DA600D13ABF /* GetUserNicknameResponse.swift in Sources */,
 				2C004ADB26B35B3D00D13ABF /* SearchRequest.swift in Sources */,
 				2C5D018E268DF81D00CC6DD4 /* SBColor.swift in Sources */,

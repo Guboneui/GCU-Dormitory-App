@@ -238,6 +238,8 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HoneyTipTableViewCell", for: indexPath) as! HoneyTipTableViewCell
 
+            cell.showMoreButton.addTarget(self, action: #selector(showMoreGuide), for: .touchUpInside)
+            
             if guideList.count == 0 {
                 cell.titleLabel.text = ""
                 cell.contentsLabel.text = ""
@@ -317,6 +319,16 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+    
+    @objc func showMoreGuide() {
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DormitoryGuideViewController") as! DormitoryGuideViewController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
     
     
 }
