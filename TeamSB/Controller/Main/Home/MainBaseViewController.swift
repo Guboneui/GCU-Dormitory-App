@@ -21,6 +21,9 @@ class MainBaseViewController: UIViewController {
     var secondMenuString: String? = ""
     var firstTimeString = ""
     var secondTimeString = ""
+    var currentPage = 0
+    
+    var guideList: [GuideList] = []
     
     var loading: NVActivityIndicatorView!
 
@@ -63,6 +66,9 @@ class MainBaseViewController: UIViewController {
         baseTableView.reloadData()
         dataManager.getCalMenu(viewController: self)
         checkUserAlertCount()
+        
+        dataManager.getGuide(viewController: self)
+        
 
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -232,6 +238,16 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HoneyTipTableViewCell", for: indexPath) as! HoneyTipTableViewCell
 
+            if guideList.count == 0 {
+                cell.titleLabel.text = ""
+                cell.contentsLabel.text = ""
+            } else {
+                let number = Int.random(in: 0..<guideList.count)
+                let data = guideList[number]
+                cell.titleLabel.text = data.title
+                cell.contentsLabel.text = data.content
+            }
+            
             
             return cell
         } else if indexPath.row == 4 {

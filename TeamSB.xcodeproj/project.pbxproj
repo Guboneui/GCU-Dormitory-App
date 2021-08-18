@@ -95,6 +95,7 @@
 		2C298743268B5D5E005EEA64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C298741268B5D5E005EEA64 /* LaunchScreen.storyboard */; };
 		2C35B9AC26B4396B0032CDA1 /* ExistsArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35B9AB26B4396B0032CDA1 /* ExistsArticleRequest.swift */; };
 		2C35B9AE26B439760032CDA1 /* ExistsArticleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */; };
+		2C3A389326CD62EA006D10A3 /* GetGuideResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A389226CD62EA006D10A3 /* GetGuideResponse.swift */; };
 		2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */; };
 		2C41DC7E26CC682A00B98794 /* HoneyTipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */; };
 		2C41DC7F26CC682A00B98794 /* HoneyTipTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */; };
@@ -282,6 +283,7 @@
 		2C298744268B5D5E005EEA64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C35B9AB26B4396B0032CDA1 /* ExistsArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsArticleRequest.swift; sourceTree = "<group>"; };
 		2C35B9AD26B439760032CDA1 /* ExistsArticleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistsArticleResponse.swift; sourceTree = "<group>"; };
+		2C3A389226CD62EA006D10A3 /* GetGuideResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGuideResponse.swift; sourceTree = "<group>"; };
 		2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBannerResponse.swift; sourceTree = "<group>"; };
 		2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyTipTableViewCell.swift; sourceTree = "<group>"; };
 		2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HoneyTipTableViewCell.xib; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				2C44FB7B26C76E1300C6B7D4 /* CheckUserAlertRequest.swift */,
 				2C44FB7D26C76E1F00C6B7D4 /* CheckUserAlertResponse.swift */,
 				2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */,
+				2C3A389226CD62EA006D10A3 /* GetGuideResponse.swift */,
 			);
 			path = API_Home;
 			sourceTree = "<group>";
@@ -1045,6 +1048,7 @@
 				2C004AFD26B3886A00D13ABF /* BanArticleRequest.swift in Sources */,
 				2C004A9F26B34E3500D13ABF /* AllPostContract.swift in Sources */,
 				2C44FBA626C8933A00C6B7D4 /* RemoveFcmTokenResponse.swift in Sources */,
+				2C3A389326CD62EA006D10A3 /* GetGuideResponse.swift in Sources */,
 				2CFDA9C2269DF42600612EDB /* RecentPostContentsTableViewCell.swift in Sources */,
 				2C004AD826B3517300D13ABF /* WriteContract.swift in Sources */,
 				2C004AF926B385F700D13ABF /* DeleteArticleRequest.swift in Sources */,
