@@ -203,11 +203,26 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     
     @IBAction func changeProfileImageButtonAction(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewViewController") as! EditProfileViewViewController
-        vc.mainDelegate = self
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true, completion: nil)
+        
+        
+        let alert = UIAlertController(title: "프로필", message: "프로필 수정", preferredStyle: .actionSheet)
+        let deleteButton = UIAlertAction(title: "프로필 삭제", style: .default, handler: nil)
+        let editButton = UIAlertAction(title: "프로필 변경", style: .default, handler: { [self] _ in
+            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewViewController") as! EditProfileViewViewController
+            vc.mainDelegate = self
+            vc.modalPresentationStyle = .overCurrentContext
+            present(vc, animated: true, completion: nil)
+        })
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        editButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        deleteButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
+        alert.addAction(editButton)
+        alert.addAction(deleteButton)
+        alert.addAction(cancelButton)
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     
