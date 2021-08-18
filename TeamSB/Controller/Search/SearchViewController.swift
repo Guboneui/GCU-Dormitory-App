@@ -76,32 +76,32 @@ class SearchViewController: UIViewController {
             fileterButton.backgroundColor = .white
             //fileterButton.layer.borderWidth = 0.8
             //fileterButton.layer.borderColor = #colorLiteral(red: 0.5032311678, green: 0.731662035, blue: 0.2278972864, alpha: 1)
-            filterImage.image = UIImage(named: "search_color_delivery")
+            filterImage.image = UIImage(named: "selected_delivery")
             filter = "배달"
             
         })
        
         let post = UIAlertAction(title: "택배", style: .default, handler: { [self] _ in
             fileterButton.backgroundColor = .white
-            fileterButton.layer.borderWidth = 0.8
-            fileterButton.layer.borderColor = #colorLiteral(red: 0.9967921376, green: 0.6303713918, blue: 0.1839940846, alpha: 1)
-            filterImage.image = UIImage(named: "B")
+            //fileterButton.layer.borderWidth = 0.8
+            //fileterButton.layer.borderColor = #colorLiteral(red: 0.9967921376, green: 0.6303713918, blue: 0.1839940846, alpha: 1)
+            filterImage.image = UIImage(named: "selected_post")
             filter = "택배"
             
         })
         let taxi = UIAlertAction(title: "택시", style: .default, handler: { [self] _ in
             fileterButton.backgroundColor = .white
-            fileterButton.layer.borderWidth = 0.8
-            fileterButton.layer.borderColor = #colorLiteral(red: 0.1688935161, green: 0.2733621895, blue: 0.489726305, alpha: 1)
-            filterImage.image = UIImage(named: "C")
+            //fileterButton.layer.borderWidth = 0.8
+            //fileterButton.layer.borderColor = #colorLiteral(red: 0.1688935161, green: 0.2733621895, blue: 0.489726305, alpha: 1)
+            filterImage.image = UIImage(named: "selected_taxi")
             filter = "택시"
             
         })
         let roomMate = UIAlertAction(title: "룸메", style: .default, handler: { [self] _ in
             fileterButton.backgroundColor = .white
-            fileterButton.layer.borderWidth = 0.8
-            fileterButton.layer.borderColor = #colorLiteral(red: 0.006499502808, green: 0.692831099, blue: 0.8687831163, alpha: 1)
-            filterImage.image = UIImage(named: "D")
+            //fileterButton.layer.borderWidth = 0.8
+            //fileterButton.layer.borderColor = #colorLiteral(red: 0.006499502808, green: 0.692831099, blue: 0.8687831163, alpha: 1)
+            filterImage.image = UIImage(named: "selected_roommate")
             filter = "룸메"
             
         })

@@ -33,7 +33,8 @@ class NowTimeMenuTableViewCell: UITableViewCell {
     
     func configureDesign() {
         
-        
+        baseView.layer.shadowOffset = CGSize(width: 4, height: 4)
+        baseView.layer.shadowOpacity = 0.2
         baseView.layer.cornerRadius = 9
         baseView.layer.borderWidth = 3
         baseView.layer.borderColor = #colorLiteral(red: 0.9983385205, green: 0.7219318748, blue: 0, alpha: 1)

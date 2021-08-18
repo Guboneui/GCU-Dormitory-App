@@ -53,6 +53,13 @@ extension RecentPostViewTableViewCell {
         baseView.layer.borderWidth = 3
         baseView.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1)
         
+        
+        
+        
+        baseView.layer.shadowOffset = CGSize(width: 4, height: 4)
+        baseView.layer.shadowOpacity = 0.15
+        
+        
         showMoreButton.tintColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
         //showMoreBottomView.backgroundColor = UIColor.SBColor.SB_DarkGray
         

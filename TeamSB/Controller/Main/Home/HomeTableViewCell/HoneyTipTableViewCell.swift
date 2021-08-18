@@ -20,6 +20,8 @@ class HoneyTipTableViewCell: UITableViewCell {
         baseView.layer.cornerRadius = 9
         baseView.layer.borderWidth = 3
         baseView.layer.borderColor = #colorLiteral(red: 0.9764705882, green: 0.8549019608, blue: 0.4705882353, alpha: 1)
+        baseView.layer.shadowOffset = CGSize(width: 4, height: 4)
+        baseView.layer.shadowOpacity = 0.2
         
         
         let userText = "더보기"

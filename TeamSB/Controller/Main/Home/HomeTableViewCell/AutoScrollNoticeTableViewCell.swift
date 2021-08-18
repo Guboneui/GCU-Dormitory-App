@@ -21,6 +21,7 @@ class AutoScrollNoticeTableViewCell: UITableViewCell, MainView {
     }
     
 
+    @IBOutlet weak var baseView: UIView!
     var nowPage = 0
     @IBOutlet weak var mainCollectionView: UICollectionView!
     let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -38,6 +39,8 @@ class AutoScrollNoticeTableViewCell: UITableViewCell, MainView {
         bannerTimer()
         dataManager.getBanner(viewController: self)
         
+        baseView.layer.shadowOpacity = 0.1
+        baseView.layer.shadowOffset = CGSize(width: 0, height: 3)
         
         
     }

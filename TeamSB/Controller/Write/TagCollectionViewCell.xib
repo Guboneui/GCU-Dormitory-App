@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="166" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxy-1P-Oar">
-                                <rect key="frame" x="10" y="3" width="134" height="15"/>
+                                <rect key="frame" x="10" y="3" width="135" height="15"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="yNa-Mq-dCp"/>
@@ -31,17 +31,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="x" translatesAutoresizingMaskIntoConstraints="NO" id="JpR-HJ-khs">
-                                <rect key="frame" x="149" y="4.5" width="12" height="12"/>
+                                <rect key="frame" x="150" y="7.5" width="6" height="6"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="12" id="6Hj-bz-l0Z"/>
-                                    <constraint firstAttribute="width" constant="12" id="iNr-de-lzD"/>
+                                    <constraint firstAttribute="height" constant="6" id="6Hj-bz-l0Z"/>
+                                    <constraint firstAttribute="width" constant="6" id="iNr-de-lzD"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="JpR-HJ-khs" secondAttribute="trailing" constant="5" id="1kG-ga-yAu"/>
+                            <constraint firstAttribute="trailing" secondItem="JpR-HJ-khs" secondAttribute="trailing" constant="10" id="1kG-ga-yAu"/>
                             <constraint firstItem="JpR-HJ-khs" firstAttribute="leading" secondItem="oxy-1P-Oar" secondAttribute="trailing" constant="5" id="6ZA-bO-F4W"/>
                             <constraint firstItem="oxy-1P-Oar" firstAttribute="top" secondItem="w6Z-XH-Tno" secondAttribute="top" constant="3" id="En1-aT-XKX"/>
                             <constraint firstItem="oxy-1P-Oar" firstAttribute="leading" secondItem="w6Z-XH-Tno" secondAttribute="leading" constant="10" id="FbL-Lv-7af"/>
@@ -68,7 +68,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="x" width="800" height="800"/>
+        <image name="x" width="128" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
