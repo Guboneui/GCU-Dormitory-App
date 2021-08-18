@@ -10,13 +10,6 @@ import Alamofire
 import Firebase
 import FirebaseCore
 import FirebaseMessaging
-
-//Setting 화면 Todo
-//1. 프로필(닉네임, 자신이 쓴 글 개수, 닉네임 수정, ...)
-//2. 기본 설정 로그아웃 -> 구현 완료
-//3. 게시글 수정 -> 별도 화면 필요(자신이 쓴 게시글 목록 보여주고, 게시글 수정할 수 있도록 구성 필요)
-//4. 설정 메인 창 필요(이미지, ... 드롭다운 필요할 수도)
-
 class SettingViewController: UIViewController, UISceneDelegate {
     
     var backButton: UIBarButtonItem!
@@ -48,12 +41,13 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+
         configDesign()
-        checkNotificationState()
+        //checkNotificationState()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
        
     }
+    
     @objc func applicationDidBecomeActive(notification: NSNotification) {
    
         checkNotificationState()
@@ -75,54 +69,30 @@ class SettingViewController: UIViewController, UISceneDelegate {
         getUserInfo()
         getProfileImage()
         
+        print("설정화면에 접속 했을 때 알림 권한 상태입니다.\(UserDefaults.standard.bool(forKey: "alertAccess"))")
+        print("true라면 스위치가 켜져 있어야 하며, false라면 스위치가 꺼져 있어야 합니다.")
         
-        if UserDefaults.standard.bool(forKey: "alertAccess") == true {
-            fcmSwitch.isOn = true
-        } else {
-            fcmSwitch.isOn = false
-        }
-        
-     
-        
+        fcmSwitch.isOn = UserDefaults.standard.bool(forKey: "alertAccess")
         let isRegistered = UIApplication.shared.isRegisteredForRemoteNotifications
-//        if(isRegistered) {
-//            //
-//            //_ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신이 설정되어 있습니다", style: AlertStyle.warning) return
-//            print("알림이 활성화 되어있습니")
-//        } else {
-//           // _ = SweetAlert().showAlert("title_regist".localized, subTitle: "알림 수신 설정을 활성화 하세요", style: AlertStyle.warning) return
-//            print("알림을 활성화 하세요")
-//        }
-        
-        
-        
 
-    
     }
     
     
     func checkNotificationState() {
-        
-       
-        
+        print("설정화면으로 이동했다가 다시 돌아온 상태입니다.")
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { [self] settings in
             
             DispatchQueue.main.async {
                 if settings.alertSetting == .enabled {
-                    print("활성화")
-                    
-//                    if UserDefaults.standard.bool(forKey: "alertAccess") == true {
-                        UserDefaults.standard.set(true, forKey: "alertAccess")
-                        fcmSwitch.isOn = true
-//                    } else {
-//                        UserDefaults.standard.set(false, forKey: "alertAccess")
-//                        fcmSwitch.isOn = false
-//                    }
-//
+                    print("설정 에서 알림을 활성화 하였습니다.")
+                    UserDefaults.standard.set(true, forKey: "alertAccess")
+                    fcmSwitch.isOn = true
+                    UIApplication.shared.registerForRemoteNotifications()
+
                     
                 } else {
-                    print("비활성화")
+                    print("설정에서 알림을 활성화 하지 않았거나, 비활성화로 바꾼 상태입니다.")
                     UserDefaults.standard.set(false, forKey: "alertAccess")
                     fcmSwitch.isOn = false
                 }
@@ -238,29 +208,26 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     
     @IBAction func fcmSwitchAction(_ sender: UISwitch) {
-       
-        
-        
+        print("스위치가 눌렸습니다.")
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { [self] settings in
             
             DispatchQueue.main.async {
                 if settings.alertSetting == .enabled {
-                    print("활성화")
+                    print("전체 알림 권한이 활성화되어있습니다.")
+                    print("현재 알림 권한 상태입니다.\(UserDefaults.standard.bool(forKey: "alertAccess"))")
                     self.isON = !UserDefaults.standard.bool(forKey: "alertAccess")
-                    UserDefaults.standard.set(fcmSwitch.isOn, forKey: "alertAccess")
-                    print(UserDefaults.standard.bool(forKey: "alertAccess"))
+                    UserDefaults.standard.set(!UserDefaults.standard.bool(forKey: "alertAccess"), forKey: "alertAccess")
+                    print("스위치가 클릭된 이후 알림 권한 상태입니다.\(UserDefaults.standard.bool(forKey: "alertAccess"))")
             
                     if isON == false {
-                        //let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
-                        //dataManager.removeFcmToken(param, viewController: self)
-                        print("꺼짐")
+                        
+                        print("설정값이 꺼짐 상태이기 때문에 알림을 거부합니다. 하지만 전체 알림 권한은 활성화 되어 있습니다.")
                         UIApplication.shared.unregisterForRemoteNotifications()
                     } else {
-                        print("켜짐")
+                        print("설정값이 켜짐 상태이기 때문에 알림을 허용합니다.")
                         UIApplication.shared.registerForRemoteNotifications()
-                       // FirebaseApp.configure()
-                        //Messaging.messaging().delegate = self
+                     
                     }
                             
                 } else {
@@ -279,44 +246,8 @@ class SettingViewController: UIViewController, UISceneDelegate {
                     self.present(alert, animated: true, completion: nil)
                 }
             }
-            
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        if let appSettings = URL(string: UIApplication.openSettingsURLString) {
-//            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-//        }
-//        print(1)
-//        self.isON = !self.isON
-//        UserDefaults.standard.set(fcmSwitch.isOn, forKey: "alertAccess")
-//        print(UserDefaults.standard.bool(forKey: "alertAccess"))
-//
-//        if isON == false {
-//            //let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
-//            //dataManager.removeFcmToken(param, viewController: self)
-//            print("꺼짐")
-//            UIApplication.shared.unregisterForRemoteNotifications()
-//        } else {
-//            print("켜짐")
-//            UIApplication.shared.registerForRemoteNotifications()
-//           // FirebaseApp.configure()
-//            //Messaging.messaging().delegate = self
-//        }
-        
     }
-    
-    
-    
 }
 
 //MARK: -스토리보드 액션 함수
@@ -380,65 +311,22 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
         } else if let possibleImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             newImage = possibleImage // 원본 이미지가 있을 경우
         }
+
         
         
         
-//        let storage = Storage.storage()
-//        let storageRef = storage.reference()
-//
-//        let photoRef = storageRef.child("\(UserDefaults.standard.string(forKey: "userID"))").child
-//
-//        guard let imageData = newImage?.jpegData(compressionQuality: 0.5) else {
-//            print("업로드 실패")
-//            return
-//        }
-//
-//        photoRef.putData(imageData, metadata: nil, completion: { _, error in
-//            guard error == nil else {
-//                print("업로드 실패2")
-//                print(error)
-//                return
-//            }
-//            photoRef.downloadURL(completion: { [self] url, error in
-//                guard let url = url, error == nil else {
-//                    return
-//                }
-//
-//                let urlString = url.absoluteString
-//                print(urlString)
-////                self.presenter.executeUserProfile(profileImg: urlString, nickname: UserDefaults.standard.string(forKey: UserDefaultKey.nickname) ?? "")
-//
-////                WEKITLog.debug("Download URL: \(urlString)")
-//            })
-//
-//        })
-//
-//
-//
-//
-//
-        
-        
-        
-        
-        
-        
-        //print(">> 바뀐 프로필 이미지 \(String(describing: newImage))")
+   
         
         let id = UserDefaults.standard.string(forKey: "userID")!
         var editImage = newImage?.resize(newWidth: 300)
         let jpgImage = editImage?.jpegData(compressionQuality: 0.5)
-//        var editImage = newImage?.resize(newWidth: 100)
-//
-//        editImage = newImage?.downSample1(scale: 0.25)
-        //let changeImageString = editImage?.toPngString()
-        
+
         let jpgString = jpgImage?.base64EncodedString(options: .lineLength64Characters)
         
         UserDefaults.standard.set(jpgString, forKey: "userProfileImage")
         
         let param = ChangeProfileImageRequest(curId: id, profile_image: jpgString!)
-        //dataManager.postChangeProfileImage(param, viewController: self)
+        
         self.profileImage.image = UIImage(data: jpgImage!) // 받아온 이미지를 update
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
         
@@ -463,8 +351,6 @@ extension SettingViewController: ChangeNickNameDelegate {
     func changeNicknameLabel(text: String?) {
         self.nicknameLabel.text = text!
     }
-    
-    
 }
 
 extension SettingViewController: ChangeProfileImage {
@@ -473,10 +359,6 @@ extension SettingViewController: ChangeProfileImage {
         let userProfileImage = imageString.toImage()
         profileImage.image = userProfileImage
     }
-    
-    
-    
-    
 }
 
 
@@ -504,10 +386,3 @@ extension SettingViewController: MessagingDelegate {
     }
 
 }
-
-//
-//extension SettingViewController: UISceneDelegate {
-//    func sceneDidBecomeActive(_ scene: UIScene) {
-//        print(1)
-//    }
-//}
