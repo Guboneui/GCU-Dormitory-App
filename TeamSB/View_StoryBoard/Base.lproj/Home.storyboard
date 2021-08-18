@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mlU-9q-Xkj" customClass="ExpyTableView" customModule="ExpyTableView">
-                                <rect key="frame" x="0.0" y="91" width="428" height="752"/>
+                                <rect key="frame" x="0.0" y="91" width="428" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yb-ID-H6U">
@@ -121,7 +121,7 @@
                         <viewLayoutGuide key="safeArea" id="k7d-Qx-Z3q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="k7d-Qx-Z3q" firstAttribute="bottom" secondItem="mlU-9q-Xkj" secondAttribute="bottom" id="13Z-oc-obb"/>
+                            <constraint firstAttribute="bottom" secondItem="mlU-9q-Xkj" secondAttribute="bottom" constant="17" id="13Z-oc-obb"/>
                             <constraint firstItem="k7d-Qx-Z3q" firstAttribute="trailing" secondItem="2yb-ID-H6U" secondAttribute="trailing" id="19I-vM-oPL"/>
                             <constraint firstItem="mlU-9q-Xkj" firstAttribute="top" secondItem="2yb-ID-H6U" secondAttribute="bottom" constant="2" id="8Qo-5l-rgo"/>
                             <constraint firstItem="mlU-9q-Xkj" firstAttribute="leading" secondItem="k7d-Qx-Z3q" secondAttribute="leading" id="BQe-D6-CjA"/>
@@ -131,7 +131,7 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mainTableView" destination="mlU-9q-Xkj" id="Oyg-Yd-LDb"/>
                         <outlet property="topGuideLine" destination="2yb-ID-H6U" id="26x-aQ-zUN"/>
@@ -139,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wA3-NR-SLF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1755" y="-438"/>
+            <point key="canvasLocation" x="1753.7383177570093" y="-438.01295896328298"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="jp5-mU-CPY">
@@ -1195,6 +1195,46 @@
             </objects>
             <point key="canvasLocation" x="3030.8411214953271" y="-450.32397408207345"/>
         </scene>
+        <!--Open Source View Controller-->
+        <scene sceneID="Lpw-yZ-Dws">
+            <objects>
+                <viewController restorationIdentifier="OpenSourceViewController" storyboardIdentifier="OpenSourceViewController" id="Dbd-BY-vtc" customClass="OpenSourceViewController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="exL-Sf-GeF">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVT-Oi-Enj">
+                                <rect key="frame" x="0.0" y="44" width="428" height="1"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="In8-wm-oKD"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vVE-Un-7X0" customClass="ExpyTableView" customModule="ExpyTableView">
+                                <rect key="frame" x="0.0" y="47" width="428" height="862"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1KZ-q6-Uhe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1KZ-q6-Uhe" firstAttribute="trailing" secondItem="vVE-Un-7X0" secondAttribute="trailing" id="5xr-YM-aDS"/>
+                            <constraint firstItem="VVT-Oi-Enj" firstAttribute="leading" secondItem="1KZ-q6-Uhe" secondAttribute="leading" id="7PZ-jm-OpD"/>
+                            <constraint firstAttribute="bottom" secondItem="vVE-Un-7X0" secondAttribute="bottom" constant="17" id="AOE-RB-SzL"/>
+                            <constraint firstItem="1KZ-q6-Uhe" firstAttribute="trailing" secondItem="VVT-Oi-Enj" secondAttribute="trailing" id="DjF-nd-MgO"/>
+                            <constraint firstItem="VVT-Oi-Enj" firstAttribute="top" secondItem="1KZ-q6-Uhe" secondAttribute="top" id="NKJ-qy-H0Q"/>
+                            <constraint firstItem="vVE-Un-7X0" firstAttribute="top" secondItem="VVT-Oi-Enj" secondAttribute="bottom" constant="2" id="e6e-ER-ycF"/>
+                            <constraint firstItem="vVE-Un-7X0" firstAttribute="leading" secondItem="1KZ-q6-Uhe" secondAttribute="leading" id="hgO-MF-Kqp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="vVE-Un-7X0" id="rAI-06-El7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lkF-29-Xwe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3752" y="-436"/>
+        </scene>
         <!--Change Nickname View Controller-->
         <scene sceneID="1VG-Fo-Ine">
             <objects>
@@ -1307,7 +1347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3s-oC-8iN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3785.0467289719622" y="-450.32397408207345"/>
+            <point key="canvasLocation" x="3394" y="-1085"/>
         </scene>
         <!--Edit Profile View View Controller-->
         <scene sceneID="ovQ-y4-CcT">
@@ -1429,7 +1469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf4-v5-T8O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4481.7757009345796" y="-438.01295896328298"/>
+            <point key="canvasLocation" x="4025" y="-1085"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="T3j-24-aeM">

@@ -105,6 +105,11 @@
 		2C3A38A426CD7A57006D10A3 /* DormitodyGuideContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A326CD7A57006D10A3 /* DormitodyGuideContract.swift */; };
 		2C3A38A626CD988F006D10A3 /* DeleteUserProfileImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A526CD988F006D10A3 /* DeleteUserProfileImageRequest.swift */; };
 		2C3A38A826CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A726CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift */; };
+		2C3A38AB26CDA287006D10A3 /* OpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38AA26CDA287006D10A3 /* OpenSourceViewController.swift */; };
+		2C3A38AE26CDA29A006D10A3 /* OpenSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38AC26CDA29A006D10A3 /* OpenSourceTableViewCell.swift */; };
+		2C3A38AF26CDA29A006D10A3 /* OpenSourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A38AD26CDA29A006D10A3 /* OpenSourceTableViewCell.xib */; };
+		2C3A38B226CDA2A8006D10A3 /* OpenSourceSubTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38B026CDA2A8006D10A3 /* OpenSourceSubTableViewCell.swift */; };
+		2C3A38B326CDA2A8006D10A3 /* OpenSourceSubTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A38B126CDA2A8006D10A3 /* OpenSourceSubTableViewCell.xib */; };
 		2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */; };
 		2C41DC7E26CC682A00B98794 /* HoneyTipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */; };
 		2C41DC7F26CC682A00B98794 /* HoneyTipTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */; };
@@ -302,6 +307,11 @@
 		2C3A38A326CD7A57006D10A3 /* DormitodyGuideContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitodyGuideContract.swift; sourceTree = "<group>"; };
 		2C3A38A526CD988F006D10A3 /* DeleteUserProfileImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserProfileImageRequest.swift; sourceTree = "<group>"; };
 		2C3A38A726CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserProfileImageResponse.swift; sourceTree = "<group>"; };
+		2C3A38AA26CDA287006D10A3 /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
+		2C3A38AC26CDA29A006D10A3 /* OpenSourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceTableViewCell.swift; sourceTree = "<group>"; };
+		2C3A38AD26CDA29A006D10A3 /* OpenSourceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenSourceTableViewCell.xib; sourceTree = "<group>"; };
+		2C3A38B026CDA2A8006D10A3 /* OpenSourceSubTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceSubTableViewCell.swift; sourceTree = "<group>"; };
+		2C3A38B126CDA2A8006D10A3 /* OpenSourceSubTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenSourceSubTableViewCell.xib; sourceTree = "<group>"; };
 		2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBannerResponse.swift; sourceTree = "<group>"; };
 		2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyTipTableViewCell.swift; sourceTree = "<group>"; };
 		2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HoneyTipTableViewCell.xib; sourceTree = "<group>"; };
@@ -679,6 +689,7 @@
 				2C004AE426B36E9100D13ABF /* SettingContract.swift */,
 				2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */,
 				2C44FBA126C85A2F00C6B7D4 /* EditProfileViewViewController.swift */,
+				2C3A38A926CDA273006D10A3 /* OpenSource */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -779,6 +790,18 @@
 				2C3A389E26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib */,
 			);
 			path = Guide;
+			sourceTree = "<group>";
+		};
+		2C3A38A926CDA273006D10A3 /* OpenSource */ = {
+			isa = PBXGroup;
+			children = (
+				2C3A38AA26CDA287006D10A3 /* OpenSourceViewController.swift */,
+				2C3A38AC26CDA29A006D10A3 /* OpenSourceTableViewCell.swift */,
+				2C3A38AD26CDA29A006D10A3 /* OpenSourceTableViewCell.xib */,
+				2C3A38B026CDA2A8006D10A3 /* OpenSourceSubTableViewCell.swift */,
+				2C3A38B126CDA2A8006D10A3 /* OpenSourceSubTableViewCell.xib */,
+			);
+			path = OpenSource;
 			sourceTree = "<group>";
 		};
 		2C44FB6B26C7657D00C6B7D4 /* Alert */ = {
@@ -1006,6 +1029,7 @@
 				2CD92B3626BF20CA00A3263E /* TaxiCollectionViewCell.xib in Resources */,
 				2C25DED826C3061700F1C9C3 /* SearchCollectionViewCell.xib in Resources */,
 				2CD92B2826BF01BE00A3263E /* AllPostCollectionViewCell.xib in Resources */,
+				2C3A38AF26CDA29A006D10A3 /* OpenSourceTableViewCell.xib in Resources */,
 				2C44FB8E26C8127500C6B7D4 /* NoticeMainTableViewCell.xib in Resources */,
 				2C298740268B5D5E005EEA64 /* Assets.xcassets in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
@@ -1019,6 +1043,7 @@
 				2C3A38A026CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib in Resources */,
 				2CD92B3226BF20BF00A3263E /* ParcelCollectionViewCell.xib in Resources */,
 				2C44FB7126C7671C00C6B7D4 /* AlertTableViewCell.xib in Resources */,
+				2C3A38B326CDA2A8006D10A3 /* OpenSourceSubTableViewCell.xib in Resources */,
 				2CF5793E26ADB26E007DBC9C /* SearchTableViewCell.xib in Resources */,
 				2CEC875C26AF24280073251C /* MainCommentsTableViewCell.xib in Resources */,
 				2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */,
@@ -1092,6 +1117,7 @@
 				2CD92B4826BF5B0800A3263E /* EditDataManager.swift in Sources */,
 				2C004AA926B34E4800D13ABF /* DeleveryDataManager.swift in Sources */,
 				2C004A5726B2F43200D13ABF /* String.swift in Sources */,
+				2C3A38AB26CDA287006D10A3 /* OpenSourceViewController.swift in Sources */,
 				2C004A4B26B2E58300D13ABF /* LoginResponse.swift in Sources */,
 				2C004A6626B30D9D00D13ABF /* GetUserNicknameRequest.swift in Sources */,
 				2C004A9326B345C100D13ABF /* LaundryResponse.swift in Sources */,
@@ -1118,6 +1144,7 @@
 				2C44FBA026C81E5200C6B7D4 /* NoticeContract.swift in Sources */,
 				2CFDA9BF269DEFD300612EDB /* MainBaseViewController.swift in Sources */,
 				2C004A5B26B2FD3700D13ABF /* NicknameCheckResponse.swift in Sources */,
+				2C3A38AE26CDA29A006D10A3 /* OpenSourceTableViewCell.swift in Sources */,
 				2C44FB7E26C76E1F00C6B7D4 /* CheckUserAlertResponse.swift in Sources */,
 				2C5D39C226BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift in Sources */,
 				2C44FB8A26C7DA9600C6B7D4 /* GoArticleDetailResponse.swift in Sources */,
@@ -1225,6 +1252,7 @@
 				2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */,
 				2C44FB8026C7C9DB00C6B7D4 /* ReadAllNoticeRequest.swift in Sources */,
 				2C5D39CF26BE30890046CD32 /* ChangeUserNicknameResponse.swift in Sources */,
+				2C3A38B226CDA2A8006D10A3 /* OpenSourceSubTableViewCell.swift in Sources */,
 				2C004B0526B3927A00D13ABF /* PostCommentRequest.swift in Sources */,
 				2C25DED726C3061700F1C9C3 /* SearchCollectionViewCell.swift in Sources */,
 				2C004AE526B36E9100D13ABF /* SettingContract.swift in Sources */,

@@ -45,6 +45,7 @@ class DormitoryGuideViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.title = "가이드"
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @objc func backButtonAction() {

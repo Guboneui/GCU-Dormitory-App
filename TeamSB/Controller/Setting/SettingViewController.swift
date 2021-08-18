@@ -299,6 +299,10 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     @IBAction func openSourceButtonAction(_ sender: UIButton) {
         print(">> 오픈 소스 화면이 로드 됩니다.")
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "OpenSourceViewController") as! OpenSourceViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     
