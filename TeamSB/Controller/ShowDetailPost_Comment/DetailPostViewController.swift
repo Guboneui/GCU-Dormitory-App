@@ -183,6 +183,9 @@ extension DetailPostViewController {
 extension DetailPostViewController {
     @objc func refreshData() {
         print(">> 댓글 상단 새로고침&&&&&")
+        
+        
+        
         currentPage = 0
         self.isLoadedAllData = false
         comment.removeAll()

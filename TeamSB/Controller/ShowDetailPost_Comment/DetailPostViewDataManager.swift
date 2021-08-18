@@ -134,6 +134,7 @@ class DetailPostViewDataManager {
                        
                     } else {
                         print(">> 댓글 작성 실패")
+                        view.popView(message: response.message)
                     }
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/reply/write")
@@ -152,13 +153,13 @@ class DetailPostViewDataManager {
                 case .success(let response):
                     print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
                     print(">> 게시글 수정 후 게시글 다시 불러오기")
-                    if response.check == true{
+                    if response.check == true, let result = response.content{
                         print(response.message)
-                        viewCcntroller.post = response.content
+                        viewCcntroller.post = result
                         view.reloadPost()
                        
                     } else {
-                        print(">> 댓글 작성 실패")
+                        view.popView(message: response.message)
                     }
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")

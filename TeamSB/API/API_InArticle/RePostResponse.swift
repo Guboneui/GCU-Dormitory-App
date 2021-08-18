@@ -8,7 +8,7 @@ struct RePostResponse: Decodable {
     var check: Bool
     var code: Int
     var message: String
-    var content: [RePost]
+    var content: [RePost]?
 }
 
 struct RePost: Decodable {
