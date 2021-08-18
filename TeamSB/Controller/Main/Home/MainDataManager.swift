@@ -126,6 +126,7 @@ class MainDataManager {
     }
     
     func getCheckUserAlert(_ parameters: CheckUserAlertRequest, viewController: MainBaseViewController) {
+        viewController.baseTableView.refreshControl?.endRefreshing()
         AF.request("\(ConstantURL.BASE_URL)/notification/check", method: .post, parameters: parameters, encoder: JSONParameterEncoder())
             .validate()
             .responseDecodable(of: CheckUserAlertResponse.self) { [self] response in
@@ -174,6 +175,7 @@ class MainDataManager {
     }
     
     func getGuide(viewController: MainBaseViewController) {
+        viewController.baseTableView.refreshControl?.endRefreshing()
         AF.request("\(ConstantURL.BASE_URL)/guide/list", method: .get)
             .validate()
             .responseDecodable(of: GetGuideResponse.self) { [self] response in

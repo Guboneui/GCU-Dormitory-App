@@ -67,6 +67,7 @@ class MainBaseViewController: UIViewController {
         dataManager.getCalMenu(viewController: self)
         checkUserAlertCount()
         
+        guideList.removeAll()
         dataManager.getGuide(viewController: self)
         
 
@@ -165,8 +166,15 @@ extension MainBaseViewController {
     
     @objc func refreshData() {
         print(">> 상단 새로고침")
-        sleep(3)
-        baseTableView.refreshControl?.endRefreshing()
+        checkUserAlertCount()
+        
+        guideList.removeAll()
+        dataManager.getGuide(viewController: self)
+        
+        calMenu.removeAll()
+        dataManager.getCalMenu(viewController: self)
+        
+        baseTableView.reloadData()
     }
     
     @IBAction func searchBarButtonAction(_ sender: UIButton) {

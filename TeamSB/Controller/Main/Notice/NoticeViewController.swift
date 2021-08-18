@@ -97,13 +97,13 @@ extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
     func tableView(_ tableView: ExpyTableView, expyState state: ExpyState, changeForSection section: Int) {
         switch state {
         case .willExpand:
-            print("")
+            break
         case .willCollapse:
-            print("")
+            break
         case .didExpand:
-            print("")
+            break
         case .didCollapse:
-            print("")
+            break
         }
     }
     

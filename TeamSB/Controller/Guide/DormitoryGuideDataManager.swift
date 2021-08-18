@@ -16,6 +16,7 @@ class DormitoryGuideDataManager {
     }
     
     func getGuide(viewController: DormitoryGuideViewController) {
+        viewController.mainTableView.refreshControl?.endRefreshing()
         AF.request("\(ConstantURL.BASE_URL)/guide/list", method: .get)
             .validate()
             .responseDecodable(of: GetGuideResponse.self) { [self] response in

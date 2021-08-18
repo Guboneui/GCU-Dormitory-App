@@ -53,10 +53,10 @@ class NoticeMainTableViewCell: UITableViewCell, ExpyTableViewHeaderCell {
             //print("접힐 예정")
             self.arrowUp(animated: false)
         case .didExpand:
-            print("")
+            
             break
         case .didCollapse:
-            print("")
+            break
         }
     }
     

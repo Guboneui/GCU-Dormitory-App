@@ -27,6 +27,8 @@ class DormitoryGuideViewController: UIViewController {
         mainTableView.separatorStyle = .none
         mainTableView.register(UINib(nibName: "DormitoryGuideTableViewCell", bundle: nil), forCellReuseIdentifier: "DormitoryGuideTableViewCell")
         mainTableView.register(UINib(nibName: "DormitoryGuideSubTableViewCell", bundle: nil), forCellReuseIdentifier: "DormitoryGuideSubTableViewCell")
+        mainTableView.refreshControl = UIRefreshControl()
+        mainTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonAction))
         backButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -49,6 +51,17 @@ class DormitoryGuideViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc func refreshData() {
+        print(">> 상단 새로고침")
+        
+        
+        
+        
+        guideList.removeAll()
+        mainTableView.reloadData()
+        dataManager.getGuide(viewController: self)
+    }
+    
 }
 
 extension DormitoryGuideViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
@@ -58,13 +71,13 @@ extension DormitoryGuideViewController: ExpyTableViewDelegate, ExpyTableViewData
     func tableView(_ tableView: ExpyTableView, expyState state: ExpyState, changeForSection section: Int) {
         switch state {
         case .willExpand:
-            print("")
+            break
         case .willCollapse:
-            print("")
+            break
         case .didExpand:
-            print("")
+            break
         case .didCollapse:
-            print("")
+            break
         }
     }
     
