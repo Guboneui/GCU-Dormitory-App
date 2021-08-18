@@ -68,7 +68,7 @@ class SearchViewController: UIViewController {
         let alert = UIAlertController(title: "카테고리", message: "", preferredStyle: .alert)
         let all = UIAlertAction(title: "전체", style: .default, handler: { [self] _ in
             fileterButton.backgroundColor = UIColor.SBColor.SB_BaseYellow
-            filterImage.image = UIImage(named: "filter")
+            filterImage.image = UIImage(named: "allCategory")
             fileterButton.layer.borderWidth = 0
             filter = "전체"
         })
@@ -143,11 +143,11 @@ extension SearchViewController {
         textFieldBaseView.layer.borderColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
         
         //fileterButton.layer.cornerRadius = fileterButton.frame.height / 2
-        fileterButton.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        //fileterButton.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         
         
-        searchButton.layer.cornerRadius = searchButton.frame.height / 2
-        searchButton.layer.backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.8549019608, blue: 0.4705882353, alpha: 1)
+        //searchButton.layer.cornerRadius = searchButton.frame.height / 2
+        //searchButton.layer.backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.8549019608, blue: 0.4705882353, alpha: 1)
         topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         topGuideLineView.layer.shadowOpacity = 0.15
     }
