@@ -37,6 +37,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>"프로필 사진을 변경하기 위한 목적으로 사용됩니다."</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -87,7 +89,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>&quot;프로필 사진을 변경하기 위한 목적으로 사용됩니다.&quot;</string>
 </dict>
 </plist>
