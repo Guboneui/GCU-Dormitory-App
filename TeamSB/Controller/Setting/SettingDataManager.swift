@@ -102,6 +102,31 @@ class SettingDataManager {
     }
     
     
+    func removeUserProfile(_ parameters: DeleteUserProfileImageRequest, viewController: SettingViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/profileSet/delete", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
+            .validate()
+            .responseDecodable(of: DeleteUserProfileImageResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet/delete")
+                    if response.check == true {
+                        print(">> 프로필 이미지 삭제 성공")
+                        UserDefaults.standard.set("", forKey: "userProfileImage")
+                        viewController.presentAlert(title: "프로필이 수정되었습니다.")
+                        viewController.getProfileImage()
+                    } else {
+                        print(">> 프로필 이미지 삭제 실패")
+                        viewController.presentAlert(title: response.message)
+                        
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet/delete")
+                    print(">> \(error.localizedDescription)")
+                    print(error)
+            }
+        }
+    }
+    
     
     
     

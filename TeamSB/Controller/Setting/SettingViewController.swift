@@ -107,9 +107,14 @@ class SettingViewController: UIViewController, UISceneDelegate {
    
     
     func getProfileImage() {
-        let imageString = UserDefaults.standard.string(forKey: "userProfileImage") ?? ""
-        let userProfileImage = imageString.toImage()
-        profileImage.image = userProfileImage
+        
+        if UserDefaults.standard.string(forKey: "userProfileImage")  == "" || UserDefaults.standard.string(forKey: "userProfileImage") == nil {
+            profileImage.image = UIImage(named: "default_profileImage")
+        } else {
+            let imageString = UserDefaults.standard.string(forKey: "userProfileImage") ?? ""
+            let userProfileImage = imageString.toImage()
+            profileImage.image = userProfileImage
+        }
     }
     
     func getUserInfo() {
@@ -206,7 +211,11 @@ class SettingViewController: UIViewController, UISceneDelegate {
         
         
         let alert = UIAlertController(title: "프로필", message: "프로필 수정", preferredStyle: .actionSheet)
-        let deleteButton = UIAlertAction(title: "프로필 삭제", style: .default, handler: nil)
+        let deleteButton = UIAlertAction(title: "프로필 삭제", style: .default, handler: {[self] _ in
+            let id = UserDefaults.standard.string(forKey: "userID")!
+            let param = DeleteUserProfileImageRequest(curId: id)
+            dataManager.removeUserProfile(param, viewController: self)
+        })
         let editButton = UIAlertAction(title: "프로필 변경", style: .default, handler: { [self] _ in
             let storyBoard = UIStoryboard(name: "Home", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "EditProfileViewViewController") as! EditProfileViewViewController

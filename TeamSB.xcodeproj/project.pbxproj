@@ -103,6 +103,8 @@
 		2C3A38A026CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C3A389E26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib */; };
 		2C3A38A226CD7825006D10A3 /* DormitoryGuideDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A126CD7825006D10A3 /* DormitoryGuideDataManager.swift */; };
 		2C3A38A426CD7A57006D10A3 /* DormitodyGuideContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A326CD7A57006D10A3 /* DormitodyGuideContract.swift */; };
+		2C3A38A626CD988F006D10A3 /* DeleteUserProfileImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A526CD988F006D10A3 /* DeleteUserProfileImageRequest.swift */; };
+		2C3A38A826CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A38A726CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift */; };
 		2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */; };
 		2C41DC7E26CC682A00B98794 /* HoneyTipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */; };
 		2C41DC7F26CC682A00B98794 /* HoneyTipTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */; };
@@ -298,6 +300,8 @@
 		2C3A389E26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DormitoryGuideSubTableViewCell.xib; sourceTree = "<group>"; };
 		2C3A38A126CD7825006D10A3 /* DormitoryGuideDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitoryGuideDataManager.swift; sourceTree = "<group>"; };
 		2C3A38A326CD7A57006D10A3 /* DormitodyGuideContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DormitodyGuideContract.swift; sourceTree = "<group>"; };
+		2C3A38A526CD988F006D10A3 /* DeleteUserProfileImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserProfileImageRequest.swift; sourceTree = "<group>"; };
+		2C3A38A726CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserProfileImageResponse.swift; sourceTree = "<group>"; };
 		2C41DC7A26CBAB0200B98794 /* GetBannerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBannerResponse.swift; sourceTree = "<group>"; };
 		2C41DC7C26CC682A00B98794 /* HoneyTipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneyTipTableViewCell.swift; sourceTree = "<group>"; };
 		2C41DC7D26CC682A00B98794 /* HoneyTipTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HoneyTipTableViewCell.xib; sourceTree = "<group>"; };
@@ -612,6 +616,8 @@
 				2C5D39CA26BE2D3F0046CD32 /* ChangeProfileImageResponse.swift */,
 				2C5D39CC26BE30790046CD32 /* ChangeUserNicknameRequest.swift */,
 				2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */,
+				2C3A38A526CD988F006D10A3 /* DeleteUserProfileImageRequest.swift */,
+				2C3A38A726CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift */,
 			);
 			path = API_Setting;
 			sourceTree = "<group>";
@@ -1095,6 +1101,7 @@
 				2C004AEE26B3772100D13ABF /* CalendarContract.swift in Sources */,
 				2C18C96226C15E6F00C852B2 /* RePostResponse.swift in Sources */,
 				2C5D0195268E20EC00CC6DD4 /* NickNameViewController.swift in Sources */,
+				2C3A38A826CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift in Sources */,
 				2C004AFF26B3887500D13ABF /* BanArticleResponse.swift in Sources */,
 				2C004AFB26B3860100D13ABF /* DeleteArticleResponse.swift in Sources */,
 				2C3A389B26CD753D006D10A3 /* DormitoryGuideTableViewCell.swift in Sources */,
@@ -1172,6 +1179,7 @@
 				2C004A8D26B3428200D13ABF /* TaxiResponse.swift in Sources */,
 				2C004A5526B2F24500D13ABF /* UIViewController.swift in Sources */,
 				2CC6060726C44E5700E122D8 /* FCMRequest.swift in Sources */,
+				2C3A38A626CD988F006D10A3 /* DeleteUserProfileImageRequest.swift in Sources */,
 				2C004B0326B38C9000D13ABF /* GetCommentResponse.swift in Sources */,
 				2C004AEC26B3771100D13ABF /* CalendarDataManager.swift in Sources */,
 				2C5D39CD26BE30790046CD32 /* ChangeUserNicknameRequest.swift in Sources */,
