@@ -5,6 +5,7 @@
 import UIKit
 import Alamofire
 import NVActivityIndicatorView
+import Photos
 
 class MainBaseViewController: UIViewController {
 
@@ -44,6 +45,21 @@ class MainBaseViewController: UIViewController {
         let param = FCMRequest(curUser: id, token: token)
         dataManager.fcmToken(param, viewController: self)
         
+        
+        
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { authorizationStatus in
+            switch authorizationStatus {
+            case .limited:
+                print("limited authorization granted") // 선택한 사진에 대해서만 허용.
+            case .authorized:
+                print("authorization granted") // 모든 권한 허용.
+            default: print("Unimplemented")
+                
+            }
+            
+        }
+
+       
         
         
     }

@@ -87,5 +87,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>&quot;프로필 사진을 변경하기 위한 목적으로 사용됩니다.&quot;</string>
 </dict>
 </plist>

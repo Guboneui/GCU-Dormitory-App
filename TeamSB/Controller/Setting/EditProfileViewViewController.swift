@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 protocol DismissSelfView: AnyObject {
     func dismissSelf()
@@ -65,12 +66,37 @@ class EditProfileViewViewController: UIViewController {
     }
     
     @IBAction func getAlbumButtonAction(_ sender: Any) {
-        self.picker.sourceType = .photoLibrary // 방식 선택. 앨범에서 가져오는걸로 선택.
-        self.picker.allowsEditing = true // 수정가능하게 할지 선택. 하지만 false
-        self.picker.delegate = self
-        self.picker.modalPresentationStyle = .fullScreen
-        self.present(self.picker, animated: true)
         
+        let status = PHPhotoLibrary.authorizationStatus()
+        print("status is \(status), value is \(status.rawValue)")
+
+        if status != PHAuthorizationStatus.authorized {
+            print("not authorizedAlways")
+
+            let alert = UIAlertController(title: "권한", message: "프로필 설절을 위해 '사진' 접근 권한이 필요합니다.", preferredStyle: .alert)
+            let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            let okButton = UIAlertAction(title: "설정", style: .default, handler: {(action) -> Void in
+               print("UserAgree")
+                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+                }
+            })
+            
+            okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+            cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
+            alert.addAction(cancelButton)
+            alert.addAction(okButton)
+
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        else {
+            self.picker.sourceType = .photoLibrary // 방식 선택. 앨범에서 가져오는걸로 선택.
+            self.picker.allowsEditing = true // 수정가능하게 할지 선택. 하지만 false
+            self.picker.delegate = self
+            self.picker.modalPresentationStyle = .fullScreen
+            self.present(self.picker, animated: true)
+        }
     }
     
     @IBAction func setDefaultImageAction(_ sender: Any) {
