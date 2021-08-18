@@ -172,6 +172,8 @@ extension MainBaseViewController {
         dataManager.getGuide(viewController: self)
         
         calMenu.removeAll()
+        firstMenuString = ""
+        secondMenuString = ""
         dataManager.getCalMenu(viewController: self)
         
         baseTableView.reloadData()
