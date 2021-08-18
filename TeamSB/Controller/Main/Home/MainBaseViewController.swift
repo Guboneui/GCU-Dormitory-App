@@ -109,6 +109,8 @@ extension MainBaseViewController {
         baseTableView.dataSource = self
         baseTableView.rowHeight = UITableView.automaticDimension
         baseTableView.estimatedRowHeight = 75
+        baseTableView.refreshControl = UIRefreshControl()
+        baseTableView.refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         baseTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         baseTableView.allowsSelection = false
@@ -154,6 +156,12 @@ extension MainBaseViewController {
 
 //MARK: -스토리보드 Action함수 정리
 extension MainBaseViewController {
+    
+    @objc func refreshData() {
+        print(">> 상단 새로고침")
+        sleep(3)
+        baseTableView.refreshControl?.endRefreshing()
+    }
     
     @IBAction func searchBarButtonAction(_ sender: UIButton) {
         print("검색 화면으로 이동합니다.")

@@ -89,18 +89,28 @@ class EditProfileViewViewController: UIViewController {
         
         delegate = self
         
-        let id = UserDefaults.standard.string(forKey: "userID")!
-        let editImage = newImage?.resize(newWidth: 300)
-        let jpgImage = editImage?.jpegData(compressionQuality: 0.5)
+        
+        if profileImage.image == UIImage(named: "default_profileImage") {
+            let id = UserDefaults.standard.string(forKey: "userID")!
+            let param = ChangeProfileImageRequest(curId: id, profile_image: "")
+            dataManager.postChangeProfileImage(param, viewController: self)
+        } else {
+            
+            let id = UserDefaults.standard.string(forKey: "userID")!
+            let editImage = newImage?.resize(newWidth: 300)
+            let jpgImage = editImage?.jpegData(compressionQuality: 0.5)
 
+            
+            jpgString = (jpgImage?.base64EncodedString(options: .lineLength64Characters))!
+            
+            
+            
+            let param = ChangeProfileImageRequest(curId: id, profile_image: jpgString)
+            dataManager.postChangeProfileImage(param, viewController: self)
+            picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
+        }
         
-        jpgString = (jpgImage?.base64EncodedString(options: .lineLength64Characters))!
         
-        
-        
-        let param = ChangeProfileImageRequest(curId: id, profile_image: jpgString ?? "")
-        dataManager.postChangeProfileImage(param, viewController: self)
-        picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
         
     }
     

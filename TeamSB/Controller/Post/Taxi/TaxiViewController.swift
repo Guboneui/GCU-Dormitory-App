@@ -243,9 +243,15 @@ extension TaxiViewController: UICollectionViewDelegate, UICollectionViewDataSour
             } else {
                 cell.timeLabel.text = time.substring(from: 5, to: 10)
             }
-            let profileImage = data.imageSource ?? ""
-            let userImage = profileImage.toImage()
-            cell.profileImage.image = userImage
+            
+            if data.imageSource == "" || data.imageSource == nil {
+                cell.profileImage.image = UIImage(named: "default_profileImage")
+            } else {
+                let profileImage = data.imageSource ?? ""
+                let userImage = profileImage.toImage()
+                cell.profileImage.image = userImage
+            }
+            
            
            
 

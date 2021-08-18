@@ -10,6 +10,9 @@ import Alamofire
 import Firebase
 import FirebaseCore
 import FirebaseMessaging
+import SafariServices
+
+
 class SettingViewController: UIViewController, UISceneDelegate {
     
     var backButton: UIBarButtonItem!
@@ -117,6 +120,8 @@ class SettingViewController: UIViewController, UISceneDelegate {
     }
     
     func configDesign() {
+        
+        fcmSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         
         topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         topGuideLineView.layer.shadowOpacity = 0.15
@@ -248,6 +253,34 @@ class SettingViewController: UIViewController, UISceneDelegate {
             }
         }
     }
+    
+    
+    @IBAction func appGuideButtonAction(_ sender: UIButton) {
+        print(">> 튜토리얼과 같은 화면이 나옵니다.")
+    }
+    
+    @IBAction func appIntroButtonAction(_ sender: UIButton) {
+        print(">> 앱 소개 화면 페이지로 로딩됩니다.")
+        let appIntroUrl = URL(string: "https://www.naver.com/")
+        let appIntroSafariView: SFSafariViewController = SFSafariViewController(url: appIntroUrl! as URL)
+        self.present(appIntroSafariView, animated: true, completion: nil)
+    }
+    
+    @IBAction func userPrivateButtonAction(_ sender: UIButton) {
+        print(">> 개인정보 처리방침 페이지로 이동합니다.")
+        let userPrivateUrl = URL(string: "https://www.naver.com/")
+        let userPrivateSafariView: SFSafariViewController = SFSafariViewController(url: userPrivateUrl! as URL)
+        self.present(userPrivateSafariView, animated: true, completion: nil)
+    }
+    
+    @IBAction func openSourceButtonAction(_ sender: UIButton) {
+        print(">> 오픈 소스 화면이 로드 됩니다.")
+    }
+    
+    
+    
+    
+    
 }
 
 //MARK: -스토리보드 액션 함수
