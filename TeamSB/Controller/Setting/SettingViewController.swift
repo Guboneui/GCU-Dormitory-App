@@ -292,11 +292,11 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     @IBAction func appFeedbackButton(_ sender: Any) {
         print(">> 앱 피드백 화면으로 넘어갑니다.")
-        let alert = UIAlertController(title: "피드백을 남겨주세요.", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "의견/후기를 남겨주세요.", message: "", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
             guard let text = alert.textFields![0].text?.trim, text.isExists else {
-                self.presentAlert(title: "피드백을 입력 해주세요.")
+                self.presentAlert(title: "의견/후기를 입력 해주세요.")
                 return
             }
             
@@ -311,7 +311,7 @@ class SettingViewController: UIViewController, UISceneDelegate {
         cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
         
         alert.addTextField { (feedbackTextField) in
-            feedbackTextField.placeholder = "피드백을 입력 해주세요."
+            feedbackTextField.placeholder = "의견/후기를 입력 해주세요."
             feedbackTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         }
         

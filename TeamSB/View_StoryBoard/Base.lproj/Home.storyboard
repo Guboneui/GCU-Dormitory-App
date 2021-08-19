@@ -949,10 +949,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7H-F7-bsg">
-                                <rect key="frame" x="20" y="359" width="388" height="50"/>
+                                <rect key="frame" x="20" y="414" width="388" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="피드백" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCJ-CX-2Bx">
-                                        <rect key="frame" x="20.000000000000004" y="16.666666666666686" width="36.333333333333343" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="의견 및 후기 남기기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCJ-CX-2Bx">
+                                        <rect key="frame" x="19.999999999999993" y="16.666666666666686" width="107.33333333333331" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -986,7 +986,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh3-yQ-fiJ">
-                                <rect key="frame" x="20" y="414" width="388" height="50"/>
+                                <rect key="frame" x="20" y="359" width="388" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdL-u7-wD0">
                                         <rect key="frame" x="20" y="16.666666666666686" width="24.333333333333329" height="17"/>
@@ -1051,8 +1051,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97U-ar-ooh">
                                 <rect key="frame" x="20" y="524" width="388" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오픈소스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBD-sB-K5G">
-                                        <rect key="frame" x="19.999999999999996" y="16.666666666666629" width="48.666666666666657" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오픈소스 라이센스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBD-sB-K5G">
+                                        <rect key="frame" x="20.000000000000007" y="16.666666666666629" width="100.66666666666669" height="17"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1141,7 +1141,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="C9a-7Q-gIc" secondAttribute="trailing" constant="20" id="0fC-MX-ftx"/>
-                            <constraint firstItem="zh3-yQ-fiJ" firstAttribute="top" secondItem="F7H-F7-bsg" secondAttribute="bottom" constant="5" id="1IU-qv-Vs5"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="Tft-ba-Utb" secondAttribute="trailing" constant="20" id="2FZ-ba-WWO"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="ZpD-R1-Cco" secondAttribute="trailing" constant="20" id="3be-wa-SrH"/>
                             <constraint firstItem="Tft-ba-Utb" firstAttribute="top" secondItem="ZpD-R1-Cco" secondAttribute="bottom" constant="20" id="53a-xd-GsP"/>
@@ -1156,20 +1155,21 @@
                             <constraint firstItem="yVT-JI-MQK" firstAttribute="top" secondItem="4UT-cv-XnG" secondAttribute="bottom" constant="19" id="W7f-du-ZqH"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="4UT-cv-XnG" secondAttribute="trailing" id="XdX-pf-ELa"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="Bbl-Jl-0nq" secondAttribute="trailing" constant="20" id="aa4-Jw-xWw"/>
-                            <constraint firstItem="F7H-F7-bsg" firstAttribute="top" secondItem="zEB-vx-fhh" secondAttribute="bottom" constant="5" id="caX-ds-lNc"/>
+                            <constraint firstItem="F7H-F7-bsg" firstAttribute="top" secondItem="zh3-yQ-fiJ" secondAttribute="bottom" constant="5" id="caX-ds-lNc"/>
                             <constraint firstItem="ZpD-R1-Cco" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="ddE-Al-WnF"/>
                             <constraint firstItem="97U-ar-ooh" firstAttribute="top" secondItem="C9a-7Q-gIc" secondAttribute="bottom" constant="5" id="fdX-HD-9Dm"/>
                             <constraint firstItem="zh3-yQ-fiJ" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="g31-Q2-aGb"/>
                             <constraint firstItem="F7H-F7-bsg" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="gF3-9e-nn5"/>
                             <constraint firstItem="97U-ar-ooh" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="juf-j2-leZ"/>
                             <constraint firstItem="Bbl-Jl-0nq" firstAttribute="top" secondItem="7bd-Dj-2Rq" secondAttribute="bottom" constant="20" id="kBU-jo-TVc"/>
-                            <constraint firstItem="C9a-7Q-gIc" firstAttribute="top" secondItem="zh3-yQ-fiJ" secondAttribute="bottom" constant="5" id="kUO-de-7Pd"/>
                             <constraint firstItem="zEB-vx-fhh" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="n27-a7-1ei"/>
                             <constraint firstItem="ZpD-R1-Cco" firstAttribute="top" secondItem="97U-ar-ooh" secondAttribute="bottom" constant="20" id="oRh-yZ-vCL"/>
                             <constraint firstItem="7bd-Dj-2Rq" firstAttribute="top" secondItem="yVT-JI-MQK" secondAttribute="bottom" constant="20" id="rGY-c4-Fi5"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="yVT-JI-MQK" secondAttribute="trailing" constant="20" id="rLS-9N-BGP"/>
                             <constraint firstItem="4UT-cv-XnG" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" id="vD0-Lx-ju9"/>
                             <constraint firstItem="Bbl-Jl-0nq" firstAttribute="leading" secondItem="Yxh-Zd-nKV" secondAttribute="leading" constant="20" id="w3M-xx-Jfd"/>
+                            <constraint firstItem="C9a-7Q-gIc" firstAttribute="top" secondItem="F7H-F7-bsg" secondAttribute="bottom" constant="5" id="wzB-NZ-X3C"/>
+                            <constraint firstItem="zh3-yQ-fiJ" firstAttribute="top" secondItem="zEB-vx-fhh" secondAttribute="bottom" constant="5" id="xeH-W9-gdF"/>
                             <constraint firstItem="zEB-vx-fhh" firstAttribute="top" secondItem="Bbl-Jl-0nq" secondAttribute="bottom" constant="5" id="yDd-Mu-62p"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="97U-ar-ooh" secondAttribute="trailing" constant="20" id="yy4-8L-Iy4"/>
                             <constraint firstItem="Yxh-Zd-nKV" firstAttribute="trailing" secondItem="zh3-yQ-fiJ" secondAttribute="trailing" constant="20" id="yye-Tt-c5E"/>
@@ -1197,7 +1197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t80-86-22J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030.8411214953271" y="-450.32397408207345"/>
+            <point key="canvasLocation" x="3394" y="-438"/>
         </scene>
         <!--Open Source View Controller-->
         <scene sceneID="Lpw-yZ-Dws">
@@ -1238,7 +1238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lkF-29-Xwe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3752" y="-436"/>
+            <point key="canvasLocation" x="4025" y="-436"/>
         </scene>
         <!--Change Nickname View Controller-->
         <scene sceneID="1VG-Fo-Ine">

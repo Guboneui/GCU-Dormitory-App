@@ -137,7 +137,7 @@ class SettingDataManager {
                     print(">> URL: \(ConstantURL.BASE_URL)/feedback")
                     if response.check == true {
                         print("피드백 전달 성공")
-                        viewController.presentAlert(title: "🥰소중한 피드백 감사합니다🥰")
+                        viewController.presentAlert(title: "🥰소중한 의견 감사합니다🥰")
                     } else {
                         print(">> 피드백 전송 실패")
                         viewController.presentAlert(title: response.message)
