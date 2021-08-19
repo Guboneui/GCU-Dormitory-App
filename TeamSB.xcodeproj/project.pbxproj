@@ -155,6 +155,9 @@
 		2C5D39CF26BE30890046CD32 /* ChangeUserNicknameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */; };
 		2C5D39D126BE38BE0046CD32 /* ChangeNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */; };
 		2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E998F2690E8A500E3504A /* CalendarViewController.swift */; };
+		2CAFB8D626CE434C003CCA66 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */; };
+		2CAFB8D826CE44AE003CCA66 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */; };
+		2CAFB8DA26CE453E003CCA66 /* splashImage.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D926CE453E003CCA66 /* splashImage.PNG */; };
 		2CC6060726C44E5700E122D8 /* FCMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6060626C44E5700E122D8 /* FCMRequest.swift */; };
 		2CC6060926C44E5E00E122D8 /* FCMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6060826C44E5E00E122D8 /* FCMResponse.swift */; };
 		2CD92B2726BF01BE00A3263E /* AllPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B2526BF01BE00A3263E /* AllPostCollectionViewCell.swift */; };
@@ -357,6 +360,9 @@
 		2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNicknameResponse.swift; sourceTree = "<group>"; };
 		2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameViewController.swift; sourceTree = "<group>"; };
 		2C5E998F2690E8A500E3504A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		2CAFB8D926CE453E003CCA66 /* splashImage.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashImage.PNG; sourceTree = "<group>"; };
 		2CC6060626C44E5700E122D8 /* FCMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMRequest.swift; sourceTree = "<group>"; };
 		2CC6060826C44E5E00E122D8 /* FCMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMResponse.swift; sourceTree = "<group>"; };
 		2CD92B2526BF01BE00A3263E /* AllPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -851,10 +857,12 @@
 		2C5D0190268E209300CC6DD4 /* View_StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				2CAFB8D926CE453E003CCA66 /* splashImage.PNG */,
 				2C5D01A9268E4B7F00CC6DD4 /* Login.storyboard */,
 				2C29873C268B5D5D005EEA64 /* Home.storyboard */,
 				2C22FAF726B159FC003AB22A /* Post.storyboard */,
 				2C22FAF926B15A8A003AB22A /* In_Post.storyboard */,
+				2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */,
 			);
 			path = View_StoryBoard;
 			sourceTree = "<group>";
@@ -863,6 +871,7 @@
 			isa = PBXGroup;
 			children = (
 				2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */,
+				2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */,
 				2C5E99882690E74300E3504A /* Login */,
 				2C5E99892690E76500E3504A /* Main */,
 				2C004A7226B32BF900D13ABF /* Post */,
@@ -1038,6 +1047,8 @@
 				2CD92B4626BF491B00A3263E /* EditTagCollectionViewCell.xib in Resources */,
 				2C41DC7F26CC682A00B98794 /* HoneyTipTableViewCell.xib in Resources */,
 				2CFDA9C3269DF42600612EDB /* RecentPostContentsTableViewCell.xib in Resources */,
+				2CAFB8DA26CE453E003CCA66 /* splashImage.PNG in Resources */,
+				2CAFB8D826CE44AE003CCA66 /* Splash.storyboard in Resources */,
 				2CF11B2C26BDA58600477921 /* GoogleService-Info.plist in Resources */,
 				2C44FB9226C8127E00C6B7D4 /* NoticeSubTableViewCell.xib in Resources */,
 				2C3A38A026CD755C006D10A3 /* DormitoryGuideSubTableViewCell.xib in Resources */,
@@ -1107,6 +1118,7 @@
 				2C44FBA226C85A2F00C6B7D4 /* EditProfileViewViewController.swift in Sources */,
 				2CFDA9C9269E0DF800612EDB /* WriteViewController.swift in Sources */,
 				2C004AC326B34E5A00D13ABF /* ParcelContract.swift in Sources */,
+				2CAFB8D626CE434C003CCA66 /* SplashViewController.swift in Sources */,
 				2C004AFD26B3886A00D13ABF /* BanArticleRequest.swift in Sources */,
 				2C004A9F26B34E3500D13ABF /* AllPostContract.swift in Sources */,
 				2C44FBA626C8933A00C6B7D4 /* RemoveFcmTokenResponse.swift in Sources */,

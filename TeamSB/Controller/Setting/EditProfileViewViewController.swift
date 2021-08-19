@@ -36,8 +36,6 @@ class EditProfileViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         if UserDefaults.standard.string(forKey: "userProfileImage") == nil || UserDefaults.standard.string(forKey: "userProfileImage") == "" {
             print(">> 기본 프로필 이미지 적용")
             profileImage.image = UIImage(named: "default_profileImage")
@@ -57,6 +55,8 @@ class EditProfileViewViewController: UIViewController {
         baseView.layer.borderWidth = 1.5
         baseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        profileImage.layer.borderWidth = 0.3
+        profileImage.layer.borderColor = UIColor.SBColor.SB_LightGray.cgColor
         getAlbumButton.layer.cornerRadius = 4
         cancelButton.layer.cornerRadius = 3
         configButton.layer.cornerRadius = 3

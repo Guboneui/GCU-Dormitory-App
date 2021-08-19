@@ -31,7 +31,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-iP-Xnd">
-                                        <rect key="frame" x="347" y="14.5" width="25" height="25"/>
+                                        <rect key="frame" x="347" y="12" width="25" height="25"/>
                                         <color key="backgroundColor" red="1" green="0.81568627449999997" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="52V-sf-IaT"/>
@@ -49,9 +49,9 @@
                                     <constraint firstItem="A0j-iP-Xnd" firstAttribute="leading" secondItem="ONz-uy-6UR" secondAttribute="trailing" constant="20" id="B3X-K7-f3m"/>
                                     <constraint firstItem="ONz-uy-6UR" firstAttribute="centerY" secondItem="XQX-dh-dDa" secondAttribute="centerY" id="NTE-88-j1u"/>
                                     <constraint firstAttribute="trailing" secondItem="A0j-iP-Xnd" secondAttribute="trailing" constant="10" id="VzC-mm-vL1"/>
-                                    <constraint firstAttribute="bottom" secondItem="A0j-iP-Xnd" secondAttribute="bottom" constant="10" id="Wct-Ut-Bko"/>
                                     <constraint firstItem="ONz-uy-6UR" firstAttribute="leading" secondItem="XQX-dh-dDa" secondAttribute="leading" constant="20.699999999999999" id="b2V-Wi-Q74"/>
                                     <constraint firstItem="ONz-uy-6UR" firstAttribute="top" secondItem="XQX-dh-dDa" secondAttribute="top" constant="9" id="cLc-9f-Pa2"/>
+                                    <constraint firstAttribute="bottom" secondItem="A0j-iP-Xnd" secondAttribute="bottom" constant="12.5" id="dPI-4y-EWW"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="kyX-qv-j5v"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="75" id="xwh-EA-YZX"/>
                                 </constraints>

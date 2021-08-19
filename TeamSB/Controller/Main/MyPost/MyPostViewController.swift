@@ -254,9 +254,13 @@ extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
             
             
-            let profileImage = data.imageSource ?? ""
-            let userImage = profileImage.toImage()
-            cell.profileImageView.image = userImage
+            if data.imageSource == "" || data.imageSource == nil {
+                cell.profileImageView.image = UIImage(named: "default_profileImage")
+            } else {
+                let profileImage = data.imageSource ?? ""
+                let userImage = profileImage.toImage()
+                cell.profileImageView.image = userImage
+            }
 
         } else {
             cell.nicknameLabel.text = ""
