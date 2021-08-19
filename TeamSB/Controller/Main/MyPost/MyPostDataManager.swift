@@ -18,7 +18,6 @@ class MyPostDataManager {
     
     
     func postMyArticle(_ parameters: MyPostRequest,viewController: MyPostViewController, page: Int) {
-        
         view.startLoading()
         viewController.currentPage += 1
         

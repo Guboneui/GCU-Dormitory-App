@@ -285,7 +285,7 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     @IBAction func appIntroButtonAction(_ sender: UIButton) {
         print(">> 앱 소개 화면 페이지로 로딩됩니다.")
-        let appIntroUrl = URL(string: "https://www.naver.com/")
+        let appIntroUrl = URL(string: "https://summer-echidna-7ed.notion.site/8ddb4bc158204cca9c579712101650af")
         let appIntroSafariView: SFSafariViewController = SFSafariViewController(url: appIntroUrl! as URL)
         self.present(appIntroSafariView, animated: true, completion: nil)
     }
@@ -322,7 +322,7 @@ class SettingViewController: UIViewController, UISceneDelegate {
     }
     @IBAction func userPrivateButtonAction(_ sender: UIButton) {
         print(">> 개인정보 처리방침 페이지로 이동합니다.")
-        let userPrivateUrl = URL(string: "https://www.naver.com/")
+        let userPrivateUrl = URL(string: "https://summer-echidna-7ed.notion.site/f9a75cbef96d4863bf2bfa9af64e0998")
         let userPrivateSafariView: SFSafariViewController = SFSafariViewController(url: userPrivateUrl! as URL)
         self.present(userPrivateSafariView, animated: true, completion: nil)
     }
