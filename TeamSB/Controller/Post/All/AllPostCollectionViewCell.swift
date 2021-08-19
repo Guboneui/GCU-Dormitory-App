@@ -35,6 +35,7 @@ class AllPostCollectionViewCell: UICollectionViewCell {
         baseView.layer.borderWidth = 2
         baseView.layer.borderColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
-        
+        profileImageView.layer.borderWidth = 0.25
+        profileImageView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
     }
 }

@@ -31,7 +31,8 @@ class ParcelCollectionViewCell: UICollectionViewCell {
         baseView.layer.borderWidth = 2
         baseView.layer.borderColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
-        
+        profileImage.layer.borderWidth = 0.25
+        profileImage.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
     }
 
 }

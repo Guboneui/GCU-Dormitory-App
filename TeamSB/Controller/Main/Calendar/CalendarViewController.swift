@@ -102,9 +102,9 @@ extension CalendarViewController {
         calendar.appearance.titleSelectionColor = UIColor.white
         calendar.headerHeight = 50
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        calendar.appearance.headerDateFormat = "M월"
+        calendar.appearance.headerDateFormat = "yyyy년 M월"
         calendar.appearance.headerTitleColor = .black
-        calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
+        calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 20)
         
 
         
