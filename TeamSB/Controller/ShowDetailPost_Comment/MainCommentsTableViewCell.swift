@@ -20,11 +20,12 @@ class MainCommentsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //baseView.backgroundColor = UIColor.SBColor.SB_BaseYellow
-        
-        
+       
+        print(">>>><<<< \(profileImageView.frame.size)")
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.layer.borderWidth = 0.25
+        profileImageView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

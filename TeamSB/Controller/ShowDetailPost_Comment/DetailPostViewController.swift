@@ -141,14 +141,7 @@ extension DetailPostViewController {
         line.tintColor = .black
         
         navigationItem.rightBarButtonItem = line
-//        let delete = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deletePost))
-//        delete.tintColor = .black
-//        let edit = UIBarButtonItem(image: UIImage(systemName: "wand.and.rays"), style: .plain, target: self, action: #selector(editPost))
-//        edit.imageInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
-//        edit.tintColor = .black
-//        print("test")
-//
-//        navigationItem.rightBarButtonItems = [delete, edit]
+
     }
     
     func showUserBarItem() {
@@ -201,39 +194,7 @@ extension DetailPostViewController {
         
         
     }
-    
-//    @objc func editPost() {
-//        print(">> 게시글을 수정합니다.")
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
-//        vc.originNo = self.getPostNumber
-//        vc.originTitle = self.getTitle
-//        vc.originCategory = self.getCategory
-//        vc.originText = self.getContents
-//        vc.originHash = self.getHash
-//        vc.originID = self.getUserID
-//        vc.afterEditDelegate = self
-//
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
-    
-    
-//    @objc func deletePost() {
-//        print(">> 게시글을 삭제버튼 클릭")
-//        let alert = UIAlertController(title: "삭제하시겠어요?", message: "", preferredStyle: .alert)
-//        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: {_ in
-//            print("게시글 삭제 취소")
-//        })
-//        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
-//            let param = DeleteArticleRequest(curUser: UserDefaults.standard.string(forKey: "userID")!, no: getPostNumber)
-//            dataManager.postDeleteArticleCount(param, viewController: self)
-//        })
-//        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
-//        alert.addAction(cancelButton)
-//        alert.addAction(okButton)
-//        self.present(alert, animated: true, completion: nil)
-//
-//    }
-    
+
     
     @objc func adminPost() {
         let alert = UIAlertController(title: "관리자 권한", message: "", preferredStyle: .actionSheet)
@@ -495,6 +456,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                 let parama = GetCommentRequest(curUser: userID, article_no: getPostNumber)
                 dataManager.postGetArticleComment(parama, viewController: self, page: currentPage)
             }
+            
             
             return cell
         }
