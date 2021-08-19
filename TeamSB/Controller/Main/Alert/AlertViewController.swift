@@ -41,7 +41,7 @@ class AlertViewController: UIViewController {
         let param = UserAlertRequest(curUser: UserDefaults.standard.string(forKey: "userID")!)
         datamanager.postUserNotification(param, viewController: self, page: currentPage)
         
-        readAllButton = UIBarButtonItem(title: "모두 읽기", style: .plain, target: self, action: #selector(readAll))
+        readAllButton = UIBarButtonItem(title: "모두 읽기", style: .done, target: self, action: #selector(readAll))
         readAllButton.tintColor = UIColor.SBColor.SB_BaseYellow
         self.navigationItem.rightBarButtonItem = readAllButton
         

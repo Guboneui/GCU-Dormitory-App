@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 아이디와 비밀번호를 입력하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPf-Rk-dxy">
-                                <rect key="frame" x="102.5" y="342" width="209.5" height="17"/>
+                                <rect key="frame" x="102.5" y="325" width="209.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -95,7 +95,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8u-ji-XqU">
                                 <rect key="frame" x="189" y="674" width="36.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -106,6 +106,12 @@
                                     <constraint firstAttribute="width" constant="54" id="k99-a6-F6l"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*로그인 시 사용된 ID는 디바이스에 저장됩니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUh-9h-4Us">
+                                <rect key="frame" x="113" y="347" width="188.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6mi-Qf-gpO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -114,15 +120,17 @@
                             <constraint firstItem="S8u-ji-XqU" firstAttribute="centerX" secondItem="f3E-iZ-XHV" secondAttribute="centerX" id="55e-RR-bnq"/>
                             <constraint firstItem="HU9-0z-716" firstAttribute="centerX" secondItem="f3E-iZ-XHV" secondAttribute="centerX" id="B2G-ka-3XG"/>
                             <constraint firstItem="WjG-Aq-vE2" firstAttribute="leading" secondItem="6mi-Qf-gpO" secondAttribute="leading" constant="50" id="BBw-AU-L4z"/>
-                            <constraint firstItem="WjG-Aq-vE2" firstAttribute="top" secondItem="SPf-Rk-dxy" secondAttribute="bottom" constant="27" id="BrH-OM-eSI"/>
                             <constraint firstItem="6mi-Qf-gpO" firstAttribute="trailing" secondItem="WjG-Aq-vE2" secondAttribute="trailing" constant="50" id="QOT-X8-fd0"/>
                             <constraint firstItem="HU9-0z-716" firstAttribute="top" secondItem="WjG-Aq-vE2" secondAttribute="bottom" constant="106" id="Vn3-GG-f7h"/>
                             <constraint firstItem="bTL-cG-i3G" firstAttribute="top" secondItem="WjG-Aq-vE2" secondAttribute="bottom" constant="10" id="XtA-Pk-0Va"/>
+                            <constraint firstItem="bUh-9h-4Us" firstAttribute="top" secondItem="SPf-Rk-dxy" secondAttribute="bottom" constant="5" id="Y3T-te-UWb"/>
                             <constraint firstItem="S8u-ji-XqU" firstAttribute="top" secondItem="cas-E2-Py4" secondAttribute="bottom" constant="4" id="bPa-ox-574"/>
                             <constraint firstItem="XT0-5Z-wl5" firstAttribute="centerY" secondItem="bTL-cG-i3G" secondAttribute="centerY" id="dDP-1p-JUd"/>
                             <constraint firstItem="XT0-5Z-wl5" firstAttribute="leading" secondItem="bTL-cG-i3G" secondAttribute="trailing" constant="4" id="gZf-2E-JHY"/>
                             <constraint firstItem="SPf-Rk-dxy" firstAttribute="centerX" secondItem="f3E-iZ-XHV" secondAttribute="centerX" id="pQk-4O-luh"/>
                             <constraint firstItem="cas-E2-Py4" firstAttribute="centerX" secondItem="f3E-iZ-XHV" secondAttribute="centerX" id="quM-4Z-cGy"/>
+                            <constraint firstItem="WjG-Aq-vE2" firstAttribute="top" secondItem="bUh-9h-4Us" secondAttribute="bottom" constant="27" id="r3G-cf-mrY"/>
+                            <constraint firstItem="bUh-9h-4Us" firstAttribute="centerX" secondItem="SPf-Rk-dxy" secondAttribute="centerX" id="sP5-dM-ehj"/>
                             <constraint firstItem="bTL-cG-i3G" firstAttribute="leading" secondItem="6mi-Qf-gpO" secondAttribute="leading" constant="54" id="xK7-hA-56h"/>
                             <constraint firstItem="WjG-Aq-vE2" firstAttribute="centerY" secondItem="f3E-iZ-XHV" secondAttribute="centerY" id="yPZ-Pv-CaT"/>
                         </constraints>
@@ -211,7 +219,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqS-Ru-14d">
                                 <rect key="frame" x="183" y="672" width="48.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>

@@ -20,7 +20,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(imageView)
         view.backgroundColor = .white
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
             self.animate()
         })
     }
@@ -40,7 +40,7 @@ class SplashViewController: UIViewController {
             
         })
         
-        UIView.animate(withDuration: 1.5, animations: {
+        UIView.animate(withDuration: 1.25, animations: {
             self.imageView.alpha = 0
         }, completion: { [self] done in
             if done {
