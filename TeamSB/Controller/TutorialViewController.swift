@@ -20,6 +20,9 @@ class TutorialViewController: UIViewController {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    var getAppGuide = false
+    
     let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     weak var delegate: PhotoAccess!
@@ -66,6 +69,8 @@ extension TutorialViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TutorialCollectionViewCell", for: indexPath) as! TutorialCollectionViewCell
         
+        cell.getAppGuide = self.getAppGuide
+        
         if(indexPath.item == 0){
             print("page: 1")
         }else if(indexPath.item == 1){
@@ -103,7 +108,10 @@ extension TutorialViewController: UICollectionViewDelegate, UICollectionViewData
     @objc func endTutorial() {
         
         self.dismiss(animated: true, completion: nil)
-        delegate.showPhotoAccess()
+        if getAppGuide == false {
+            delegate.showPhotoAccess()
+        }
+        
     }
     
 }

@@ -15,6 +15,8 @@ class TutorialCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var startButton: UIButton!
     
     var pages = [Page(imageName: "tutorial_home", last: true), Page(imageName: "tutorial_post", last: true), Page(imageName: "tutorial_search", last: false)]
+    var getAppGuide = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         baseView.layer.cornerRadius = 5
@@ -29,12 +31,21 @@ class TutorialCollectionViewCell: UICollectionViewCell {
         
         tutorialImage.image = UIImage(named: page.imageName)
         
+        if getAppGuide == false {
+            baseView.isHidden = page.last
+            startLabel.isHidden = page.last
+            startLabel.text = "시작하기"
+            startButton.isHidden = page.last
+            startButton.isEnabled = !page.last
+        } else {
+            baseView.isHidden = page.last
+            startLabel.isHidden = page.last
+            startLabel.text = "돌아가기"
+            startButton.isHidden = page.last
+            startButton.isEnabled = !page.last
+        }
         
-        
-        baseView.isHidden = page.last
-        startLabel.isHidden = page.last
-        startButton.isHidden = page.last
-        startButton.isEnabled = !page.last
+       
     }
     
     

@@ -281,6 +281,11 @@ class SettingViewController: UIViewController, UISceneDelegate {
     
     @IBAction func appGuideButtonAction(_ sender: UIButton) {
         print(">> 튜토리얼과 같은 화면이 나옵니다.")
+        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+        let tutorialVC = storyBoard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
+        tutorialVC.getAppGuide = true
+        tutorialVC.modalPresentationStyle = .fullScreen
+        self.present(tutorialVC, animated: true, completion: nil)
     }
     
     @IBAction func appIntroButtonAction(_ sender: UIButton) {
@@ -311,7 +316,7 @@ class SettingViewController: UIViewController, UISceneDelegate {
         cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
         
         alert.addTextField { (feedbackTextField) in
-            feedbackTextField.placeholder = "의견/후기를 입력 해주세요."
+            feedbackTextField.placeholder = "의견/후기는 큰 힘이 됩니다😍"
             feedbackTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         }
         
