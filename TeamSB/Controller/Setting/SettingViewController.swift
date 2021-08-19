@@ -290,6 +290,36 @@ class SettingViewController: UIViewController, UISceneDelegate {
         self.present(appIntroSafariView, animated: true, completion: nil)
     }
     
+    @IBAction func appFeedbackButton(_ sender: Any) {
+        print(">> 앱 피드백 화면으로 넘어갑니다.")
+        let alert = UIAlertController(title: "피드백을 남겨주세요.", message: "", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: {[self] _ in
+            guard let text = alert.textFields![0].text?.trim, text.isExists else {
+                self.presentAlert(title: "피드백을 입력 해주세요.")
+                return
+            }
+            
+            let id = UserDefaults.standard.string(forKey: "userID")!
+            let param = FeedbackReqeust(curUser: id, text: text)
+            dataManager.postFeedback(param, viewController: self)
+            
+            print(alert.textFields![0].text!)
+        })
+        
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        cancelButton.setValue(UIColor(displayP3Red: 255/255, green: 63/255, blue: 63/255, alpha: 1), forKey: "titleTextColor")
+        
+        alert.addTextField { (feedbackTextField) in
+            feedbackTextField.placeholder = "피드백을 입력 해주세요."
+            feedbackTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        }
+        
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     @IBAction func userPrivateButtonAction(_ sender: UIButton) {
         print(">> 개인정보 처리방침 페이지로 이동합니다.")
         let userPrivateUrl = URL(string: "https://www.naver.com/")

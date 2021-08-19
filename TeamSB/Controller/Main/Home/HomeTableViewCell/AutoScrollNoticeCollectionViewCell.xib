@@ -49,7 +49,7 @@
             <connections>
                 <outlet property="noticeLabel" destination="JQe-DH-aew" id="nEj-za-FZk"/>
             </connections>
-            <point key="canvasLocation" x="187.68115942028987" y="83.370535714285708"/>
+            <point key="canvasLocation" x="-24" y="2"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -51,7 +51,6 @@ class NoticeViewController: UIViewController {
         self.navigationItem.title = "공지사항"
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        print(">><<")
         currentPage = 0
         isLoadedAllData = false
         currentNormalPage = 0

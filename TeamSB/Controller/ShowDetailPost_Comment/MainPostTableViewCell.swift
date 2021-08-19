@@ -35,6 +35,8 @@ class MainPostTableViewCell: UITableViewCell {
 //MARK: -기본 UI함수
     func setDesign() {
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.layer.borderWidth = 0.25
+        profileImageView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
         guideLineView.backgroundColor = UIColor.SBColor.SB_DarkGray
     }
 

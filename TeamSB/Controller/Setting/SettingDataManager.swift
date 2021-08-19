@@ -128,6 +128,29 @@ class SettingDataManager {
     }
     
     
+    func postFeedback(_ parameters: FeedbackReqeust, viewController: SettingViewController) {
+        AF.request("\(ConstantURL.BASE_URL)/feedback", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
+            .validate()
+            .responseDecodable(of: FeedbackResponse.self) { [self] response in
+                switch response.result {
+                case .success(let response):
+                    print(">> URL: \(ConstantURL.BASE_URL)/feedback")
+                    if response.check == true {
+                        print("피드백 전달 성공")
+                        viewController.presentAlert(title: "🥰소중한 피드백 감사합니다🥰")
+                    } else {
+                        print(">> 피드백 전송 실패")
+                        viewController.presentAlert(title: response.message)
+                        
+                    }
+                case .failure(let error):
+                    print(">> URL: \(ConstantURL.BASE_URL)/feedback")
+                    print(">> \(error.localizedDescription)")
+                    print(error)
+            }
+        }
+    }
+    
     
     
 }
