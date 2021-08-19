@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -245,6 +246,58 @@
             </objects>
             <point key="canvasLocation" x="1212" y="-383"/>
         </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="R7c-QW-SNM">
+            <objects>
+                <viewController restorationIdentifier="TutorialViewController" storyboardIdentifier="TutorialViewController" id="o03-M2-hTz" customClass="TutorialViewController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fad-0y-QTc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Xe-IA-onI">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1jE-BF-0Vk">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="L6K-Rp-bFQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mlF-bg-F39">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="nzS-dm-iem">
+                                <rect key="frame" x="146.5" y="851" width="121.5" height="28"/>
+                            </pageControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jj5-MZ-0eL"/>
+                        <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="nzS-dm-iem" firstAttribute="centerX" secondItem="Fad-0y-QTc" secondAttribute="centerX" id="555-sk-ggZ"/>
+                            <constraint firstItem="jj5-MZ-0eL" firstAttribute="trailing" secondItem="7Xe-IA-onI" secondAttribute="trailing" id="MQY-U4-p5n"/>
+                            <constraint firstItem="jj5-MZ-0eL" firstAttribute="bottom" secondItem="7Xe-IA-onI" secondAttribute="bottom" id="bLv-iR-0Tb"/>
+                            <constraint firstItem="7Xe-IA-onI" firstAttribute="top" secondItem="Fad-0y-QTc" secondAttribute="top" id="ezK-DZ-gHp"/>
+                            <constraint firstAttribute="bottom" secondItem="nzS-dm-iem" secondAttribute="bottom" constant="17" id="lJA-MD-ZMc"/>
+                            <constraint firstItem="7Xe-IA-onI" firstAttribute="leading" secondItem="jj5-MZ-0eL" secondAttribute="leading" id="xNG-7E-yXf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainCollectionView" destination="7Xe-IA-onI" id="mab-sF-FJr"/>
+                        <outlet property="pageControl" destination="nzS-dm-iem" id="awq-4t-wmR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mX4-fa-yr8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1437.68115942029" y="-362.27678571428572"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="bMQ-Ja-LBm">
             <objects>
@@ -275,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S2F-Ao-vkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1383" y="-313"/>
+            <point key="canvasLocation" x="-2551" y="-362"/>
         </scene>
     </scenes>
     <resources>

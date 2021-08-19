@@ -45,28 +45,22 @@ class MainBaseViewController: UIViewController {
         let param = FCMRequest(curUser: id, token: token)
         dataManager.fcmToken(param, viewController: self)
         
-        
-        
-        PHPhotoLibrary.requestAuthorization(for: .readWrite) { authorizationStatus in
-            switch authorizationStatus {
-            case .limited:
-                print("limited authorization granted") // 선택한 사진에 대해서만 허용.
-            case .authorized:
-                print("authorization granted") // 모든 권한 허용.
-            default: print("Unimplemented")
-                
+        DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+            if UserDefaults.standard.bool(forKey: "tutorial") != true {
+                let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+                let tutorialVC = storyBoard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
+                tutorialVC.delegate = self
+                tutorialVC.modalPresentationStyle = .fullScreen
+                self.present(tutorialVC, animated: true, completion: nil)
+                UserDefaults.standard.set(true, forKey: "tutorial")
+            } else {
+                print(">> 튜토리얼을 이미 본 유저입니다.")
             }
             
-        }
-
+        })
        
-        
-        
     }
-    
-    
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "홈"
@@ -490,4 +484,23 @@ extension MainBaseViewController: MainView {
             }
         }
     }
+}
+
+
+extension MainBaseViewController: PhotoAccess {
+    func showPhotoAccess() {
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { authorizationStatus in
+            switch authorizationStatus {
+            case .limited:
+                print("limited authorization granted") // 선택한 사진에 대해서만 허용.
+            case .authorized:
+                print("authorization granted") // 모든 권한 허용.
+            default: print("Unimplemented")
+                
+            }
+            
+        }
+    }
+    
+    
 }

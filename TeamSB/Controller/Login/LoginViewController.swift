@@ -7,7 +7,7 @@ import Alamofire
 import NVActivityIndicatorView
 import IQKeyboardManager
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     
     @IBOutlet weak var loginBaseView: UIView!
@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var pwTextView: UITextField!
     
     var loading: NVActivityIndicatorView!
+    
+    var application: UIApplication!
     var autoLoginState: Bool = false
     lazy var dataManager: LoginDataManager = LoginDataManager(view: self)
 
@@ -32,6 +34,26 @@ class LoginViewController: UIViewController {
         configureDesign()
         setAutoLoginImage()
         //IQKeyboardManager.shared().isEnableAutoToolbar = true
+        
+        if #available(iOS 10.0, *) {
+          // For iOS 10 display notification (sent via APNS)
+          UNUserNotificationCenter.current().delegate = self
+
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { didAllow, Error in
+                print(didAllow)
+                UserDefaults.standard.set(didAllow, forKey: "alertAccess")
+            }
+
+          )
+        } else {
+          let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          application.registerUserNotificationSettings(settings)
+        }
+
         
     }
 }

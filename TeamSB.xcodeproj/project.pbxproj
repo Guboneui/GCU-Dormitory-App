@@ -160,6 +160,9 @@
 		2CAFB8DA26CE453E003CCA66 /* splashImage.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D926CE453E003CCA66 /* splashImage.PNG */; };
 		2CAFB8DE26CE9E2D003CCA66 /* FeedbackReqeust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8DD26CE9E2D003CCA66 /* FeedbackReqeust.swift */; };
 		2CAFB8E026CE9E35003CCA66 /* FeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8DF26CE9E35003CCA66 /* FeedbackResponse.swift */; };
+		2CAFB8E226CED98B003CCA66 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8E126CED98B003CCA66 /* TutorialViewController.swift */; };
+		2CAFB8E926CEDE64003CCA66 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8E726CEDE64003CCA66 /* TutorialCollectionViewCell.swift */; };
+		2CAFB8EA26CEDE64003CCA66 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8E826CEDE64003CCA66 /* TutorialCollectionViewCell.xib */; };
 		2CC6060726C44E5700E122D8 /* FCMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6060626C44E5700E122D8 /* FCMRequest.swift */; };
 		2CC6060926C44E5E00E122D8 /* FCMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6060826C44E5E00E122D8 /* FCMResponse.swift */; };
 		2CD92B2726BF01BE00A3263E /* AllPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD92B2526BF01BE00A3263E /* AllPostCollectionViewCell.swift */; };
@@ -367,6 +370,9 @@
 		2CAFB8D926CE453E003CCA66 /* splashImage.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashImage.PNG; sourceTree = "<group>"; };
 		2CAFB8DD26CE9E2D003CCA66 /* FeedbackReqeust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackReqeust.swift; sourceTree = "<group>"; };
 		2CAFB8DF26CE9E35003CCA66 /* FeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponse.swift; sourceTree = "<group>"; };
+		2CAFB8E126CED98B003CCA66 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		2CAFB8E726CEDE64003CCA66 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
+		2CAFB8E826CEDE64003CCA66 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
 		2CC6060626C44E5700E122D8 /* FCMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMRequest.swift; sourceTree = "<group>"; };
 		2CC6060826C44E5E00E122D8 /* FCMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCMResponse.swift; sourceTree = "<group>"; };
 		2CD92B2526BF01BE00A3263E /* AllPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -878,6 +884,9 @@
 			children = (
 				2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */,
 				2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */,
+				2CAFB8E126CED98B003CCA66 /* TutorialViewController.swift */,
+				2CAFB8E726CEDE64003CCA66 /* TutorialCollectionViewCell.swift */,
+				2CAFB8E826CEDE64003CCA66 /* TutorialCollectionViewCell.xib */,
 				2C5E99882690E74300E3504A /* Login */,
 				2C5E99892690E76500E3504A /* Main */,
 				2C004A7226B32BF900D13ABF /* Post */,
@@ -1042,6 +1051,7 @@
 				2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */,
 				2CD92B3A26BF289800A3263E /* RoomMateCollectionViewCell.xib in Resources */,
 				2CD92B3626BF20CA00A3263E /* TaxiCollectionViewCell.xib in Resources */,
+				2CAFB8EA26CEDE64003CCA66 /* TutorialCollectionViewCell.xib in Resources */,
 				2C25DED826C3061700F1C9C3 /* SearchCollectionViewCell.xib in Resources */,
 				2CD92B2826BF01BE00A3263E /* AllPostCollectionViewCell.xib in Resources */,
 				2C3A38AF26CDA29A006D10A3 /* OpenSourceTableViewCell.xib in Resources */,
@@ -1152,6 +1162,7 @@
 				2C44FB6D26C7659B00C6B7D4 /* AlertViewController.swift in Sources */,
 				2C44FB8426C7D30300C6B7D4 /* ReadNoticeRequest.swift in Sources */,
 				2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */,
+				2CAFB8E926CEDE64003CCA66 /* TutorialCollectionViewCell.swift in Sources */,
 				2CD92B2726BF01BE00A3263E /* AllPostCollectionViewCell.swift in Sources */,
 				2C3A389F26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.swift in Sources */,
 				2C004AE126B35BEC00D13ABF /* SearchContract.swift in Sources */,
@@ -1185,6 +1196,7 @@
 				2CD92B4C26BF5C4D00A3263E /* EditArticleRequest.swift in Sources */,
 				2C18C97B26C1CCC000C852B2 /* UIImage.swift in Sources */,
 				2C18C96026C15E6600C852B2 /* RePostRequest.swift in Sources */,
+				2CAFB8E226CED98B003CCA66 /* TutorialViewController.swift in Sources */,
 				2C004AF126B381FD00D13ABF /* AddArticleCountRequest.swift in Sources */,
 				2C004A7B26B32D6400D13ABF /* AllPostResponse.swift in Sources */,
 				2C41DC7E26CC682A00B98794 /* HoneyTipTableViewCell.swift in Sources */,
@@ -1432,7 +1444,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1457,7 +1469,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

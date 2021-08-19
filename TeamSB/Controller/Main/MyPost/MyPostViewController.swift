@@ -13,26 +13,23 @@ class MyPostViewController: UIViewController {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var topGuideLineView: UIView!
+    
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
-    
-    
     var loading: NVActivityIndicatorView!
-    
-    lazy var dataManager: MyPostDataManager = MyPostDataManager(view: self)
     var myPost: [MyPost] = []
     var currentPage = 0
     var isLoadedAllData = false
     var cellIdx: Int?
     
+    lazy var dataManager: MyPostDataManager = MyPostDataManager(view: self)
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         setLoading()
         setTableView()
-        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        topGuideLineView.layer.shadowOpacity = 0.15
+        configDesign()
         
     }
     
@@ -49,22 +46,15 @@ class MyPostViewController: UIViewController {
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = MyPostRequest(curUser: id)
         dataManager.postMyArticle(param, viewController: self, page: currentPage)
-        
-        
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     
     @objc func refreshData() {
-        
-   
         print(">> 상단 새로고침")
         currentPage = 0
         self.isLoadedAllData = false
         myPost.removeAll()
-        //mainCollectionView.reloadData()
-        
-        
+    
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = MyPostRequest(curUser: id)
         dataManager.postMyArticle(param, viewController: self, page: currentPage)
@@ -74,6 +64,11 @@ class MyPostViewController: UIViewController {
 
 }
 extension MyPostViewController {
+    func configDesign() {
+        topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        topGuideLineView.layer.shadowOpacity = 0.15
+    }
+   
     func setLoading() {
         loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
         loading.translatesAutoresizingMaskIntoConstraints = false
@@ -109,6 +104,8 @@ extension MyPostViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationItem.rightBarButtonItems = [writeButton, searchButton]
+        
+        self.tabBarController?.tabBar.isHidden = false
 
     }
 
@@ -138,12 +135,7 @@ extension MyPostViewController {
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
-  
-    
 }
-
-
-
 
 extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

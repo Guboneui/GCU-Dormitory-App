@@ -44,6 +44,9 @@ class SplashViewController: UIViewController {
             self.imageView.alpha = 0
         }, completion: { [self] done in
             if done {
+                
+               
+                
                 if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
                     let storyBoard = UIStoryboard(name: "Login", bundle: nil)
                     let loginVC = storyBoard.instantiateViewController(identifier: "LoginNavigationVC")
