@@ -1378,7 +1378,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4I1-gh-9oR">
-                                        <rect key="frame" x="153" y="77.666666666666686" width="164.33333333333337" height="33"/>
+                                        <rect key="frame" x="153" y="99.333333333333371" width="164.33333333333337" height="33"/>
                                         <color key="backgroundColor" red="1" green="0.8901960784313725" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="8.5" maxX="0.0" maxY="8.5"/>
@@ -1387,18 +1387,6 @@
                                         </state>
                                         <connections>
                                             <action selector="getAlbumButtonAction:" destination="ffl-D3-6EG" eventType="touchUpInside" id="Lrs-Me-GPr"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4f-1A-6tK">
-                                        <rect key="frame" x="153" y="120.66666666666669" width="164.33333333333337" height="33"/>
-                                        <color key="backgroundColor" red="1" green="0.8901960784313725" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="8.5" maxX="0.0" maxY="8.5"/>
-                                        <state key="normal" title="기본 이미지로 변경">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="setDefaultImageAction:" destination="ffl-D3-6EG" eventType="touchUpInside" id="2hb-xs-Iey"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Flx-ue-EEs">
@@ -1431,17 +1419,14 @@
                                     <constraint firstAttribute="trailing" secondItem="4I1-gh-9oR" secondAttribute="trailing" constant="36" id="0OL-mV-FGF"/>
                                     <constraint firstItem="i9e-xy-xbz" firstAttribute="leading" secondItem="4eo-jR-wbi" secondAttribute="leading" constant="25" id="C2c-oJ-Y78"/>
                                     <constraint firstAttribute="bottom" secondItem="Flx-ue-EEs" secondAttribute="bottom" constant="6" id="C94-LN-1lD"/>
-                                    <constraint firstItem="e4f-1A-6tK" firstAttribute="leading" secondItem="i9e-xy-xbz" secondAttribute="trailing" constant="28" id="Iot-RS-xwu"/>
-                                    <constraint firstItem="e4f-1A-6tK" firstAttribute="top" secondItem="i9e-xy-xbz" secondAttribute="centerY" constant="5" id="RLt-cr-ROE"/>
                                     <constraint firstItem="2b5-2x-jxB" firstAttribute="top" secondItem="4eo-jR-wbi" secondAttribute="top" constant="11" id="SEZ-c3-nQ3"/>
                                     <constraint firstItem="2b5-2x-jxB" firstAttribute="centerX" secondItem="4eo-jR-wbi" secondAttribute="centerX" id="Wen-kQ-cRU"/>
-                                    <constraint firstAttribute="trailing" secondItem="e4f-1A-6tK" secondAttribute="trailing" constant="36" id="dtS-Y9-uow"/>
                                     <constraint firstItem="Flx-ue-EEs" firstAttribute="leading" secondItem="wSM-mh-0VK" secondAttribute="trailing" constant="6" id="gZN-ZH-bCS"/>
                                     <constraint firstItem="i9e-xy-xbz" firstAttribute="centerY" secondItem="4eo-jR-wbi" secondAttribute="centerY" id="iLJ-Cd-Itg"/>
                                     <constraint firstAttribute="trailing" secondItem="Flx-ue-EEs" secondAttribute="trailing" constant="10" id="lvo-NQ-lCU"/>
                                     <constraint firstItem="4I1-gh-9oR" firstAttribute="leading" secondItem="i9e-xy-xbz" secondAttribute="trailing" constant="28" id="oZr-eB-LWD"/>
                                     <constraint firstAttribute="bottom" secondItem="wSM-mh-0VK" secondAttribute="bottom" constant="6" id="tY9-nz-2tR"/>
-                                    <constraint firstItem="4I1-gh-9oR" firstAttribute="bottom" secondItem="i9e-xy-xbz" secondAttribute="centerY" constant="-5" id="yMi-Kv-ybk"/>
+                                    <constraint firstItem="4I1-gh-9oR" firstAttribute="centerY" secondItem="i9e-xy-xbz" secondAttribute="centerY" id="yMi-Kv-ybk"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1464,7 +1449,6 @@
                         <outlet property="configButton" destination="Flx-ue-EEs" id="hft-C9-y1G"/>
                         <outlet property="getAlbumButton" destination="4I1-gh-9oR" id="wFZ-1G-PzE"/>
                         <outlet property="profileImage" destination="i9e-xy-xbz" id="hZ1-XB-r6C"/>
-                        <outlet property="setDefaultImageButton" destination="e4f-1A-6tK" id="jEm-KI-tUR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf4-v5-T8O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

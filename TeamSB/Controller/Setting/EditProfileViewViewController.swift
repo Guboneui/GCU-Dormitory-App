@@ -22,7 +22,6 @@ class EditProfileViewViewController: UIViewController {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var getAlbumButton: UIButton!
-    @IBOutlet weak var setDefaultImageButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var configButton: UIButton!
     
@@ -59,7 +58,6 @@ class EditProfileViewViewController: UIViewController {
         baseView.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         getAlbumButton.layer.cornerRadius = 4
-        setDefaultImageButton.layer.cornerRadius = 4
         cancelButton.layer.cornerRadius = 3
         configButton.layer.cornerRadius = 3
         
@@ -98,13 +96,6 @@ class EditProfileViewViewController: UIViewController {
             self.present(self.picker, animated: true)
         }
     }
-    
-    @IBAction func setDefaultImageAction(_ sender: Any) {
-        newImage = UIImage(named: "default_profileImage")
-        self.profileImage.image = newImage
-    }
-    
-    
     
     @IBAction func cancelButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
