@@ -47,6 +47,7 @@ class MainBaseViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
             if UserDefaults.standard.bool(forKey: "tutorial") != true {
+                print(">>🤗 앱 최초 접속자 이므로 튜토리얼 화면으로 이동합니다.")
                 let storyBoard = UIStoryboard(name: "Login", bundle: nil)
                 let tutorialVC = storyBoard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
                 tutorialVC.delegate = self
@@ -54,7 +55,7 @@ class MainBaseViewController: UIViewController {
                 self.present(tutorialVC, animated: true, completion: nil)
                 UserDefaults.standard.set(true, forKey: "tutorial")
             } else {
-                print(">> 튜토리얼을 이미 본 유저입니다.")
+                print(">>🤗 튜토리얼을 이미 본 유저입니다.")
             }
             
         })

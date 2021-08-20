@@ -106,7 +106,7 @@ extension AppDelegate: MessagingDelegate {
       if let error = error {
         print("Error fetching FCM registration token: \(error)")
       } else if let token = token {
-        print("^^FCM registration token: \(token)")
+        print(">>🐣 기기 FCM 토큰 정보: \(token)")
         UserDefaults.standard.set(token, forKey: "FCMToken")
         //self.fcmRegTokenMessage.text  = "Remote FCM registration token: \(token)"
         }
