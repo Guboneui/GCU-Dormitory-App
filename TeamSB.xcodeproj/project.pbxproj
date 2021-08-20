@@ -155,6 +155,8 @@
 		2C5D39CF26BE30890046CD32 /* ChangeUserNicknameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */; };
 		2C5D39D126BE38BE0046CD32 /* ChangeNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */; };
 		2C5E99902690E8A500E3504A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E998F2690E8A500E3504A /* CalendarViewController.swift */; };
+		2C6ACD2F26CFECBF00B7443E /* LoadingGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2C6ACD2E26CFECBF00B7443E /* LoadingGIF.gif */; };
+		2C6ACD3126CFECF300B7443E /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6ACD3026CFECF300B7443E /* CustomLoader.swift */; };
 		2CAFB8D626CE434C003CCA66 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */; };
 		2CAFB8D826CE44AE003CCA66 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */; };
 		2CAFB8DA26CE453E003CCA66 /* splashImage.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D926CE453E003CCA66 /* splashImage.PNG */; };
@@ -365,6 +367,8 @@
 		2C5D39CE26BE30890046CD32 /* ChangeUserNicknameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserNicknameResponse.swift; sourceTree = "<group>"; };
 		2C5D39D026BE38BE0046CD32 /* ChangeNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameViewController.swift; sourceTree = "<group>"; };
 		2C5E998F2690E8A500E3504A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		2C6ACD2E26CFECBF00B7443E /* LoadingGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoadingGIF.gif; sourceTree = "<group>"; };
+		2C6ACD3026CFECF300B7443E /* CustomLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		2CAFB8D926CE453E003CCA66 /* splashImage.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashImage.PNG; sourceTree = "<group>"; };
@@ -882,6 +886,8 @@
 		2C5D0191268E209B00CC6DD4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C6ACD2E26CFECBF00B7443E /* LoadingGIF.gif */,
+				2C6ACD3026CFECF300B7443E /* CustomLoader.swift */,
 				2C5D01A0268E3ECA00CC6DD4 /* MainTabBarController.swift */,
 				2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */,
 				2CAFB8E126CED98B003CCA66 /* TutorialViewController.swift */,
@@ -1059,6 +1065,7 @@
 				2C298740268B5D5E005EEA64 /* Assets.xcassets in Resources */,
 				2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */,
 				2C5D39C726BE128F0046CD32 /* AutoScrollNoticeCollectionViewCell.xib in Resources */,
+				2C6ACD2F26CFECBF00B7443E /* LoadingGIF.gif in Resources */,
 				2CD92B2E26BF1C7500A3263E /* DeliveryCollectionViewCell.xib in Resources */,
 				2CD92B4626BF491B00A3263E /* EditTagCollectionViewCell.xib in Resources */,
 				2C41DC7F26CC682A00B98794 /* HoneyTipTableViewCell.xib in Resources */,
@@ -1168,6 +1175,7 @@
 				2C004AE126B35BEC00D13ABF /* SearchContract.swift in Sources */,
 				2CD92B2D26BF1C7500A3263E /* DeliveryCollectionViewCell.swift in Sources */,
 				2C18C97726C1A08400C852B2 /* MyPostRequest.swift in Sources */,
+				2C6ACD3126CFECF300B7443E /* CustomLoader.swift in Sources */,
 				2C004AB526B34E5400D13ABF /* TaxiDataManager.swift in Sources */,
 				2C44FB8D26C8127500C6B7D4 /* NoticeMainTableViewCell.swift in Sources */,
 				2C44FBA026C81E5200C6B7D4 /* NoticeContract.swift in Sources */,

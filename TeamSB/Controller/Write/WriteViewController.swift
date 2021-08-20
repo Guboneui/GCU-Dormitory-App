@@ -220,8 +220,8 @@ extension WriteViewController {
             return
         }
 
-        self.loading.startAnimating()
-
+        //self.loading.startAnimating()
+        CustomLoader.instance.showLoader()
 
         let category = categoryTitle.text!
         let userId = UserDefaults.standard.string(forKey: "userID")!
@@ -379,7 +379,8 @@ extension WriteViewController: WriteView {
     }
 
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
 
 

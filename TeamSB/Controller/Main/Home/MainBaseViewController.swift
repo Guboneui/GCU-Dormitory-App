@@ -66,8 +66,8 @@ class MainBaseViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "홈"
         self.tabBarController?.tabBar.isHidden = false
         
-        loading.startAnimating()
-        
+        //loading.startAnimating()
+        CustomLoader.instance.showLoader()
         
         setDefault()
         setNavigationItem()

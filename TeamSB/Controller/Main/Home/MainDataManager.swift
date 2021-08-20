@@ -73,7 +73,8 @@ class MainDataManager {
                         print(">> 최근 게시글 가져오기 실패")
                         
                     }
-                    viewController.loading.stopAnimating()
+                    //viewController.loading.stopAnimating()
+                    CustomLoader.instance.hideLoader()
                 case .failure(let error):
                     print(">> URL: \(ConstantURL.BASE_URL)/home/recentPost")
                     print(">> \(error.localizedDescription)")

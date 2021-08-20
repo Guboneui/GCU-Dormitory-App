@@ -218,7 +218,8 @@ extension SearchViewController {
             return
         }
         
-        loading.startAnimating()
+        //loading.startAnimating()
+        CustomLoader.instance.showLoader()
         currentPage = 0
         isLoadedAllData = false
         searchArray.removeAll()
@@ -508,10 +509,12 @@ extension SearchViewController: SearchView {
         self.mainCollectionView.refreshControl?.endRefreshing()
     }
     func startLoading() {
-        self.loading.startAnimating()
+        //self.loading.startAnimating()
+        CustomLoader.instance.showLoader()
     }
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     func noSearchResult() {
         self.presentAlert(title: "검색 결과가 없습니다.")

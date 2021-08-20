@@ -68,8 +68,8 @@ extension NickNameViewController {
             self.presentAlert(title: "닉네임은 8자 이하이어야합니다.")
             
         } else {
-            loading.startAnimating()
-            
+            //loading.startAnimating()
+            CustomLoader.instance.showLoader()
             let nickname = nickNameTextField.text!
             let param = NicknameCheckRequest(nickname: nickname)
             dataManager.postNicknameCheck(param, viewController: self)
@@ -81,8 +81,8 @@ extension NickNameViewController {
         if UserDefaults.standard.bool(forKey: "userNicknameExist") != true {
             self.presentAlert(title: "닉네임 중복확인을 먼저 해주세요.")
         } else {
-            loading.startAnimating()
-            
+            //loading.startAnimating()
+            CustomLoader.instance.showLoader()
             let id = UserDefaults.standard.string(forKey: "userID")!
             let nickname = nickNameTextField.text!
             
@@ -100,7 +100,8 @@ extension NickNameViewController: NicknameView {
     }
     
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
     ///메인 화면으로 RootView변경

@@ -233,11 +233,13 @@ extension AlertViewController: AlertView {
     }
     
     func startLoading() {
-        self.loading.startAnimating()
+        //self.loading.startAnimating()
+        CustomLoader.instance.showLoader()
     }
     
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
     func goArticle(no: Int, title: String, category: String, timeStamp: String, userNickname: String, text: String, viewCount: Int, userId: String, hash: [String], imageSource: String) {

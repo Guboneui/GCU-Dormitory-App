@@ -107,7 +107,8 @@ extension LoginViewController {
             self.presentAlert(title: "비밀번호를 입력 해주세요.")
             return
         }
-        loading.startAnimating()
+        //loading.startAnimating()
+        CustomLoader.instance.showLoader()
         let param = LoginRequest(userId: id, password: pw)
         dataManager.postLogin(param, viewController: self)
     }
@@ -170,7 +171,8 @@ extension LoginViewController: LoginView {
     
     ///서버 연결 성공 시 로딩 바 동작 멈추기
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
 }

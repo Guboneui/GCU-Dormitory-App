@@ -339,10 +339,12 @@ extension ParcelViewController: ParcelView {
         self.mainCollectionView.refreshControl?.endRefreshing()
     }
     func startLoading() {
-        self.loading.startAnimating()
+        //self.loading.startAnimating()
+        CustomLoader.instance.showLoader()
     }
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
     func goArticle() {

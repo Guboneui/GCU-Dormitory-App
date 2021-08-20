@@ -408,14 +408,9 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             newImage = possibleImage // 원본 이미지가 있을 경우
         }
 
-        
-        
-        
-   
-        
         let id = UserDefaults.standard.string(forKey: "userID")!
-        var editImage = newImage?.resize(newWidth: 300)
-        let jpgImage = editImage?.jpegData(compressionQuality: 0.5)
+        var editImage = newImage?.resize(newWidth: 200)
+        let jpgImage = editImage?.jpegData(compressionQuality: 0.3)
 
         let jpgString = jpgImage?.base64EncodedString(options: .lineLength64Characters)
         

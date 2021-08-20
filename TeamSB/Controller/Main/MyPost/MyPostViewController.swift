@@ -37,7 +37,8 @@ class MyPostViewController: UIViewController {
         super.viewWillAppear(animated)
         setNavigationBarItem()
         
-        loading.startAnimating()
+        //loading.startAnimating()
+        CustomLoader.instance.showLoader()
         currentPage = 0
         self.isLoadedAllData = false
         myPost.removeAll()
@@ -323,11 +324,13 @@ extension MyPostViewController: MyPostView {
     }
     
     func startLoading() {
-        self.loading.startAnimating()
+        //self.loading.startAnimating()
+        CustomLoader.instance.showLoader()
     }
     
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
     func goArticle() {

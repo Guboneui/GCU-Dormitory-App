@@ -371,10 +371,12 @@ extension ShowMoreViewController: AllPostView {
     }
     
     func startLoading() {
-        self.loading.startAnimating()
+        //self.loading.startAnimating()
+        CustomLoader.instance.showLoader()
     }
     func stopLoading() {
-        self.loading.stopAnimating()
+        //self.loading.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
     func goArticle() {
