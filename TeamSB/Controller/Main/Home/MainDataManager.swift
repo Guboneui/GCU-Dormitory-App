@@ -19,16 +19,16 @@ class MainDataManager {
             .responseDecodable(of: GetUserNicknameResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getUser/nickname")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getUser/nickname")
                     if response.check == true {
-                        print(">> 유저 닉네임 새로고침 성공")
+                        print(">>😎 유저 닉네임 새로고침 성공")
                         view.setUserNickname(nickname: response.content!)
                     } else {
-                        print(">> 유저 닉네임 새로고침 실패")
+                        print(">>😭 유저 닉네임 새로고침 실패")
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getUser/nickname")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getUser/nickname")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -39,19 +39,19 @@ class MainDataManager {
             .responseDecodable(of: MenuResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/calmenu")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/calmenu")
                     if response.check == true, let result = response.menu {
-                        print(">> 식단 가져오기 성공")
+                        print(">>😎 식단 가져오기 성공")
                         viewController.calMenu = result
                         view.setTodayMenu()
                         viewController.baseTableView.reloadData()
                     } else {
-                        print(">> 식단 가져오기 실패")
+                        print(">>😭 식단 가져오기 실패")
                         
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/calmenu")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/calmenu")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -63,21 +63,21 @@ class MainDataManager {
             .responseDecodable(of: RecentPostResponse.self) { response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/home/recentPost")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/home/recentPost")
                     if response.check == true, let result = response.content {
-                        print(">> 최근 게시글 가져오기 성공")
+                        print(">>😎 최근 게시글 가져오기 성공")
                         view.recentPost = result
                         view.recentPostTableView.reloadData()
                         
                     } else {
-                        print(">> 최근 게시글 가져오기 실패")
+                        print(">>😭 최근 게시글 가져오기 실패")
                         
                     }
                     //viewController.loading.stopAnimating()
                     CustomLoader.instance.hideLoader()
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/home/recentPost")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/home/recentPost")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
         
@@ -91,17 +91,17 @@ class MainDataManager {
             .responseDecodable(of: GetProfileImageResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getUser/profile_image")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getUser/profile_image")
                     if response.check == true {
-                        print(">> 유저 프로필 이미지 가져오기 성공")
+                        print(">>😎 유저 프로필 이미지 가져오기 성공")
                         let stringImage = response.content
                         UserDefaults.standard.set(stringImage, forKey: "userProfileImage")
                     } else {
-                        print(">> 유저프로필 이미지 가져오기 실패")
+                        print(">>😭 유저프로필 이미지 가져오기 실패")
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getUser/profile_image")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getUser/profile_image")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -112,16 +112,17 @@ class MainDataManager {
             .responseDecodable(of: FCMResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getToken")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getToken")
                     if response.check == true {
-                        print(">> 유저 닉네임 새로고침 성공")
+                        print(">>😎 FCM 토큰 전달 성공")
                         print(response.message)
                     } else {
+                        print(">>😭 FCM 토큰 전달 실패")
                         print(response.message)
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getToken")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getToken")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -133,21 +134,21 @@ class MainDataManager {
             .responseDecodable(of: CheckUserAlertResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/check")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/check")
                     if response.check == true {
-                        print(">> 유저 알림 정보 통신 성공")
-                        print(">> 유저가 읽지 않은 알림 개수는 \(String(describing: response.notificationCount))개 입니다")
+                        print(">>😎 유저 알림 정보 통신 성공")
+                        print(">>😎 유저가 읽지 않은 알림 개수는 \(String(describing: response.notificationCount))개 입니다")
                         print(response.message)
                         view.setNoticeColor(notificationCount: response.notificationCount!)
                     } else {
-                        print(">> 유저 알림 정보 통신 실패")
+                        print(">>😭 유저 알림 정보 통신 실패")
                         print(response.message)
                     }
                     
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/check")
-                    print(">> \(error.localizedDescription)")
-                    print(">> 유저 알림 정보 통신 에러")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/check")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 유저 알림 정보 통신 에러")
             }
         }
     }
@@ -158,19 +159,19 @@ class MainDataManager {
             .responseDecodable(of: GetBannerResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/topBanner")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/topBanner")
                     if response.check == true {
-                        print(">> 배너 가져오기 성공")
+                        print(">>😎 상단 배너 가져오기 성공")
                         viewController.notice = response.topBannerList
                         viewController.mainCollectionView.reloadData()
                     } else {
-                       print(">> 배너 가져오기 실패")
+                       print(">>😭 상단 배너 가져오기 실패")
                     }
                     
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/topBanner")
-                    print(">> \(error.localizedDescription)")
-                    print(">> 유저 알림 정보 통신 에러")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/topBanner")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 \(error)")
             }
         }
     }
@@ -182,21 +183,21 @@ class MainDataManager {
             .responseDecodable(of: GetGuideResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/guide/list")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/guide/list")
                     if response.check == true, let result = response.content {
-                        print(">> 기숙사 이용 가이드 불러오기 성공")
+                        print(">>😎 기숙사 이용 가이드 불러오기 성공")
                         viewController.guideList = result
                         viewController.baseTableView.reloadRows(at: [[0, 3]], with: .automatic)
                         
                     } else {
-                       print(">> 기숙사 이용 가이드 불러오기")
+                       print(">>😭 기숙사 이용 가이드 불러오기 실패")
                     }
                     
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/guide/list")
-                    print(">> \(error.localizedDescription)")
-                    print(">> 기숙사 이용 가이드 불러오기 통신 에러")
-                    print(error)
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/guide/list")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 기숙사 이용 가이드 불러오기 통신 에러")
+                    print(">>😱 error")
                     
             }
         }

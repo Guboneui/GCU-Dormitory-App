@@ -15,13 +15,8 @@ class MainCommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
-        print(">>>><<<< \(profileImageView.frame.size)")
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         profileImageView.layer.borderWidth = 0.25
         profileImageView.layer.borderColor = UIColor.SBColor.SB_DarkGray.cgColor
@@ -33,11 +28,5 @@ class MainCommentsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 20, bottom: 13, right: 20))
-//    }
-    
+
 }

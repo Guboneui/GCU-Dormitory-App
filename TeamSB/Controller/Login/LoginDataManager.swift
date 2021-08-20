@@ -20,9 +20,10 @@ class LoginDataManager {
                 switch response.result {
                 
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/login")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/login")
                     view.stopLoading()
-                    if response.check == true {                        
+                    if response.check == true {
+                        print(">>😎 로그인 성공")
                         if response.nickname! {
                             view.goMainView()
 
@@ -32,13 +33,14 @@ class LoginDataManager {
                         view.checkAutoLogin()
                         view.addUserInfo(nicknameExist: response.nickname!)
                     } else {
+                        print(">>😭 로그인 실패")
                         view.showAlert(message: response.message)
                     }
                 case .failure(let error):
                     view.stopLoading()
-                    print(">> URL: \(ConstantURL.BASE_URL)/login")
-                    view.showAlert(message: "서버 연결 실패")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/login")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 \(error)")
             }
         }
     }

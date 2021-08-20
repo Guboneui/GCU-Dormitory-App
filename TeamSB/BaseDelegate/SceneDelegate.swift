@@ -87,23 +87,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .responseDecodable(of: RemoveFcmTokenResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    print(">>URL: \(ConstantURL.BASE_URL)/deleteToken")
                     if response.check == true {
                         
-                        print("토큰 제거 성공")
+                        print(">>😎 토큰 제거 성공")
                         
                         UserDefaults.standard.set(nil, forKey: "userID")
                         UserDefaults.standard.set(nil, forKey: "userNicknameExist")
                         UserDefaults.standard.set(nil, forKey: "userNickname")
                         UserDefaults.standard.set(false, forKey: "autoLoginState")
                     } else {
-                        print(">> 토큰 제거 실패")
+                        print(">>😭 토큰 제거 실패")
                     
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    print(">>URL: \(ConstantURL.BASE_URL)/deleteToken")
                     print(">> \(error.localizedDescription)")
-                    print(error)
+                    print(">>😱 \(error)")
             }
         }
     }

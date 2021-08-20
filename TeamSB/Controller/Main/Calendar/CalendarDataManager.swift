@@ -19,18 +19,18 @@ class CalendarDataManager {
             .responseDecodable(of: MenuResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/calmenu")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/calmenu")
                     if response.check == true, let result = response.menu {
-                        print(">> 식단 가져오기 성공")
+                        print(">>😎 이달의 식단 가져오기 성공")
                         viewController.calMenu = result
                         view.setSelectedMenu()
                     } else {
-                        print(">> 식단 가져오기 실패")
+                        print(">>😭 식단 가져오기 실패")
                         
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/calmenu")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/calmenu")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }

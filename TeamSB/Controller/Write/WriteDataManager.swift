@@ -19,19 +19,20 @@ class WriteDataManager {
             .responseDecodable(of: WriteArticleResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/writeArticle")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/writeArticle")
                     view.stopLoading()
                     if response.check == true {
                         view.popView(message: response.message)
-                        print(">> 글쓰기 완료")
+                        print(">>😎 글쓰기 완료")
                     } else {
+                        print(">>😭 글쓰기 실패")
                         view.showAlert(message: response.message)
                     }
                 case .failure(let error):
                     view.stopLoading()
-                    print(">> URL: \(ConstantURL.BASE_URL)/writeArticle")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/writeArticle")
                     view.showAlert(message: "서버 연결 실패")
-                    print(">> \(error.localizedDescription)")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }

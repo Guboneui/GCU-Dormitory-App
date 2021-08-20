@@ -22,21 +22,21 @@ class DormitoryGuideDataManager {
             .responseDecodable(of: GetGuideResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/guide/list")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/guide/list")
                     if response.check == true, let result = response.content {
-                        print(">> 기숙사 이용 가이드 불러오기 성공")
+                        print(">>😎 기숙사 이용 가이드 불러오기 성공")
                         viewController.guideList = result
                         view.reloadTableView()
                         
                     } else {
-                       print(">> 기숙사 이용 가이드 불러오기")
+                       print(">>😭 기숙사 이용 가이드 불러오기 실패")
                     }
                     
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/guide/list")
-                    print(">> \(error.localizedDescription)")
-                    print(">> 기숙사 이용 가이드 불러오기 통신 에러")
-                    print(error)
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/guide/list")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 기숙사 이용 가이드 불러오기 통신 에러")
+                    print(">>😱 \(error)")
                     
             }
         }

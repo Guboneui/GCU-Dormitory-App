@@ -30,17 +30,17 @@ class AlertDataManager {
             .responseDecodable(of: UserAlertResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/list?page=\(viewController.currentPage)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/list?page=\(viewController.currentPage)")
                     view.stopRefreshControl()
                     view.stopLoading()
                     
                     if response.check == true, let result = response.content {
-                        print(">> 나의 게시글 알림 불러오기 성공")
+                        print(">>😎 나의 댓글 알림 불러오기 성공")
                         
                         guard result.count > 0 else {
                             view.stopLoading()
-                            print(">> 더이상 읽어올 알림 없음")
-                            print(">> 총 읽어온 알림 개수 = \(viewController.alertPost.count)")
+                            print(">>😎 더이상 읽어올 알림 없음")
+                            print(">>😎 총 읽어온 알림 개수 = \(viewController.alertPost.count)")
                             viewController.isLoadedAllData = true
                             return
                         }
@@ -48,16 +48,16 @@ class AlertDataManager {
                         for i in 0..<result.count {
                             viewController.alertPost.append(result[i])
                         }
-                        print(">> 읽어온 알림 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
+                        print(">>😎 읽어온 알림 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
                         
                         viewController.mainTableView.reloadData()
                     } else {
-                        print(">> 나의 게시글 알림 불러오기 실패")
+                        print(">>😭 나의 댓글 알림 불러오기 실패")
                         
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/list?page=\(viewController.currentPage)")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/list?page=\(viewController.currentPage)")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -70,20 +70,20 @@ class AlertDataManager {
             .responseDecodable(of: ReadAllNoticeResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/read/all")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/read/all")
                     
                     view.stopLoading()
                     
                     if response.check == true {
-                        print(">> 알림 전체 읽기 성공")
+                        print(">>😎 댓글 알림 전체 읽기 성공")
                         //viewController.mainTableView.reloadData()
                         view.reloadTableview()
                     } else {
-                        print(">> 나의 게시글 알림 불러오기 실패")
+                        print(">>😭 나의 댓글 알림 전체 읽기 실패")
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/read/all")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/read/all")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -96,20 +96,20 @@ class AlertDataManager {
             .responseDecodable(of: ReadNoticeReponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/read")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/read")
                     
                     //view.stopLoading()
                     
                     if response.check == true {
-                        print(">> 알림 읽음 처리 성공")
+                        print(">>😎 알림 읽음 처리 성공")
                         //viewController.mainTableView.reloadData()
                         //view.reloadTableview()
                     } else {
-                        print(">> 알림 읽음 처리 실패")
+                        print(">>😭 알림 읽음 처리 실패")
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/notification/read")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/notification/read")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -120,20 +120,20 @@ class AlertDataManager {
             .responseDecodable(of: ExistsArticleResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
                     view.stopLoading()
                     if response.check == true {
-                        print(">> 존재하는 글")
+                        print(">>😎 존재하는 글입니다. 해당 게시글로 이동합니다.")
                         let data = response.content![0]
                         view.goArticle(no: data.no, title: data.title, category: data.category, timeStamp: data.timeStamp, userNickname: data.userNickname, text: data.text, viewCount: data.viewCount, userId: data.userId, hash: data.hash, imageSource: data.imageSource)
                     } else {
-                        print(">> 삭제 또는 신고 된 글")
+                        print(">>😭 삭제 또는 신고 된 글이므로 접근할 수 없습니다.")
                         viewController.presentAlert(title: response.message)
                     }
                 case .failure(let error):
                     view.stopLoading()
-                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }

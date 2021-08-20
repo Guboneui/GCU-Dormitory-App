@@ -19,16 +19,15 @@ class DetailPostViewDataManager {
             .responseDecodable(of: AddArticleCountResponse.self) { response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/accessArticle")
                     if response.check == true{
-                        print(response.message)
-                        
+                        print(">>😎 게시글 조회수 증가 성공")
                     } else {
-                        print(">> 조회수 증가 실패")
+                        print(">>😭 조회수 증가 실패")
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/accessArticle")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -39,17 +38,17 @@ class DetailPostViewDataManager {
             .responseDecodable(of: DeleteArticleResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/deleteArticle")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/deleteArticle")
                     if response.check == true{
-                        print(response.message)
+                        print(">>😎 \(response.message)")
                         view.popView(message: response.message)
                     } else {
-                        print(">> 게시글 삭제 실패")
+                        print(">>😭 게시글 삭제 실패")
                         view.popView(message: response.message)
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/deleteArticle")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/deleteArticle")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -60,17 +59,17 @@ class DetailPostViewDataManager {
             .responseDecodable(of: BanArticleResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/report")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/report")
                     if response.check == true{
-                        print(response.message)
+                        print(">>😎 \(response.message)")
                         view.popView(message: response.message)
                     } else {
-                        print(">> 게시글 신고 실패")
+                        print(">>😭 게시글 신고 실패")
                         view.popView(message: response.message)
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/report")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/report")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -88,14 +87,15 @@ class DetailPostViewDataManager {
             .responseDecodable(of: GetCommentResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
                     view.stopRefreshControl()
                     if response.check == true, let result = response.content{
+                        print(">>😎 댓글 읽어오기 성공")
                         
                         guard result.count > 0 else {
                             
-                            print(">> 더이상 읽어올 게시글 없음")
-                            print(">> 총 읽어온 댓글 개수 = \(viewController.comment.count)")
+                            print(">>😎 더이상 읽어올 댓글 없음")
+                            print(">>😎 총 읽어온 댓글 개수 = \(viewController.comment.count)")
                             viewController.isLoadedAllData = true
                             return
                         }
@@ -103,18 +103,15 @@ class DetailPostViewDataManager {
                             viewController.comment.append(result[i])
                         }
                         
-                        print(">> 읽어온 댓글 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
+                        print(">>😎 읽어온 댓글 개수: \(result.count), 현재 페이지\(viewController.currentPage)")
                         viewController.mainTableView.reloadData()
-                        
-                        
-                        print(response.message)
         
                     } else {
-                        print(">> 댓글 읽기 실패")
+                        print(">>😭 댓글 읽기 실패")
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/reply/list?page=\(viewController.currentPage)")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -125,20 +122,20 @@ class DetailPostViewDataManager {
             .responseDecodable(of: PostCommentResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/reply/write")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/reply/write")
                     if response.check == true{
-                        print(response.message)
+                        print(">>😎 \(response.message)")
                         view.successPost()
                         
                         view.updateTableView()
                        
                     } else {
-                        print(">> 댓글 작성 실패")
+                        print(">>😭 댓글 작성 실패")
                         view.popView(message: response.message)
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/reply/write")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/reply/write")
+                    print(">>😱 \(error.localizedDescription)")
                     print(error)
             }
         }
@@ -151,19 +148,20 @@ class DetailPostViewDataManager {
             .responseDecodable(of: RePostResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
-                    print(">> 게시글 수정 후 게시글 다시 불러오기")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    print(">>🧲 게시글 수정 후 게시글 다시 불러오기")
                     if response.check == true, let result = response.content{
-                        print(response.message)
+                        print(">>😎 \(response.message)")
                         viewCcntroller.post = result
                         view.reloadPost()
                        
                     } else {
+                        print(">>😭 \(response.message)")
                         view.popView(message: response.message)
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/accessArticle/detail")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }

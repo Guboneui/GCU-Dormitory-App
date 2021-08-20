@@ -19,17 +19,17 @@ class SettingDataManager {
             .responseDecodable(of: GetUserInfoResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getUser")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getUser")
                     if response.check == true, let result = response.content {
                         let data = result[0]
                         view.settingNickname(nickname: data.nickname)
-                        
+                        print(">>😎 유저 정보 가져오기 성공")
                     } else {
-                        print(">> 유저 정보 가져오기 실패")
+                        print(">>😭 유저 정보 가져오기 실패")
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/getUser")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/getUser")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -40,17 +40,18 @@ class SettingDataManager {
             .responseDecodable(of: ChangeProfileImageResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/profileSet")
                     if response.check == true {
                         //viewController.presentAlert(title: "프로필 이미지 변경 성공")
                         view.dismissProfileView()
+                        print(">>😎 프로필 이미지 변경 성공")
                     } else {
-                        print(">> 프로필 이미지 변경 실패")
+                        print(">>😭 프로필 이미지 변경 실패")
                         viewController.presentAlert(title: response.message)
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet")
-                    print(">> \(error.localizedDescription)")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/profileSet")
+                    print(">>😱 \(error.localizedDescription)")
             }
         }
     }
@@ -61,19 +62,19 @@ class SettingDataManager {
             .responseDecodable(of: ChangeUserNicknameResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/nicknameSet")
                     if response.check == true {
-                        print("닉네임 변경 성공")
+                        print(">>😎 닉네임 변경 성공")
                         view.successChangeNickname()
                     } else {
-                        print(">> 닉네임 변경 실패")
+                        print(">>😭 닉네임 변경 실패")
                         viewController.presentAlert(title: response.message)
                         
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/nicknameSet")
-                    print(">> \(error.localizedDescription)")
-                    print(error)
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/nicknameSet")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 \(error)")
             }
         }
     }
@@ -84,19 +85,19 @@ class SettingDataManager {
             .responseDecodable(of: RemoveFcmTokenResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/deleteToken")
                     if response.check == true {
-                        print("토큰 제거 성공")
+                        print(">> 😎토큰 제거 성공")
                         
                     } else {
-                        print(">> 토큰 제거 실패")
+                        print(">> 😎 토큰 제거 실패")
                         viewController.presentAlert(title: response.message)
                         
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/deleteToken")
-                    print(">> \(error.localizedDescription)")
-                    print(error)
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/deleteToken")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 \(error)")
             }
         }
     }
@@ -108,21 +109,21 @@ class SettingDataManager {
             .responseDecodable(of: DeleteUserProfileImageResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet/delete")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/profileSet/delete")
                     if response.check == true {
-                        print(">> 프로필 이미지 삭제 성공")
+                        print(">>😎 프로필 이미지 삭제 성공")
                         UserDefaults.standard.set("", forKey: "userProfileImage")
                         viewController.presentAlert(title: "프로필이 수정되었습니다.")
                         viewController.getProfileImage()
                     } else {
-                        print(">> 프로필 이미지 삭제 실패")
+                        print(">>😭 프로필 이미지 삭제 실패")
                         viewController.presentAlert(title: response.message)
                         
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/profileSet/delete")
-                    print(">> \(error.localizedDescription)")
-                    print(error)
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/profileSet/delete")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 \(error)")
             }
         }
     }
@@ -134,19 +135,19 @@ class SettingDataManager {
             .responseDecodable(of: FeedbackResponse.self) { [self] response in
                 switch response.result {
                 case .success(let response):
-                    print(">> URL: \(ConstantURL.BASE_URL)/feedback")
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/feedback")
                     if response.check == true {
-                        print("피드백 전달 성공")
+                        print(">>😎 피드백 전달 성공")
                         viewController.presentAlert(title: "🥰소중한 의견 감사합니다🥰")
                     } else {
-                        print(">> 피드백 전송 실패")
+                        print(">>😭 피드백 전송 실패")
                         viewController.presentAlert(title: response.message)
                         
                     }
                 case .failure(let error):
-                    print(">> URL: \(ConstantURL.BASE_URL)/feedback")
-                    print(">> \(error.localizedDescription)")
-                    print(error)
+                    print(">>🧲 URL: \(ConstantURL.BASE_URL)/feedback")
+                    print(">>😱 \(error.localizedDescription)")
+                    print(">>😱 \(error)")
             }
         }
     }
