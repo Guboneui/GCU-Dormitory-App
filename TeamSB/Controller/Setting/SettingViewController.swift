@@ -410,7 +410,7 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
 
         let id = UserDefaults.standard.string(forKey: "userID")!
         var editImage = newImage?.resize(newWidth: 200)
-        let jpgImage = editImage?.jpegData(compressionQuality: 0.3)
+        let jpgImage = editImage?.jpegData(compressionQuality: 0.25)
 
         let jpgString = jpgImage?.base64EncodedString(options: .lineLength64Characters)
         

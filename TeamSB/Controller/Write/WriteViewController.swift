@@ -237,28 +237,31 @@ extension WriteViewController {
 
     @IBAction func addTagButtonAction(_ sender: Any) {
         self.view.endEditing(true)
+        
+        guard let keyWord = tagTextField.text?.trim, keyWord.isExists else {
+            self.presentAlert(title: "키워드를 입력 해주세요")
+            return
+        }
+        
+        guard keyWord.count < 11 else {
+            self.presentAlert(title: "키워드는 10글자를 넘을 수 없습니다.")
+            return
+        }
+        
+        if tagArray.count < 3 {
+            let hashTag = tagTextField.text!
+            tagArray.append(hashTag)
+            tagTextField.text = ""
 
-        if tagTextField.text == "" || tagTextField.text == nil {
-            let alert = UIAlertController(title: "태그를 입력 해주세요", message: "", preferredStyle: .alert)
+            tagCollectionView.reloadData()
+        } else {
+            let alert = UIAlertController(title: "키워드는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
             okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
             alert.addAction(okButton)
             self.present(alert, animated: true, completion: nil)
-        } else {
-            if tagArray.count < 3 {
-                let hashTag = tagTextField.text!
-                tagArray.append(hashTag)
-                tagTextField.text = ""
-
-                tagCollectionView.reloadData()
-            } else {
-                let alert = UIAlertController(title: "태그는 최대 3개까지 가능합니다.", message: "", preferredStyle: .alert)
-                let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
-                okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
-                alert.addAction(okButton)
-                self.present(alert, animated: true, completion: nil)
-            }
         }
+        
     }
     
     @objc func backButtonAction() {

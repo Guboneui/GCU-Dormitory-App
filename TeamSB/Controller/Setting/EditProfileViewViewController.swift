@@ -114,8 +114,8 @@ class EditProfileViewViewController: UIViewController {
         } else {
             
             let id = UserDefaults.standard.string(forKey: "userID")!
-            let editImage = newImage?.resize(newWidth: 300)
-            let jpgImage = editImage?.jpegData(compressionQuality: 0.5)
+            let editImage = newImage?.resize(newWidth: 200)
+            let jpgImage = editImage?.jpegData(compressionQuality: 0.25)
 
             
             jpgString = (jpgImage?.base64EncodedString(options: .lineLength64Characters))!
