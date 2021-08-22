@@ -257,11 +257,12 @@ extension DeleveryViewController: UICollectionViewDelegate, UICollectionViewData
                 if totalNowTime - totalArticleTime < 60 {
                     cell.timeLabel.text = String((totalNowTime - totalArticleTime) % 60)+"분 전"
                 } else {
-                    //cell.timeLabel.text = String((totalNowTime - totalArticleTime) / 60)+"시간 전"
-                    cell.timeLabel.text = time.substring(from: 11, to: 16)
+                    cell.timeLabel.text = String((totalNowTime - totalArticleTime) / 60)+"시간 전"
+                    //cell.timeLabel.text = time.substring(from: 11, to: 16)
                 }
             } else {
                 cell.timeLabel.text = time.substring(from: 5, to: 10)
+                //cell.timeLabel.text = time.substring(from: 5, to: 7) + "월" + time.substring(from: 8, to: 10) + "일"
             }
             
             

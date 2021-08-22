@@ -30,6 +30,7 @@ class CustomLoader: UIView {
     }()
     
     func showLoader() {
+        print(">>🐣 로딩 시작")
         self.addSubview(transparentView)
         self.transparentView.addSubview(gifImage)
         self.transparentView.bringSubviewToFront(self.gifImage)
@@ -37,6 +38,7 @@ class CustomLoader: UIView {
     }
     
     func hideLoader() {
+        print(">>🐣 로딩 종료")
         self.transparentView.removeFromSuperview()
     }
 

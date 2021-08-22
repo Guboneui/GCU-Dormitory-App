@@ -18,6 +18,8 @@ class MyPostViewController: UIViewController {
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
     var loading: NVActivityIndicatorView!
+    
+    
     var myPost: [MyPost] = []
     var currentPage = 0
     var isLoadedAllData = false
@@ -32,19 +34,13 @@ class MyPostViewController: UIViewController {
         setTableView()
         configDesign()
         
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarItem()
-        
-//        //loading.startAnimating()
-//        CustomLoader.instance.showLoader()
-//        currentPage = 0
-//        self.isLoadedAllData = false
-//        myPost.removeAll()
-//        mainCollectionView.reloadData()
-        
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = MyPostRequest(curUser: id)
         dataManager.postMyArticle(param, viewController: self, page: currentPage)
@@ -56,6 +52,7 @@ class MyPostViewController: UIViewController {
         currentPage = 0
         self.isLoadedAllData = false
         myPost.removeAll()
+        mainCollectionView.reloadData()
     
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = MyPostRequest(curUser: id)

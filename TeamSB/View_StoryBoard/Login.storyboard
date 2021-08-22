@@ -112,16 +112,24 @@
                                 <color key="textColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재는 글로벌캠퍼스 기준이며, 메디컬캠퍼스는 추후 업데이트 예정입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMe-pc-Axa">
+                                <rect key="frame" x="61" y="850" width="292" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.40392156862745099" green="0.40392156862745099" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6mi-Qf-gpO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZMe-pc-Axa" firstAttribute="centerX" secondItem="f3E-iZ-XHV" secondAttribute="centerX" id="0VI-TK-DIs"/>
                             <constraint firstItem="cas-E2-Py4" firstAttribute="top" secondItem="WjG-Aq-vE2" secondAttribute="bottom" constant="106" id="3Ue-W7-DeM"/>
                             <constraint firstItem="S8u-ji-XqU" firstAttribute="centerX" secondItem="f3E-iZ-XHV" secondAttribute="centerX" id="55e-RR-bnq"/>
                             <constraint firstItem="HU9-0z-716" firstAttribute="centerX" secondItem="f3E-iZ-XHV" secondAttribute="centerX" id="B2G-ka-3XG"/>
                             <constraint firstItem="WjG-Aq-vE2" firstAttribute="leading" secondItem="6mi-Qf-gpO" secondAttribute="leading" constant="50" id="BBw-AU-L4z"/>
                             <constraint firstItem="6mi-Qf-gpO" firstAttribute="trailing" secondItem="WjG-Aq-vE2" secondAttribute="trailing" constant="50" id="QOT-X8-fd0"/>
                             <constraint firstItem="HU9-0z-716" firstAttribute="top" secondItem="WjG-Aq-vE2" secondAttribute="bottom" constant="106" id="Vn3-GG-f7h"/>
+                            <constraint firstItem="ZMe-pc-Axa" firstAttribute="bottom" secondItem="6mi-Qf-gpO" secondAttribute="bottom" id="XI2-Yq-Bhh"/>
                             <constraint firstItem="bTL-cG-i3G" firstAttribute="top" secondItem="WjG-Aq-vE2" secondAttribute="bottom" constant="10" id="XtA-Pk-0Va"/>
                             <constraint firstItem="bUh-9h-4Us" firstAttribute="top" secondItem="SPf-Rk-dxy" secondAttribute="bottom" constant="5" id="Y3T-te-UWb"/>
                             <constraint firstItem="S8u-ji-XqU" firstAttribute="top" secondItem="cas-E2-Py4" secondAttribute="bottom" constant="4" id="bPa-ox-574"/>
