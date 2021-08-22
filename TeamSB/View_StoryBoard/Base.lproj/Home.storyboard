@@ -841,10 +841,9 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhP-4w-fbn">
-                                        <rect key="frame" x="159.33333333333334" y="37" width="12" height="12"/>
+                                        <rect key="frame" x="119.99999999999999" y="37" width="51.333333333333329" height="12"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="1gi-91-GiC"/>
                                             <constraint firstAttribute="height" constant="12" id="GGT-MO-gO2"/>
                                         </constraints>
                                         <connections>
@@ -854,6 +853,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="HhP-4w-fbn" firstAttribute="trailing" secondItem="zXZ-jX-A3V" secondAttribute="trailing" id="2FJ-q7-VXP"/>
                                     <constraint firstItem="9tM-LM-Lxj" firstAttribute="top" secondItem="Rao-xB-B95" secondAttribute="centerY" constant="1.5" id="2My-aU-qGJ"/>
                                     <constraint firstItem="RuJ-ZQ-dNy" firstAttribute="bottom" secondItem="a4M-DQ-8SA" secondAttribute="bottom" id="52m-85-od0"/>
                                     <constraint firstItem="RuJ-ZQ-dNy" firstAttribute="width" secondItem="a4M-DQ-8SA" secondAttribute="width" multiplier="0.3" id="535-PT-s3q"/>
@@ -867,7 +867,7 @@
                                     <constraint firstItem="RuJ-ZQ-dNy" firstAttribute="trailing" secondItem="a4M-DQ-8SA" secondAttribute="trailing" id="XJE-83-VD3"/>
                                     <constraint firstItem="zXZ-jX-A3V" firstAttribute="centerY" secondItem="F0C-bN-MLh" secondAttribute="centerY" id="Ynu-03-Ueb"/>
                                     <constraint firstItem="F0C-bN-MLh" firstAttribute="bottom" secondItem="yVT-JI-MQK" secondAttribute="centerY" constant="1.5" id="ZYu-tl-hEX"/>
-                                    <constraint firstItem="HhP-4w-fbn" firstAttribute="leading" secondItem="F0C-bN-MLh" secondAttribute="trailing" constant="3" id="beg-JF-jRQ"/>
+                                    <constraint firstItem="HhP-4w-fbn" firstAttribute="leading" secondItem="F0C-bN-MLh" secondAttribute="leading" id="beg-JF-jRQ"/>
                                     <constraint firstItem="Rao-xB-B95" firstAttribute="width" secondItem="a4M-DQ-8SA" secondAttribute="width" id="dAf-Xj-CUD"/>
                                     <constraint firstItem="Rao-xB-B95" firstAttribute="height" secondItem="a4M-DQ-8SA" secondAttribute="height" id="dka-3q-dCq"/>
                                     <constraint firstItem="Rao-xB-B95" firstAttribute="top" secondItem="a4M-DQ-8SA" secondAttribute="top" id="e7k-vF-i9F"/>
