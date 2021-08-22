@@ -427,7 +427,7 @@ extension MainBaseViewController: MainView {
                             firstMenuString! += "\(dateMenu.아침[0][i])\n"
                         }
                     }
-                    firstTimeString = "아침 (07:00~08:30)"
+                    firstTimeString = "아침 (08:00~09:30)"
                     secondMenuString = "준비된 메뉴가\n없습니다."
                     baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
 
@@ -439,7 +439,7 @@ extension MainBaseViewController: MainView {
                             firstMenuString! += "\(dateMenu.점심[0][i])\n"
                         }
                     }
-                    firstTimeString = "점심 (11:50~13:30)"
+                    firstTimeString = "점심 (11:45~14:00)"
 
 
                     for i in 0..<dateMenu.점심[1].count {
@@ -469,7 +469,7 @@ extension MainBaseViewController: MainView {
                             firstMenuString! += "\(dateMenu.저녁[0][i])\n"
                         }
                     }
-                    firstTimeString = "저녁 (18:00~19:30)"
+                    firstTimeString = "저녁 (17:00~18:30)"
                     secondMenuString = "준비된 메뉴가\n없습니다."
                     baseTableView.reloadRows(at: [[0, 4]], with: .automatic)
 

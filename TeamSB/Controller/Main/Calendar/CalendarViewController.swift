@@ -168,11 +168,11 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         
         if indexPath.row == 0 {
-            cell.timeLabel.text = "아침 (07:00~08:30)"
+            cell.timeLabel.text = "아침 (08:00~09:30)"
             cell.menuLabel.text = morningString
             cell.subMenuLabel.text = nil
         } else if indexPath.row == 1 {
-            cell.timeLabel.text = "점심 (11:50~13:30)"
+            cell.timeLabel.text = "점심 (11:45~14:00)"
             cell.menuLabel.text = "A코스\n" + firstLaunchString
             cell.subMenuLabel.text = "B코스\n" + secondLauchString
             
@@ -186,7 +186,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             
             
         } else if indexPath.row == 2 {
-            cell.timeLabel.text = "저녁 (18:00~19:30)"
+            cell.timeLabel.text = "저녁 (17:00~18:30)"
             cell.menuLabel.text = dinnerString
             cell.subMenuLabel.text = nil
         }
