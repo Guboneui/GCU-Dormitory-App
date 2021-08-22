@@ -38,12 +38,12 @@ class MyPostViewController: UIViewController {
         super.viewWillAppear(animated)
         setNavigationBarItem()
         
-        //loading.startAnimating()
-        CustomLoader.instance.showLoader()
-        currentPage = 0
-        self.isLoadedAllData = false
-        myPost.removeAll()
-        mainCollectionView.reloadData()
+//        //loading.startAnimating()
+//        CustomLoader.instance.showLoader()
+//        currentPage = 0
+//        self.isLoadedAllData = false
+//        myPost.removeAll()
+//        mainCollectionView.reloadData()
         
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = MyPostRequest(curUser: id)
@@ -353,7 +353,8 @@ extension MyPostViewController: MyPostView {
         vc.getContents = data.text
         vc.getShowCount = data.viewCount
         vc.getUserID = data.userId
-        vc.getHash = data.hash 
+        vc.getHash = data.hash
+        vc.delegate = self
         vc.getImage = data.imageSource ?? ""
         vc.getMainTitle = data.category
         vc.getReplyCount = data.replyCount
@@ -362,6 +363,17 @@ extension MyPostViewController: MyPostView {
     }
     
     
+}
+
+extension MyPostViewController: WhenDismissDetailView {
+    func reloadView() {
+        currentPage = 0
+        isLoadedAllData = false
+        myPost.removeAll()
+        let id = UserDefaults.standard.string(forKey: "userID")!
+        let param = MyPostRequest(curUser: id)
+        dataManager.postMyArticle(param, viewController: self, page: currentPage)
+    }
 }
 
 extension MyPostViewController: UpdateData {
