@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class MyPostViewController: UIViewController {
 
+    @IBOutlet weak var noPostImageView: UIImageView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var topGuideLineView: UIView!
     
@@ -140,6 +141,11 @@ extension MyPostViewController {
 
 extension MyPostViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if myPost.count == 0 {
+            noPostImageView.isHidden = false
+        } else {
+            noPostImageView.isHidden = true
+        }
         return myPost.count
     }
     

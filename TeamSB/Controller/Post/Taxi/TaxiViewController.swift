@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class TaxiViewController: UIViewController {
 
+    @IBOutlet weak var noPostImageView: UIImageView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var topGuideLineView: UIView!
     var writeButton: UIBarButtonItem!
@@ -137,6 +138,11 @@ class TaxiViewController: UIViewController {
 
 extension TaxiViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if taxiPost.count == 0 {
+            noPostImageView.isHidden = false
+        } else {
+            noPostImageView.isHidden = true
+        }
         return taxiPost.count
     }
     

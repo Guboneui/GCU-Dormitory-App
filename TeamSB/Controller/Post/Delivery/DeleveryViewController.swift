@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class DeleveryViewController: UIViewController {
     
+    @IBOutlet weak var noPostImageView: UIImageView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var topGuideLineView: UIView!
     var writeButton: UIBarButtonItem!
@@ -146,6 +147,11 @@ extension DeleveryViewController {
 //MARK: -tableview 세팅
 extension DeleveryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if deleveryPost.count == 0 {
+            noPostImageView.isHidden = false
+        } else {
+            noPostImageView.isHidden = true
+        }
         return deleveryPost.count
     }
     

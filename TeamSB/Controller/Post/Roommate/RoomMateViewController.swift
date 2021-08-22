@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class RoomMateViewController: UIViewController {
 
+    @IBOutlet weak var noPostImageView: UIImageView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var topGuideLineView: UIView!
     var writeButton: UIBarButtonItem!
@@ -138,6 +139,12 @@ class RoomMateViewController: UIViewController {
 
 extension RoomMateViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if roommatePost.count == 0 {
+            noPostImageView.isHidden = false
+        } else {
+            noPostImageView.isHidden = true
+        }
+        
         return roommatePost.count
     }
     

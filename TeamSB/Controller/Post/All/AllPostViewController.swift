@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class ShowMoreViewController: UIViewController {
 
+    @IBOutlet weak var noPostImageView: UIImageView!
     @IBOutlet weak var allPostCollectionView: UICollectionView!
     @IBOutlet weak var topGuideLineView: UIView!
     var writeButton: UIBarButtonItem!
@@ -160,6 +161,12 @@ extension ShowMoreViewController {
 //MARK: -tableView 세팅
 extension ShowMoreViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if allPost.count == 0 {
+            noPostImageView.isHidden = false
+             
+        } else {
+            noPostImageView.isHidden = true
+        }
         return allPost.count
     }
     

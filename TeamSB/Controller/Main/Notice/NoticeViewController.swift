@@ -158,10 +158,6 @@ extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
         cell.subTitleLabel.text = data.title
         cell.contentsLabel.text = data.content
         
-        
-        
-        
-        
        
         return cell
     }

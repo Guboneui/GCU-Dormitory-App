@@ -44,6 +44,13 @@
                                     <constraint firstAttribute="height" constant="1" id="wi1-8U-q23"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPost" translatesAutoresizingMaskIntoConstraints="NO" id="nt0-vb-3Ho">
+                                <rect key="frame" x="57" y="373" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="OuV-Gd-IK7"/>
+                                    <constraint firstAttribute="height" constant="150" id="yM1-GH-WGh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ip0-Qk-s6h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -53,12 +60,15 @@
                             <constraint firstItem="ip0-Qk-s6h" firstAttribute="trailing" secondItem="NeP-b5-Gje" secondAttribute="trailing" id="G3d-6X-JeS"/>
                             <constraint firstItem="tll-ds-Ghq" firstAttribute="leading" secondItem="ip0-Qk-s6h" secondAttribute="leading" id="Sx6-Ld-JQq"/>
                             <constraint firstItem="NeP-b5-Gje" firstAttribute="top" secondItem="tll-ds-Ghq" secondAttribute="bottom" constant="2" id="VZi-2N-hKm"/>
+                            <constraint firstItem="nt0-vb-3Ho" firstAttribute="centerY" secondItem="bUZ-RR-otW" secondAttribute="centerY" id="WmY-pj-Da6"/>
                             <constraint firstItem="tll-ds-Ghq" firstAttribute="top" secondItem="ip0-Qk-s6h" secondAttribute="top" id="iWQ-M1-N2M"/>
                             <constraint firstItem="ip0-Qk-s6h" firstAttribute="trailing" secondItem="tll-ds-Ghq" secondAttribute="trailing" id="ugh-FO-CjN"/>
+                            <constraint firstItem="nt0-vb-3Ho" firstAttribute="centerX" secondItem="bUZ-RR-otW" secondAttribute="centerX" id="vQV-4a-NcG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="allPostCollectionView" destination="NeP-b5-Gje" id="5jW-aN-aOQ"/>
+                        <outlet property="noPostImageView" destination="nt0-vb-3Ho" id="rm4-kd-3Ob"/>
                         <outlet property="topGuideLineView" destination="tll-ds-Ghq" id="XaE-Yb-3dX"/>
                     </connections>
                 </viewController>
@@ -101,21 +111,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPost" translatesAutoresizingMaskIntoConstraints="NO" id="RQU-DV-20U">
+                                <rect key="frame" x="57" y="373" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Afb-Jo-Jzt"/>
+                                    <constraint firstAttribute="height" constant="150" id="ouw-rV-ael"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hVx-w7-K88"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6f2-Z4-d9N" secondAttribute="trailing" id="9tA-JL-zQq"/>
+                            <constraint firstItem="RQU-DV-20U" firstAttribute="centerX" secondItem="5Yr-cK-mTJ" secondAttribute="centerX" id="Agn-Ee-mMR"/>
                             <constraint firstItem="sem-7M-3h9" firstAttribute="top" secondItem="6f2-Z4-d9N" secondAttribute="bottom" constant="2" id="J1c-eR-8Jo"/>
                             <constraint firstItem="hVx-w7-K88" firstAttribute="trailing" secondItem="sem-7M-3h9" secondAttribute="trailing" id="R3X-aE-hNf"/>
                             <constraint firstItem="sem-7M-3h9" firstAttribute="leading" secondItem="hVx-w7-K88" secondAttribute="leading" id="TfD-f5-Nqp"/>
                             <constraint firstItem="6f2-Z4-d9N" firstAttribute="leading" secondItem="5Yr-cK-mTJ" secondAttribute="leading" id="cso-e4-dVB"/>
+                            <constraint firstItem="RQU-DV-20U" firstAttribute="centerY" secondItem="5Yr-cK-mTJ" secondAttribute="centerY" id="dG9-Pm-dnh"/>
                             <constraint firstItem="6f2-Z4-d9N" firstAttribute="top" secondItem="hVx-w7-K88" secondAttribute="top" id="jth-aG-1pw"/>
                             <constraint firstAttribute="bottom" secondItem="sem-7M-3h9" secondAttribute="bottom" id="rkk-Ir-Cfp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="sem-7M-3h9" id="9hy-uc-HAD"/>
+                        <outlet property="noPostImageView" destination="RQU-DV-20U" id="i6e-yJ-LbA"/>
                         <outlet property="topGuideLineView" destination="6f2-Z4-d9N" id="52S-ek-tay"/>
                     </connections>
                 </viewController>
@@ -158,12 +178,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPost" translatesAutoresizingMaskIntoConstraints="NO" id="VxP-qp-F65">
+                                <rect key="frame" x="57" y="373" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="8Uj-dm-aq4"/>
+                                    <constraint firstAttribute="width" constant="300" id="rJ2-uf-pyr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HHL-Rv-wjh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ip7-Xj-b5x" firstAttribute="leading" secondItem="HHL-Rv-wjh" secondAttribute="leading" id="7vz-6P-oqd"/>
                             <constraint firstAttribute="bottom" secondItem="ip7-Xj-b5x" secondAttribute="bottom" id="Ev0-DW-ffr"/>
+                            <constraint firstItem="VxP-qp-F65" firstAttribute="centerY" secondItem="mql-rw-gss" secondAttribute="centerY" id="Q5Q-Da-Rii"/>
+                            <constraint firstItem="VxP-qp-F65" firstAttribute="centerX" secondItem="mql-rw-gss" secondAttribute="centerX" id="RKi-xt-dCw"/>
                             <constraint firstItem="ip7-Xj-b5x" firstAttribute="top" secondItem="X4O-aK-xBD" secondAttribute="bottom" constant="2" id="ch9-RM-5ky"/>
                             <constraint firstItem="X4O-aK-xBD" firstAttribute="leading" secondItem="mql-rw-gss" secondAttribute="leading" id="f5y-Vr-BpK"/>
                             <constraint firstItem="HHL-Rv-wjh" firstAttribute="trailing" secondItem="ip7-Xj-b5x" secondAttribute="trailing" id="g4g-Tz-AZS"/>
@@ -173,6 +202,7 @@
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="ip7-Xj-b5x" id="aUO-jh-3mH"/>
+                        <outlet property="noPostImageView" destination="VxP-qp-F65" id="CRy-UD-gEU"/>
                         <outlet property="topGuideLineView" destination="X4O-aK-xBD" id="BsT-eD-oXk"/>
                     </connections>
                 </viewController>
@@ -215,11 +245,20 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPost" translatesAutoresizingMaskIntoConstraints="NO" id="Bhr-5K-yVp">
+                                <rect key="frame" x="57" y="373" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="4mf-Cp-fTc"/>
+                                    <constraint firstAttribute="width" constant="300" id="OY5-VV-3rB"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O2M-tE-lAZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="O2M-tE-lAZ" firstAttribute="trailing" secondItem="ni5-0L-Jp7" secondAttribute="trailing" id="8to-BH-1HY"/>
+                            <constraint firstItem="Bhr-5K-yVp" firstAttribute="centerY" secondItem="pF4-2E-TK8" secondAttribute="centerY" id="Dsk-xK-4Rj"/>
+                            <constraint firstItem="Bhr-5K-yVp" firstAttribute="centerX" secondItem="pF4-2E-TK8" secondAttribute="centerX" id="HBg-3V-vrG"/>
                             <constraint firstAttribute="trailing" secondItem="KIu-7w-bMS" secondAttribute="trailing" id="IBr-D8-SeN"/>
                             <constraint firstItem="KIu-7w-bMS" firstAttribute="leading" secondItem="pF4-2E-TK8" secondAttribute="leading" id="M5W-Y9-KxK"/>
                             <constraint firstItem="KIu-7w-bMS" firstAttribute="top" secondItem="O2M-tE-lAZ" secondAttribute="top" id="Pfj-gI-5Hd"/>
@@ -230,6 +269,7 @@
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="ni5-0L-Jp7" id="s94-7m-tdv"/>
+                        <outlet property="noPostImageView" destination="Bhr-5K-yVp" id="J2M-Ix-4S7"/>
                         <outlet property="topGuideLineView" destination="KIu-7w-bMS" id="WBE-SS-62a"/>
                     </connections>
                 </viewController>
@@ -272,21 +312,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noPost" translatesAutoresizingMaskIntoConstraints="NO" id="QE6-ck-5Cv">
+                                <rect key="frame" x="57" y="373" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="RPE-F4-5UM"/>
+                                    <constraint firstAttribute="width" constant="300" id="sbF-9Z-syo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zJh-9x-0ln"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="qFg-LU-yl7" secondAttribute="trailing" id="0hz-1E-BNe"/>
                             <constraint firstItem="zJh-9x-0ln" firstAttribute="trailing" secondItem="EzG-Tk-EJg" secondAttribute="trailing" id="OyU-9g-6IJ"/>
+                            <constraint firstItem="QE6-ck-5Cv" firstAttribute="centerY" secondItem="eB0-tc-bIK" secondAttribute="centerY" id="PDr-AY-lmU"/>
                             <constraint firstItem="EzG-Tk-EJg" firstAttribute="leading" secondItem="zJh-9x-0ln" secondAttribute="leading" id="Sui-n7-gVk"/>
                             <constraint firstItem="qFg-LU-yl7" firstAttribute="leading" secondItem="eB0-tc-bIK" secondAttribute="leading" id="Wk5-nm-JuV"/>
                             <constraint firstItem="EzG-Tk-EJg" firstAttribute="top" secondItem="qFg-LU-yl7" secondAttribute="bottom" constant="2" id="XhJ-xa-bD1"/>
+                            <constraint firstItem="QE6-ck-5Cv" firstAttribute="centerX" secondItem="eB0-tc-bIK" secondAttribute="centerX" id="laO-6w-wL4"/>
                             <constraint firstItem="qFg-LU-yl7" firstAttribute="top" secondItem="zJh-9x-0ln" secondAttribute="top" id="sMn-bE-ybA"/>
                             <constraint firstAttribute="bottom" secondItem="EzG-Tk-EJg" secondAttribute="bottom" id="xvO-ab-Dc5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainCollectionView" destination="EzG-Tk-EJg" id="DBq-3h-WLu"/>
+                        <outlet property="noPostImageView" destination="QE6-ck-5Cv" id="Hxt-cK-eBb"/>
                         <outlet property="topGuideLineView" destination="qFg-LU-yl7" id="TEw-k9-ZmQ"/>
                     </connections>
                 </viewController>
@@ -296,6 +346,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="noPost" width="3098" height="1448"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
