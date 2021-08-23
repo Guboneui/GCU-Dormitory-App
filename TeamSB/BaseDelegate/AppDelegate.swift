@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         
         UNUserNotificationCenter.current().delegate = self
-        print("refresh")
       
 //        if #available(iOS 10.0, *) {
 //          // For iOS 10 display notification (sent via APNS)
