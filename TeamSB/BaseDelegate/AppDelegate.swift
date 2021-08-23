@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
+        
       
 //        if #available(iOS 10.0, *) {
 //          // For iOS 10 display notification (sent via APNS)
@@ -45,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //          application.registerUserNotificationSettings(settings)
 //        }
 
-        application.registerForRemoteNotifications()
+        //application.registerForRemoteNotifications()
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().isEnableAutoToolbar = false
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
@@ -53,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    
+
     
     
     func application(_ application: UIApplication,

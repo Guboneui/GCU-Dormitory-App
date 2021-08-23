@@ -44,15 +44,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-        print("22222222222222222222")
+        print("백그라운드에서 앱이 종료되었습니다.")
         DispatchQueue.main.async {
+            self.noneActiveAlert()
             if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
                 let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID") ?? "")
                 self.removeFcmToken(param)
             }
         }
-        
-        
         
         
     }
@@ -76,7 +75,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        print("66666666666")
+        print(">> 백그라운드 진입")
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
@@ -85,7 +84,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func removeFcmToken(_ parameters: RemoveFcmTokenRequest) {
         print(">> 자동로그인이 활성화 되어있지 않아. 앱 종료 시 fcm 토큰이 삭제됩니다")
-        
         AF.request("\(ConstantURL.BASE_URL)/deleteToken", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
             .validate()
             .responseDecodable(of: RemoveFcmTokenResponse.self) { [self] response in
@@ -113,6 +111,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
+    func noneActiveAlert() {
+        UIApplication.shared.unregisterForRemoteNotifications()
+        print(">> 알림이 비활성화 됩니다.")
+    }
     
 
 }
