@@ -56,6 +56,12 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
 
         
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        /// 앱이 foreground  상태일 때 Push 받으면 alert를 띄워준다
+        completionHandler([.banner, .sound])
+      }
+    
 }
 
 //MARK: -기본 UI 함수 정리

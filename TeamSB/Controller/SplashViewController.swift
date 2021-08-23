@@ -67,10 +67,5 @@ class SplashViewController: UIViewController {
             }
             
         })
-        
-        
-        
-        
     }
-
 }

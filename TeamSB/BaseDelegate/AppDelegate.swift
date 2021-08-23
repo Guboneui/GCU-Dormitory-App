@@ -5,17 +5,26 @@ import FirebaseCore
 import FirebaseMessaging
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
     let gcmMessageIDKey = "gcm.Message_id"
     var window: UIWindow?
 
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+//           {
+//            completionHandler([.banner, .badge, .sound])
+//           }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        /// 앱이 foreground  상태일 때 Push 받으면 alert를 띄워준다
+        completionHandler([.banner, .sound])
+      }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-        UNUserNotificationCenter.current().delegate = self
       
 //        if #available(iOS 10.0, *) {
 //          // For iOS 10 display notification (sent via APNS)
@@ -40,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().isEnableAutoToolbar = false
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
-
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
     
@@ -118,30 +127,30 @@ extension AppDelegate: MessagingDelegate {
 
 
 
-@available(iOS 10, *)
-extension AppDelegate: UNUserNotificationCenterDelegate {
-  // Receive displayed notifications for iOS 10 devices.
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              willPresent notification: UNNotification,
-                              withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
-                                -> Void) {
-    let userInfo = notification.request.content.userInfo
-    print(userInfo)
-
-    completionHandler([[.alert, .sound]])
-  }
-
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              didReceive response: UNNotificationResponse,
-                              withCompletionHandler completionHandler: @escaping () -> Void) {
-    let userInfo = response.notification.request.content.userInfo
-
-    // ...
-    // With swizzling disabled you must let Messaging know about the message, for Analytics
-    // Messaging.messaging().appDidReceiveMessage(userInfo)
-    // Print full message.
-    print(userInfo)
-
-    completionHandler()
-  }
-}
+//@available(iOS 10, *)
+//extension AppDelegate: UNUserNotificationCenterDelegate {
+//  // Receive displayed notifications for iOS 10 devices.
+//  func userNotificationCenter(_ center: UNUserNotificationCenter,
+//                              willPresent notification: UNNotification,
+//                              withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
+//                                -> Void) {
+//    let userInfo = notification.request.content.userInfo
+//    print(userInfo)
+//
+//    completionHandler([[.banner, .badge, .sound]])
+//  }
+//
+//  func userNotificationCenter(_ center: UNUserNotificationCenter,
+//                              didReceive response: UNNotificationResponse,
+//                              withCompletionHandler completionHandler: @escaping () -> Void) {
+//    let userInfo = response.notification.request.content.userInfo
+//
+//    // ...
+//    // With swizzling disabled you must let Messaging know about the message, for Analytics
+//    // Messaging.messaging().appDidReceiveMessage(userInfo)
+//    // Print full message.
+//    print(userInfo)
+//
+//    completionHandler()
+//  }
+//}
