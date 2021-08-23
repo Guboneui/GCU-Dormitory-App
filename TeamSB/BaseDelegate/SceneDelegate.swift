@@ -45,11 +45,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidDisconnect(_ scene: UIScene) {
         print("22222222222222222222")
-        
-        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-            let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID") ?? "")
-            removeFcmToken(param)
+        DispatchQueue.main.async {
+            if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+                let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID") ?? "")
+                self.removeFcmToken(param)
+            }
         }
+        
+        
         
         
     }
@@ -92,6 +95,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         
                         print(">>😎 토큰 제거 성공")
                         
+                        UserDefaults.standard.set(nil, forKey: "FCMToken")
                         UserDefaults.standard.set(nil, forKey: "userID")
                         UserDefaults.standard.set(nil, forKey: "userNicknameExist")
                         UserDefaults.standard.set(nil, forKey: "userNickname")
