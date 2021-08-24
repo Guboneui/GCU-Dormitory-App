@@ -70,7 +70,6 @@ class WriteViewController: UIViewController {
         setDesign()
         setDropdown()
         setCollectionView()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -282,12 +281,12 @@ extension WriteViewController: UITextViewDelegate {
         }
     }
 
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            contentsTextView.resignFirstResponder()
-        }
-        return true
-    }
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if text == "\n" {
+//            contentsTextView.resignFirstResponder()
+//        }
+//        return true
+//    }
 
     func textViewSetupView() {
         if contentsTextView.text == "내용을 입력 해주세요." {

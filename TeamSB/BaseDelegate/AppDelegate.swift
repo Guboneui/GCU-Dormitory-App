@@ -54,8 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-
-    
+   
     
     func application(_ application: UIApplication,
                        didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
@@ -76,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-       
+       print(">> 앱이 종료됩니다😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍")
     }
     
     func application(_ application: UIApplication,
@@ -95,6 +94,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       completionHandler(UIBackgroundFetchResult.newData)
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        
+    }
+    
+    func requestSceneSessionDestruction(_ application: UIApplication) {
+        
+    }
    
 }
 

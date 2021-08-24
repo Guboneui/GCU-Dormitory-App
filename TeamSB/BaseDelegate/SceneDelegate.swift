@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISceneDelegate {
 
     var window: UIWindow?
 
@@ -42,12 +42,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("111111111111111111111111")
         guard let _ = (scene as? UIWindowScene) else { return }
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         print("백그라운드에서 앱이 종료되었습니다.")
         DispatchQueue.main.async {
-            self.noneActiveAlert()
+            
             if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+                self.noneActiveAlert()
                 let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID") ?? "")
                 self.removeFcmToken(param)
             }
