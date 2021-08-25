@@ -11,12 +11,13 @@ import Alamofire
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISceneDelegate {
 
     var window: UIWindow?
-
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
        
-        
-
+        //앱 버전 확인 API 연동 필요
 //
 //        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
 //            let storyBoard = UIStoryboard(name: "Login", bundle: nil)
@@ -49,6 +50,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISceneDelegate {
             
             if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
                 self.noneActiveAlert()
+                UserDefaults.standard.set(nil, forKey: "userID")
+                UserDefaults.standard.set(nil, forKey: "userNicknameExist")
+                UserDefaults.standard.set(nil, forKey: "userNickname")
+                UserDefaults.standard.set(false, forKey: "autoLoginState")
                 let param = RemoveFcmTokenRequest(curUser: UserDefaults.standard.string(forKey: "userID") ?? "")
                 self.removeFcmToken(param)
             }
@@ -125,7 +130,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISceneDelegate {
         UIApplication.shared.unregisterForRemoteNotifications()
         print(">> 알림이 비활성화 됩니다.")
     }
-    
-
 }
 

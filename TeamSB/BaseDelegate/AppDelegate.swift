@@ -3,11 +3,16 @@ import IQKeyboardManager
 import Firebase
 import FirebaseCore
 import FirebaseMessaging
+import Alamofire
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate{
     let gcmMessageIDKey = "gcm.Message_id"
     var window: UIWindow?
+    
+//    static var appVersion: String? {
+//        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+//     }
 
 //    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
 //           {
@@ -28,8 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        
-        
       
 //        if #available(iOS 10.0, *) {
 //          // For iOS 10 display notification (sent via APNS)
@@ -97,15 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
       completionHandler(UIBackgroundFetchResult.newData)
     }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        
-    }
-    
-    func requestSceneSessionDestruction(_ application: UIApplication) {
-        
-    }
-   
 }
 
 
@@ -165,3 +159,8 @@ extension AppDelegate: MessagingDelegate {
 //    completionHandler()
 //  }
 //}
+
+
+
+
+
