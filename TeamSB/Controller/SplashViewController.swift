@@ -11,7 +11,7 @@ import Alamofire
 class SplashViewController: UIViewController {
 
     var check: Bool = false
-    lazy var dataManager: SplashDataManager = SplashDataManager()
+    lazy var dataManager: SplashDataManager = SplashDataManager(view: self)
     
     private let imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
@@ -89,26 +89,33 @@ class SplashViewController: UIViewController {
             if done {
                 //getVersion(version: SceneDelegate.appVersion!)
                 dataManager.getVersion(version: SceneDelegate.appVersion!, viewController: self)
-                
-//                if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-//                    let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-//                    let loginVC = storyBoard.instantiateViewController(identifier: "LoginNavigationVC")
-//                    self.changeRootViewController(loginVC)
-//
-//                } else {
-//                    if UserDefaults.standard.bool(forKey: "userNicknameExist") == false {
-//                        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-//                        let nicknameVC = storyBoard.instantiateViewController(identifier: "NickNameViewController")
-//                        self.changeRootViewController(nicknameVC)
-//
-//                    } else {
-//                        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-//                        let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
-//                        self.changeRootViewController(homeVC)
-//                    }
-//                }
             }
             
         })
     }
+}
+
+
+extension SplashViewController: splashView {
+    func changeView() {
+        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+            let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+            let loginVC = storyBoard.instantiateViewController(identifier: "LoginNavigationVC")
+            self.changeRootViewController(loginVC)
+
+        } else {
+            if UserDefaults.standard.bool(forKey: "userNicknameExist") == false {
+                let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+                let nicknameVC = storyBoard.instantiateViewController(identifier: "NickNameViewController")
+                self.changeRootViewController(nicknameVC)
+
+            } else {
+                let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+                let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
+                self.changeRootViewController(homeVC)
+            }
+        }
+    }
+    
+    
 }

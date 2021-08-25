@@ -17,29 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
        
-        //앱 버전 확인 API 연동 필요
-//
-//        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-//            let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-//            let loginVC = storyBoard.instantiateViewController(identifier: "LoginNavigationVC")
-//            window?.rootViewController = loginVC
-//            window?.makeKeyAndVisible()
-//
-//        } else {
-//            if UserDefaults.standard.bool(forKey: "userNicknameExist") == false {
-//                let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-//                let nicknameVC = storyBoard.instantiateViewController(identifier: "NickNameViewController")
-//                window?.rootViewController = nicknameVC
-//                window?.makeKeyAndVisible()
-//
-//            } else {
-//                let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-//                let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
-//                window?.rootViewController = homeVC
-//                window?.makeKeyAndVisible()
-//            }
-//        }
-        
         print("111111111111111111111111")
         guard let _ = (scene as? UIWindowScene) else { return }
     }
