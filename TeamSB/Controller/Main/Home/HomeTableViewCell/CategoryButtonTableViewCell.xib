@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -111,33 +112,29 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="ogH-7m-Ujp">
-                        <rect key="frame" x="63.5" y="15" width="285" height="30"/>
+                        <rect key="frame" x="63.5" y="15" width="285" height="139.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGh-Co-UPG">
-                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="139.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="2MZ-Gx-gRv"/>
-                                    <constraint firstAttribute="height" constant="30" id="kmC-kg-pZV"/>
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jir-Pc-tvr">
-                                <rect key="frame" x="85" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="85" y="0.0" width="30" height="139.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="LeS-Tf-z7T"/>
                                     <constraint firstAttribute="width" constant="30" id="VBc-gl-xOH"/>
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnn-un-LxJ">
-                                <rect key="frame" x="170" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="170" y="0.0" width="30" height="139.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="Iqd-7P-oCH"/>
-                                    <constraint firstAttribute="height" constant="30" id="PWv-sg-0rn"/>
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPk-Qj-Rdd">
-                                <rect key="frame" x="255" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="255" y="0.0" width="30" height="139.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="NdB-BA-QPc"/>
                                     <constraint firstAttribute="width" constant="30" id="h1A-Fu-S0x"/>
                                 </constraints>
                             </button>
@@ -150,6 +147,7 @@
                     <constraint firstItem="ogH-7m-Ujp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ZCV-6d-fYf"/>
                     <constraint firstItem="ogH-7m-Ujp" firstAttribute="top" secondItem="Xcg-rs-voZ" secondAttribute="top" id="Zir-qp-e8O"/>
                     <constraint firstItem="Xcg-rs-voZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="fWS-7j-mYB"/>
+                    <constraint firstItem="ogH-7m-Ujp" firstAttribute="bottom" secondItem="Xcg-rs-voZ" secondAttribute="bottom" id="kh9-T7-s62"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
