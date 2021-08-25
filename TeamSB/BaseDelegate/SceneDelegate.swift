@@ -59,9 +59,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         print("33333333333333333333")
-        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-            UIApplication.shared.registerForRemoteNotifications()
-        }
+//        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+//            UIApplication.shared.registerForRemoteNotifications()
+//        }
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
@@ -74,18 +74,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         print("55555555")
-        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-            UIApplication.shared.registerForRemoteNotifications()
-        }
+//        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+//            UIApplication.shared.registerForRemoteNotifications()
+//        }
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         print(">> 백그라운드 진입")
-        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
-            self.noneActiveAlert()
-        }
+//        if UserDefaults.standard.bool(forKey: "autoLoginState") == false {
+//            self.noneActiveAlert()
+//        }
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.

@@ -491,16 +491,30 @@ extension MainBaseViewController: MainView {
 
 extension MainBaseViewController: PhotoAccess {
     func showPhotoAccess() {
-        PHPhotoLibrary.requestAuthorization(for: .readWrite) { authorizationStatus in
-            switch authorizationStatus {
-            case .limited:
-                print("limited authorization granted") // 선택한 사진에 대해서만 허용.
-            case .authorized:
-                print("authorization granted") // 모든 권한 허용.
-            default: print("Unimplemented")
+        if #available(iOS 14, *) {
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { authorizationStatus in
+                switch authorizationStatus {
+                case .limited:
+                    print("limited authorization granted") // 선택한 사진에 대해서만 허용.
+                case .authorized:
+                    print("authorization granted") // 모든 권한 허용.
+                default: print("Unimplemented")
+                    
+                }
                 
             }
-            
+        } else {
+            PHPhotoLibrary.requestAuthorization { authorizationStatus in
+                switch authorizationStatus {
+                case .limited:
+                    print("limited authorization granted") // 선택한 사진에 대해서만 허용.
+                case .authorized:
+                    print("authorization granted") // 모든 권한 허용.
+                default: print("Unimplemented")
+                    
+                }
+                
+            }
         }
     }
     
