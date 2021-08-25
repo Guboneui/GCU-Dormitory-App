@@ -115,7 +115,7 @@ extension EditViewController {
     
     func setNaviTab() {
         self.navigationItem.title = "수정"
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        //self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
     
@@ -251,7 +251,7 @@ extension EditViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     @objc func backButtonAction() {
-        let alert = UIAlertController(title: "글쓰기 취소", message: "수정 내용이 저장되지 않습니다.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "글 수정 취소", message: "수정 내용이 저장되지 않습니다.", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         let okButton = UIAlertAction(title: "확인", style: .default, handler: { [self] _ in
             self.afterEditDelegate?.updateComment(articleNO: originNo)

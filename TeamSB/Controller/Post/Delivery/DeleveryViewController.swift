@@ -36,14 +36,16 @@ class DeleveryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setTableView()
-        setNavigationBarItem()
         dataManager.getDeleveryPost(viewController: self, page: currentPage)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavigationBarItem()
         navigationItemUse()
+       
     }
 }
 //MARK: -기본 UI 함수
@@ -64,13 +66,6 @@ extension DeleveryViewController {
     
     
     func setNavigationBarItem() {
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.tintColor = .black
-//        self.navigationController?.navigationBar.topItem?.title = ""
-//        self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"))
-//
-        
         self.navigationItem.title = "배달"
         self.tabBarController?.tabBar.isHidden = true
         writeButton = UIBarButtonItem(image: UIImage(named: "write_icon"), style: .plain, target: self, action: #selector(goWriteView))

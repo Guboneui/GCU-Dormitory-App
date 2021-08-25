@@ -36,14 +36,13 @@ class TaxiViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setTableView()
-        setNavagationBarItem()
         dataManager.getTaxiPost(viewController: self, page: currentPage)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavagationBarItem()
         navigationItemUse()
     }
     

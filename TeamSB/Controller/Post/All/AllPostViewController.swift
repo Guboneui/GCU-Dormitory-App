@@ -57,12 +57,12 @@ class ShowMoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        setNavigationBarItem()
         dataManager.getAllPost(viewController: self, page: currentPage)
     }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavigationBarItem()
         navigationItemUse()
     }
 
@@ -408,3 +408,4 @@ extension ShowMoreViewController: AllPostView {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+

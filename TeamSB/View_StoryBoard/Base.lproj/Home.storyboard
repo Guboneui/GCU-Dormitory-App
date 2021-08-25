@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g8Y-kk-5qx">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -9,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="Bq2-YW-Q7v">
             <objects>
-                <navigationController id="BFn-9u-iaZ" sceneMemberID="viewController">
+                <navigationController id="BFn-9u-iaZ" customClass="BaseNavigationController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="Itr-rW-0Qv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ACZ-p6-LAl">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -699,10 +700,10 @@
             </objects>
             <point key="canvasLocation" x="794.85981308411215" y="-737.36501079913614"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="nA6-VD-tRl">
             <objects>
-                <navigationController id="dg0-3H-qiO" sceneMemberID="viewController">
+                <navigationController id="dg0-3H-qiO" customClass="BaseNavigationController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="default_myList" selectedImage="default_myList" id="uoG-g6-9WG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Bd-j0-3v7">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -1886,10 +1887,10 @@
             </objects>
             <point key="canvasLocation" x="3030.8411214953271" y="286.3930885529158"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="r5L-VN-MaM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUf-qP-uov" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUf-qP-uov" customClass="BaseNavigationController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="default_Calendar" selectedImage="default_Calendar" id="WiA-ZR-5c5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MUu-yy-C8n">
@@ -1905,10 +1906,10 @@
             </objects>
             <point key="canvasLocation" x="93" y="633"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="RXG-53-m2g">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L7e-av-JSl" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L7e-av-JSl" customClass="BaseNavigationController" customModule="TeamSB" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="default_Notice" id="nlQ-n9-3va"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gyy-au-r4I">
@@ -1931,10 +1932,10 @@
         <image name="B" width="128" height="128"/>
         <image name="C" width="128" height="128"/>
         <image name="D" width="128" height="128"/>
-        <image name="default_Calendar" width="24.666666030883789" height="25"/>
-        <image name="default_Home" width="25" height="25"/>
-        <image name="default_Notice" width="24.666666030883789" height="25"/>
-        <image name="default_myList" width="24.666666030883789" height="25"/>
+        <image name="default_Calendar" width="20" height="20"/>
+        <image name="default_Home" width="20" height="20"/>
+        <image name="default_Notice" width="20" height="20"/>
+        <image name="default_myList" width="20" height="20"/>
         <image name="default_profileImage" width="48" height="48"/>
         <image name="drop" width="166.33332824707031" height="128"/>
         <image name="exist_notice_icon" width="20" height="20"/>

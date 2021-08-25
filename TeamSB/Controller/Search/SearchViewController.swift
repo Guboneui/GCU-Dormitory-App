@@ -177,7 +177,7 @@ extension SearchViewController {
     
     func setNavigationBarItem() {
         self.navigationItem.title = "검색"
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        //self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
         writeButton = UIBarButtonItem(image: UIImage(named: "write_icon"), style: .plain, target: self, action: #selector(goWriteView))
         writeButton.tintColor = .black

@@ -159,6 +159,7 @@
 		2C708FD226D5EEA60081B5E7 /* getVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C708FD126D5EEA60081B5E7 /* getVersionResponse.swift */; };
 		2C708FD426D5F47C0081B5E7 /* SplashDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C708FD326D5F47C0081B5E7 /* SplashDataManager.swift */; };
 		2C708FD626D5F9180081B5E7 /* SplashContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C708FD526D5F9180081B5E7 /* SplashContract.swift */; };
+		2C708FD826D69F9B0081B5E7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C708FD726D69F9B0081B5E7 /* BaseNavigationController.swift */; };
 		2CAFB8D626CE434C003CCA66 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */; };
 		2CAFB8D826CE44AE003CCA66 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */; };
 		2CAFB8DA26CE453E003CCA66 /* splashImage.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D926CE453E003CCA66 /* splashImage.PNG */; };
@@ -374,6 +375,7 @@
 		2C708FD126D5EEA60081B5E7 /* getVersionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getVersionResponse.swift; sourceTree = "<group>"; };
 		2C708FD326D5F47C0081B5E7 /* SplashDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashDataManager.swift; sourceTree = "<group>"; };
 		2C708FD526D5F9180081B5E7 /* SplashContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashContract.swift; sourceTree = "<group>"; };
+		2C708FD726D69F9B0081B5E7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		2CAFB8D926CE453E003CCA66 /* splashImage.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashImage.PNG; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				2C004A5626B2F43200D13ABF /* String.swift */,
 				2CD92B2926BF174100A3263E /* Device.swift */,
 				2C18C97A26C1CCC000C852B2 /* UIImage.swift */,
+				2C708FD726D69F9B0081B5E7 /* BaseNavigationController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1193,6 +1196,7 @@
 				2C004A5B26B2FD3700D13ABF /* NicknameCheckResponse.swift in Sources */,
 				2C3A38AE26CDA29A006D10A3 /* OpenSourceTableViewCell.swift in Sources */,
 				2C44FB7E26C76E1F00C6B7D4 /* CheckUserAlertResponse.swift in Sources */,
+				2C708FD826D69F9B0081B5E7 /* BaseNavigationController.swift in Sources */,
 				2C5D39C226BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift in Sources */,
 				2C44FB8A26C7DA9600C6B7D4 /* GoArticleDetailResponse.swift in Sources */,
 				2C004A8B26B33D8200D13ABF /* ParcelResponse.swift in Sources */,

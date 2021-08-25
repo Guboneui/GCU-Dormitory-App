@@ -86,7 +86,7 @@ extension DetailPostViewController {
     func setNavigation_Tab(){
         self.navigationItem.title = "\(getMainTitle)"
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        //self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     }
     

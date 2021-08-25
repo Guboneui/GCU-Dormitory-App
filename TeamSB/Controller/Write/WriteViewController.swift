@@ -70,6 +70,7 @@ class WriteViewController: UIViewController {
         setDesign()
         setDropdown()
         setCollectionView()
+        //self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +98,7 @@ extension WriteViewController {
 
     func setNaviTab() {
         self.navigationItem.title = "글쓰기"
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        //self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
     
     }
@@ -264,7 +265,17 @@ extension WriteViewController {
     }
     
     @objc func backButtonAction() {
-        self.navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(title: "글 작성 취소", message: "작성 내용이 저장되지 않습니다.", preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { [self] _ in
+            self.navigationController?.popViewController(animated: true)
+        })
+        
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        alert.addAction(cancelButton)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }
 
@@ -389,3 +400,8 @@ extension WriteViewController: WriteView {
 }
 
 
+extension WriteViewController: UIGestureRecognizerDelegate {
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return false // or false
+  }
+}

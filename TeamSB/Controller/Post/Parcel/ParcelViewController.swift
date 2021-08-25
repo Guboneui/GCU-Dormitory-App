@@ -36,15 +36,15 @@ class ParcelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         dataManager.getParcelPost(viewController: self, page: currentPage)
         setTableView()
-        setNavegationBarItem()
+        
       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNavegationBarItem()
         navigationItemUse()
     }
     

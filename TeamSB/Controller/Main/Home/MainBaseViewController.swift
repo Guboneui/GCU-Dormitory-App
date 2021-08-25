@@ -34,6 +34,7 @@ class MainBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         UIApplication.shared.registerForRemoteNotifications()
         setLoading()
         getProfileImage()
