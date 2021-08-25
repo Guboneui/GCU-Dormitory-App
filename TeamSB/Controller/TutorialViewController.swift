@@ -82,8 +82,8 @@ extension TutorialViewController: UICollectionViewDelegate, UICollectionViewData
         
         cell.startButton.addTarget(self, action: #selector(endTutorial), for: .touchUpInside)
         
-        
-        
+        cell.nextButton.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
+        cell.backButton.addTarget(self, action: #selector(backPage), for: .touchUpInside)
         
         return cell
     }
@@ -113,6 +113,23 @@ extension TutorialViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
     }
+    
+    @objc func nextPage() {
+        let nextIndex = min(pageControl.currentPage + 1, 2)
+        pageControl.currentPage = nextIndex
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        mainCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+
+    }
+    
+    @objc func backPage() {
+        let nextIndex = min(pageControl.currentPage - 1, 2)
+        pageControl.currentPage = nextIndex
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        mainCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    
     
 }
 

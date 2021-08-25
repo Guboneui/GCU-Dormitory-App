@@ -14,6 +14,10 @@ class TutorialCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tutorialImage: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     
+    
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    
     var pages = [Page(imageName: "tutorial_home", last: true), Page(imageName: "tutorial_post", last: true), Page(imageName: "tutorial_search", last: false)]
     var getAppGuide = false
     
