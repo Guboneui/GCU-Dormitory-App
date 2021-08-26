@@ -30,6 +30,7 @@ class CalendarViewController: UIViewController {
         
         setTableView()
         setCalendar()
+
         
         
         let formatter        = DateFormatter()
@@ -39,10 +40,17 @@ class CalendarViewController: UIViewController {
         
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "식단"
         setDesign()
+        
+        
+        
+        calendar.select(Date())
+        
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         tabBarController?.tabBar.barTintColor = .white
@@ -77,8 +85,6 @@ extension CalendarViewController {
     
     
     func setCalendar() {
-        
-    
         
         calendar.delegate = self
         calendar.dataSource = self
