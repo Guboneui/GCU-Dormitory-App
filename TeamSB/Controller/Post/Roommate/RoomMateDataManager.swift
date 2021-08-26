@@ -57,9 +57,11 @@ class RoomMateDataManager {
                     } else {
                         if response.code == 301 {
                             view.notDate()
+                        }else {
+                            print(response.code)
+                            print(">>😭 룸메 게시글 가져오기 실패")
                         }
-                        print(response.code)
-                        print(">>😭 룸메 게시글 가져오기 실패")
+                        
                         
                     }
                 case .failure(let error):
