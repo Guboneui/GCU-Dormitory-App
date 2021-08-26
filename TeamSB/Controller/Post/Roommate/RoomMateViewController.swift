@@ -337,6 +337,16 @@ extension RoomMateViewController: WhenDismissDetailView {
 }
 
 extension RoomMateViewController: RoomMateView {
+    func notDate() {
+        let alert = UIAlertController(title: "룸메이트 신청 기간이 아니에요😭", message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        })
+        okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func stopRefreshControl() {
         self.mainCollectionView.refreshControl?.endRefreshing()
     }

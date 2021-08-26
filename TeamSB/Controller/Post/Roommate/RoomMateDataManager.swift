@@ -55,6 +55,10 @@ class RoomMateDataManager {
                         
                         viewController.mainCollectionView.reloadData()
                     } else {
+                        if response.code == 301 {
+                            view.notDate()
+                        }
+                        print(response.code)
                         print(">>😭 룸메 게시글 가져오기 실패")
                         
                     }

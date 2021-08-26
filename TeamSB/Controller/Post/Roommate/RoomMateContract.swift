@@ -11,4 +11,5 @@ protocol RoomMateView {
     func startLoading()
     func stopLoading()
     func goArticle()
+    func notDate()
 }
