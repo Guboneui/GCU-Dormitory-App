@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
     var application: UIApplication!
     var autoLoginState: Bool = false
     lazy var dataManager: LoginDataManager = LoginDataManager(view: self)
+    lazy var viewModel: LoginViewModel = LoginViewModel(view: self)
 
     override func loadView() {
         super.loadView()
@@ -120,7 +121,9 @@ extension LoginViewController {
         //loading.startAnimating()
         CustomLoader.instance.showLoader()
         let param = LoginRequest(userId: id, password: pw)
-        dataManager.postLogin(param, viewController: self)
+        //dataManager.postLogin(param, viewController: self)
+        //viewModel.delegate = self
+        viewModel.postLogin(param)
     }
     
     @IBAction func autoLoginAction(_ sender: Any) {
@@ -197,4 +200,12 @@ extension LoginViewController: UITextFieldDelegate {
     }
     return true
   }
+}
+
+extension LoginViewController: showAlert {
+    func show(message: String) {
+        print(message)
+    }
+    
+    
 }

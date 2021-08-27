@@ -87,6 +87,10 @@
 		2C25DED826C3061700F1C9C3 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C25DED626C3061700F1C9C3 /* SearchCollectionViewCell.xib */; };
 		2C26E64426AC82860086A795 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C26E64226AC82860086A795 /* MenuTableViewCell.swift */; };
 		2C26E64526AC82860086A795 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C26E64326AC82860086A795 /* MenuTableViewCell.xib */; };
+		2C28BEE026D92266001529B9 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28BEDF26D92266001529B9 /* LoginRepository.swift */; };
+		2C28BEE226D9240F001529B9 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28BEE126D9240F001529B9 /* LoginModel.swift */; };
+		2C28BEE426D9249E001529B9 /* LoginUseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28BEE326D9249E001529B9 /* LoginUseService.swift */; };
+		2C28BEE626D925AF001529B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28BEE526D925AF001529B9 /* LoginViewModel.swift */; };
 		2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298736268B5D5D005EEA64 /* AppDelegate.swift */; };
 		2C298739268B5D5D005EEA64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C298738268B5D5D005EEA64 /* SceneDelegate.swift */; };
 		2C29873E268B5D5D005EEA64 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C29873C268B5D5D005EEA64 /* Home.storyboard */; };
@@ -301,6 +305,10 @@
 		2C25DED626C3061700F1C9C3 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		2C26E64226AC82860086A795 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		2C26E64326AC82860086A795 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		2C28BEDF26D92266001529B9 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		2C28BEE126D9240F001529B9 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		2C28BEE326D9249E001529B9 /* LoginUseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseService.swift; sourceTree = "<group>"; };
+		2C28BEE526D925AF001529B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2C298733268B5D5D005EEA64 /* TeamSB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamSB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C298736268B5D5D005EEA64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C298738268B5D5D005EEA64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -913,6 +921,10 @@
 			isa = PBXGroup;
 			children = (
 				2C5D0192268E20E000CC6DD4 /* LoginViewController.swift */,
+				2C28BEDF26D92266001529B9 /* LoginRepository.swift */,
+				2C28BEE126D9240F001529B9 /* LoginModel.swift */,
+				2C28BEE326D9249E001529B9 /* LoginUseService.swift */,
+				2C28BEE526D925AF001529B9 /* LoginViewModel.swift */,
 				2C004A4C26B2E5BB00D13ABF /* LoginDataManager.swift */,
 				2C004A5126B2E9B000D13ABF /* LoginContract.swift */,
 				2C5D0194268E20EC00CC6DD4 /* NickNameViewController.swift */,
@@ -1164,6 +1176,7 @@
 				2C004AF926B385F700D13ABF /* DeleteArticleRequest.swift in Sources */,
 				2CD92B4826BF5B0800A3263E /* EditDataManager.swift in Sources */,
 				2C004AA926B34E4800D13ABF /* DeleveryDataManager.swift in Sources */,
+				2C28BEE426D9249E001529B9 /* LoginUseService.swift in Sources */,
 				2C004A5726B2F43200D13ABF /* String.swift in Sources */,
 				2C3A38AB26CDA287006D10A3 /* OpenSourceViewController.swift in Sources */,
 				2C004A4B26B2E58300D13ABF /* LoginResponse.swift in Sources */,
@@ -1174,6 +1187,7 @@
 				2CFDA9C7269E0DEC00612EDB /* SettingViewController.swift in Sources */,
 				2C004AEE26B3772100D13ABF /* CalendarContract.swift in Sources */,
 				2C18C96226C15E6F00C852B2 /* RePostResponse.swift in Sources */,
+				2C28BEE026D92266001529B9 /* LoginRepository.swift in Sources */,
 				2C5D0195268E20EC00CC6DD4 /* NickNameViewController.swift in Sources */,
 				2C3A38A826CD98A1006D10A3 /* DeleteUserProfileImageResponse.swift in Sources */,
 				2C004AFF26B3887500D13ABF /* BanArticleResponse.swift in Sources */,
@@ -1184,6 +1198,7 @@
 				2C41DC7B26CBAB0200B98794 /* GetBannerResponse.swift in Sources */,
 				2CAFB8E926CEDE64003CCA66 /* TutorialCollectionViewCell.swift in Sources */,
 				2CD92B2726BF01BE00A3263E /* AllPostCollectionViewCell.swift in Sources */,
+				2C28BEE226D9240F001529B9 /* LoginModel.swift in Sources */,
 				2C3A389F26CD755C006D10A3 /* DormitoryGuideSubTableViewCell.swift in Sources */,
 				2C004AE126B35BEC00D13ABF /* SearchContract.swift in Sources */,
 				2CD92B2D26BF1C7500A3263E /* DeliveryCollectionViewCell.swift in Sources */,
@@ -1195,6 +1210,7 @@
 				2CFDA9BF269DEFD300612EDB /* MainBaseViewController.swift in Sources */,
 				2C004A5B26B2FD3700D13ABF /* NicknameCheckResponse.swift in Sources */,
 				2C3A38AE26CDA29A006D10A3 /* OpenSourceTableViewCell.swift in Sources */,
+				2C28BEE626D925AF001529B9 /* LoginViewModel.swift in Sources */,
 				2C44FB7E26C76E1F00C6B7D4 /* CheckUserAlertResponse.swift in Sources */,
 				2C708FD826D69F9B0081B5E7 /* BaseNavigationController.swift in Sources */,
 				2C5D39C226BE122A0046CD32 /* AutoScrollNoticeTableViewCell.swift in Sources */,

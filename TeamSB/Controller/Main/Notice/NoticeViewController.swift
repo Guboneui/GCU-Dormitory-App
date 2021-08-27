@@ -118,6 +118,8 @@ extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
         
         cell.selectionStyle = .none
         
+        
+        
         let data = noticeArray[section]
         cell.titleLabel.text = data.title
         
@@ -142,7 +144,6 @@ extension NoticeViewController: ExpyTableViewDelegate, ExpyTableViewDataSource {
               dataManager.getNormalNotice(viewController: self, page: currentNormalPage)
             
         }
-
         
         return cell
     }

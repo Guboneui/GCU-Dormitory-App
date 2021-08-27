@@ -31,8 +31,6 @@ class CalendarViewController: UIViewController {
         setTableView()
         setCalendar()
 
-        
-        
         let formatter        = DateFormatter()
         formatter.locale     = Locale(identifier: "ko_KR")
         formatter.dateFormat = "YYYY-MM-dd"
@@ -46,9 +44,6 @@ class CalendarViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationItem.title = "식단"
         setDesign()
-        
-        
-        
         calendar.select(Date())
         
         navigationController?.navigationBar.shadowImage = UIImage()
