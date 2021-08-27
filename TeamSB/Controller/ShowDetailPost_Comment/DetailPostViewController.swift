@@ -79,6 +79,10 @@ class DetailPostViewController: UIViewController {
     
    
    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.reloadView()
+    }
     
 }
 //MARK: -생명주기(뷰 로드 시)에서 사용되는 API 함수
@@ -534,6 +538,7 @@ extension DetailPostViewController: AfterEditDelegate {
     func updateGetData(getPostNumber: Int, getTitle: String, getCategory: String, getUserID: String, getNickname: String, getContents: String, getHash: [String]) {
         self.getPostNumber = getPostNumber
         self.getTitle = getTitle
+        self.getMainTitle = getCategory
         self.getCategory = getCategory
         self.getUserID = getUserID
         self.getNickname = getNickname

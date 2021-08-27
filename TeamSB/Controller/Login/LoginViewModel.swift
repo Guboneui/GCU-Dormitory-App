@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol showAlert: AnyObject {
-    func show(message: String)
-}
-
 class LoginViewModel {
     var onUpdated: () -> Void = {}
     var viewController: LoginViewController = LoginViewController()

@@ -202,10 +202,3 @@ extension LoginViewController: UITextFieldDelegate {
   }
 }
 
-extension LoginViewController: showAlert {
-    func show(message: String) {
-        print(message)
-    }
-    
-    
-}
