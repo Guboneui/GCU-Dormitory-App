@@ -746,6 +746,39 @@
 			path = ShowDetailPost_Comment;
 			sourceTree = "<group>";
 		};
+		2C28BEE726D97879001529B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C28BEE526D925AF001529B9 /* LoginViewModel.swift */,
+				2C004A5126B2E9B000D13ABF /* LoginContract.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C28BEE826D978C9001529B9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2C28BEE326D9249E001529B9 /* LoginUseService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2C28BEE926D978EC001529B9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2C28BEDF26D92266001529B9 /* LoginRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		2C28BEEA26D97907001529B9 /* Use_Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C28BEE126D9240F001529B9 /* LoginModel.swift */,
+			);
+			path = Use_Model;
+			sourceTree = "<group>";
+		};
 		2C29872A268B5D5D005EEA64 = {
 			isa = PBXGroup;
 			children = (
@@ -772,8 +805,12 @@
 				2C5D018C268DF80900CC6DD4 /* AppColor */,
 				2C2C4133269A2F8300DB54B5 /* BaseDelegate */,
 				2C5D0190268E209300CC6DD4 /* View_StoryBoard */,
-				2C2C412E269A2E7100DB54B5 /* API */,
-				2C5D0191268E209B00CC6DD4 /* Controller */,
+				2C2C412E269A2E7100DB54B5 /* API_Model */,
+				2C5D0191268E209B00CC6DD4 /* View */,
+				2C28BEE926D978EC001529B9 /* Repository */,
+				2C28BEEA26D97907001529B9 /* Use_Model */,
+				2C28BEE826D978C9001529B9 /* Service */,
+				2C28BEE726D97879001529B9 /* ViewModel */,
 				2C29873F268B5D5E005EEA64 /* Assets.xcassets */,
 				2C298741268B5D5E005EEA64 /* LaunchScreen.storyboard */,
 				2C298744268B5D5E005EEA64 /* Info.plist */,
@@ -781,7 +818,7 @@
 			path = TeamSB;
 			sourceTree = "<group>";
 		};
-		2C2C412E269A2E7100DB54B5 /* API */ = {
+		2C2C412E269A2E7100DB54B5 /* API_Model */ = {
 			isa = PBXGroup;
 			children = (
 				2C004A4E26B2E5DE00D13ABF /* ConstantURL.swift */,
@@ -797,7 +834,7 @@
 				2C44FB7226C76C9200C6B7D4 /* API_Alert */,
 				2C44FB9326C81C8F00C6B7D4 /* API_Notice */,
 			);
-			path = API;
+			path = API_Model;
 			sourceTree = "<group>";
 		};
 		2C2C4133269A2F8300DB54B5 /* BaseDelegate */ = {
@@ -893,7 +930,7 @@
 			path = View_StoryBoard;
 			sourceTree = "<group>";
 		};
-		2C5D0191268E209B00CC6DD4 /* Controller */ = {
+		2C5D0191268E209B00CC6DD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				2C6ACD2E26CFECBF00B7443E /* LoadingGIF.gif */,
@@ -914,19 +951,14 @@
 				2C22FAF626B1596D003AB22A /* ShowDetailPost_Comment */,
 				2C3A389426CD7471006D10A3 /* Guide */,
 			);
-			path = Controller;
+			path = View;
 			sourceTree = "<group>";
 		};
 		2C5E99882690E74300E3504A /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				2C5D0192268E20E000CC6DD4 /* LoginViewController.swift */,
-				2C28BEDF26D92266001529B9 /* LoginRepository.swift */,
-				2C28BEE126D9240F001529B9 /* LoginModel.swift */,
-				2C28BEE326D9249E001529B9 /* LoginUseService.swift */,
-				2C28BEE526D925AF001529B9 /* LoginViewModel.swift */,
 				2C004A4C26B2E5BB00D13ABF /* LoginDataManager.swift */,
-				2C004A5126B2E9B000D13ABF /* LoginContract.swift */,
 				2C5D0194268E20EC00CC6DD4 /* NickNameViewController.swift */,
 				2C004A5C26B2FE4900D13ABF /* NicknameDataManager.swift */,
 				2C004A5E26B2FF5D00D13ABF /* NicknameConstract.swift */,
