@@ -7,20 +7,22 @@
 
 import Foundation
 
+
 class LoginViewModel {
     var onUpdated: () -> Void = {}
     var viewController: LoginViewController = LoginViewController()
     //var delegate: showAlert!
     let loginUseService = LoginUseService()
     
-    private let view: LoginView
-    
+    private let view: LoginView!
     init(view: LoginView){
         self.view = view
     }
     
+
     
     func postLogin(_ parameters: LoginRequest){
+       
         loginUseService.postLogin(parameters, onCompleted: { [weak self] model in
             guard let self = self else {return}
             let existNickname = model.existNickname
@@ -40,6 +42,10 @@ class LoginViewModel {
                 print(message)
                 self.view.showAlert(message: message)
             }
+        }, onError: {_ in
+            self.view.stopLoading()
+            self.view.showAlert(message: "네트워크를 확인 해주세요😭")
+            
         })
     }
 }

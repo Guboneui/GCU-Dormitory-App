@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 class LoginRepository {
-    func postLogin(_ parameters: LoginRequest,onCompleted: @escaping (LoginResponse) -> Void) {
+    func postLogin(_ parameters: LoginRequest,onCompleted: @escaping (LoginResponse) -> Void, onError: @escaping (String) -> Void) {
         AF.request("\(ConstantURL.BASE_URL)/login", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
             .validate()
             .responseDecodable(of: LoginResponse.self) { response in
@@ -21,6 +21,7 @@ class LoginRepository {
                     print(">>🧲 URL: \(ConstantURL.BASE_URL)/login")
                     print(">>😱 \(error.localizedDescription)")
                     print(">>😱 \(error)")
+                    onError("error")
             }
         }
     }

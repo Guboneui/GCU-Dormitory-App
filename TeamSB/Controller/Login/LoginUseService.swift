@@ -11,11 +11,11 @@ class LoginUseService {
     let repository: LoginRepository = LoginRepository()
     var loginModel: LoginModel = LoginModel(isSuccess: false, existNickname: false, message: "")
     
-    func postLogin(_ parameters: LoginRequest, onCompleted: @escaping (LoginModel) -> Void) {
+    func postLogin(_ parameters: LoginRequest, onCompleted: @escaping (LoginModel) -> Void, onError: @escaping (String) -> Void) {
         repository.postLogin(parameters, onCompleted: {[weak self] response in
             let data = LoginModel(isSuccess: response.check,existNickname: response.nickname, message: response.message)
             self?.loginModel = data
             onCompleted(data)
-        })
+        }, onError: onError)
     }
 }

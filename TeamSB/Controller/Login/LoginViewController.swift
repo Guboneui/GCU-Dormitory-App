@@ -55,6 +55,7 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
           application.registerUserNotificationSettings(settings)
         }
 
+    
         
     }
     
