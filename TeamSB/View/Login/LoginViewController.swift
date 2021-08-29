@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
     
     var application: UIApplication!
     var autoLoginState: Bool = false
-    lazy var dataManager: LoginDataManager = LoginDataManager(view: self)
+    //lazy var dataManager: LoginDataManager = LoginDataManager(view: self)
     lazy var viewModel: LoginViewModel = LoginViewModel(view: self)
 
     override func loadView() {
@@ -34,8 +34,13 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
         super.viewDidLoad()
         configureDesign()
         setAutoLoginImage()
-        //IQKeyboardManager.shared().isEnableAutoToolbar = true
-        
+        askNotification()
+    }
+}
+
+//MARK: -기본 UI 함수 정리
+extension LoginViewController {
+    func askNotification() {
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
           UNUserNotificationCenter.current().delegate = self
@@ -54,9 +59,6 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
             UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
           application.registerUserNotificationSettings(settings)
         }
-
-    
-        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -68,10 +70,6 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
       }
     
-}
-
-//MARK: -기본 UI 함수 정리
-extension LoginViewController {
     func setLoading() {
         loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: UIColor.SBColor.SB_BaseYellow, padding: 0)
         loading.translatesAutoresizingMaskIntoConstraints = false
