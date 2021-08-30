@@ -67,6 +67,11 @@ class DetailPostViewController: UIViewController {
         
         IQKeyboardManager.shared().isEnabled = false
         initNotification()
+        
+        messageTextView.delegate = self
+        messageTextView.text = "내용을 입력 해주세요."
+        messageTextView.textColor = UIColor.SBColor.SB_LightGray
+
     }
     
     
@@ -599,4 +604,33 @@ extension DetailPostViewController: UITextViewDelegate {
             
         }
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+
+        textViewSetupView()
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if messageTextView.text == "" {
+            textViewSetupView()
+        }
+    }
+
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if text == "\n" {
+//            contentsTextView.resignFirstResponder()
+//        }
+//        return true
+//    }
+
+    func textViewSetupView() {
+        if messageTextView.text == "댓글을 입력하세요." {
+            messageTextView.text = ""
+            messageTextView.textColor = UIColor.black
+        } else if messageTextView.text == ""{
+            messageTextView.text = "댓글을 입력하세요."
+            messageTextView.textColor = UIColor.SBColor.SB_LightGray
+        }
+    }
 }
+
