@@ -67,23 +67,21 @@ extension CalendarViewController {
         menuTableView.delegate = self
         menuTableView.dataSource = self
         menuTableView.separatorStyle = .none
+        
         let menuTableViewCellNib = UINib(nibName: "MenuTableViewCell", bundle: nil)
         menuTableView.register(menuTableViewCellNib, forCellReuseIdentifier: "MenuTableViewCell")
-        
     }
     
     func setDesign() {
         topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         topGuideLineView.layer.shadowOpacity = 0.15
         
-        menuTableView.layer.borderWidth = 2
+        menuTableView.layer.borderWidth = 3
         menuTableView.layer.borderColor = #colorLiteral(red: 0.9764705882, green: 0.8549019608, blue: 0.4705882353, alpha: 1)
+        menuTableView.layer.cornerRadius = 10
     }
     
-    
-    
     func setCalendar() {
-        
         calendar.delegate = self
         calendar.dataSource = self
         calendar.locale = Locale(identifier: "ko_KR")
@@ -93,8 +91,6 @@ extension CalendarViewController {
         calendar.appearance.headerTitleColor = UIColor.black
         calendar.appearance.eventSelectionColor = UIColor.SBColor.SB_BaseYellow
         
-        
-
         calendar.appearance.todayColor = .none
         calendar.appearance.titleTodayColor = UIColor.SBColor.SB_BaseYellow
         

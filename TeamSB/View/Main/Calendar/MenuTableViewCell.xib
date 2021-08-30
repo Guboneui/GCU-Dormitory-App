@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLr-Dc-hKd">
-                        <rect key="frame" x="24" y="5" width="35.5" height="16"/>
+                        <rect key="frame" x="24" y="18" width="35.5" height="16"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AMY-db-83A">
-                        <rect key="frame" x="29" y="27" width="346" height="133"/>
+                        <rect key="frame" x="29" y="40" width="346" height="120"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86c-VD-MrS">
                                 <rect key="frame" x="0.0" y="0.0" width="168" height="86"/>
@@ -57,7 +57,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="AMY-db-83A" secondAttribute="trailing" constant="29" id="GDd-W5-xvv"/>
                     <constraint firstAttribute="bottom" secondItem="AMY-db-83A" secondAttribute="bottom" constant="15" id="MuC-Rw-jAp"/>
-                    <constraint firstItem="pLr-Dc-hKd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="VTu-0J-Gup"/>
+                    <constraint firstItem="pLr-Dc-hKd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="VTu-0J-Gup"/>
                     <constraint firstItem="AMY-db-83A" firstAttribute="top" secondItem="pLr-Dc-hKd" secondAttribute="bottom" constant="6" id="goX-dA-kol"/>
                     <constraint firstItem="pLr-Dc-hKd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="idE-T2-UJE"/>
                     <constraint firstItem="AMY-db-83A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="29" id="rcB-VS-5Nx"/>
