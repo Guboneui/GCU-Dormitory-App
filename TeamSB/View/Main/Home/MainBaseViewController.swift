@@ -34,7 +34,7 @@ class MainBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = true
         UIApplication.shared.registerForRemoteNotifications()
         setLoading()
         getProfileImage()

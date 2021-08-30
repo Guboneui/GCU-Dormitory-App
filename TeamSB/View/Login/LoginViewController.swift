@@ -6,6 +6,8 @@ import UIKit
 import Alamofire
 import NVActivityIndicatorView
 import IQKeyboardManager
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
     
@@ -35,6 +37,14 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
         configureDesign()
         setAutoLoginImage()
         askNotification()
+        
+        viewModel.goMainView = { [self] in
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
+            
+            homeVC.modalPresentationStyle = .fullScreen
+            self.present(homeVC, animated: true, completion: nil)
+        }
     }
 }
 

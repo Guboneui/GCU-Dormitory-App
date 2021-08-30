@@ -51,7 +51,7 @@ class DetailPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print("viewDidLoad")
         print(">> 게시글 작성자 ID = \(getUserID)...닉네임 = \(getNickname)")
         print(">> \(getPostNumber) 게시글의 현재 조회수는 \(getShowCount)")
         
@@ -74,14 +74,22 @@ class DetailPostViewController: UIViewController {
         super.viewWillAppear(animated)
         setNavigation_Tab()
         makeBackButton()
+        print("viewWillAppear")
         
     }
-    
-   
-   
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.reloadView()
+        self.tabBarController?.tabBar.isHidden = true
+        print("viewDidDisappear")
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+        print("viewWillDisappear")
+        
     }
     
 }

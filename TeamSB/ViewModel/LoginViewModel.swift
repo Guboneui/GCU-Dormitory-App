@@ -20,7 +20,7 @@ class LoginViewModel {
     }
     
 //    var goNicknameView: () -> Void = {}
-//    var goMainView: () -> Void = {}
+    var goMainView: () -> Void = {}
 //    var checkAutoLogin: () -> Void = {}
 //    var addUserInfo: (_ nicknameExist: Bool) -> Void = {_ in }
 //    var showAlert: (_ message: String) -> Void = {_ in }
@@ -40,6 +40,7 @@ class LoginViewModel {
                 } else {
                     print("홈화면으로 이동합니다.")
                     self.view.goMainView()
+                    //self.goMainView()
                 }
                 self.view.checkAutoLogin()
                 self.view.addUserInfo(nicknameExist: existNickname!)

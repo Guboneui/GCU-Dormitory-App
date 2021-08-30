@@ -75,6 +75,9 @@ extension CalendarViewController {
     func setDesign() {
         topGuideLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         topGuideLineView.layer.shadowOpacity = 0.15
+        
+        menuTableView.layer.borderWidth = 2
+        menuTableView.layer.borderColor = #colorLiteral(red: 0.9764705882, green: 0.8549019608, blue: 0.4705882353, alpha: 1)
     }
     
     
