@@ -360,7 +360,7 @@ extension MainBaseViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: -TBCellDelegate 선언 부분
 extension MainBaseViewController: TBCellDelegate {
-    func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int, hash: [String], imageSource: String) {
+    func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int, hash: [String], imageSource: String, replyCount: Int) {
         print("프로토콜 연결 성공")
         
         guard let vc = UIStoryboard(name: "In_Post", bundle: nil).instantiateViewController(withIdentifier: "DetailPostViewController") as? DetailPostViewController else {
@@ -378,6 +378,7 @@ extension MainBaseViewController: TBCellDelegate {
         vc.getHash = hash
         vc.getMainTitle = category
         vc.getImage = imageSource
+        vc.getReplyCount = replyCount
         
         self.navigationController?.pushViewController(vc, animated: true)
         

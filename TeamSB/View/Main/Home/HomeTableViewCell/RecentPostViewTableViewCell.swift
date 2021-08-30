@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 protocol TBCellDelegate {
-    func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int, hash: [String], imageSource: String)
+    func selectedTBCell(postNumber: Int, title: String, category: String, time: String, userID: String, nickname: String, contents: String, showCount: Int, hash: [String], imageSource: String, replyCount: Int)
 }
 
 class RecentPostViewTableViewCell: UITableViewCell {
@@ -118,8 +118,9 @@ extension RecentPostViewTableViewCell: UITableViewDelegate, UITableViewDataSourc
             let sendShowCount = data.viewCount
             let hash = data.hash
             let imageSource = data.imageSource
+            let replyCount = data.replyCount
             
-            delegate.selectedTBCell(postNumber: sendPostNumber, title: sendTitle, category: sendCategory, time: sendTime, userID: sendUserID, nickname: sendNickname, contents: sendContents, showCount: sendShowCount, hash: hash, imageSource: imageSource)
+            delegate.selectedTBCell(postNumber: sendPostNumber, title: sendTitle, category: sendCategory, time: sendTime, userID: sendUserID, nickname: sendNickname, contents: sendContents, showCount: sendShowCount, hash: hash, imageSource: imageSource, replyCount: replyCount)
         }
     }
 }
