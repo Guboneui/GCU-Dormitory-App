@@ -14,8 +14,8 @@ class NickNameViewController: UIViewController {
     @IBOutlet weak var goHomeButton: UIButton!
     
     var loading: NVActivityIndicatorView!
-    lazy var dataManager: NicknameDataManager = NicknameDataManager(view: self)
-
+    //lazy var dataManager: NicknameDataManager = NicknameDataManager(view: self)
+    lazy var viewModel: NicknameViewModel = NicknameViewModel()
     override func loadView() {
         super.loadView()
         setLoading()
@@ -24,6 +24,42 @@ class NickNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDesign()
+        viewModelMethod()
+    }
+}
+
+extension NickNameViewController {
+    func viewModelMethod() {
+        
+        viewModel.showAlert = { [self] message in
+            self.presentAlert(title: message)
+        }
+        viewModel.stopLoading = {
+            CustomLoader.instance.hideLoader()
+        }
+        viewModel.setUserNickname = { [self] in
+            let nickname = nickNameTextField.text!
+            UserDefaults.standard.setValue(nickname, forKey: "userNickname")
+            UserDefaults.standard.set(true, forKey: "userNicknameExist")
+        }
+        viewModel.setMainView = {
+            let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+            let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
+            
+            self.changeRootViewController(homeVC)
+        }
+        viewModel.useButton = { [self] in
+            goHomeButton.isEnabled = true
+        }
+        viewModel.showAlertDismissKeyboard = {[self] message in
+            let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: {_ in
+                self.view.endEditing(true)
+            })
+            okButton.setValue(UIColor(displayP3Red: 66/255, green: 66/255, blue: 66/255, alpha: 1), forKey: "titleTextColor")
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -72,7 +108,8 @@ extension NickNameViewController {
             CustomLoader.instance.showLoader()
             let nickname = nickNameTextField.text!
             let param = NicknameCheckRequest(nickname: nickname)
-            dataManager.postNicknameCheck(param, viewController: self)
+            //dataManager.postNicknameCheck(param, viewController: self)
+            viewModel.postNicknameCheck(param)
         }
     }
     
@@ -87,7 +124,8 @@ extension NickNameViewController {
             let nickname = nickNameTextField.text!
             
             let param = NicknameSetRequest(curId: id, nickname: nickname)
-            dataManager.postNicknameSet(param, viewController: self)
+            //dataManager.postNicknameSet(param, viewController: self)
+            viewModel.postNicknameSet(param)
         }
     }
 }

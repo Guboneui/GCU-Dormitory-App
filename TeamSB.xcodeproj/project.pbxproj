@@ -10,7 +10,7 @@
 		2C004A4B26B2E58300D13ABF /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A4A26B2E58300D13ABF /* LoginResponse.swift */; };
 		2C004A4D26B2E5BB00D13ABF /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A4C26B2E5BB00D13ABF /* LoginDataManager.swift */; };
 		2C004A4F26B2E5DE00D13ABF /* ConstantURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A4E26B2E5DE00D13ABF /* ConstantURL.swift */; };
-		2C004A5226B2E9B000D13ABF /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A5126B2E9B000D13ABF /* LoginProtocol.swift */; };
+		2C004A5226B2E9B000D13ABF /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A5126B2E9B000D13ABF /* LoginContract.swift */; };
 		2C004A5526B2F24500D13ABF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A5426B2F24500D13ABF /* UIViewController.swift */; };
 		2C004A5726B2F43200D13ABF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A5626B2F43200D13ABF /* String.swift */; };
 		2C004A5926B2FD3000D13ABF /* NicknameCheckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C004A5826B2FD3000D13ABF /* NicknameCheckRequest.swift */; };
@@ -167,6 +167,11 @@
 		2C824D0026DDDB1D00C085D3 /* DashedLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824CFE26DDDB1D00C085D3 /* DashedLineTableViewCell.swift */; };
 		2C824D0126DDDB1D00C085D3 /* DashedLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C824CFF26DDDB1D00C085D3 /* DashedLineTableViewCell.xib */; };
 		2C824D0326DDDBB300C085D3 /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824D0226DDDBB300C085D3 /* DashedLineView.swift */; };
+		2C824D0526DE933000C085D3 /* NickNameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824D0426DE933000C085D3 /* NickNameRepository.swift */; };
+		2C824D0726DE957400C085D3 /* NicknameCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824D0626DE957400C085D3 /* NicknameCheckModel.swift */; };
+		2C824D0926DE957D00C085D3 /* NicknameSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824D0826DE957D00C085D3 /* NicknameSetModel.swift */; };
+		2C824D0D26DE9A9500C085D3 /* NicknameUseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824D0C26DE9A9500C085D3 /* NicknameUseService.swift */; };
+		2C824D0F26DE9D7E00C085D3 /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824D0E26DE9D7E00C085D3 /* NicknameViewModel.swift */; };
 		2CAFB8D626CE434C003CCA66 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */; };
 		2CAFB8D826CE44AE003CCA66 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */; };
 		2CAFB8DA26CE453E003CCA66 /* splashImage.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D926CE453E003CCA66 /* splashImage.PNG */; };
@@ -230,7 +235,7 @@
 		2C004A4A26B2E58300D13ABF /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		2C004A4C26B2E5BB00D13ABF /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		2C004A4E26B2E5DE00D13ABF /* ConstantURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantURL.swift; sourceTree = "<group>"; };
-		2C004A5126B2E9B000D13ABF /* LoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocol.swift; sourceTree = "<group>"; };
+		2C004A5126B2E9B000D13ABF /* LoginContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
 		2C004A5426B2F24500D13ABF /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2C004A5626B2F43200D13ABF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		2C004A5826B2FD3000D13ABF /* NicknameCheckRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckRequest.swift; sourceTree = "<group>"; };
@@ -390,6 +395,11 @@
 		2C824CFE26DDDB1D00C085D3 /* DashedLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineTableViewCell.swift; sourceTree = "<group>"; };
 		2C824CFF26DDDB1D00C085D3 /* DashedLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashedLineTableViewCell.xib; sourceTree = "<group>"; };
 		2C824D0226DDDBB300C085D3 /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
+		2C824D0426DE933000C085D3 /* NickNameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameRepository.swift; sourceTree = "<group>"; };
+		2C824D0626DE957400C085D3 /* NicknameCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckModel.swift; sourceTree = "<group>"; };
+		2C824D0826DE957D00C085D3 /* NicknameSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSetModel.swift; sourceTree = "<group>"; };
+		2C824D0C26DE9A9500C085D3 /* NicknameUseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameUseService.swift; sourceTree = "<group>"; };
+		2C824D0E26DE9D7E00C085D3 /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		2CAFB8D926CE453E003CCA66 /* splashImage.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashImage.PNG; sourceTree = "<group>"; };
@@ -756,7 +766,7 @@
 			isa = PBXGroup;
 			children = (
 				2C28BEE526D925AF001529B9 /* LoginViewModel.swift */,
-				2C004A5126B2E9B000D13ABF /* LoginProtocol.swift */,
+				2C824D0E26DE9D7E00C085D3 /* NicknameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -765,6 +775,7 @@
 			isa = PBXGroup;
 			children = (
 				2C28BEE326D9249E001529B9 /* LoginUseService.swift */,
+				2C824D0C26DE9A9500C085D3 /* NicknameUseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -773,6 +784,7 @@
 			isa = PBXGroup;
 			children = (
 				2C28BEDF26D92266001529B9 /* LoginRepository.swift */,
+				2C824D0426DE933000C085D3 /* NickNameRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -780,7 +792,8 @@
 		2C28BEEA26D97907001529B9 /* Use_Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C28BEE126D9240F001529B9 /* LoginModel.swift */,
+				2C824D0A26DE95F700C085D3 /* Login */,
+				2C824D0B26DE95FF00C085D3 /* Nickname */,
 			);
 			path = Use_Model;
 			sourceTree = "<group>";
@@ -965,6 +978,7 @@
 			children = (
 				2C5D0192268E20E000CC6DD4 /* LoginViewController.swift */,
 				2C004A4C26B2E5BB00D13ABF /* LoginDataManager.swift */,
+				2C004A5126B2E9B000D13ABF /* LoginContract.swift */,
 				2C5D0194268E20EC00CC6DD4 /* NickNameViewController.swift */,
 				2C004A5C26B2FE4900D13ABF /* NicknameDataManager.swift */,
 				2C004A5E26B2FF5D00D13ABF /* NicknameConstract.swift */,
@@ -1030,6 +1044,23 @@
 				2C708FD126D5EEA60081B5E7 /* getVersionResponse.swift */,
 			);
 			path = API_Version;
+			sourceTree = "<group>";
+		};
+		2C824D0A26DE95F700C085D3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2C28BEE126D9240F001529B9 /* LoginModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2C824D0B26DE95FF00C085D3 /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				2C824D0626DE957400C085D3 /* NicknameCheckModel.swift */,
+				2C824D0826DE957D00C085D3 /* NicknameSetModel.swift */,
+			);
+			path = Nickname;
 			sourceTree = "<group>";
 		};
 		2CC6060526C44E2F00E122D8 /* API_FCM */ = {
@@ -1209,6 +1240,7 @@
 				2C004AC326B34E5A00D13ABF /* ParcelContract.swift in Sources */,
 				2CAFB8D626CE434C003CCA66 /* SplashViewController.swift in Sources */,
 				2C004AFD26B3886A00D13ABF /* BanArticleRequest.swift in Sources */,
+				2C824D0926DE957D00C085D3 /* NicknameSetModel.swift in Sources */,
 				2C004A9F26B34E3500D13ABF /* AllPostContract.swift in Sources */,
 				2C44FBA626C8933A00C6B7D4 /* RemoveFcmTokenResponse.swift in Sources */,
 				2C3A389326CD62EA006D10A3 /* GetGuideResponse.swift in Sources */,
@@ -1260,6 +1292,7 @@
 				2C44FB8A26C7DA9600C6B7D4 /* GoArticleDetailResponse.swift in Sources */,
 				2C004A8B26B33D8200D13ABF /* ParcelResponse.swift in Sources */,
 				2C004AF726B382B900D13ABF /* DetailPostViewContract.swift in Sources */,
+				2C824D0726DE957400C085D3 /* NicknameCheckModel.swift in Sources */,
 				2C3A38A426CD7A57006D10A3 /* DormitodyGuideContract.swift in Sources */,
 				2C004B0726B3928500D13ABF /* PostCommentResponse.swift in Sources */,
 				2CE2299726D393750086B9CE /* LoginRequest.swift in Sources */,
@@ -1272,6 +1305,7 @@
 				2C44FB9C26C81CD900C6B7D4 /* NormalNoticeResponse.swift in Sources */,
 				2C004AC026B34E5A00D13ABF /* ParcelDataManager.swift in Sources */,
 				2CD92B3526BF20CA00A3263E /* TaxiCollectionViewCell.swift in Sources */,
+				2C824D0526DE933000C085D3 /* NickNameRepository.swift in Sources */,
 				2C004ADF26B35BDA00D13ABF /* SearchDataManager.swift in Sources */,
 				2C004B0126B38C8200D13ABF /* GetCommentRequest.swift in Sources */,
 				2C004AAB26B34E4800D13ABF /* DeleveryViewController.swift in Sources */,
@@ -1295,6 +1329,7 @@
 				2C3A38A226CD7825006D10A3 /* DormitoryGuideDataManager.swift in Sources */,
 				2C004AF326B3820A00D13ABF /* AddArticleCountResponse.swift in Sources */,
 				2C004ACC26B34E6000D13ABF /* RoomMateContract.swift in Sources */,
+				2C824D0F26DE9D7E00C085D3 /* NicknameViewModel.swift in Sources */,
 				2CD92B4126BF422000A3263E /* EditViewController.swift in Sources */,
 				2CD92B2A26BF174100A3263E /* Device.swift in Sources */,
 				2C004ACB26B34E6000D13ABF /* RoomMateViewController.swift in Sources */,
@@ -1358,8 +1393,9 @@
 				2C18C97026C19E2500C852B2 /* MyPostCollectionViewCell.swift in Sources */,
 				2C004AD626B3516900D13ABF /* WriteDataManager.swift in Sources */,
 				2C004A6D26B30E9D00D13ABF /* MainDataManager.swift in Sources */,
+				2C824D0D26DE9A9500C085D3 /* NicknameUseService.swift in Sources */,
 				2C44FB7426C76CC400C6B7D4 /* UserAlertRequest.swift in Sources */,
-				2C004A5226B2E9B000D13ABF /* LoginProtocol.swift in Sources */,
+				2C004A5226B2E9B000D13ABF /* LoginContract.swift in Sources */,
 				2CFDA9B4269DEA1400612EDB /* CategoryButtonTableViewCell.swift in Sources */,
 				2CF5793D26ADB26E007DBC9C /* SearchTableViewCell.swift in Sources */,
 				2C298737268B5D5D005EEA64 /* AppDelegate.swift in Sources */,

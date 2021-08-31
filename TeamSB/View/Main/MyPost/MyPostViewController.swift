@@ -34,13 +34,15 @@ class MyPostViewController: UIViewController {
         setTableView()
         configDesign()
         
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarItem()
+        currentPage = 0
+        self.isLoadedAllData = false
+        myPost.removeAll()
+        mainCollectionView.reloadData()
         let id = UserDefaults.standard.string(forKey: "userID")!
         let param = MyPostRequest(curUser: id)
         dataManager.postMyArticle(param, viewController: self, page: currentPage)
@@ -49,7 +51,7 @@ class MyPostViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        print("🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄")
+
     }
     
     

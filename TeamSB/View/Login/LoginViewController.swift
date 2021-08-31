@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
     var application: UIApplication!
     var autoLoginState: Bool = false
     //lazy var dataManager: LoginDataManager = LoginDataManager(view: self)
-    lazy var viewModel: LoginViewModel = LoginViewModel(view: self)
+    lazy var viewModel: LoginViewModel = LoginViewModel()
 
     override func loadView() {
         super.loadView()
@@ -37,20 +37,14 @@ class LoginViewController: UIViewController, UNUserNotificationCenterDelegate {
         configureDesign()
         setAutoLoginImage()
         askNotification()
-        
-        viewModel.goMainView = { [self] in
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
-            
-            homeVC.modalPresentationStyle = .fullScreen
-            self.present(homeVC, animated: true, completion: nil)
-        }
+        viewModelMethod()
     }
 }
 
 //MARK: -기본 UI 함수 정리
 extension LoginViewController {
     func askNotification() {
+        
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
           UNUserNotificationCenter.current().delegate = self
@@ -149,6 +143,48 @@ extension LoginViewController {
     }
 }
 
+extension LoginViewController {
+    func viewModelMethod() {
+        viewModel.goNicknameView = { [self] in
+            let nicknameVC = storyboard?.instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
+            navigationController?.pushViewController(nicknameVC, animated: true)
+        }
+        
+        viewModel.goMainView = { [self] in
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            let homeVC = storyBoard.instantiateViewController(identifier: "MainVC")
+            
+            homeVC.modalPresentationStyle = .fullScreen
+            self.present(homeVC, animated: true, completion: nil)
+        }
+        
+        viewModel.checkAutoLogin = { [self] in
+            if self.autoLoginState == true {
+                print(">> 자동로그인 활성화")
+                UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
+                
+            } else {
+                print(">> 자동로그인 비활성화")
+                UserDefaults.standard.set(autoLoginState, forKey: "autoLoginState")
+            }
+        }
+        
+        viewModel.addUserInfo = { [self] nicknameExist in
+            let userID = idTextView.text!
+            UserDefaults.standard.set(userID, forKey: "userID")
+            UserDefaults.standard.set(nicknameExist, forKey: "userNicknameExist")
+        }
+        
+        viewModel.showAlert = { [self] message in
+            presentAlert(title: message)
+        }
+        
+        viewModel.stopLoading = {
+            CustomLoader.instance.hideLoader()
+        }
+    }
+}
+
 //MARK: -DataManager 함수
 extension LoginViewController: LoginView {
     
@@ -198,6 +234,9 @@ extension LoginViewController: LoginView {
     }
     
 }
+
+
+
 
 
 extension LoginViewController: UITextFieldDelegate {
