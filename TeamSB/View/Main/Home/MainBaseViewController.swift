@@ -67,7 +67,7 @@ class MainBaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "홈"
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         
         //loading.startAnimating()
         CustomLoader.instance.showLoader()
@@ -83,10 +83,16 @@ class MainBaseViewController: UIViewController {
         guideList.removeAll()
         dataManager.getGuide(viewController: self)
         
-
+        print("🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽🐽")
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        print("🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄")
+    }
     
 }
 

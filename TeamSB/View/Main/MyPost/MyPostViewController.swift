@@ -46,6 +46,12 @@ class MyPostViewController: UIViewController {
         dataManager.postMyArticle(param, viewController: self, page: currentPage)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        print("🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄🦄")
+    }
+    
     
     @objc func refreshData() {
         print(">> 상단 새로고침")
@@ -92,7 +98,7 @@ extension MyPostViewController {
     
     func setNavigationBarItem() {
         self.navigationItem.title = "나의 글"
-        self.tabBarController?.tabBar.isHidden = true
+        
         writeButton = UIBarButtonItem(image: UIImage(named: "write_icon"), style: .plain, target: self, action: #selector(goWriteView))
         writeButton.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -5)
         writeButton.tintColor = .black
@@ -104,7 +110,7 @@ extension MyPostViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationItem.rightBarButtonItems = [writeButton, searchButton]
         
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
 
     }
 
