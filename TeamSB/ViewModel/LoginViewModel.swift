@@ -19,12 +19,12 @@ class LoginViewModel {
         self.view = view
     }
     
-//    var goNicknameView: () -> Void = {}
+    var goNicknameView: () -> Void = {}
     var goMainView: () -> Void = {}
-//    var checkAutoLogin: () -> Void = {}
-//    var addUserInfo: (_ nicknameExist: Bool) -> Void = {_ in }
-//    var showAlert: (_ message: String) -> Void = {_ in }
-//    var stopLoading: () -> Void = {}
+    var checkAutoLogin: () -> Void = {}
+    var addUserInfo: (_ nicknameExist: Bool) -> Void = {_ in }
+    var showAlert: (_ message: String) -> Void = {_ in }
+    var stopLoading: () -> Void = {}
 
     var test: () -> Void = {}
     func postLogin(_ parameters: LoginRequest){

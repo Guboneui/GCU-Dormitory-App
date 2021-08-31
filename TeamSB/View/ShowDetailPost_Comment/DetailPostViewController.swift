@@ -9,7 +9,6 @@ import UIKit
 import Alamofire
 import IQKeyboardManager
 
-
 protocol WhenDismissDetailView: AnyObject {
     func reloadView()
 }
@@ -69,7 +68,7 @@ class DetailPostViewController: UIViewController {
         initNotification()
         
         messageTextView.delegate = self
-        messageTextView.text = "내용을 입력 해주세요."
+        messageTextView.text = "댓글을 입력 해주세요."
         messageTextView.textColor = UIColor.SBColor.SB_LightGray
 
     }
@@ -204,15 +203,12 @@ extension DetailPostViewController {
         let parama = GetCommentRequest(curUser: userID, article_no: getPostNumber)
         dataManager.postGetArticleComment(parama, viewController: self, page: currentPage)
         
-        
-        
         let param = RePostRequest(no: getPostNumber)
         dataManager.repostArticle(param, viewCcntroller: self)
         
         
     }
 
-    
     @objc func adminPost() {
         let alert = UIAlertController(title: "관리자 권한", message: "", preferredStyle: .actionSheet)
         let editButton = UIAlertAction(title: "게시글 수정", style: .default, handler: { [self] _ in
@@ -284,7 +280,6 @@ extension DetailPostViewController {
         } else {
             let userID = UserDefaults.standard.string(forKey: "userID")!
             let message = messageTextView.text!
-            
             
             let param = PostCommentRequest(article_no: getPostNumber, content: message, curUser: userID)
             dataManager.postSendArticleComment(param, viewController: self)
@@ -377,11 +372,6 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.tagLabel.text = ""
                 }
                 
-                
-//                let imageString = getImage
-//                let userProfileImage = imageString.toImage()
-//                cell.profileImageView.image = userProfileImage
-//
                 if getImage == "" || getImage == nil {
                     cell.profileImageView.image = UIImage(named: "default_profileImage")
                 } else {
@@ -389,11 +379,6 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
                     let userImage = profileImage.toImage()
                     cell.profileImageView.image = userImage
                 }
-                
-                
-                
-                
-                
                 
                 cell.commentCountLabel.text = String(getReplyCount)
                 cell.selectionStyle = .none
@@ -492,12 +477,7 @@ extension DetailPostViewController: UITableViewDelegate, UITableViewDataSource {
         
         return UITableView.automaticDimension
     }
-    
-    
 }
-
-
-
 
 //MARK: -DataManager 연결 함수
 extension DetailPostViewController: DetailPostView {
@@ -534,14 +514,24 @@ extension DetailPostViewController: DetailPostView {
         self.mainTableView.refreshControl?.endRefreshing()
     }
     func successPost() {
-        self.presentAlert(title: "댓글이 작성되었습니다")
+        //self.presentAlert(title: "댓글이 작성되었습니다")
+        let alert = UIAlertController(title: "댓글이 작성되었습니다", message: "", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: { [self]  in
+            messageTextView.delegate = self
+            messageTextView.text = "댓글을 입력 해주세요."
+            messageTextView.textColor = UIColor.SBColor.SB_LightGray
+
+        })
+        
+        
         let size = CGSize(width: view.frame.width, height: self.messageTextView.frame.height)
         let estimatedSize = messageTextView.sizeThatFits(size)
         messageTextView.constraints.forEach { (constraint) in
             if constraint.firstAttribute == .height {
                 constraint.constant = estimatedSize.height
             }
-            
         }
     }
 }
@@ -582,13 +572,8 @@ extension DetailPostViewController: AfterEditDelegate {
         self.isLoadedAllData = false
         self.comment.removeAll()
         
-       
-        
         dataManager.postGetArticleComment(secondParam, viewController: self, page: currentPage)
-        
     }
-    
-    
 }
 
 extension DetailPostViewController: UITextViewDelegate {
@@ -624,13 +609,12 @@ extension DetailPostViewController: UITextViewDelegate {
 //    }
 
     func textViewSetupView() {
-        if messageTextView.text == "댓글을 입력하세요." {
+        if messageTextView.text == "댓글을 입력 해주세요." {
             messageTextView.text = ""
             messageTextView.textColor = UIColor.black
         } else if messageTextView.text == ""{
-            messageTextView.text = "댓글을 입력하세요."
+            messageTextView.text = "댓글을 입력 해주세요."
             messageTextView.textColor = UIColor.SBColor.SB_LightGray
         }
     }
 }
-

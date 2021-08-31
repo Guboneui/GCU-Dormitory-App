@@ -378,7 +378,7 @@ extension MainBaseViewController: TBCellDelegate {
         vc.getHash = hash
         vc.getMainTitle = category
         vc.getImage = imageSource
-        vc.getReplyCount = replyCount
+//        vc.getReplyCount = replyCount
         
         self.navigationController?.pushViewController(vc, animated: true)
         

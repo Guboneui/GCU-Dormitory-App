@@ -164,6 +164,9 @@
 		2C708FD426D5F47C0081B5E7 /* SplashDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C708FD326D5F47C0081B5E7 /* SplashDataManager.swift */; };
 		2C708FD626D5F9180081B5E7 /* SplashContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C708FD526D5F9180081B5E7 /* SplashContract.swift */; };
 		2C708FD826D69F9B0081B5E7 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C708FD726D69F9B0081B5E7 /* BaseNavigationController.swift */; };
+		2C824D0026DDDB1D00C085D3 /* DashedLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824CFE26DDDB1D00C085D3 /* DashedLineTableViewCell.swift */; };
+		2C824D0126DDDB1D00C085D3 /* DashedLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C824CFF26DDDB1D00C085D3 /* DashedLineTableViewCell.xib */; };
+		2C824D0326DDDBB300C085D3 /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C824D0226DDDBB300C085D3 /* DashedLineView.swift */; };
 		2CAFB8D626CE434C003CCA66 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */; };
 		2CAFB8D826CE44AE003CCA66 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */; };
 		2CAFB8DA26CE453E003CCA66 /* splashImage.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 2CAFB8D926CE453E003CCA66 /* splashImage.PNG */; };
@@ -384,6 +387,9 @@
 		2C708FD326D5F47C0081B5E7 /* SplashDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashDataManager.swift; sourceTree = "<group>"; };
 		2C708FD526D5F9180081B5E7 /* SplashContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashContract.swift; sourceTree = "<group>"; };
 		2C708FD726D69F9B0081B5E7 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		2C824CFE26DDDB1D00C085D3 /* DashedLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineTableViewCell.swift; sourceTree = "<group>"; };
+		2C824CFF26DDDB1D00C085D3 /* DashedLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashedLineTableViewCell.xib; sourceTree = "<group>"; };
+		2C824D0226DDDBB300C085D3 /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
 		2CAFB8D526CE434C003CCA66 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2CAFB8D726CE44AE003CCA66 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		2CAFB8D926CE453E003CCA66 /* splashImage.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashImage.PNG; sourceTree = "<group>"; };
@@ -997,6 +1003,9 @@
 				2C004AED26B3772100D13ABF /* CalendarContract.swift */,
 				2C26E64226AC82860086A795 /* MenuTableViewCell.swift */,
 				2C26E64326AC82860086A795 /* MenuTableViewCell.xib */,
+				2C824CFE26DDDB1D00C085D3 /* DashedLineTableViewCell.swift */,
+				2C824CFF26DDDB1D00C085D3 /* DashedLineTableViewCell.xib */,
+				2C824D0226DDDBB300C085D3 /* DashedLineView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1109,6 +1118,7 @@
 				2CF5791E26AD59C9007DBC9C /* TagCollectionViewCell.xib in Resources */,
 				2C298743268B5D5E005EEA64 /* LaunchScreen.storyboard in Resources */,
 				2C5D39C326BE122A0046CD32 /* AutoScrollNoticeTableViewCell.xib in Resources */,
+				2C824D0126DDDB1D00C085D3 /* DashedLineTableViewCell.xib in Resources */,
 				2CFDA9B1269DE9F800612EDB /* SearchButtonTableViewCell.xib in Resources */,
 				2C22FAF826B159FC003AB22A /* Post.storyboard in Resources */,
 				2CD92B3A26BF289800A3263E /* RoomMateCollectionViewCell.xib in Resources */,
@@ -1235,6 +1245,7 @@
 				2C004AE126B35BEC00D13ABF /* SearchContract.swift in Sources */,
 				2CD92B2D26BF1C7500A3263E /* DeliveryCollectionViewCell.swift in Sources */,
 				2C18C97726C1A08400C852B2 /* MyPostRequest.swift in Sources */,
+				2C824D0326DDDBB300C085D3 /* DashedLineView.swift in Sources */,
 				2C6ACD3126CFECF300B7443E /* CustomLoader.swift in Sources */,
 				2C004AB526B34E5400D13ABF /* TaxiDataManager.swift in Sources */,
 				2C44FB8D26C8127500C6B7D4 /* NoticeMainTableViewCell.swift in Sources */,
@@ -1289,6 +1300,7 @@
 				2C004ACB26B34E6000D13ABF /* RoomMateViewController.swift in Sources */,
 				2C5D39C926BE2D300046CD32 /* ChangeProfileImageRequest.swift in Sources */,
 				2C44FB7A26C76D8A00C6B7D4 /* AlertContract.swift in Sources */,
+				2C824D0026DDDB1D00C085D3 /* DashedLineTableViewCell.swift in Sources */,
 				2C18C97326C1A01B00C852B2 /* MyPostDataManager.swift in Sources */,
 				2C004AA226B34E3500D13ABF /* AllPostViewController.swift in Sources */,
 				2C004AF526B382AC00D13ABF /* DetailPostViewDataManager.swift in Sources */,
@@ -1516,7 +1528,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1541,7 +1553,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeamSB/TeamSB.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = VKGAQDGK5R;
 				INFOPLIST_FILE = TeamSB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

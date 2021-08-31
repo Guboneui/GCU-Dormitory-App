@@ -70,6 +70,7 @@ extension CalendarViewController {
         
         let menuTableViewCellNib = UINib(nibName: "MenuTableViewCell", bundle: nil)
         menuTableView.register(menuTableViewCellNib, forCellReuseIdentifier: "MenuTableViewCell")
+        menuTableView.register(UINib(nibName: "DashedLineTableViewCell", bundle: nil), forCellReuseIdentifier: "DashedLineTableViewCell")
     }
     
     func setDesign() {
@@ -161,7 +162,7 @@ extension CalendarViewController {
 extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -172,6 +173,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             cell.menuLabel.text = morningString
             cell.subMenuLabel.text = nil
         } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DashedLineTableViewCell", for: indexPath) as! DashedLineTableViewCell
+            return cell
+        }
+        
+        
+        else if indexPath.row == 2 {
             cell.timeLabel.text = "점심 (11:45~14:00)"
             cell.menuLabel.text = "A코스\n" + firstLaunchString
             cell.subMenuLabel.text = "B코스\n" + secondLauchString
@@ -185,7 +192,12 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
             cell.subMenuLabel.attributedText = secondAttributed
             
             
-        } else if indexPath.row == 2 {
+        }else if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DashedLineTableViewCell", for: indexPath) as! DashedLineTableViewCell
+            return cell
+        }
+        
+        else if indexPath.row == 4 {
             cell.timeLabel.text = "저녁 (17:00~18:30)"
             cell.menuLabel.text = dinnerString
             cell.subMenuLabel.text = nil
