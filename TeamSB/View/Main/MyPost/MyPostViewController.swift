@@ -18,8 +18,6 @@ class MyPostViewController: UIViewController {
     var writeButton: UIBarButtonItem!
     var searchButton: UIBarButtonItem!
     var loading: NVActivityIndicatorView!
-    
-    
     var myPost: [MyPost] = []
     var currentPage = 0
     var isLoadedAllData = false
