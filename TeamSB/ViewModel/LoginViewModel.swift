@@ -13,7 +13,7 @@ class LoginViewModel {
 //    init(view: LoginView){
 //        self.view = view
 //    }
-    
+    weak var loginView: LoginViewController?
     let loginUseService = LoginUseService()
     var goNicknameView: () -> Void = {}
     var goMainView: () -> Void = {}
